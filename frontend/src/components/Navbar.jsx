@@ -90,9 +90,82 @@ const Navbar = ({ data }) => {
 
                                 </div>
                             </li>
+
+                            {/* burger-menu */}
+                            <li className="nav-item dropdown nav-burger">
+                                <Link className="nav-link lato-font" to='' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-bars"></i>
+                                </Link>
+                                <div className="dropdown-menu nav-burgercard" aria-labelledby="navbarDropdown">
+
+                                    <div className='burger-search'>
+                                        <input className='burger-input lato-font' type="text" placeholder='SEARCH THE STORE' />
+                                    </div>
+                                    <div className='burger-pages'>
+                                        <ul className='nav-burger_ul'>
+                                            <li className='nav-item burger-item' >
+                                                <Link className="nav-link lato-font" to='' aria-expanded="false">
+                                                    HOME
+                                                </Link>
+                                            </li>
+                                            <li className="nav-item dropdown">
+                                                <Link className="nav-link lato-font" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    SHOP WINES
+                                                </Link>
+                                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <li className='dropdown-li'><Link to='allshopwines' className="nav-link lato-font ">ALL SHOP WINES</Link></li>
+                                                    <li className='dropdown-li'><Link to='redwines' className="nav-link lato-font">RED WINES</Link></li>
+                                                    <li className='dropdown-li'><Link to='whitewines' className="nav-link lato-font">WHITE WINES</Link></li>
+                                                    <li className='dropdown-li'><Link to='rosewines' className="nav-link lato-font">ROSE WINES</Link></li>
+                                                </ul>
+                                            </li>
+                                            <li className="nav-item dropdown">
+                                                <Link className="nav-link lato-font" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    ABOUT
+                                                </Link>
+                                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <li><Link to='ourstory' className="nav-link lato-font">OUR STORY</Link></li>
+                                                    <li><Link to='theestate' className="nav-link lato-font">THE ESTATE</Link></li>
+                                                    <li><Link to='shippingreturn' className="nav-link lato-font">SHIPPING & RETURNS</Link></li>
+                                                </ul>
+                                            </li>
+                                            <li className='nav-item' >
+                                                <Link className="nav-link lato-font" to='blog' aria-expanded="false">
+                                                    BLOG
+                                                </Link>
+                                            </li>
+                                            <li className='nav-item lato-font' >
+                                                <Link className="nav-link" to='contact' aria-expanded="false">
+                                                    CONTACT US
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className='burger-user'>
+                                        <ul className='nav-burger_ul'>
+                                            <li className='nav-item burger-user' >
+                                                <Link className="nav-link lato-font" to='' aria-expanded="false">
+                                                    GIFT CERTIFICATES
+                                                </Link>
+                                            </li>
+
+                                            <li className='nav-item burger-user' >
+                                                <Link className="nav-link lato-font" to='' aria-expanded="false">
+                                                    LOGIN
+                                                </Link>
+                                            </li>
+                                            <li className='nav-item burger-user' >
+                                                <Link className="nav-link lato-font" to='' aria-expanded="false">
+                                                    SIGN UP
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </li>
                         </div>
                     </div>
-
                 </div>
             </nav>
 

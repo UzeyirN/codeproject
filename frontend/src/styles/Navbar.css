@@ -7,6 +7,7 @@
      color: #fff;
      padding: 20px 0;
      transition: padding 0.3s;
+     z-index: 99;
 
  }
 
@@ -77,7 +78,57 @@
      border-bottom: 2px solid RGB(176, 151, 109);
      color: white;
  }
- .nav-shopcart{
-    color: RGB(176, 151, 109);
-    padding: 60px 30px;
+
+ .nav-shopcart {
+     color: RGB(176, 151, 109);
+     padding: 60px 30px;
+
+ }
+
+ .nav-burger {
+     display: none;
+ }
+
+ .nav-burgercard {
+     color: RGB(176, 151, 109);
+     padding: 60px 30px;
+     width: 100vw;
+ }
+
+ .burger-input {
+     width: 100%;
+     padding: 20px 10px;
+     background-color: #121212;
+     border: none;
+     color: #fff;
+ }
+
+ .burger-input::placeholder {
+     font-family: 'Lato', sans-serif;
+ }
+ .nav-burger_ul{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0;
+    margin-top: 30px;
+ }
+ .burger-user{
+    margin-top: 30px;
+ }
+
+
+
+ @media screen and (max-width: 992px) {
+     .nav-pages {
+         display: none;
+     }
+
+     .nav-burger {
+         display: block;
+     }
+
+     
  }
