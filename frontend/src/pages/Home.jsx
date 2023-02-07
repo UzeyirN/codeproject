@@ -4,6 +4,7 @@ import FeaturedProducts from "../components/HomeSections/FeaturedProducts";
 import HeroSection from "../components/HomeSections/HeroSection";
 import LatestCollecions from "../components/HomeSections/LatestCollecions";
 import MessageSec from "../components/HomeSections/MessageSec";
+import OurAdress from "../components/HomeSections/OurAdress";
 import '../styles/Home.css'
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
             <MessageSec />
             <LatestCollecions />
             <FeaturedProducts />
+            <OurAdress />
         </>
     )
 }
