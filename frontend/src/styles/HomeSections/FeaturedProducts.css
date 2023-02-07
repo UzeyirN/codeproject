@@ -1,16 +1,17 @@
-.latest-collections__wrapper {
+.featured-products__wrapper {
     padding: 150px 0;
-    background-color: #F2F2F2
+    background-color: white
 }
 
-.card {
+.card-f {
     position: relative;
     width: 350px;
     height: 500px;
     margin: 20px;
     overflow: hidden;
     object-fit: cover;
-    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+    background: #F2F2F2;
+    border: none;
 }
 
 .card-body {
@@ -26,7 +27,7 @@
     padding: 20px;
 }
 
-.card-content{
+.card-content__f{
     position: relative;
     width: 350px;
     margin: 20px;
@@ -35,6 +36,7 @@
     text-align: center;
     padding: 15px 0;
     background-color: #fff;
+    background: #F2F2F2;
     /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
 }
 

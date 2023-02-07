@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from 'react-helmet'
+import FeaturedProducts from "../components/HomeSections/FeaturedProducts";
 import HeroSection from "../components/HomeSections/HeroSection";
 import LatestCollecions from "../components/HomeSections/LatestCollecions";
 import MessageSec from "../components/HomeSections/MessageSec";
@@ -14,6 +15,7 @@ const Home = () => {
             <HeroSection />
             <MessageSec />
             <LatestCollecions />
+            <FeaturedProducts />
         </>
     )
 }
