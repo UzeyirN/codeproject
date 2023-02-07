@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from 'react-helmet'
+import BeConnected from "../components/HomeSections/BeConnected";
 import FeaturedProducts from "../components/HomeSections/FeaturedProducts";
 import HeroSection from "../components/HomeSections/HeroSection";
 import LatestCollecions from "../components/HomeSections/LatestCollecions";
@@ -18,6 +19,7 @@ const Home = () => {
             <LatestCollecions />
             <FeaturedProducts />
             <OurAdress />
+            <BeConnected />
         </>
     )
 }
