@@ -7,6 +7,7 @@ const RedWines = () => {
             <Helmet>
                 <title>Red Wines</title>
             </Helmet>
+            <h1 style={{marginTop:"500px"}}>RED WINES</h1>
         </>
     )
 }

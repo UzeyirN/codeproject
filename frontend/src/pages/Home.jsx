@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from 'react-helmet'
+import '../styles/Home.css'
 
 const Home = () => {
     return (
@@ -7,7 +8,9 @@ const Home = () => {
             <Helmet>
                 <title>Home</title>
             </Helmet>
-            <h1>Home</h1>
+            <div className="home-wrapper">
+                
+            </div>
         </>
     )
 }
