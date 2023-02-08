@@ -25,11 +25,25 @@ const LatestCollecions = () => {
                     <div className="row">
                         <Swiper
                             modules={[Navigation, Pagination, Scrollbar, A11y]}
-                            spaceBetween={150}
+                            spaceBetween={80}
                             slidesPerView={3}
-                            navigation
+                            // navigation
                             onSwiper={(swiper) => console.log(swiper)}
                             onSlideChange={() => console.log('slide change')}
+                            breakpoints={{
+                                640: {
+                                    slidesPerView: 5,
+                                    // spaceBetween: 80,
+                                },
+                                768: {
+                                    slidesPerView: 4,
+                                    // spaceBetween: 40,
+                                },
+                                1024: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 100,
+                                },
+                            }}
                         >
                             <SwiperSlide>
                                 <div className="card-wrapper">
@@ -40,15 +54,15 @@ const LatestCollecions = () => {
                                         <button className='lato-font card-button'>QUICK VIEW</button>
                                     </div>
                                     <div className="card-content">
-                                        <p className='lato-font' style={{color:"RGB(176, 151, 109)"}}>SUTTER HOME</p>
-                                        <Link className='playfair-font card-link' style={{marginBottom:"20px",fontSize:"20px"}} >Villenoir Chardonnay</Link>
-                                        <div style={{color:"RGB(176, 151, 109)",margin:"30px 0",fontSize:"21px"}} className='notoserif-font'>$100.00</div>
+                                        <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>SUTTER HOME</p>
+                                        <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >Villenoir Chardonnay</Link>
+                                        <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>$100.00</div>
                                         <button className='lato-font add-button'>ADD TO CART</button>
                                     </div>
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide>
-                            <div className="card-wrapper">
+                                <div className="card-wrapper">
                                     <div className="card">
                                         <div className="card-body">
                                             <img style={{ width: "100%", height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/500x659/products/116/386/White-Chardonnay-w-cup__40812.1488466018.png?c=2" alt="" />
@@ -56,15 +70,15 @@ const LatestCollecions = () => {
                                         <button className='lato-font card-button'>QUICK VIEW</button>
                                     </div>
                                     <div className="card-content">
-                                        <p className='lato-font' style={{color:"RGB(176, 151, 109)"}}>SUTTER HOME</p>
-                                        <Link className='playfair-font card-link' style={{marginBottom:"20px",fontSize:"20px"}} >Villenoir Chardonnay</Link>
-                                        <div style={{color:"RGB(176, 151, 109)",margin:"30px 0",fontSize:"21px"}} className='notoserif-font'>$100.00</div>
+                                        <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>SUTTER HOME</p>
+                                        <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >Villenoir Chardonnay</Link>
+                                        <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>$100.00</div>
                                         <button className='lato-font add-button'>ADD TO CART</button>
                                     </div>
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide>
-                            <div className="card-wrapper">
+                                <div className="card-wrapper">
                                     <div className="card">
                                         <div className="card-body">
                                             <img style={{ width: "100%", height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/500x659/products/116/386/White-Chardonnay-w-cup__40812.1488466018.png?c=2" alt="" />
@@ -72,15 +86,15 @@ const LatestCollecions = () => {
                                         <button className='lato-font card-button'>QUICK VIEW</button>
                                     </div>
                                     <div className="card-content">
-                                        <p className='lato-font' style={{color:"RGB(176, 151, 109)"}}>SUTTER HOME</p>
-                                        <Link className='playfair-font card-link' style={{marginBottom:"20px",fontSize:"20px"}} >Villenoir Chardonnay</Link>
-                                        <div style={{color:"RGB(176, 151, 109)",margin:"30px 0",fontSize:"21px"}} className='notoserif-font'>$100.00</div>
+                                        <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>SUTTER HOME</p>
+                                        <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >Villenoir Chardonnay</Link>
+                                        <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>$100.00</div>
                                         <button className='lato-font add-button'>ADD TO CART</button>
                                     </div>
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide>
-                            <div className="card-wrapper">
+                                <div className="card-wrapper">
                                     <div className="card">
                                         <div className="card-body">
                                             <img style={{ width: "100%", height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/500x659/products/116/386/White-Chardonnay-w-cup__40812.1488466018.png?c=2" alt="" />
@@ -88,12 +102,12 @@ const LatestCollecions = () => {
                                         <button className='lato-font card-button'>QUICK VIEW</button>
                                     </div>
                                     <div className="card-content">
-                                        <p className='lato-font' style={{color:"RGB(176, 151, 109)"}}>SUTTER HOME</p>
-                                        <Link className='playfair-font card-link' style={{marginBottom:"20px",fontSize:"20px"}} >Villenoir Chardonnay</Link>
-                                        <div style={{color:"RGB(176, 151, 109)",margin:"30px 0",fontSize:"21px"}} className='notoserif-font'>$100.00</div>
+                                        <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>SUTTER HOME</p>
+                                        <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >Villenoir Chardonnay</Link>
+                                        <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>$100.00</div>
                                         <button className='lato-font add-button'>ADD TO CART</button>
                                     </div>
-                                </div>  
+                                </div>
                             </SwiperSlide>
                         </Swiper>
                     </div>

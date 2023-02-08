@@ -34,7 +34,7 @@ const Navbar = ({ data }) => {
                                     </Link>
                                 </li>
                                 <li className="nav-item dropdown">
-                                    <Link className="nav-link lato-font" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <Link className="nav-link lato-font  dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         SHOP WINES
                                     </Link>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -45,7 +45,7 @@ const Navbar = ({ data }) => {
                                     </ul>
                                 </li>
                                 <li className="nav-item dropdown">
-                                    <Link className="nav-link lato-font" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <Link className="nav-link lato-font  dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         ABOUT
                                     </Link>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -66,34 +66,29 @@ const Navbar = ({ data }) => {
                                 </li>
                             </ul>
                         </div>
+
                         <div className="nav-user">
-                            <li className="nav-item dropdown">
-                                <Link className="nav-link lato-font" href='/' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </Link>
-                                <div className="dropdown-menu search-menu" aria-labelledby="navbarDropdown">
-                                    <input className='nav-search__input' type="text" placeholder='SEARCH THE STORY' />
-                                </div>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <Link className="nav-link lato-font" to='' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-user"></i>
-                                </Link>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <Link className="nav-link lato-font" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </Link>
-                                <div className="dropdown-menu nav-shopcart" aria-labelledby="navbarDropdown">
+                            <Link className="nav-link lato-font" href='/' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </Link>
+                            <div className="dropdown-menu search-menu" aria-labelledby="navbarDropdown">
+                                <input className='nav-search__input' type="text" placeholder='SEARCH THE STORY' />
+                            </div>
+                            <Link className="nav-link lato-font" to='' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-user"></i>
+                            </Link>
+                            <Link className="nav-link lato-font" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </Link>
+                            <div className="dropdown-menu nav-shopcart" aria-labelledby="navbarDropdown">
 
-                                    {data ? data : "Your cart is empty"}
+                                {data ? data : "Your cart is empty"}
 
-                                </div>
-                            </li>
+                            </div>
 
-                            {/* burger-menu */}
-                            <li className="nav-item dropdown nav-burger">
-                                <Link className="nav-link lato-font" to='' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {/* burger menu */}
+                            <span className="nav-item dropdown nav-burger">
+                                <Link className=" nav-link lato-font" to='' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-bars"></i>
                                 </Link>
                                 <div className="dropdown-menu nav-burgercard" aria-labelledby="navbarDropdown">
@@ -119,6 +114,16 @@ const Navbar = ({ data }) => {
                                                     <li className='dropdown-li'><Link to='rosewines' className="nav-link lato-font">ROSE WINES</Link></li>
                                                 </ul>
                                             </li>
+                                            <div class="dropdown">
+                                                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Dropdown button
+                                                </button>
+                                                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                    <li><a className="dropdown-item" href="/">Action</a></li>
+                                                    <li><a className="dropdown-item" href="/">Another action</a></li>
+                                                    <li><a className="dropdown-item" href="/">Something else here</a></li>
+                                                </ul>
+                                            </div>
                                             <li className="nav-item dropdown">
                                                 <Link className="nav-link lato-font" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                     ABOUT
@@ -143,33 +148,25 @@ const Navbar = ({ data }) => {
                                     </div>
                                     <div className='burger-user'>
                                         <ul className='nav-burger_ul'>
-                                            <li className='nav-item burger-user' >
-                                                <Link className="nav-link lato-font" to='' aria-expanded="false">
-                                                    GIFT CERTIFICATES
-                                                </Link>
-                                            </li>
+                                            <Link className="nav-link lato-font" to='' aria-expanded="false">
+                                                GIFT CERTIFICATES
+                                            </Link>
 
-                                            <li className='nav-item burger-user' >
-                                                <Link className="nav-link lato-font" to='' aria-expanded="false">
-                                                    LOGIN
-                                                </Link>
-                                            </li>
-                                            <li className='nav-item burger-user' >
-                                                <Link className="nav-link lato-font" to='' aria-expanded="false">
-                                                    SIGN UP
-                                                </Link>
-                                            </li>
+                                            <Link className="nav-link lato-font" to='' aria-expanded="false">
+                                                LOGIN
+                                            </Link>
+
+                                            <Link className="nav-link lato-font" to='' aria-expanded="false">
+                                                SIGN UP
+                                            </Link>
                                         </ul>
                                     </div>
-
                                 </div>
-                            </li>
+                            </span>
                         </div>
                     </div>
                 </div>
             </nav>
-
-
         </>
     )
 }

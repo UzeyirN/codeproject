@@ -90,6 +90,11 @@
  }
 
  .nav-burgercard {
+     display: none;
+
+ }
+
+ .nav-burgercard {
      color: RGB(176, 151, 109);
      padding: 60px 30px;
      width: 100vw;
@@ -106,20 +111,24 @@
  .burger-input::placeholder {
      font-family: 'Lato', sans-serif;
  }
- .nav-burger_ul{
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 0;
-    margin-top: 30px;
- }
- .burger-user{
-    margin-top: 30px;
+
+ .nav-burger_ul {
+     height: 300px;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     align-items: flex-start;
+     padding: 0;
+     margin-top: 30px;
  }
 
+ .burger-user {
+     margin-top: 30px;
+ }
 
+ @media screen and (min-width: 992px) {
+
+ }
 
  @media screen and (max-width: 992px) {
      .nav-pages {
@@ -130,5 +139,17 @@
          display: block;
      }
 
-     
+    
+
+ }
+
+ @media screen and (max-width: 350px) {
+
+     .nav-logo {
+         display: none;
+     }
+
+     .nav-user {
+         margin: 0 auto;
+     }
  }
