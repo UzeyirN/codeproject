@@ -68,16 +68,16 @@ const Navbar = ({ data }) => {
                         </div>
 
                         <div className="nav-user">
-                            <Link className="nav-link lato-font" href='/' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <Link className="nav-link" href='/' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </Link>
                             <div className="dropdown-menu search-menu" aria-labelledby="navbarDropdown">
                                 <input className='nav-search__input' type="text" placeholder='SEARCH THE STORY' />
                             </div>
-                            <Link className="nav-link lato-font" to='' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <Link className="nav-link" to='' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-user"></i>
                             </Link>
-                            <Link className="nav-link lato-font" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <Link className="nav-link" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-cart-shopping"></i>
                             </Link>
                             <div className="dropdown-menu nav-shopcart" aria-labelledby="navbarDropdown">
@@ -163,6 +163,25 @@ const Navbar = ({ data }) => {
                                     </div>
                                 </div>
                             </span>
+
+
+                            {/* bootstrap drop */}
+                            {/* <Link className="nav-link nav-burger" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="dropdown nav-burger ">
+                                    <button className="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i className="fa-solid fa-bars" style={{ color: "white" }}></i>
+                                    </button>
+                                    <ul class="dropdown-menu burger-dropmenu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a className="dropdown-item" href="/">
+                                            <div className='burger-search'>
+                                                <input className='burger-input lato-font' type="text" placeholder='SEARCH THE STORE' />
+                                            </div>
+                                        </a></li>
+                                        <li><a className="dropdown-item" href="/">Another action</a></li>
+                                        <li><a className="dropdown-item" href="/">Something else here</a></li>
+                                    </ul>
+                                </div>
+                            </Link> */}
                         </div>
                     </div>
                 </div>

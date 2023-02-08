@@ -126,9 +126,10 @@
      margin-top: 30px;
  }
 
- @media screen and (min-width: 992px) {
-
+ .burger-dropmenu {
+     width: 100vw;
  }
+
 
  @media screen and (max-width: 992px) {
      .nav-pages {
@@ -139,17 +140,37 @@
          display: block;
      }
 
-    
+
 
  }
 
+
+
  @media screen and (max-width: 350px) {
 
+     .navbar-inner {
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         align-items: center;
+         height: 100px;
+     }
+
      .nav-logo {
-         display: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
      }
 
      .nav-user {
-         margin: 0 auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0 0 25px;
+
      }
+
+    
  }

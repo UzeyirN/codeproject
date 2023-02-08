@@ -20,26 +20,23 @@ const HeroSection = () => {
                     onSwiper={(swiper) => console.log(swiper)}
                     onSlideChange={() => console.log('slide change')}
                 >
-                    <SwiperSlide id='herosec-first__slide'>
-                        <img style={{ width: "100vw", height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/original/carousel/15/slide-2-background__86858.jpg?c=2" alt="" />
+                    <SwiperSlide className='slider1'>
                         <div className="container">
                             <div className="row">
-                                <div className="col-lg-6 herosec-content">
-                                    <p style={{ fontWeight: "700", color: "RGB(176, 151, 109)" }} className='lato-font'>VILLENOIR WINES</p>
-                                    <h1 className='playfair-font' style={{ fontSize: "60px", color: "white" }}>Tradition in a glass</h1>
+                                <div className="col-lg-6 col-md-6 col-sm-6 hero-content">
+                                    <p className='lato-font herosec-p'>VILLENOIR WINES</p>
+                                    <h1 className='playfair-font herosec-h1'>Tradition in a glass</h1>
                                     <button className='herosec-btn lato-font'>SHOP NOW</button>
                                 </div>
                             </div>
                         </div>
-
                     </SwiperSlide>
-                    <SwiperSlide>
-                        <img style={{ width: "100vw", height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/original/carousel/9/slide-1-background.jpg?c=2" alt="" />
+                    <SwiperSlide className=' slider2'>
                         <div className="container">
                             <div className="row">
-                                <div className="col-lg-6 herosec-content">
-                                    <p style={{ fontWeight: "700", color: "RGB(176, 151, 109)" }} className='lato-font'>VILLENOIR WINES</p>
-                                    <h1 className='playfair-font' style={{ fontSize: "60px", color: "white" }}>Refinement in a bottle </h1>
+                                <div className="col-lg-6 col-md-6 col-sm-6 hero-content">
+                                    <p className='lato-font herosec-p'>VILLENOIR WINES</p>
+                                    <p className='playfair-font herosec-h1'>Tradition in a glass</p>
                                     <button className='herosec-btn lato-font'>SHOP THE WINES</button>
                                 </div>
                             </div>
