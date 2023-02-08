@@ -1,0 +1,25 @@
+.blog-top{
+    width: 100%;
+    height: 40vh;
+    background-color: black;
+}
+
+.blog-wrapper{
+    width: 60%;
+    height: 100vh;
+    margin: 50px auto;
+}
+
+.blog-link{
+    color: black;
+    font-size: 50px;
+    text-decoration: none;
+}
+
+.blog-link:hover{
+    color: black;
+}
+
+.blog-img{
+    margin: 20px 0;
+}
