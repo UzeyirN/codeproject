@@ -8,7 +8,9 @@ const MessageSec = () => {
             <div className="messagesec-wrapper">
                 <div className="container">
                     <div className="row" >
-                        <div className="col-lg-6"></div>
+                        <div className="col-lg-6">
+                            
+                        </div>
                         <div className="col-lg-6">
                             <div className="messagesec-content">
                                 <p className='lato-font' style={{ fontSize: "14px", fontWeight: "700", color: "RGB(176, 151, 109)" }}>MESSAGE FROM VILLENOIR</p>
