@@ -3,7 +3,7 @@
 }
 
 .footer-main {
-    height: 50vh;
+    /* height: 50vh; */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -12,12 +12,16 @@
 
 .footer-content {
     width: 100%;
-    padding: 80px 0;
+    padding: 60px 0 20px 0;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: #121212;
+}
+
+.footer-cols{
+    margin: 30px 0;
 }
 
 .footer-content__left {

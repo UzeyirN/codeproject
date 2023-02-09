@@ -9,6 +9,7 @@ import TheEstate from './../pages/About/TheEstate';
 import ShippingReturn from './../pages/About/ShippingReturn';
 import Blog from './../pages/Blog';
 import ContactUs from './../pages/ContactUs';
+import Winery from './../pages/BlogPages/Winery';
 
 
 const ROUTES = [
@@ -51,11 +52,18 @@ const ROUTES = [
             {
                 path: "blog",
                 element: <Blog />
+
             },
             {
                 path: "contact",
                 element: <ContactUs />
+            },
+            {
+                path: "winery",
+                element: <Winery />
             }
+
+
         ]
     }
 ]

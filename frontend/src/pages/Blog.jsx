@@ -20,7 +20,7 @@ const Blog = () => {
       <div className="container">
         <div className="blog-wrapper">
           <div className='blog-head'>
-            <Link className='blog-link playfair-font' to='' >Wine Fermentation Process</Link>
+            <Link className='blog-link playfair-font' to='blog/winery' >Wine Fermentation Process</Link>
             <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>9th Mar 2017</p>
             <Link>
               <img className='blog-img' style={{ width: "100%", height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/9999x9999/uploaded_images/blog-post-2.jpg?t=1489066586" alt="" />
@@ -50,7 +50,7 @@ const Blog = () => {
           <div className='blog-head'>
             <Link className='blog-link playfair-font' to='' >Winery of the year</Link>
             <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>15th Feb 2014</p>
-            <Link>
+            <Link to='winery'>
               <img className='blog-img' style={{ width: "100%", height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/9999x9999/uploaded_images/blog-post-3.jpg?t=1489064769" alt="" />
             </Link>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rhoncus posuere mattis.

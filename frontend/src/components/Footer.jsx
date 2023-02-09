@@ -34,13 +34,13 @@ const Footer = () => {
                     <div className="container" >
                         <div className="row" >
                             <div className='footer-main'>
-                                <div className="col-12 footer-head">
+                                <div className="col-12 footer-head footer-cols">
                                     <div className='footer-content__head'>
                                         <p className='lato-font footer-p'>VILLENOIR PROMISE</p>
                                         <h2 className='playfair-font footer-h2'>We make good wines</h2>
                                     </div>
                                 </div>
-                                <div className="col-12 footer-link__wrapper">
+                                <div className="col-12 footer-link__wrapper footer-cols">
                                     <div className="col-lg-6 col-md-6 col-6 footer-content__left">
                                         <Link className='footer-link lato-font'>ALL BRANDS</Link>
                                         <Link className='footer-link lato-font'>SITEMAP</Link>
@@ -50,7 +50,7 @@ const Footer = () => {
                                         <span style={{ fontSize: "12px", fontWeight: "700" }}>POWERED BY <Link style={{ color: "RGB(176, 151, 109)", textDecoration: "none" }}>BIGCOMMERCE</Link></span>
                                     </div>
                                 </div>
-                                <div className="col-12 footer-bottom">
+                                <div className="col-12 footer-bottom footer-cols">
                                     <i class="fa-brands fa-cc-amex"></i>
                                     <i class="fa-brands fa-cc-discover"></i>
                                     <i class="fa-brands fa-cc-mastercard"></i>
