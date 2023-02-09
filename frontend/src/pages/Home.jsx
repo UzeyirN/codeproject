@@ -1,11 +1,9 @@
 import React from "react";
 import { Helmet } from 'react-helmet'
-// import BeConnected from "../components/HomeSections/BeConnected";
 import FeaturedProducts from "../components/HomeSections/FeaturedProducts";
 import HeroSection from "../components/HomeSections/HeroSection";
 import LatestCollecions from "../components/HomeSections/LatestCollecions";
 import MessageSec from "../components/HomeSections/MessageSec";
-// import OurAdress from "../components/HomeSections/OurAdress";
 import '../styles/Home.css'
 
 const Home = () => {
@@ -18,8 +16,7 @@ const Home = () => {
             <MessageSec />
             <LatestCollecions />
             <FeaturedProducts />
-            {/* <OurAdress /> */}
-            {/* <BeConnected /> */}
+           
         </>
     )
 }

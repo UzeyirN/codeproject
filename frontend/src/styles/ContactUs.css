@@ -1,0 +1,166 @@
+.contact-top {
+    width: 100%;
+    height: 40vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 9%;
+}
+
+.contact-top__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.contact-wrapper {
+    width: 60%;
+    margin: 50px auto 100px auto;
+}
+
+.contact-heading__wrapper {
+    width: 55%;
+}
+
+.contact-inputs__wrapper {
+    /* border: 1px solid red; */
+    /* height: 60vh; */
+    margin-top: 30px;
+}
+
+.contact-form {
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.contact-input {
+    padding: 15px 10px;
+    width: 50%;
+    border: 1px solid rgb(222, 217, 217);
+}
+
+.contact-comment__input {
+    width: 100%;
+    padding: 15px 10px 100px;
+    border: 1px solid rgb(222, 217, 217);
+}
+
+.input-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.contact-btn {
+    font-size: 12px;
+    width: 30%;
+    margin: 0 auto;
+    color: white;
+    background-color: #000;
+    font-weight: 700;
+    padding: 15px 40px;
+    border: none;
+    letter-spacing: 2px;
+}
+
+.contact-btn:hover {
+    background-color: #b0976d;
+    transition: all 0.3s;
+    border: none;
+
+}
+
+.contact-error__message{
+    color: red;
+}
+
+@media screen and (max-width: 1200px) {
+    .contact-top {
+        padding-top: 13%;
+
+    }
+
+    .contact-wrapper {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .contact-wrapper {
+        width: 90%;
+    }
+
+}
+
+@media screen and (max-width: 760px) {
+    .contact-wrapper {
+        width: 95%;
+    }
+
+    .contact-top {
+        padding-top: 15%;
+    }
+
+    .contact-btn {
+        width: 40%;
+    }
+
+    .contact-heading__wrapper {
+        width: 90%;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .contact-top {
+        padding-top: 20%;
+    }
+
+}
+
+@media screen and (max-width: 548px) {
+
+    .contact-top {
+        padding-top: 20%;
+    }
+
+    .contact-nav {
+        display: none;
+    }
+
+    .input-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact-input {
+        width: 100%;
+    }
+
+    .contact-btn {
+        width: 100%;
+        padding: 20px 40px;
+
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    .contact-wrapper {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+
+    .contact-top {
+        padding-top: 45%;
+    }
+}
