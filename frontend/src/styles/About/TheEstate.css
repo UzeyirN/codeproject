@@ -1,0 +1,88 @@
+.estate-top {
+    width: 100%;
+    height: 40vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 9%;
+}
+
+.estate-wrapper {
+    width: 50%;
+    margin: 50px auto 100px auto;
+
+}
+
+.estate-top__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.estate-article {
+    margin: 30px 0 60px 0;
+}
+
+.estate-h2 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.estate-p {
+    line-height: 2;
+}
+
+
+
+@media screen and (max-width: 992px) {
+    .estate-wrapper {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .estate-wrapper {
+        width: 90%;
+    }
+
+    .estate-top {
+        padding-top: 15%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .estate-wrapper {
+        width: 95%;
+    }
+
+    .estate-top {
+        padding-top: 15%;
+
+    }
+}
+
+@media screen and (max-width: 567px) {
+
+    .estate-nav {
+        display: none;
+    }
+
+    .estate-top {
+        padding-top: 22%;
+
+    }
+
+    .estate-wrapper {
+        width: 90%;
+    }
+
+}
+
+@media screen and (max-width: 350px) {
+
+    .estate-top {
+        margin-top: 20%;
+    }
+}

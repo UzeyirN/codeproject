@@ -7,6 +7,8 @@ const RoseWines = () => {
             <Helmet>
                 <title>Rose Wines</title>
             </Helmet>
+            <h1 style={{marginTop:"500px"}}>ROSE WINES</h1>
+
         </>
     )
 }

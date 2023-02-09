@@ -7,6 +7,9 @@ const WhiteWines = () => {
             <Helmet>
                 <title>White Wines</title>
             </Helmet>
+
+            <h1 style={{marginTop:"500px"}}>WHITE WINES</h1>
+
         </>
     )
 }

@@ -1,6 +1,5 @@
 .blog-top {
     width: 100%;
-    /* margin-top: 8%; */
     height: 40vh;
     background-color: black;
     display: flex;
@@ -8,6 +7,12 @@
     justify-content: center;
     align-items: center;
     padding-top: 9%;
+}
+
+.blog-top__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center
 }
 
 .blog-wrapper {
@@ -41,11 +46,13 @@
         width: 90%;
     }
 }
+
 @media screen and (max-width: 700px) {
     .blog-wrapper {
         width: 95%;
     }
-    .blog-top{
+
+    .blog-top {
         padding-top: 20%;
 
     }

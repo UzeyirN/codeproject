@@ -10,11 +10,10 @@ const Blog = () => {
         <title>Blog</title>
       </Helmet>
       <div className='blog-top'>
-        <span>
+        <span className='blog-top__wrapper'>
           <h2 className='playfair-font' style={{ color: "white" }}>BLOG</h2>
           <p className='lato-font blog-nav' style={{ color: "gray" }}><span style={{ color: "RGB(176, 151, 109)" }}>Home</span> / Blog</p>
         </span>
-
 
       </div>
       <div className="container">
@@ -59,7 +58,6 @@ const Blog = () => {
             <Link to='winery' style={{ color: "RGB(176, 151, 109)", textDecoration: "none" }}>read more</Link>
           </div>
         </div>
-
 
       </div>
 
