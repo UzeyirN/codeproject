@@ -31,22 +31,51 @@ const Footer = () => {
                 </div> */}
 
                 <div className="footer-content">
-                    <div className='footer-content__head'>
+                    <div className="container" >
+                        <div className="row" >
+                            <div className='footer-main'>
+                                <div className="col-12 footer-head">
+                                    <div className='footer-content__head'>
+                                        <p className='lato-font footer-p'>VILLENOIR PROMISE</p>
+                                        <h2 className='playfair-font footer-h2'>We make good wines</h2>
+                                    </div>
+                                </div>
+                                <div className="col-12 footer-link__wrapper">
+                                    <div className="col-lg-6 col-md-6 col-6 footer-content__left">
+                                        <Link className='footer-link lato-font'>ALL BRANDS</Link>
+                                        <Link className='footer-link lato-font'>SITEMAP</Link>
+                                        <Link className='footer-link lato-font'>GIFT SERTIFICATES</Link>
+                                    </div>
+                                    <div className="col-lg-6 col-md-6 col-6 footer-content__right">
+                                        <span style={{ fontSize: "12px", fontWeight: "700" }}>POWERED BY <Link style={{ color: "RGB(176, 151, 109)", textDecoration: "none" }}>BIGCOMMERCE</Link></span>
+                                    </div>
+                                </div>
+                                <div className="col-12 footer-bottom">
+                                    <i class="fa-brands fa-cc-amex"></i>
+                                    <i class="fa-brands fa-cc-discover"></i>
+                                    <i class="fa-brands fa-cc-mastercard"></i>
+                                    <i class="fa-brands fa-cc-paypal"></i>
+                                    <i class="fa-brands fa-cc-visa"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    {/* <div className='footer-content__head'>
                         <p className='lato-font' style={{ fontSize: "14px", fontWeight: "700", color: "RGB(176, 151, 109)" }}>VILLENOIR PROMISE</p>
                         <h2 className='playfair-font' style={{ fontSize: "41px" }}>We make good wines</h2>
                     </div>
-
-
-                    <div className="container">
+                    <div className="container footer-link__wrapper">
                         <div className="row">
-                            <div className="col-lg-6 footer-content__left">
-                                <Link className='footer-link lato-font'>ALL BRANDS</Link>
-                                <Link className='footer-link lato-font'>SITEMAP</Link>
-                                <Link className='footer-link lato-font'>GIFT SERTIFICATES</Link>
-                            </div>
-                            <div className="col-lg-6 footer-content__right">
-                                <span style={{ fontSize: "12px", fontWeight: "700" }}>POWERED BY <Link style={{ color: "RGB(176, 151, 109)", textDecoration: "none" }}>BIGCOMMERCE</Link></span>
-                            </div>
+                                <div className="col-lg-6 col-md-6 col-6 footer-content__left">
+                                    <Link className='footer-link lato-font'>ALL BRANDS</Link>
+                                    <Link className='footer-link lato-font'>SITEMAP</Link>
+                                    <Link className='footer-link lato-font'>GIFT SERTIFICATES</Link>
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-6 footer-content__right">
+                                    <span style={{ fontSize: "12px", fontWeight: "700" }}>POWERED BY <Link style={{ color: "RGB(176, 151, 109)", textDecoration: "none" }}>BIGCOMMERCE</Link></span>
+                                </div>
+
                         </div>
                     </div>
                     <div className="container">
@@ -59,7 +88,7 @@ const Footer = () => {
                                 <i class="fa-brands fa-cc-visa"></i>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                 </div>
             </div>
