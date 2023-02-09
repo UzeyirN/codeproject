@@ -10,6 +10,8 @@ import ShippingReturn from './../pages/About/ShippingReturn';
 import Blog from './../pages/Blog';
 import ContactUs from './../pages/ContactUs';
 import Winery from './../pages/BlogPages/Winery';
+import WineFermantation from './../pages/BlogPages/WineFermantation';
+import Harvest from './../pages/BlogPages/Harvest';
 
 
 const ROUTES = [
@@ -61,6 +63,14 @@ const ROUTES = [
             {
                 path: "winery",
                 element: <Winery />
+            },
+            {
+                path: "winefermantation",
+                element: <WineFermantation />
+            },
+            {
+                path: "harvest",
+                element: <Harvest />
             }
 
 
