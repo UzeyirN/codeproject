@@ -1,4 +1,4 @@
-.ouradress-wrapper{
+.ouradress-wrapper {
     width: 100%;
     height: 60vh;
     background-image: url(https://cdn11.bigcommerce.com/s-qbep6rt4nh/stencil/a442aa60-21ce-0135-aa8e-525400970412/img/visit-us-back.jpg);
@@ -10,7 +10,37 @@
     align-items: center;
 }
 
-.ouraddress-content{
+.ouraddress-content {
     width: 50%;
     text-align: center;
+}
+
+.ouradress-p {
+    font-size: 14px;
+    font-weight: 700;
+    color: RGB(176, 151, 109)
+}
+
+.ouradress-h2{
+    font-size: 41px;
+}
+
+@media screen and (max-width: 992px) {
+    .ouraddress-content {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .ouraddress-content {
+        width: 90%;
+    }
+
+    .ouradress-p {
+        font-size: 10px;
+    }
+
+    .ouradress-h2 {
+        font-size: 2em;
+    }
 }

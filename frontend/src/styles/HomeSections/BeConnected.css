@@ -1,4 +1,4 @@
-.be-connected__wrapper{
+.be-connected__wrapper {
     width: 100%;
     height: 60vh;
     display: flex;
@@ -6,8 +6,69 @@
     align-items: center;
 }
 
-.be-connected__content{
+.be-connected__content {
     width: 60%;
     text-align: center;
 }
 
+.beconnect-p {
+    font-size: 14px;
+    font-weight: 700;
+    color: RGB(176, 151, 109)
+}
+
+.beconnect-h2 {
+    font-size: 41px
+}
+
+.beconnect-input {
+    width: 80%;
+    padding: 35px 10px;
+    border: 1px solid #e9e9e9
+}
+
+.beconnect-btn {
+    width: 20%;
+    border: 1px solid #e9e9e9
+}
+
+@media screen and (max-width: 800px) {
+    .be-connected__wrapper {
+        height: 90vh;
+    }
+
+    .be-connected__content {
+        width: 90%;
+    }
+
+    .beconnect-input__group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .beconnect-input {
+        width: 100%;
+
+    }
+
+    .beconnect-btn {
+        width: 100%;
+        padding: 35px 10px;
+
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .be-connected__content {
+        width: 90%;
+    }
+
+    .beconnect-p {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .beconnect-h2 {
+        font-size: 2em;
+    }
+}
