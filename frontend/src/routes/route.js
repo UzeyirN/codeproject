@@ -15,6 +15,11 @@ import RedWines from '../pages/ShopWines/RedWines'
 import RoseWines from '../pages/ShopWines/RoseWines'
 import WhiteWines from '../pages/ShopWines/WhiteWines'
 import Harvest from './../pages/BlogPages/Harvest';
+import AddToBasket from '../pages/AddtoBasket';
+import LoginRoot from './../pages/LoginPages/LoginRoot';
+import Login from '../pages/LoginPages/Login';
+import CreateAcc from './../pages/LoginPages/CreateAcc';
+import ForgotPassword from './../pages/LoginPages/ForgotPassword';
 
 
 
@@ -82,7 +87,30 @@ const ROUTES = [
             {
                 path: "contact",
                 element: <ContactUs />
-            }
+            },
+            {
+                path: "addtobasket",
+                element: <AddToBasket />
+            },
+            {
+                path: "login/",
+                element: <LoginRoot />,
+                children: [
+                    {
+                        path: "",
+                        element: <Login />
+                    },
+                    {
+                        path: "createaccount",
+                        element: <CreateAcc />
+                    },
+                    {
+                        path: "forgotpassword",
+                        element: <ForgotPassword />
+                    }
+                ]
+
+            },
 
 
 

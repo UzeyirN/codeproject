@@ -74,7 +74,10 @@ const Navbar = ({ data }) => {
                             <div className="dropdown-menu search-menu" aria-labelledby="navbarDropdown">
                                 <input className='nav-search__input' type="text" placeholder='SEARCH THE STORY' />
                             </div>
-                            <Link className="nav-link" to='' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {/* <Link className="nav-link" to='login' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-user"></i>
+                            </Link> */}
+                            <Link className="nav-link" to='login' aria-expanded="false">
                                 <i class="fa-solid fa-user"></i>
                             </Link>
                             <Link className="nav-link" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

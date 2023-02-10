@@ -39,27 +39,55 @@ const ContactUs = () => {
           <div className="contact-inputs__wrapper">
             <form onSubmit={handleSubmit(onSubmitHandler)} className='contact-form'>
 
+              {/* first input wrapper */}
               <div className='input-wrapper'>
-                <input {...register("name")} type="text" placeholder='Full Name' className=' contact-input' />
-                <span className='contact-error__message'>{errors.name?.message}</span>
 
-                <input {...register("phone_num")} type="text" placeholder='Phone Number' className=' contact-input' />
-                <p className='contact-error__message'>{errors.phone_num?.message}</p>
+                <div style={{ width: "100%" }}>
+                  <input {...register("name")} type="text" placeholder='Full Name' className=' contact-input' />
+                  <p className='contact-error__message'>{errors.name?.message}</p>
+                </div>
+
+                <div style={{ width: "100%" }}>
+                  <input {...register("phone_num")} type="text" placeholder='Phone Number' className=' contact-input' />
+                  <p className='contact-error__message'>{errors.phone_num?.message}</p>
+                </div>
+
               </div>
 
-              <div className='input-wrapper'>
-                <input {...register("email")} type="text" placeholder='Email Adress' className='contact-input' />
-                <p className='contact-error__message'>{errors.email?.message}</p>
-                <input type="text" placeholder='Order Number' className=' contact-input' />
-              </div>
+              {/* second input wrapper */}
 
               <div className='input-wrapper'>
-                <input type="text" placeholder='Company Name' className=' contact-input' />
-                <input type="text" placeholder='RMA Number' className=' contact-input' />
+
+                <div style={{ width: "100%" }}>
+                  <input {...register("email")} type="text" placeholder='Email Adress' className='contact-input' />
+                  <p className='contact-error__message'>{errors.email?.message}</p>
+                </div>
+
+                <div style={{ width: "100%" }}>
+                  <input type="text" placeholder='Order Number' className=' contact-input' />
+                </div>
               </div>
+
+              {/* third input wrapper */}
+
               <div className='input-wrapper'>
-                <textarea {...register("comment")} type="text" placeholder='Comments / Questions' className=' contact-comment__input' />
-                <p className='contact-error__message'>{errors.comment?.message}</p>
+                <div style={{ width: "100%" }}>
+                  <input type="text" placeholder='Company Name' className=' contact-input' />
+                </div>
+                <div style={{ width: "100%" }}>
+                  <input type="text" placeholder='RMA Number' className=' contact-input' />
+                </div>
+              </div>
+
+              {/* fourth input wrapper */}
+
+              <div className='input-wrapper'>
+                <div style={{ width: "100%"}}>
+                  <textarea {...register("comment")} type="text" placeholder='Comments / Questions' className=' contact-comment__input' />
+                  <p className='contact-error__message'>{errors.comment?.message}</p>
+                </div>
+
+
               </div>
 
               <button className='contact-btn lato-font'>SUBMIT FORM</button>

@@ -1,0 +1,182 @@
+.login-top {
+    width: 100%;
+    height: 40vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 9%;
+}
+
+.login-top__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.login-wrapper {
+    width: 80%;
+    margin: 100px auto;
+}
+
+.forgot-password__link {
+    text-decoration: none;
+    color: RGB(176, 151, 109);
+    margin-left: 15px;
+}
+
+.forgot-password__link:hover {
+    color: RGB(176, 151, 109);
+}
+
+.login-btn {
+    color: white;
+    background-color: #000;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 15px 40px;
+    border: none;
+    letter-spacing: 2px;
+}
+
+.login-btn:hover {
+    background-color: #b0976d;
+    transition: all 0.3s;
+    border: none;
+}
+
+.login-input {
+    padding: 20px 10px;
+    width: 100%;
+    border: 1px solid rgb(222, 217, 217);
+
+}
+
+.login-btn__wrapper {
+    display: flex;
+    align-items: flex-start;
+
+}
+
+.login-input__wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 40px;
+}
+
+.new-costumer__wrapper {
+    background-color: #121212;
+    padding: 40px
+}
+
+.newcostumer-h2 {
+    font-size: 20px;
+    color: white;
+}
+
+.newcostumer-p {
+    color: white;
+    font-size: 16px;
+}
+
+
+.newcostumer-li {
+    color: white;
+    list-style: disc;
+
+}
+
+
+@media screen and (max-width: 1200px) {
+    .login-top {
+        padding-top: 13%;
+
+    }
+
+    .login-wrapper {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+   
+
+    .login-wrapper {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+   
+
+    .roww {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .login-col{
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .login-top{
+        padding-top: 15%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+   
+
+    .login-top {
+        padding-top: 20%;
+        
+    }
+}
+
+@media screen and (max-width: 550px) {
+   
+
+    .login-btn__wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* align-items: center; */
+        
+    }
+
+    .login-btn{
+        width: 100%;
+    }
+
+    .forgot-password__link{
+        margin: 30px 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+   
+
+    .login-top {
+        padding-top: 30%;
+        
+    }
+}
+
+@media screen and (max-width: 350px) {
+   
+
+    .login-top {
+        padding-top: 50%;
+        
+    }
+}
