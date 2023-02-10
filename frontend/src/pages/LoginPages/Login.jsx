@@ -2,8 +2,20 @@ import React from 'react'
 import { Helmet } from 'react-helmet';
 import '../../styles/LoginPages/Login.css'
 import { Link } from 'react-router-dom';
+import login__schema from '../../Schema/LoginValidation';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
+
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    resolver: yupResolver(login__schema),
+  });
+  const onSubmitHandler = (data) => {
+    console.log({ data });
+    reset();
+  };
+
   return (
     <>
       <Helmet>
@@ -22,9 +34,13 @@ const Login = () => {
           <div className="row roww">
             <div className="col-6 login-col">
               <div className="login-input__wrapper">
-                <form action="" className='login-form'>
-                  <input type="text" placeholder='Email Address' className='login-input login-form__element' />
-                  <input type="text" placeholder='Password' className='login-input login-form__element' />
+                <form onSubmit={handleSubmit(onSubmitHandler)} action="" className='login-form'>
+                  <input {...register("email")} type="email" placeholder='Email Address' className='login-input login-form__element' />
+                  <p style={{color:"red"}}>{errors.email?.message}</p>
+
+                  <input {...register("password")} type="password" placeholder='Password' className='login-input login-form__element' />
+                  <p style={{color:"red"}}>{errors.password?.message}</p>
+
 
                   <div className='login-btn__wrapper login-form__element'>
                     <button className='login-btn'>LOGIN</button>

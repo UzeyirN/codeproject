@@ -50,13 +50,11 @@
     padding: 20px 10px;
     width: 100%;
     border: 1px solid rgb(222, 217, 217);
-
 }
 
 .login-btn__wrapper {
     display: flex;
     align-items: flex-start;
-
 }
 
 .login-input__wrapper {
@@ -64,14 +62,14 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-
+    /* border: 1px solid red; */
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    gap: 40px;
+    gap: 20px;
 }
 
 .new-costumer__wrapper {
@@ -89,18 +87,14 @@
     font-size: 16px;
 }
 
-
 .newcostumer-li {
     color: white;
     list-style: disc;
-
 }
-
 
 @media screen and (max-width: 1200px) {
     .login-top {
         padding-top: 13%;
-
     }
 
     .login-wrapper {
@@ -110,7 +104,6 @@
 
 @media screen and (max-width: 900px) {
    
-
     .login-wrapper {
         width: 100%;
     }
@@ -118,7 +111,6 @@
 
 @media screen and (max-width: 800px) {
    
-
     .roww {
         display: flex;
         flex-direction: column;
@@ -136,22 +128,17 @@
 
 @media screen and (max-width: 900px) {
    
-
     .login-top {
         padding-top: 20%;
-        
     }
 }
 
 @media screen and (max-width: 550px) {
    
-
     .login-btn__wrapper{
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        /* align-items: center; */
-        
+        justify-content: center;        
     }
 
     .login-btn{
