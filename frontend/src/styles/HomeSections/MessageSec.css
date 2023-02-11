@@ -1,13 +1,11 @@
-.messagesec-wrapper {
-    height: 100vh;
-    background-image: url("https://villenoir7.mybigcommerce.com/product_images/uploaded_images/homepage-about-us.jpg");
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
+.left-box {
+    padding: 0;
 }
 
-.messagesec-content{
-    width: 80%;
+.left-box img {
+    max-width: 100%;
 }
 
-
+.right-box {
+    padding: 12% 12% 12% 30px;
+}

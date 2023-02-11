@@ -25,14 +25,11 @@
 }
 
 .createacc-inputs__wrapper {
-    /* border: 1px solid red; */
-    /* height: 60vh; */
     margin-top: 30px;
 }
 
 .createacc-form {
     width: 100%;
-    /* height: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -79,7 +76,6 @@
     background-color: #b0976d;
     transition: all 0.3s;
     border: none;
-
 }
 
 .createacc-error__message{
@@ -89,7 +85,6 @@
 .zip-input{
     width: 49%;
 }
-
 
 @media screen and (max-width: 1200px) {
     .createacc-top {
@@ -138,28 +133,21 @@
         width: 100%;
     }
 
-    
     .zip-input{
         width: 100%;
     }
-
 }
 
 @media screen and (max-width: 400px) {
    
-
     .createacc-top {
         padding-top: 30%;
-        
     }
 }
 
 @media screen and (max-width: 350px) {
    
-
     .createacc-top {
         padding-top: 50%;
-        
     }
-
 }

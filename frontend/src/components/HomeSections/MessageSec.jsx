@@ -6,12 +6,12 @@ const MessageSec = () => {
     return (
         <>
             <div className="messagesec-wrapper">
-                <div className="container">
+                <div className="container-fluid">
                     <div className="row" >
-                        <div className="col-lg-6">
-                            
+                        <div className="col-lg-6 left-box">
+                            <img src="https://villenoir7.mybigcommerce.com/product_images/uploaded_images/homepage-about-us.jpg" alt="" />
                         </div>
-                        <div className="col-lg-6">
+                        <div className="col-lg-6 right-box">
                             <div className="messagesec-content">
                                 <p className='lato-font' style={{ fontSize: "14px", fontWeight: "700", color: "RGB(176, 151, 109)" }}>MESSAGE FROM VILLENOIR</p>
                                 <h1 className='playfair-font' style={{ fontSize: "41px" }}>A New Generation of Winemakers</h1>
