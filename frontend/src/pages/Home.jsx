@@ -14,8 +14,9 @@ const Home = () => {
             </Helmet>
             <HeroSection />
             <MessageSec />
-            <LatestCollecions />
             <FeaturedProducts />
+            <LatestCollecions />
+
            
         </>
     )

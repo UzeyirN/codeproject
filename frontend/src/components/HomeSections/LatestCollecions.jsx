@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../../styles/HomeSections/LatestCollecions.css'
 import { Link } from 'react-router-dom';
 
 const LatestCollecions = () => {
+    const [latestProducts, setLatestProducts] = useState(null)
+
+    const getData = () => {
+        fetch('http://localhost:3050/latest')
+            .then((response) => response.json())
+            .then((data) => setLatestProducts(data));
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
+
 
     return (
         <>
@@ -13,64 +25,28 @@ const LatestCollecions = () => {
                 </div>
                 <div className=" container-fluid container-xl ">
                     <div className="row ">
-
-                        <div className="col-12 col-sm-6 col-lg-4 mb-5">
-                            <div className="card-wrapper ">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <img style={{ width: "100%", height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/500x659/products/116/386/White-Chardonnay-w-cup__40812.1488466018.png?c=2" alt="" />
-                                        <button className='feature-fav__btn'>
-                                            <i class="fa-solid fa-heart"></i>
-                                        </button>
+                        {
+                            latestProducts?.map((products) => (
+                                <div className="col-12 col-sm-6 col-lg-4 mb-5">
+                                    <div className="card-wrapper ">
+                                        <div className="card">
+                                            <div className="card-body">
+                                                <img style={{ width: "100%", height: "100%" }} src={products.image} alt="" />
+                                                <button className='feature-fav__btn'>
+                                                    <i class="fa-solid fa-heart"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div className="card-content">
+                                            <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{products.brand}</p>
+                                            <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{products.appelation}</Link>
+                                            <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${products.price}.00</div>
+                                            <button className='lato-font add-button '>ADD TO CART</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="card-content">
-                                    <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>SUTTER HOME</p>
-                                    <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >Villenoir Chardonnay</Link>
-                                    <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>$100.00</div>
-                                    <button className='lato-font add-button '>ADD TO CART</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-12 col-sm-6 col-lg-4 mb-5">
-                            <div className="card-wrapper ">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <img style={{ width: "100%", height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/500x659/products/116/386/White-Chardonnay-w-cup__40812.1488466018.png?c=2" alt="" />
-                                        <button className='feature-fav__btn'>
-                                            <i class="fa-solid fa-heart"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div className="card-content">
-                                    <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>SUTTER HOME</p>
-                                    <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >Villenoir Chardonnay</Link>
-                                    <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>$100.00</div>
-                                    <button className='lato-font add-button'>ADD TO CART</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-12 col-sm-6 col-lg-4 mb-5">
-                            <div className="card-wrapper ">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <img style={{ width: "100%", height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/500x659/products/116/386/White-Chardonnay-w-cup__40812.1488466018.png?c=2" alt="" />
-                                        <button className='feature-fav__btn'>
-                                            <i class="fa-solid fa-heart"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div className="card-content">
-                                    <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>SUTTER HOME</p>
-                                    <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >Villenoir Chardonnay</Link>
-                                    <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>$100.00</div>
-                                    <button className='lato-font add-button'>ADD TO CART</button>
-                                </div>
-                            </div>
-                        </div>
-
+                            ))
+                        }
                     </div>
                 </div>
             </div>
