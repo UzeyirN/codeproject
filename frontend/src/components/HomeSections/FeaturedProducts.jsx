@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../../styles/HomeSections/FeaturedProducts.css'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,6 +8,19 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Link } from 'react-router-dom';
 const FeaturedProducts = () => {
+
+
+    const [featured, setFeatured] = useState(null)
+
+    const getData = () => {
+        fetch('https://northwind.vercel.app/api/products')
+            .then((response) => response.json())
+            .then((data) => setFeatured(data));
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
 
     return (
         <>
@@ -37,26 +50,32 @@ const FeaturedProducts = () => {
                                     spaceBetween: 50,
                                 },
                             }}
-                        >
-                            <SwiperSlide>
-                                <div className="card-wrapper">
-                                    <div className="card-f">
-                                        <div className="card-body">
-                                            <img style={{ height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/500x659/products/116/386/White-Chardonnay-w-cup__40812.1488466018.png?c=2" alt="" />
-                                            <button className='feature-fav__btn'>
-                                                <i class="fa-solid fa-heart"></i>
-                                            </button>
+                        >{
+                                featured?.map((prod) => (
+                                    <SwiperSlide>
+
+                                        <div className="card-wrapper">
+                                            <div className="card-f">
+                                                <div className="card-body">
+                                                    <img style={{ height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/500x659/products/111/389/Dark-blue-Merlot-w-cup__45418.1489505635.png?c=2" alt="" />
+                                                    <button className='feature-fav__btn'>
+                                                        <i class="fa-solid fa-heart"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div className="card-content__f">
+                                                <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{prod.name}</p>
+                                                <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{prod.quantityPerUnit}</Link>
+                                                <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${prod.unitPrice}</div>
+                                                <button className='lato-font add-button'>ADD TO CART</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="card-content__f">
-                                        <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>SUTTER HOME</p>
-                                        <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >Villenoir Chardonnay</Link>
-                                        <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>$100.00</div>
-                                        <button className='lato-font add-button'>ADD TO CART</button>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
+
+
+                                    </SwiperSlide>
+                                ))
+                            }
+                            {/* <SwiperSlide>
                                 <div className="card-wrapper">
                                     <div className="card-f">
                                         <div className="card-body">
@@ -111,7 +130,7 @@ const FeaturedProducts = () => {
                                         <button className='lato-font add-button'>ADD TO CART</button>
                                     </div>
                                 </div>
-                            </SwiperSlide>
+                            </SwiperSlide> */}
                         </Swiper>
                     </div>
                 </div>
