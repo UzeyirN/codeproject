@@ -1,7 +1,7 @@
-const Featured = require('../models/featuredModel')
+const Latest = require('../models/latestModel')
 
-exports.featured_getAll = (req, res) => {
-    Featured.find({}, (err, docs) => {
+exports.latest_getAll = (req, res) => {
+    Latest.find({}, (err, docs) => {
         if (!err) {
             res.send(docs)
         } else {
@@ -10,9 +10,9 @@ exports.featured_getAll = (req, res) => {
     })
 }
 
-exports.featured_getAll_byId = (req, res) => {
+exports.latest_getAll_byId = (req, res) => {
     const { id } = req.params;
-    Featured.findById(id, (err, docs) => {
+    Latest.findById(id, (err, docs) => {
         if (!err) {
             if (docs) {
                 res.send(docs)
@@ -28,10 +28,10 @@ exports.featured_getAll_byId = (req, res) => {
     })
 }
 
-exports.featured_post = async (req, res) => {
-    const featured = req.body
+exports.latest_post = async (req, res) => {
+    const latest = req.body
     try {
-        await Featured.create(featured)
+        await Latest.create(latest)
         res.status(200).json({
             message: "success"
         })
@@ -58,9 +58,9 @@ exports.featured_post = async (req, res) => {
 
 
 
-exports.featured_delete = (req, res) => {
+exports.latest_delete = (req, res) => {
     const { id } = req.params;
-    Featured.findByIdAndDelete(id, (err) => {
+    Latest.findByIdAndDelete(id, (err) => {
         if (!err) {
             res.send("SUCCESSFULY DELETE")
         } else {

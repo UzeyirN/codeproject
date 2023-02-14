@@ -5,35 +5,35 @@ const featuredSchema = new mongoose.Schema(
     {
         image: {
             type: String,
-            // required: true
+            required: [true, "Please enter image!"]
         },
         brand: {
             type: String,
-            // required: true
+            required: [true, "Please enter brand!"]
         },
-        // alcohol: {
-        //     type: Number,
-        //     required: true
-        // },
+        alcohol: {
+            type: String,
+            required: [true, "Please enter alcohol!"]
+        },
         appelation: {
             type: String,
-            // required: true
+            required: [true, "Please enter appelation!"]
         },
-        // size: {
-        //     type: Number,
-        //     required: true
-        // },
+        size: {
+            type: String,
+            required: [true, "Please enter size!"]
+        },
         price: {
-            type: Number,
-            // required: true
+            type: String,
+            required: [true, "Please enter price!"]
         },
-        // kind: {
-        //     type: String,
-        //     required: true
-        // },
+        kind: {
+            type: String,
+            required: [true, "Please enter kind!"]
+        },
     },
     { timestamps: true },
 )
 
-const Featured = mongoose.model("featured", featuredSchema)
-module.exports = (Featured)
+// const Featured = mongoose.model("featured", featuredSchema)
+module.exports =  mongoose.model("featured", featuredSchema)

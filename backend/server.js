@@ -6,6 +6,7 @@ dotenv.config();
 
 
 const featuredRoute = require("./routes/featuredRoute")
+const latestRoute=require('./routes/latestRoute')
 
 
 const PORT = process.env.PORT
@@ -22,6 +23,7 @@ mongoose.connect(DB)
     })
 
 app.use('/featured', featuredRoute)
+app.use('/latest',latestRoute)
 
 
 app.listen(PORT, () => {

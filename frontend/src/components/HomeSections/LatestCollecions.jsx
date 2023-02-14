@@ -6,7 +6,7 @@ const LatestCollecions = () => {
     const [latestProducts, setLatestProducts] = useState(null)
 
     const getData = () => {
-        fetch('http://localhost:3050/latest')
+        fetch('http://localhost:3070/latest')
             .then((response) => response.json())
             .then((data) => setLatestProducts(data));
     }
