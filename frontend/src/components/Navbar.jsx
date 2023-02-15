@@ -106,7 +106,7 @@ const Navbar = ({ data }) => {
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </Link>
                                 <div className="dropdown-menu search-menu" aria-labelledby="navbarDropdown">
-                                    <input className='nav-search__input' onChange={searchData} type="text" placeholder='SEARCH THE STORY' />
+                                    <input className='nav-search__input' onChange={searchData} type="text" placeholder='SEARCH THE PRODUCTS' />
 
                                     <div className="container">
                                         <div className="row justify-content-between">
@@ -147,7 +147,7 @@ const Navbar = ({ data }) => {
                                                                     </div>
                                                                     <div className="searchCard-content__f">
                                                                         <p className='lato-font' style={{ color: "RGB(176, 151, 109)",fontSize:"12px" }}>{prod.brand}</p>
-                                                                        <Link className='playfair-font card-link' style={{ marginBottom: "5px", fontSize: "16px" }} >{prod.appelation}</Link>
+                                                                        <Link className='playfair-font card-link' style={{ marginBottom: "5px", fontSize: "12px" }} >{prod.appelation}</Link>
                                                                         <div style={{ color: "RGB(176, 151, 109)", margin: "10px 0", fontSize: "16px" }} className='notoserif-font'>${prod.price}</div>
                                                                         <button className='lato-font search__add-button'>ADD TO CART</button>
                                                                     </div>

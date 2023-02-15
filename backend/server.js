@@ -2,31 +2,24 @@ const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require("dotenv")
 const app = express()
-
+const bodyParser = require('body-parser')
 const cors = require("cors")
-app.use(cors())
 
-// const bodyParser = require(bodyParser)
-
-
-//!
-// app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+//!import routes
+const featuredRoute = require("./routes/featuredRoute")
+const latestRoute = require('./routes/latestRoute')
+const beConnectedRoute = require('./routes/beConnectedRoute')
 
 
 dotenv.config();
-
-//!import
-const featuredRoute = require("./routes/featuredRoute")
-const latestRoute = require('./routes/latestRoute')
-
-
-const bodyParser = require('body-parser')
 app.use(bodyParser.json())
+app.use(cors())
+app.use(express.urlencoded({ extended: false }))
 
-
+//!use routes
 app.use('/featured', featuredRoute)
 app.use('/latest', latestRoute)
+app.use('/beconnected', beConnectedRoute)
 
 
 const PORT = process.env.PORT
