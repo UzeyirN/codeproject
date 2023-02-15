@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }))
 
 dotenv.config();
 
-
+//!import
 const featuredRoute = require("./routes/featuredRoute")
 const latestRoute = require('./routes/latestRoute')
 
@@ -41,8 +41,6 @@ mongoose.connect(DB)
     .catch(() => {
         console.log("Not connected database");
     })
-
-
 
 
 app.listen(PORT, () => {

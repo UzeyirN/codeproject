@@ -8,6 +8,9 @@ const featuredContoller = require("../controllers/featuredContoller")
 
 router.get("/", featuredContoller.featured_getAll)
 
+router.get("/", featuredContoller.featured_getAll)
+
+
 router.get("/:id", featuredContoller.featured_getAll_byId)
 
 router.post("/", featuredContoller.featured_post)

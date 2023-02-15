@@ -22,7 +22,7 @@ const Navbar = ({ data }) => {
     const [value, setValue] = useState("")
 
     const getData = () => {
-        fetch('https://northwind.vercel.app/api/products')
+        fetch('http://localhost:3070/featured')
             .then((response) => response.json())
             .then((data) => setProducts(data));
     }
@@ -131,7 +131,7 @@ const Navbar = ({ data }) => {
                                                 }}
                                             >{
                                                     products?.filter(data => {
-                                                        return value.trim().toLowerCase() === "" ? data : data.name.toLowerCase().includes(value.toLowerCase())
+                                                        return value.trim().toLowerCase() === "" ? data : data.appelation.toLowerCase().includes(value.toLowerCase())
                                                     })
                                                         .map((prod) => (
                                                             <SwiperSlide>
@@ -139,16 +139,16 @@ const Navbar = ({ data }) => {
                                                                 <div className="search-card__wrapper">
                                                                     <div className="search-card__f">
                                                                         <div className="search-card__body">
-                                                                            <img style={{ height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/500x659/products/111/389/Dark-blue-Merlot-w-cup__45418.1489505635.png?c=2" alt="" />
+                                                                            <img style={{ height: "100%" }} src={prod.image} alt="" />
                                                                             <button className='feature-fav__btn'>
                                                                                 <i class="fa-solid fa-heart"></i>
                                                                             </button>
                                                                         </div>
                                                                     </div>
                                                                     <div className="searchCard-content__f">
-                                                                        <p className='lato-font' style={{ color: "RGB(176, 151, 109)",fontSize:"12px" }}>{prod.name}</p>
-                                                                        <Link className='playfair-font card-link' style={{ marginBottom: "5px", fontSize: "16px" }} >{prod.quantityPerUnit}</Link>
-                                                                        <div style={{ color: "RGB(176, 151, 109)", margin: "10px 0", fontSize: "16px" }} className='notoserif-font'>${prod.unitPrice}</div>
+                                                                        <p className='lato-font' style={{ color: "RGB(176, 151, 109)",fontSize:"12px" }}>{prod.brand}</p>
+                                                                        <Link className='playfair-font card-link' style={{ marginBottom: "5px", fontSize: "16px" }} >{prod.appelation}</Link>
+                                                                        <div style={{ color: "RGB(176, 151, 109)", margin: "10px 0", fontSize: "16px" }} className='notoserif-font'>${prod.price}</div>
                                                                         <button className='lato-font search__add-button'>ADD TO CART</button>
                                                                     </div>
                                                                 </div>
@@ -176,9 +176,9 @@ const Navbar = ({ data }) => {
                             </div>
                         </div>
                         <div className={`lightbox ${hideLightbox ? "hide-lightbox" : "show-lightbox"}`}>
-                            <div className='burger-search py-5'>
+                            {/* <div className='burger-search py-5'>
                                 <input className='burger-input lato-font' type="text" placeholder='SEARCH THE STORE' />
-                            </div>
+                            </div> */}
                             <div className='burger-pages'>
                                 <ul className='nav-burger_ul'>
                                     <li className='nav-item burger-item' onClick={() => setHideLightbox(true)}>
