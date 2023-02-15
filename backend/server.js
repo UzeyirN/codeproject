@@ -1,14 +1,29 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require("dotenv")
+const app = express()
+
+const cors = require("cors")
+app.use(cors())
+
+// const bodyParser = require(bodyParser)
+
+
+//!
+// app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 
 dotenv.config();
-const app = express()
 
 
 const featuredRoute = require("./routes/featuredRoute")
 const latestRoute = require('./routes/latestRoute')
+
+
+const bodyParser = require('body-parser')
+app.use(bodyParser.json())
+
 
 app.use('/featured', featuredRoute)
 app.use('/latest', latestRoute)
