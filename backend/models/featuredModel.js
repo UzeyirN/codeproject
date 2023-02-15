@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
-// const { Schema } = mongoose;
-const featuredSchema = new mongoose.Schema(
+const { Schema } = mongoose;
+const featuredSchema = new Schema(
     {
         image: {
             type: String,
@@ -35,5 +35,5 @@ const featuredSchema = new mongoose.Schema(
     { timestamps: true },
 )
 
-// const Featured = mongoose.model("featured", featuredSchema)
-module.exports =  mongoose.model("featured", featuredSchema)
+const Featured = mongoose.model("featured", featuredSchema)
+module.exports = (Featured)

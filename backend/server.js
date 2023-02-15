@@ -1,12 +1,17 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const app = express()
 const dotenv = require("dotenv")
+
+
 dotenv.config();
+const app = express()
 
 
 const featuredRoute = require("./routes/featuredRoute")
-const latestRoute=require('./routes/latestRoute')
+const latestRoute = require('./routes/latestRoute')
+
+app.use('/featured', featuredRoute)
+app.use('/latest', latestRoute)
 
 
 const PORT = process.env.PORT
@@ -22,8 +27,7 @@ mongoose.connect(DB)
         console.log("Not connected database");
     })
 
-app.use('/featured', featuredRoute)
-app.use('/latest',latestRoute)
+
 
 
 app.listen(PORT, () => {

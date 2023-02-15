@@ -3,11 +3,39 @@ import '../styles/Navbar.css'
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 
 const Navbar = ({ data }) => {
 
     const [isNavbarSmall, setIsNavbarSmall] = useState(true);
     const [hideLightbox, setHideLightbox] = useState(true);
+
+
+    // searching
+    const [products, setProducts] = useState(null)
+    const [value, setValue] = useState("")
+
+    const getData = () => {
+        fetch('https://northwind.vercel.app/api/products')
+            .then((response) => response.json())
+            .then((data) => setProducts(data));
+    }
+
+    const searchData = (e) => {
+        setValue(e.target.value)
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
+
+
 
 
     useEffect(() => {
@@ -78,7 +106,60 @@ const Navbar = ({ data }) => {
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </Link>
                                 <div className="dropdown-menu search-menu" aria-labelledby="navbarDropdown">
-                                    <input className='nav-search__input' type="text" placeholder='SEARCH THE STORY' />
+                                    <input className='nav-search__input' onChange={searchData} type="text" placeholder='SEARCH THE STORY' />
+
+                                    <div className="container">
+                                        <div className="row justify-content-between">
+                                            <Swiper
+                                                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                                                spaceBetween={0}
+                                                slidesPerView={3}
+                                                navigation={true}
+                                                onSwiper={(swiper) => console.log(swiper)}
+                                                onSlideChange={() => console.log('slide change')}
+                                                breakpoints={{
+                                                    300: {
+                                                        slidesPerView: 1,
+                                                    },
+                                                    768: {
+                                                        slidesPerView: 2,
+                                                    },
+                                                    1024: {
+                                                        slidesPerView: 3,
+                                                        spaceBetween: 50,
+                                                    },
+                                                }}
+                                            >{
+                                                    products?.filter(data => {
+                                                        return value.trim().toLowerCase() === "" ? data : data.name.toLowerCase().includes(value.toLowerCase())
+                                                    })
+                                                        .map((prod) => (
+                                                            <SwiperSlide>
+
+                                                                <div className="search-card__wrapper">
+                                                                    <div className="search-card__f">
+                                                                        <div className="search-card__body">
+                                                                            <img style={{ height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/500x659/products/111/389/Dark-blue-Merlot-w-cup__45418.1489505635.png?c=2" alt="" />
+                                                                            <button className='feature-fav__btn'>
+                                                                                <i class="fa-solid fa-heart"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="searchCard-content__f">
+                                                                        <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{prod.name}</p>
+                                                                        <Link className='playfair-font card-link' style={{ marginBottom: "10px", fontSize: "16px" }} >{prod.quantityPerUnit}</Link>
+                                                                        <div style={{ color: "RGB(176, 151, 109)", margin: "20px 0", fontSize: "16px" }} className='notoserif-font'>${prod.unitPrice}</div>
+                                                                        <button className='lato-font add-button'>ADD TO CART</button>
+                                                                    </div>
+                                                                </div>
+                                                            </SwiperSlide>
+                                                        ))
+                                                }
+                                            </Swiper>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                                 <Link className="nav-link" to='login' aria-expanded="false">
                                     <i class="fa-solid fa-user"></i>
