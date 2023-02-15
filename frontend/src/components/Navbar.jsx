@@ -146,10 +146,10 @@ const Navbar = ({ data }) => {
                                                                         </div>
                                                                     </div>
                                                                     <div className="searchCard-content__f">
-                                                                        <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{prod.name}</p>
-                                                                        <Link className='playfair-font card-link' style={{ marginBottom: "10px", fontSize: "16px" }} >{prod.quantityPerUnit}</Link>
-                                                                        <div style={{ color: "RGB(176, 151, 109)", margin: "20px 0", fontSize: "16px" }} className='notoserif-font'>${prod.unitPrice}</div>
-                                                                        <button className='lato-font add-button'>ADD TO CART</button>
+                                                                        <p className='lato-font' style={{ color: "RGB(176, 151, 109)",fontSize:"12px" }}>{prod.name}</p>
+                                                                        <Link className='playfair-font card-link' style={{ marginBottom: "5px", fontSize: "16px" }} >{prod.quantityPerUnit}</Link>
+                                                                        <div style={{ color: "RGB(176, 151, 109)", margin: "10px 0", fontSize: "16px" }} className='notoserif-font'>${prod.unitPrice}</div>
+                                                                        <button className='lato-font search__add-button'>ADD TO CART</button>
                                                                     </div>
                                                                 </div>
                                                             </SwiperSlide>

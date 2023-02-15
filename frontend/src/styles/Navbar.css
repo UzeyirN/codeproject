@@ -94,8 +94,7 @@
 
 .search-menu {
     width: 100vw;
-    /* height: 200vh; */
-    padding: 100px 0;
+    padding: 50px 0;
 }
 
 .nav-search__input {
@@ -162,13 +161,14 @@
 /* search card */
 .search-card__wrapper{
     padding: 0 !important;
+    margin-top: 30px;
     
 }
 
 .search-card__f {
     position: relative;
-    width: 270px;
-    height: 370px;
+    width: 200px;
+    height: 300px;
     overflow: hidden;
     object-fit: cover;
     background: #F2F2F2;
@@ -192,16 +192,28 @@
 
 .searchCard-content__f{
     position: relative;
-    width: 270px;
+    width: 200px;
     overflow: hidden;
     object-fit: cover;
     text-align: center;
     padding: 15px 0;
     background-color: #fff;
     background: #F2F2F2;
-    margin: 20px auto;
+    margin: 10px auto;
 }
 
+.search__add-button{
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    transition: bottom 0.5s ease-out;
+    background-color: #000;
+    font-weight: 700;
+    font-size: 10px;
+    padding: 8px 12px;
+    border: none;
+    letter-spacing: 2px;
+}
 
 @media screen and (max-width: 992px) {
     .nav-pages {
