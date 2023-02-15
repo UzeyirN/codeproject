@@ -13,7 +13,7 @@ const FeaturedProducts = () => {
     const [featured, setFeatured] = useState(null)
 
     const getData = () => {
-        fetch('https://northwind.vercel.app/api/products')
+        fetch('http://localhost:3070/featured')
             .then((response) => response.json())
             .then((data) => setFeatured(data));
     }
@@ -51,22 +51,22 @@ const FeaturedProducts = () => {
                                 },
                             }}
                         >{
-                                featured?.map((prod) => (
+                                featured?.map(({image,brand,appelation,price}) => (
                                     <SwiperSlide>
 
                                         <div className="card-wrapper">
                                             <div className="card-f">
                                                 <div className="card-body">
-                                                    <img style={{ height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/500x659/products/111/389/Dark-blue-Merlot-w-cup__45418.1489505635.png?c=2" alt="" />
+                                                    <img style={{ height: "100%" }} src={image} alt="" />
                                                     <button className='feature-fav__btn'>
                                                         <i class="fa-solid fa-heart"></i>
                                                     </button>
                                                 </div>
                                             </div>
                                             <div className="card-content__f">
-                                                <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{prod.name}</p>
-                                                <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{prod.quantityPerUnit}</Link>
-                                                <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${prod.unitPrice}</div>
+                                                <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{brand}</p>
+                                                <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{appelation}</Link>
+                                                <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${price}</div>
                                                 <button className='lato-font add-button'>ADD TO CART</button>
                                             </div>
                                         </div>

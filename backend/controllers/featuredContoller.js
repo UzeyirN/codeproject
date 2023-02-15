@@ -40,20 +40,9 @@ exports.featured_post = async (req, res) => {
     }
 }
 
-
 // exports.featured_post = (req, res) => {
-//     let featured = new Featured({
-//         image: req.body.image,
-//         brand: req.body.brand,
-//         alcohol: req.body.alcohol,
-//         appelation: req.body.appelation,
-//         size: req.body.size,
-//         price: req.body.price,
-//         kind: req.body.kind,
-//     })
-
-//     featured.save()
-//     res.send("success")
+//     console.log(req.body);
+//     res.status(201).send('Created product')
 // }
 
 

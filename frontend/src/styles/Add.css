@@ -1,0 +1,40 @@
+.add-wrapper {
+    margin-top: 300px;
+    height: 80vh;
+}
+
+.add-form {
+    margin: 100px auto;
+    width: 25%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+
+.add-input {
+    width: 90%;
+    padding: 10px 5px;
+    border-radius: 10px;
+}
+
+.add-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+}
+
+.add-btn:hover {
+    background-color: rgb(34, 158, 34);
+    transition:all 0.4s;
+}
+
+.error-message{
+    color:red
+}

@@ -5,31 +5,31 @@ const latestSchema = new mongoose.Schema(
     {
         image: {
             type: String,
-            required: [true, "Please enter image!"]
+            // required: [true, "Please enter image!"]
         },
         brand: {
             type: String,
-            required: [true, "Please enter brand!"]
+            // required: [true, "Please enter brand!"]
         },
         alcohol: {
             type: String,
-            required: [true, "Please enter alcohol!"]
+            // required: [true, "Please enter alcohol!"]
         },
         appelation: {
             type: String,
-            required: [true, "Please enter appelation!"]
+            // required: [true, "Please enter appelation!"]
         },
         size: {
             type: String,
-            required: [true, "Please enter size!"]
+            // required: [true, "Please enter size!"]
         },
         price: {
             type: String,
-            required: [true, "Please enter price!"]
+            // required: [true, "Please enter price!"]
         },
         kind: {
             type: String,
-            required: [true, "Please enter kind!"]
+            // required: [true, "Please enter kind!"]
         },
     },
     { timestamps: true },

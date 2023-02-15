@@ -20,6 +20,7 @@ import LoginRoot from './../pages/LoginPages/LoginRoot';
 import Login from '../pages/LoginPages/Login';
 import CreateAcc from './../pages/LoginPages/CreateAcc';
 import ForgotPassword from './../pages/LoginPages/ForgotPassword';
+import Add from '../pages/Add';
 
 
 
@@ -110,6 +111,10 @@ const ROUTES = [
                     }
                 ]
 
+            },
+            {
+                path: "add",
+                element: <Add />
             },
 
 
