@@ -10,16 +10,6 @@ const BeConnected = () => {
         email: ""
     })
 
-    // const addData = () => {
-    //     axios.post("http://localhost:3070/beconnected", state);
-    //     setState({
-    //         email: ""
-    //     })
-
-    //     console.log(addData, "add data ");
-    // }
-
-
     const {
         register,
         handleSubmit,
@@ -44,24 +34,11 @@ const BeConnected = () => {
 
     }
 
-    // const { register, handleSubmit, formState: { errors } } = useForm({
-    //     resolver: yupResolver(beConnected_schema),
-
-    // });
-
     const onSubmitHandler = (data) => {
         console.log(data);
         addData();
     };
 
-
-
-
-    // const onSubmitHandler = (data) => {
-    //     console.log({ data });
-    //     addData()
-
-    // };
     return (
         <>
             <div className="be-connected__wrapper">
@@ -71,16 +48,9 @@ const BeConnected = () => {
                     <form onSubmit={handleSubmit(onSubmitHandler)} className="input-group mb-3 beconnect-input__group" style={{ marginTop: "80px" }}>
                         <input name="email" value={state.email} {...register("email")} type="email" class=" beconnect-input" placeholder="YOUR EMAIL ADDRESS" onChange={handleChange} />
                         <button className="btn beconnect-btn">SUBSCRIBE</button>
-                        <p style={{ color: "red" }}>{errors.email?.message}</p>
-
+                        <p className='lato-font' style={{ color: "red" }}>{errors.email?.message}</p>
                     </form>
-
                 </div>
-                {/* {errors.email ? (
-                    <span style={{ color: "red" }}>{errors.email.message}</span>
-                ) : (
-                    <></>
-                )} */}
             </div>
         </>
     )
