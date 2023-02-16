@@ -1,0 +1,84 @@
+.sitemap-top {
+    width: 100%;
+    height: 40vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 9%;
+}
+
+.sitemap-wrapper {
+    width: 100%;
+    margin: 100px auto;
+}
+
+.sitemap-top__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+
+
+
+@media screen and (max-width: 1100px) {
+    .sitemap-top {
+        padding-top: 11%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .sitemap-wrapper {
+        width: 70%;
+    }
+    .sitemap-top {
+        padding-top: 10%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .sitemap-wrapper {
+        width: 90%;
+    }
+
+    .sitemap-top {
+        padding-top: 12%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .sitemap-wrapper {
+        width: 95%;
+    }
+
+    .sitemap-top {
+        padding-top: 12%;
+    }
+}
+
+@media screen and (max-width: 567px) {
+
+    .sitemap-top {
+        padding-top: 16%;
+    }
+
+    .sitemap-wrapper {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    .sitemap-top {
+        padding-top: 20%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+
+    .sitemap-top {
+        padding-top: 39%;
+    }
+}

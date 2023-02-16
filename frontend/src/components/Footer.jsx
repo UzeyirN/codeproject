@@ -42,12 +42,12 @@ const Footer = () => {
                                 </div>
                                 <div className="col-12 footer-link__wrapper footer-cols">
                                     <div className="col-lg-6 col-md-6 col-6 footer-content__left">
-                                        <Link className='footer-link lato-font'>ALL BRANDS</Link>
-                                        <Link className='footer-link lato-font'>SITEMAP</Link>
+                                        <Link to='allshopwines' className='footer-link lato-font'>ALL BRANDS</Link>
+                                        <Link to='sitemap' className='footer-link lato-font'>SITEMAP</Link>
                                         <Link className='footer-link lato-font'>GIFT SERTIFICATES</Link>
                                     </div>
                                     <div className="col-lg-6 col-md-6 col-6 footer-content__right">
-                                        <span style={{ fontSize: "12px", fontWeight: "700" }}>POWERED BY <Link style={{ color: "RGB(176, 151, 109)", textDecoration: "none" }}>BIGCOMMERCE</Link></span>
+                                        <span style={{ fontSize: "12px", fontWeight: "700" }}>POWERED BY <Link to='https://www.bigcommerce.com/' style={{ color: "RGB(176, 151, 109)", textDecoration: "none" }}>BIGCOMMERCE</Link></span>
                                     </div>
                                 </div>
                                 <div className="col-12 footer-bottom footer-cols">

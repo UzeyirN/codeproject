@@ -52,7 +52,7 @@ const BeConnected = () => {
                     </form>
                 </div>
             </div>
-        </>
+        </>     
     )
 }
 
