@@ -9,6 +9,7 @@ const cors = require("cors")
 const featuredRoute = require("./routes/featuredRoute")
 const latestRoute = require('./routes/latestRoute')
 const beConnectedRoute = require('./routes/beConnectedRoute')
+const contactUsRoute = require("./routes/contactUsRoute")
 
 
 dotenv.config();
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/featured', featuredRoute)
 app.use('/latest', latestRoute)
 app.use('/beconnected', beConnectedRoute)
+app.use('/contactus', contactUsRoute)
 
 
 const PORT = process.env.PORT
