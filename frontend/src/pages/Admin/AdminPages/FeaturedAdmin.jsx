@@ -6,14 +6,13 @@ import '../AdminStyles/FeaturedAdmin.css'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import products_schema from '../../../Schema/ProductsVal';
+import { Link } from 'react-router-dom';
 
 const FeaturedAdmin = () => {
 
   const [featured, setFeatured] = useState(null)
   const [value, setValue] = useState("")
   const [updatedExample, setUpdatedExample] = useState({});
-
-
   const [loading, setLoading] = useState(true);
   const URL = 'http://localhost:3070/featured';
 
@@ -46,10 +45,9 @@ const FeaturedAdmin = () => {
     const { name, value } = event.target;
     setUpdatedExample({ ...updatedExample, [name]: value });
   };
-
   const handleUpdate = (event) => {
     event.preventDefault();
-    axios.put(`http://localhost:3070/featured/${id}`, updatedExample)
+    axios.put(`http://localhost:3070/featured${featured._id}`, updatedExample)
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
@@ -128,7 +126,7 @@ const FeaturedAdmin = () => {
                         <td className='featured-td'>${price}</td>
                         <td className='featured-td'>{kind}</td>
                         <td className='featured-td'><button onClick={() => handleDelete(_id)} className='admin-btn delete-btn'>DELETE</button></td>
-                        <td className='featured-td'><a href=''><button className='admin-btn update-btn'>UPDATE</button></a></td>
+                        <td className='featured-td'><Link href='featuredupdate'><button className='admin-btn update-btn'>UPDATE</button></Link></td>
                       </tr>
                     </tbody>
                   ))
@@ -163,6 +161,7 @@ const FeaturedAdmin = () => {
               <button className='add-btn'>ADD</button>
             </form>
           </div>
+
         </div>
       </div>
 

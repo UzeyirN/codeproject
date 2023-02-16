@@ -137,7 +137,7 @@ const ROUTES = [
             {
                 path: "latestadmin",
                 element: <LatestAdmin />
-            },
+            }
         ]
     },
 ]

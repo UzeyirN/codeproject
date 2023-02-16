@@ -9,22 +9,27 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import axios from 'axios';
+import Loading from './Loading';
 
 
 const Navbar = ({ data }) => {
 
     const [isNavbarSmall, setIsNavbarSmall] = useState(true);
     const [hideLightbox, setHideLightbox] = useState(true);
+    const [loading, setLoading] = useState(true);
+    const URL = 'http://localhost:3070/featured';
 
 
     // searching
     const [products, setProducts] = useState(null)
     const [value, setValue] = useState("")
 
-    const getData = () => {
-        fetch('http://localhost:3070/featured')
-            .then((response) => response.json())
-            .then((data) => setProducts(data));
+
+    const getData = async () => {
+        await axios.get(URL).then((resp) => setProducts(resp.data));
+        setLoading(false);
+
     }
 
     const searchData = (e) => {
@@ -130,30 +135,32 @@ const Navbar = ({ data }) => {
                                                     },
                                                 }}
                                             >{
-                                                    products?.filter(data => {
-                                                        return value.trim().toLowerCase() === "" ? data : data.appelation.toLowerCase().includes(value.toLowerCase())
-                                                    })
-                                                        .map((prod) => (
-                                                            <SwiperSlide>
+                                                    loading ? <Loading /> :
+                                                        products?.filter(data => {
+                                                            return value.trim().toLowerCase() === "" ? data : data.appelation.toLowerCase().includes(value.toLowerCase())
+                                                        })
 
-                                                                <div className="search-card__wrapper">
-                                                                    <div className="search-card__f">
-                                                                        <div className="search-card__body">
-                                                                            <img style={{ height: "100%" }} src={prod.image} alt="" />
-                                                                            <button className='feature-fav__btn'>
-                                                                                <i class="fa-solid fa-heart"></i>
-                                                                            </button>
+                                                            .map((prod) => (
+                                                                <SwiperSlide>
+
+                                                                    <div className="search-card__wrapper">
+                                                                        <div className="search-card__f">
+                                                                            <div className="search-card__body">
+                                                                                <img style={{ height: "100%" }} src={prod.image} alt="" />
+                                                                                <button className='feature-fav__btn'>
+                                                                                    <i class="fa-solid fa-heart"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className="searchCard-content__f">
+                                                                            <p className='lato-font' style={{ color: "RGB(176, 151, 109)", fontSize: "12px" }}>{prod.brand}</p>
+                                                                            <Link className='playfair-font card-link' style={{ marginBottom: "5px", fontSize: "12px" }} >{prod.appelation}</Link>
+                                                                            <div style={{ color: "RGB(176, 151, 109)", margin: "10px 0", fontSize: "16px" }} className='notoserif-font'>${prod.price}</div>
+                                                                            <button className='lato-font search__add-button'>ADD TO CART</button>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="searchCard-content__f">
-                                                                        <p className='lato-font' style={{ color: "RGB(176, 151, 109)",fontSize:"12px" }}>{prod.brand}</p>
-                                                                        <Link className='playfair-font card-link' style={{ marginBottom: "5px", fontSize: "12px" }} >{prod.appelation}</Link>
-                                                                        <div style={{ color: "RGB(176, 151, 109)", margin: "10px 0", fontSize: "16px" }} className='notoserif-font'>${prod.price}</div>
-                                                                        <button className='lato-font search__add-button'>ADD TO CART</button>
-                                                                    </div>
-                                                                </div>
-                                                            </SwiperSlide>
-                                                        ))
+                                                                </SwiperSlide>
+                                                            ))
                                                 }
                                             </Swiper>
                                         </div>
