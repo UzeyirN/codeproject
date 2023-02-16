@@ -12,4 +12,8 @@ router.post("/", featuredContoller.featured_post)
 
 router.delete("/:id", featuredContoller.featured_delete)
 
+
+router.put("/:id", featuredContoller.featured_update);
+
+
 module.exports = router

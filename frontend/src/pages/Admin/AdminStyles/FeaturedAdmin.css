@@ -1,0 +1,110 @@
+.featuredAdmin-wrapper {
+    margin: 100px auto;
+}
+
+.image-wrapper {
+    width: 50%;
+    height: 120px;
+}
+
+.admin-btn {
+    padding: 3px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.delete-btn {
+    background-color: rgb(215, 44, 44);
+}
+
+.delete-btn:hover {
+    background-color: rgb(148, 1, 1);
+    transition: all 0.3s;
+
+}
+
+.update-btn {
+    background-color: rgb(232, 189, 32);
+}
+
+.update-btn:hover {
+    background-color: rgb(152, 121, 7);
+    transition: all 0.3s;
+
+}
+
+.featured-add__wrapper {
+    /* height: 80vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 150px auto;
+    /* border: 1px solid red; */
+
+}
+
+.add-form {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 50px 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* border: 1px solid red; */
+    
+
+
+}
+
+.add-products__h2{
+    margin-bottom: -50px;
+}
+
+.add-input {
+    width: 90%;
+    padding: 10px 5px;
+    border-radius: 10px;
+}
+
+.add-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(34, 158, 34);;
+    color: white;
+    border-radius: 10px;
+    width: 20%;
+}
+
+.add-btn:hover {
+    background-color: green;
+    transition: all 0.3s;
+}
+
+.error-message {
+    color: red
+}
+
+.featuredAdmin-search__wrapper{
+    width: 40%;
+    margin: 150px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-p{
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.search-input{
+    width: 90%;
+    padding: 10px 5px;
+    border-radius: 10px;
+}

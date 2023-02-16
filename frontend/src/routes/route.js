@@ -22,6 +22,9 @@ import CreateAcc from './../pages/LoginPages/CreateAcc';
 import ForgotPassword from './../pages/LoginPages/ForgotPassword';
 import Add from '../pages/Add';
 import SiteMap from './../pages/SiteMap';
+import AdminRoot from '../pages/Admin/AdminRoot';
+import FeaturedAdmin from './../pages/Admin/AdminPages/FeaturedAdmin';
+import LatestAdmin from './../pages/Admin/AdminPages/LatestAdmin';
 
 
 
@@ -120,12 +123,26 @@ const ROUTES = [
             {
                 path: "sitemap",
                 element: <SiteMap />
-            },
-
-
-
+            }
         ]
-    }
+    },
+    {
+        path: "admin",
+        element: <AdminRoot />,
+        children: [
+            {
+                path: "featuredadmin",
+                element: <FeaturedAdmin />
+            },
+            {
+                path: "latestadmin",
+                element: <LatestAdmin />
+            },
+        ]
+    },
 ]
+
+
+
 
 export default ROUTES
