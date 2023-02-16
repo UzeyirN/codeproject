@@ -7,15 +7,20 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Loading from '../Loading';
 const FeaturedProducts = () => {
 
 
     const [featured, setFeatured] = useState(null)
+    const [loading, setLoading] = useState(true);
+    const URL = 'http://localhost:3070/featured';
 
-    const getData = () => {
-        fetch('http://localhost:3070/featured')
-            .then((response) => response.json())
-            .then((data) => setFeatured(data));
+
+    const getData = async () => {
+        await axios.get(URL).then((resp) => setFeatured(resp.data));
+        setLoading(false);
+
     }
 
     useEffect(() => {
@@ -51,29 +56,30 @@ const FeaturedProducts = () => {
                                 },
                             }}
                         >{
-                                featured?.map(({image,brand,appelation,price}) => (
-                                    <SwiperSlide>
+                                loading ? <Loading /> :
+                                    featured?.map(({ image, brand, appelation, price }) => (
+                                        <SwiperSlide>
 
-                                        <div className="card-wrapper">
-                                            <div className="card-f">
-                                                <div className="card-body">
-                                                    <img style={{ height: "100%" }} src={image} alt="" />
-                                                    <button className='feature-fav__btn'>
-                                                        <i class="fa-solid fa-heart"></i>
-                                                    </button>
+                                            <div className="card-wrapper">
+                                                <div className="card-f">
+                                                    <div className="card-body">
+                                                        <img style={{ height: "100%" }} src={image} alt="" />
+                                                        <button className='feature-fav__btn'>
+                                                            <i class="fa-solid fa-heart"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div className="card-content__f">
+                                                    <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{brand}</p>
+                                                    <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{appelation}</Link>
+                                                    <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${price}</div>
+                                                    <button className='lato-font add-button'>ADD TO CART</button>
                                                 </div>
                                             </div>
-                                            <div className="card-content__f">
-                                                <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{brand}</p>
-                                                <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{appelation}</Link>
-                                                <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${price}</div>
-                                                <button className='lato-font add-button'>ADD TO CART</button>
-                                            </div>
-                                        </div>
 
 
-                                    </SwiperSlide>
-                                ))
+                                        </SwiperSlide>
+                                    ))
                             }
                             {/* <SwiperSlide>
                                 <div className="card-wrapper">
