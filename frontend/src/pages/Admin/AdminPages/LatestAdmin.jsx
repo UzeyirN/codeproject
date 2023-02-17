@@ -1,19 +1,164 @@
+// import React, { useState } from "react";
+// import axios from "axios";
+// import { useEffect } from "react";
+
+// const App = () => {
+//   const [products, setProducts] = useState([]);
+//   const [state, setState] = useState({
+//     image: "",
+//     brand: "",
+//     alcohol: "",
+//     appelation: "",
+//     size: "",
+//     price: "",
+//     kind: ""
+//   });
+//   const [id, setId] = useState();
+
+//   const getData = async () => {
+//     const res = await axios.get("http://localhost:3070/latest");
+//     setProducts(res.data);
+//   };
+
+//   useEffect(() => {
+//     getData();
+//   }, []);
+
+//   const handleChange = (e) => {
+//     setState({ ...state, [e.target.name]: e.target.value });
+//   };
+
+//   const addData = (e) => {
+//     e.preventDefault();
+
+//     if (!state.image || !state.brand || !state.alcohol || !state.appelation || !state.size || !state.price || !state.kind) return;
+
+//     axios.post("http://localhost:3070/latest", state);
+//     getData();
+//   };
+
+//   const deleteData = async (id) => {
+//     await axios.delete(`http://localhost:3070/latest/${id}`);
+//     getData();
+//   };
+
+//   const handleEditClick = (data) => {
+//     setState({
+//       image: data.image,
+//       brand: data.brand,
+//       alcohol: data.alcohol,
+//       appelation: data.appelation,
+//       size: data.size,
+//       price: data.price,
+//       kind: data.kind,
+//     });
+//     setId(data._id);
+
+//   };
+
+//   console.log(id);
+
+//   const updateData = async (dataId) => {
+
+//     await axios.put(`http://localhost:3070/latest/${dataId}`, state);
+//     getData();
+//     console.log(dataId);
+
+//   };
+
+//   return (
+//     <>
+//       <form onSubmit={addData}>
+//         <input
+//           name="image"
+//           type="text"
+//           value={state.image}
+//           placeholder="image"
+//           onChange={handleChange}
+//         />
+//         <input
+//           name="brand"
+//           type="text"
+//           value={state.brand}
+//           placeholder="brand"
+//           onChange={handleChange}
+//         />
+//         <input
+//           name="alcohol"
+//           type="text"
+//           value={state.alcohol}
+//           placeholder="alcohol"
+//           onChange={handleChange}
+//         />
+//         <input
+//           name="appelation"
+//           type="text"
+//           value={state.appelation}
+//           placeholder="appelation"
+//           onChange={handleChange}
+//         />
+//         <input
+//           name="size"
+//           type="text"
+//           value={state.size}
+//           placeholder="size"
+//           onChange={handleChange}
+//         />
+//         <input
+//           name="price"
+//           type="text"
+//           value={state.price}
+//           placeholder="price"
+//           onChange={handleChange}
+//         />
+//         <input
+//           name="kind"
+//           type="text"
+//           value={state.kind}
+//           placeholder="kind"
+//           onChange={handleChange}
+//         />
+//         <button>add</button>
+//       </form>
+//       <button onClick={() => updateData(id)}>update</button>
+
+//       {products?.map((prod) => (
+//         <li key={prod.id}>
+//           <span>{prod.id}</span>
+//           <p>{prod.image}</p>
+//           <p style={{ margin: 20 }}>{prod.brand}</p>
+//           <p style={{ margin: 20 }}>{prod.appelation}</p>
+//           <p style={{ margin: 20 }}>{prod.alcohol}</p>
+//           <p style={{ margin: 20 }}>{prod.size}</p>
+//           <p style={{ margin: 20 }}>{prod.price}</p>
+//           <p style={{ margin: 20 }}>{prod.kind}</p>
+//           <button onClick={() => deleteData(prod._id)}>delete</button>
+//           <button onClick={() => handleEditClick(prod)}>select</button>
+//         </li>
+//       ))}
+//     </>
+//   );
+// };
+
+// export default App;
+
+
+
+
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import Loading from '../../../components/Loading';
-import '../AdminStyles/FeaturedAdmin.css'
-
+import '../AdminStyles/LatestAdmin.css'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import products_schema from '../../../Schema/ProductsVal';
-// import { Link } from 'react-router-dom';
 
-const FeaturedAdmin = () => {
+const LatestAdmin = () => {
 
-  const [featured, setFeatured] = useState(null)
+  const [latest, setLatest] = useState(null)
   const [value, setValue] = useState("")
   const [loading, setLoading] = useState(true);
-  const URL = 'http://localhost:3070/featured';
+  const URL = 'http://localhost:3070/latest';
 
   const [state, setState] = useState({
     image: "",
@@ -29,9 +174,8 @@ const FeaturedAdmin = () => {
 
   //!get data
   const getData = async () => {
-    await axios.get(URL).then((resp) => setFeatured(resp.data));
+    await axios.get(URL).then((resp) => setLatest(resp.data));
     setLoading(false);
-
   }
 
   //!add data
@@ -63,7 +207,7 @@ const FeaturedAdmin = () => {
     setValue(e.target.value)
   }
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:3070/featured/${id}`)
+    await axios.delete(`http://localhost:3070/latest/${id}`)
     getData()
   }
 
@@ -87,7 +231,7 @@ const FeaturedAdmin = () => {
 
   const updateData = async (dataId) => {
 
-    await axios.put(`http://localhost:3070/featured/${dataId}`, state);
+    await axios.put(`http://localhost:3070/latest/${dataId}`, state);
     getData();
 
     setState({
@@ -109,9 +253,9 @@ const FeaturedAdmin = () => {
 
   return (
     <>
-      <div className="featuredAdmin-wrapper">
+      <div className="latestAdmin-wrapper">
         <div className="container">
-          <div className='featuredAdmin-search__wrapper'>
+          <div className='latestAdmin-search__wrapper'>
             <p className='search-p lato-font'>SEARCH PRODUCTS</p>
             <input onChange={searchData} className='search-input' type="text" />
           </div>
@@ -131,7 +275,7 @@ const FeaturedAdmin = () => {
             </thead>
             {
               loading ? <Loading /> :
-                featured?.filter(data => {
+                latest?.filter(data => {
                   return value.trim().toLowerCase() === "" ? data : data.appelation.toLowerCase().includes(value.toLowerCase())
                 })
                   .map((item) => (
@@ -142,14 +286,14 @@ const FeaturedAdmin = () => {
                             <img style={{ width: "100%", height: "100%" }} src={item.image} alt="" />
                           </div>
                         </td>
-                        <td className='featured-td'>{item.brand}</td>
-                        <td className='featured-td'>{item.alcohol}</td>
-                        <td className='featured-td'>{item.appelation}</td>
-                        <td className='featured-td'>{item.size}</td>
-                        <td className='featured-td'>${item.price}</td>
-                        <td className='featured-td'>{item.kind}</td>
-                        <td className='featured-td'><button onClick={() => handleDelete(item._id)} className='admin-btn delete-btn'>DELETE</button></td>
-                        <td className='featured-td'><button onClick={() => handleEditClick(item)} className='admin-btn update-btn'>SELECT</button></td>
+                        <td className='latest-td'>{item.brand}</td>
+                        <td className='latest-td'>{item.alcohol}</td>
+                        <td className='latest-td'>{item.appelation}</td>
+                        <td className='latest-td'>{item.size}</td>
+                        <td className='latest-td'>${item.price}</td>
+                        <td className='latest-td'>{item.kind}</td>
+                        <td className='latest-td'><button onClick={() => handleDelete(item._id)} className='admin-btn delete-btn'>DELETE</button></td>
+                        <td className='latest-td'><button onClick={() => handleEditClick(item)} className='admin-btn update-btn'>SELECT</button></td>
                       </tr>
                     </tbody>
                   ))
@@ -157,7 +301,7 @@ const FeaturedAdmin = () => {
 
           </table>
 
-          <div className="featured-add__wrapper">
+          <div className="latest-add__wrapper">
             <h2 className='add-products__h2'>Add and Update Products</h2>
             <form onSubmit={handleSubmit(onSubmit)} className='add-form'>
               <input name='image' value={state.image} {...register("image")} className='add-input' type="text" placeholder='image link' onChange={handleChange} />
@@ -192,4 +336,13 @@ const FeaturedAdmin = () => {
   )
 }
 
-export default FeaturedAdmin
+export default LatestAdmin
+
+
+
+
+
+
+
+
+

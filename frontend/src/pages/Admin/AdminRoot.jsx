@@ -7,6 +7,13 @@ const AdminRoot = () => {
         <>
             <AdminNavbar />
             <Outlet />
+            {/* <div style={{ height: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+
+                <p className='lato-font' style={{fontSize:"5em"}}>WELCOME TO ADMIN PANEL</p>
+
+
+            </div> */}
+
         </>
     )
 }

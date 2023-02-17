@@ -9,7 +9,6 @@ import Blog from '../pages/BlogPages/Blog';
 import ContactUs from './../pages/ContactUs';
 import Winery from './../pages/BlogPages/Winery';
 import WineFermantation from './../pages/BlogPages/WineFermantation';
-// import Harvest from '../../pages/Harvest';
 import AllShopWines from '../pages/ShopWines/AllShopWines'
 import RedWines from '../pages/ShopWines/RedWines'
 import RoseWines from '../pages/ShopWines/RoseWines'
@@ -24,9 +23,7 @@ import Add from '../pages/Add';
 import SiteMap from './../pages/SiteMap';
 import AdminRoot from '../pages/Admin/AdminRoot';
 import FeaturedAdmin from './../pages/Admin/AdminPages/FeaturedAdmin';
-import LatestAdmin from '../pages/Admin/AdminPages/LatestAdmin/LatestAdmin';
-import LatestAdminRoot from '../pages/Admin/AdminPages/LatestAdmin/LatestAdminRoot';
-import LatestAdminUpdate from '../pages/Admin/AdminPages/LatestAdmin/LatestAdminUpdate';
+import LatestAdmin from '../pages/Admin/AdminPages/LatestAdmin';
 import Wishlist from '../pages/Wishlist/Wishlist';
 
 
@@ -143,17 +140,7 @@ const ROUTES = [
             },
             {
                 path: "latestadmin",
-                element: <LatestAdminRoot />,
-                children: [
-                    {
-                        path: "",
-                        element: <LatestAdmin />
-                    },
-                    {
-                        path: "latestupdate",
-                        element: <LatestAdminUpdate />
-                    }
-                ]
+                element: <LatestAdmin />,
             }
         ]
     },

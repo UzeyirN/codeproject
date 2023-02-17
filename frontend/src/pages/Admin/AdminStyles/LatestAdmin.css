@@ -1,38 +1,104 @@
-.App {
-    text-align: center;
-  }
-  
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-  
-  .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
-  
-  .App-link {
-    color: #61dafb;
-  }
-  
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
+.latestAdmin-wrapper {
+  margin: 100px auto;
+}
+
+.image-wrapper {
+  width: 50%;
+  height: 120px;
+}
+
+.admin-btn {
+  padding: 3px 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.delete-btn {
+  background-color: rgb(215, 44, 44);
+}
+
+.delete-btn:hover {
+  background-color: rgb(148, 1, 1);
+  transition: all 0.3s;
+
+}
+
+.update-btn {
+  background-color: rgb(232, 189, 32);
+}
+
+.update-btn:hover {
+  background-color: rgb(152, 121, 7);
+  transition: all 0.3s;
+
+}
+
+.latest-add__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 150px auto;
+
+}
+
+.add-form {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 50px 0;
+
+}
+
+.add-products__h2{
+  margin-bottom: -50px;
+}
+
+.add-input {
+  width: 90%;
+  padding: 10px 5px;
+  border-radius: 10px;
+}
+
+.add-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: rgb(34, 158, 34);;
+  color: white;
+  border-radius: 10px;
+  width: 20%;
+}
+
+.add-btn:hover {
+  background-color: green;
+  transition: all 0.3s;
+}
+
+.error-message {
+  color: red
+}
+
+.latestAdmin-search__wrapper{
+  width: 40%;
+  margin: 150px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-p{
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.search-input{
+  width: 90%;
+  padding: 10px 5px;
+  border-radius: 10px;
+}
