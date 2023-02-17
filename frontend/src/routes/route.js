@@ -27,6 +27,7 @@ import FeaturedAdmin from './../pages/Admin/AdminPages/FeaturedAdmin';
 import LatestAdmin from '../pages/Admin/AdminPages/LatestAdmin/LatestAdmin';
 import LatestAdminRoot from '../pages/Admin/AdminPages/LatestAdmin/LatestAdminRoot';
 import LatestAdminUpdate from '../pages/Admin/AdminPages/LatestAdmin/LatestAdminUpdate';
+import Wishlist from '../pages/Wishlist/Wishlist';
 
 
 
@@ -96,6 +97,10 @@ const ROUTES = [
                 element: <ContactUs />
             },
             {
+                path: "wishlist",
+                element: <Wishlist />
+            },
+            {
                 path: "addtobasket",
                 element: <AddToBasket />
             },
@@ -125,7 +130,7 @@ const ROUTES = [
             {
                 path: "sitemap",
                 element: <SiteMap />
-            }
+            },
         ]
     },
     {

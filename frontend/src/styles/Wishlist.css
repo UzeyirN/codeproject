@@ -1,0 +1,20 @@
+.wishlist-card {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+
+}
+
+.wish-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.product-info {
+    margin-left: 20px;
+}
+
+#Wishlist{
+    margin-top: 300px;
+}

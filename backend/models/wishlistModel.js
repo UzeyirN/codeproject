@@ -1,7 +1,6 @@
 const mongoose = require("mongoose")
 
-// const { Schema } = mongoose;
-const latestSchema = new mongoose.Schema(
+const wishlistSchema = new mongoose.Schema(
     {
         image: {
             type: String,
@@ -31,10 +30,13 @@ const latestSchema = new mongoose.Schema(
             type: String,
             // required: [true, "Please enter kind!"]
         },
+        productId: {
+            type: String,
+            // required: true,
+        },
     },
     { timestamps: true },
 )
 
-
-const Latest = mongoose.model("latest", latestSchema)
-module.exports = (Latest)
+const Wishlist = mongoose.model("wishlist", wishlistSchema)
+module.exports = (Wishlist)

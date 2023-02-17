@@ -309,7 +309,7 @@ const App = () => {
     price: "",
     kind: ""
   });
-  const [id, setId] = useState(undefined);
+  const [id, setId] = useState();
 
   const getData = async () => {
     const res = await axios.get("http://localhost:3070/latest");
@@ -348,12 +348,18 @@ const App = () => {
       price: data.price,
       kind: data.kind,
     });
-    setId(data.id);
+    setId(data._id);
+
   };
 
-  const updateData = async (id) => {
-    await axios.put(`http://localhost:3070/latest/${id}`, state);
+  console.log(id);
+
+  const updateData = async (dataId) => {
+
+    await axios.put(`http://localhost:3070/latest/${dataId}`, state);
     getData();
+    console.log(dataId);
+
   };
 
   return (

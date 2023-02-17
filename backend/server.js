@@ -10,6 +10,7 @@ const featuredRoute = require("./routes/featuredRoute")
 const latestRoute = require('./routes/latestRoute')
 const beConnectedRoute = require('./routes/beConnectedRoute')
 const contactUsRoute = require("./routes/contactUsRoute")
+const wishlistRoute = require("./routes/wishlistRoute")
 
 
 dotenv.config();
@@ -22,6 +23,8 @@ app.use('/featured', featuredRoute)
 app.use('/latest', latestRoute)
 app.use('/beconnected', beConnectedRoute)
 app.use('/contactus', contactUsRoute)
+app.use('/wishlist', wishlistRoute)
+
 
 
 const PORT = process.env.PORT

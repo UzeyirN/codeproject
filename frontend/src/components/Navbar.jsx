@@ -406,6 +406,9 @@ const Navbar = ({ data }) => {
                                 <Link className="nav-link" to='login' aria-expanded="false">
                                     <i class="fa-solid fa-user"></i>
                                 </Link>
+                                <Link className="nav-link" to='wishlist' aria-expanded="false">
+                                    <i class="fa-solid fa-heart"></i>
+                                </Link>
                                 <Link className="nav-link" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-cart-shopping"></i>
                                 </Link>

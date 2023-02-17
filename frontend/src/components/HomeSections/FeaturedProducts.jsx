@@ -14,6 +14,12 @@ const FeaturedProducts = () => {
 
     const [featured, setFeatured] = useState(null)
     const [loading, setLoading] = useState(true);
+    // const [data, setData] = useState({
+    //     image: "",
+    //     brand: "",
+    //     appelation: "",
+    //     price: "",
+    // })
     const URL = 'http://localhost:3070/featured';
 
 
@@ -22,6 +28,36 @@ const FeaturedProducts = () => {
         setLoading(false);
 
     }
+
+    const addToWishList = async (id) => {
+        await fetch("http://localhost:3070/wishlist", {
+            method: "Post",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id }),
+        });
+    };
+
+
+
+
+    // const addToWishList = (id) => {
+    //     fetch('http://localhost:3070/wishlist', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ id })
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log(data);
+    //         })
+    //         .catch(error => {
+    //             console.error(error);
+    //         });
+    // }
 
     useEffect(() => {
         getData()
@@ -57,14 +93,13 @@ const FeaturedProducts = () => {
                             }}
                         >{
                                 loading ? <Loading /> :
-                                    featured?.map(({ image, brand, appelation, price }) => (
+                                    featured?.map(({ _id, image, brand, appelation, price }) => (
                                         <SwiperSlide>
-
-                                            <div className="card-wrapper">
+                                            <div className="card-wrapper" key={_id}>
                                                 <div className="card-f">
                                                     <div className="card-body">
                                                         <img style={{ height: "100%" }} src={image} alt="" />
-                                                        <button className='feature-fav__btn'>
+                                                        <button onClick={() => addToWishList(_id)} className='feature-fav__btn'>
                                                             <i class="fa-solid fa-heart"></i>
                                                         </button>
                                                     </div>
@@ -81,62 +116,6 @@ const FeaturedProducts = () => {
                                         </SwiperSlide>
                                     ))
                             }
-                            {/* <SwiperSlide>
-                                <div className="card-wrapper">
-                                    <div className="card-f">
-                                        <div className="card-body">
-                                            <img style={{ height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/500x659/products/116/386/White-Chardonnay-w-cup__40812.1488466018.png?c=2" alt="" />
-                                            <button className='feature-fav__btn'>
-                                                <i class="fa-solid fa-heart"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div className="card-content__f">
-                                        <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>SUTTER HOME</p>
-                                        <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >Villenoir Chardonnay</Link>
-                                        <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>$100.00</div>
-                                        <button className='lato-font add-button'>ADD TO CART</button>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="card-wrapper">
-                                    <div className="card-f">
-                                        <div className="card-body">
-                                            <img style={{ height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/500x659/products/116/386/White-Chardonnay-w-cup__40812.1488466018.png?c=2" alt="" />
-                                            <button className='feature-fav__btn'>
-                                                <i class="fa-solid fa-heart"></i>
-                                            </button>
-                                        </div>
-
-                                    </div>
-                                    <div className="card-content__f">
-                                        <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>SUTTER HOME</p>
-                                        <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >Villenoir Chardonnay</Link>
-                                        <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>$100.00</div>
-                                        <button className='lato-font add-button'>ADD TO CART</button>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="card-wrapper">
-                                    <div className="card-f">
-                                        <div className="card-body">
-                                            <img style={{ height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/500x659/products/116/386/White-Chardonnay-w-cup__40812.1488466018.png?c=2" alt="" />
-                                            <button className='feature-fav__btn'>
-                                                <i class="fa-solid fa-heart"></i>
-                                            </button>
-                                        </div>
-
-                                    </div>
-                                    <div className="card-content__f">
-                                        <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>SUTTER HOME</p>
-                                        <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >Villenoir Chardonnay</Link>
-                                        <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>$100.00</div>
-                                        <button className='lato-font add-button'>ADD TO CART</button>
-                                    </div>
-                                </div>
-                            </SwiperSlide> */}
                         </Swiper>
                     </div>
                 </div>
@@ -146,3 +125,73 @@ const FeaturedProducts = () => {
 }
 
 export default FeaturedProducts
+
+
+
+// import { useEffect, useState } from "react";
+
+// const TrendingProduct = () => {
+//     const [data, setData] = useState(null);
+
+// const fetchData = async () => {
+//     const data = await fetch("http://localhost:3070/featured").then((res) =>
+//         res.json()
+//     );
+//     setData(data.data);
+// };
+
+
+// const fetchData = async () => {
+//     await fetch('http://localhost:3070/featured')
+//         .then((response) => response.json())
+//         .then((data) => setData(data));
+// }
+
+// const addToWishList = async (id) => {
+//     await fetch("http://localhost:3070/wishlist", {
+//         method: "Post",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ id }),
+//     });
+// };
+
+// useEffect(() => {
+//     fetchData();
+// }, []);
+// return (
+//     <div id="TrendingProduct">
+//         <div className="container">
+//             <div className="row">
+//                 <div className="col-12">
+//                     <p>Popular Item in the market</p>
+//                     <h1>Trending Product</h1>
+//                 </div>
+//             </div>
+//             <div className="row">
+//                 {data?.map((item) => (
+//                     <div className="col-12 col-sm-6 col-lg-3 mb-4" key={item._id}>
+//                         <div className="_card">
+//                             <div className="card-img mb-3">
+//                                 <img src={item.image} alt="" />
+//                                 <button onClick={() => addToWishList(item._id)}>
+//                                     <i class="fa-solid fa-heart"></i>
+//                                 </button>
+//                             </div>
+//                             <span className="category">{item.brand}</span>
+//                             <h6>{item.appelation}</h6>
+//                             <h6>{item.price}</h6>
+//                             {/* <span className="price">
+//                                     ${parseInt(item.price).toFixed(2)}
+//                                 </span> */}
+//                         </div>
+//                     </div>
+//                 ))}
+//             </div>
+//         </div>
+//     </div>
+// );
+// };
+
+// export default TrendingProduct;
