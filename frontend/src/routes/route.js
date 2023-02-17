@@ -24,7 +24,9 @@ import Add from '../pages/Add';
 import SiteMap from './../pages/SiteMap';
 import AdminRoot from '../pages/Admin/AdminRoot';
 import FeaturedAdmin from './../pages/Admin/AdminPages/FeaturedAdmin';
-import LatestAdmin from './../pages/Admin/AdminPages/LatestAdmin';
+import LatestAdmin from '../pages/Admin/AdminPages/LatestAdmin/LatestAdmin';
+import LatestAdminRoot from '../pages/Admin/AdminPages/LatestAdmin/LatestAdminRoot';
+import LatestAdminUpdate from '../pages/Admin/AdminPages/LatestAdmin/LatestAdminUpdate';
 
 
 
@@ -131,12 +133,22 @@ const ROUTES = [
         element: <AdminRoot />,
         children: [
             {
-                path: "featuredadmin",
-                element: <FeaturedAdmin />
+                path: "featuredadmin/",
+                element: <FeaturedAdmin />,
             },
             {
                 path: "latestadmin",
-                element: <LatestAdmin />
+                element: <LatestAdminRoot />,
+                children: [
+                    {
+                        path: "",
+                        element: <LatestAdmin />
+                    },
+                    {
+                        path: "latestupdate",
+                        element: <LatestAdminUpdate />
+                    }
+                ]
             }
         ]
     },

@@ -270,8 +270,6 @@ import axios from 'axios';
 const Navbar = ({ data }) => {
 
     const ref = useRef();
-
-
     const [isNavbarSmall, setIsNavbarSmall] = useState(true);
     const [hideLightbox, setHideLightbox] = useState(true);
     const [hideSearchbox, setHideSearchbox] = useState(true);
@@ -281,8 +279,6 @@ const Navbar = ({ data }) => {
     const [loading, setLoading] = useState(true);
     const URL = 'http://localhost:3070/featured';
 
-
-
     // searching
     const [products, setProducts] = useState(null)
     const [value, setValue] = useState("")
@@ -290,7 +286,6 @@ const Navbar = ({ data }) => {
     const getData = async () => {
         await axios.get(URL).then((resp) => setProducts(resp.data));
         setLoading(false);
-
     }
 
     const searchData = (e) => {
@@ -298,15 +293,12 @@ const Navbar = ({ data }) => {
 
         let count = 0;
         products?.filter(data => {
-
-            if (data.name.toLowerCase().includes(e.target.value.toLowerCase())
+            if (data.appelation.toLowerCase().includes(e.target.value.toLowerCase())
             ) {
                 count++;
             }
-
         })
-
-        if (count == 0) {
+        if (count === 0) {
             sety(false)
         }
         else {
@@ -318,19 +310,13 @@ const Navbar = ({ data }) => {
         getData()
     }, [])
 
-
-
-
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-
     });
 
-    ////////////
     useEffect(() => {
         document.getElementById("search").addEventListener("click", handleClickk);
-
         return () => {
             document.getElementById("search").removeEventListener("click", handleClickk);
         };
@@ -339,7 +325,6 @@ const Navbar = ({ data }) => {
     const handleClickk = e => {
         setx(false)
     };
-
 
     window.onclick = (event) => {
 
@@ -352,11 +337,8 @@ const Navbar = ({ data }) => {
             setHideLightbox(true)
         }
         else {
-
             setHideSearchbox(false)
         }
-
-
     }
 
     const handleScroll = () => {
@@ -371,7 +353,6 @@ const Navbar = ({ data }) => {
             <div>
                 <nav className={`navbar-wrapper ${isNavbarSmall ? "navbar-large" : "navbar-small"}`}>
                     <div className="container">
-
                         <div className="navbar-inner">
                             <div className="nav-logo">
                                 <Link to=''><img src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/166x43/logo_1487085297__58219.original.png" alt="" /></Link>
@@ -439,9 +420,9 @@ const Navbar = ({ data }) => {
                     </div>
                     <div className={`lightbox ${hideLightbox ? "hide-lightbox" : "show-lightbox"}`}>
                         <div className="container">
-                            <div className='burger-search py-5'>
+                            {/* <div className='burger-search py-5'>
                                 <input className='burger-input lato-font' type="text" placeholder='SEARCH THE STORE' />
-                            </div>
+                            </div> */}
                             <div className='burger-pages'>
                                 <ul className='nav-burger_ul'>
                                     <li className='nav-item burger-item' onClick={() => setHideLightbox(true)}>
@@ -502,7 +483,6 @@ const Navbar = ({ data }) => {
                     <div ref={ref} className={`${hideSearchbox ? "hide-searchbox" : `${y ? "show-searchboxfull" : "show-searchbox"}`}`}  >
                         <div className="search-menu" aria-labelledby="navbarDropdown" >
                             <input className='nav-search__input' onChange={searchData} type="text" placeholder='SEARCH THE STORY' />
-
                             <div className="container pt-5 text-center fs-5"> {y ? "" : "No search results were found"}</div>
                             <div ref={ref} >
                                 <div className="row justify-content-between">
@@ -546,7 +526,7 @@ const Navbar = ({ data }) => {
                                                                 </div>
                                                                 <div className="searchCard-content__f">
                                                                     <p className='lato-font' style={{ color: "RGB(176, 151, 109)", fontSize: "12px" }}>{prod.brand}</p>
-                                                                    <Link className='playfair-font card-link' style={{ marginBottom: "5px", fontSize: "16px" }} >{prod.appelation}</Link>
+                                                                    <Link className='playfair-font card-link' style={{ marginBottom: "5px", fontSize: "14px" }} >{prod.appelation}</Link>
                                                                     <div style={{ color: "RGB(176, 151, 109)", margin: "10px 0", fontSize: "16px" }} className='notoserif-font'>${prod.price}</div>
                                                                     <button className='lato-font search__add-button'>ADD TO CART</button>
                                                                 </div>
@@ -559,7 +539,6 @@ const Navbar = ({ data }) => {
                             </div>
                         </div>
                     </div>
-
                 </nav>
             </div>
         </>

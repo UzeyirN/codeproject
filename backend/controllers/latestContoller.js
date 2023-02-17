@@ -40,24 +40,6 @@ exports.latest_post = async (req, res) => {
     }
 }
 
-
-// exports.featured_post = (req, res) => {
-//     let featured = new Featured({
-//         image: req.body.image,
-//         brand: req.body.brand,
-//         alcohol: req.body.alcohol,
-//         appelation: req.body.appelation,
-//         size: req.body.size,
-//         price: req.body.price,
-//         kind: req.body.kind,
-//     })
-
-//     featured.save()
-//     res.send("success")
-// }
-
-
-
 exports.latest_delete = (req, res) => {
     const { id } = req.params;
     Latest.findByIdAndDelete(id, (err) => {
@@ -70,4 +52,41 @@ exports.latest_delete = (req, res) => {
         }
     })
 }
+
+
+exports.latest_update = async (req, res) => {
+    try {
+        const example = await Latest.findByIdAndUpdate(req.params.id, req.body, { new: true });
+
+        if (!example) {
+            return res.status(404).json({ message: 'Latest not found' });
+        }
+
+        res.status(200).json(example);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+}
+
+
+
+// exports.latest_update = (req, res) => {
+//     const { id } = req.params;
+
+//     Latest.findByIdAndUpdate(id, req.body, (err, doc) => {
+//         if (!err) {
+//             res.status(201);
+//         } else {
+//             res.status(500).json(err);
+//         }
+//     });
+//     res.send({ message: "SUCCESSFULLY Updated" });
+// }
+
+
+
+
+
+
+
 

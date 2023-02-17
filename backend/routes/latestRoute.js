@@ -15,4 +15,11 @@ router.post("/", latestContoller.latest_post)
 
 router.delete("/:id", latestContoller.latest_delete)
 
+router.put("/:id",latestContoller.latest_update );
+
+// router.put("/:id", );
+
+
+
+
 module.exports = router

@@ -6,13 +6,12 @@ import '../AdminStyles/FeaturedAdmin.css'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import products_schema from '../../../Schema/ProductsVal';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const FeaturedAdmin = () => {
 
   const [featured, setFeatured] = useState(null)
   const [value, setValue] = useState("")
-  const [updatedExample, setUpdatedExample] = useState({});
   const [loading, setLoading] = useState(true);
   const URL = 'http://localhost:3070/featured';
 
@@ -26,6 +25,14 @@ const FeaturedAdmin = () => {
     kind: ""
   })
 
+  //!get data
+  const getData = async () => {
+    await axios.get(URL).then((resp) => setFeatured(resp.data));
+    setLoading(false);
+
+  }
+
+  //!add data
   const addData = () => {
     axios.post(URL, state);
 
@@ -41,16 +48,29 @@ const FeaturedAdmin = () => {
 
   }
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUpdatedExample({ ...updatedExample, [name]: value });
+  //!form validation
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(products_schema),
+  });
+  const onSubmit = (data) => {
+    console.log({ data });
+    addData()
   };
-  const handleUpdate = (event) => {
-    event.preventDefault();
-    axios.put(`http://localhost:3070/featured${featured._id}`, updatedExample)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
+
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setUpdatedExample({ ...updatedExample, [name]: value });
+  // };
+
+
+  //!update other version
+  // const handleUpdate = (event) => {
+  //   event.preventDefault();
+  //   axios.put(`http://localhost:3070/featured${featured._id}`, updatedExample)
+  //     .then(res => console.log(res))
+  //     .catch(err => console.log(err));
+  // };
+
 
   const searchData = (e) => {
     setValue(e.target.value)
@@ -64,21 +84,16 @@ const FeaturedAdmin = () => {
     setState({ ...state, [e.target.name]: e.target.value })
   }
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(products_schema),
-  });
-  const onSubmit = (data) => {
-    console.log({ data });
-    addData()
-  };
 
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFeatured((prev) => ({
+  //     ...prev,
+  //     [name]: value,
+  //   }));
+  // };
 
-  const getData = async () => {
-    await axios.get(URL).then((resp) => setFeatured(resp.data));
-    setLoading(false);
-
-  }
-
+  
   useEffect(() => {
     getData()
   }, [])
@@ -111,22 +126,22 @@ const FeaturedAdmin = () => {
                 featured?.filter(data => {
                   return value.trim().toLowerCase() === "" ? data : data.appelation.toLowerCase().includes(value.toLowerCase())
                 })
-                  .map(({ _id, image, brand, alcohol, appelation, size, price, kind }) => (
+                  .map((item) => (
                     <tbody>
                       <tr>
                         <td>
                           <div className='image-wrapper'>
-                            <img style={{ width: "100%", height: "100%" }} src={image} alt="" />
+                            <img style={{ width: "100%", height: "100%" }} src={item.image} alt="" />
                           </div>
                         </td>
-                        <td className='featured-td'>{brand}</td>
-                        <td className='featured-td'>{alcohol}</td>
-                        <td className='featured-td'>{appelation}</td>
-                        <td className='featured-td'>{size}</td>
-                        <td className='featured-td'>${price}</td>
-                        <td className='featured-td'>{kind}</td>
-                        <td className='featured-td'><button onClick={() => handleDelete(_id)} className='admin-btn delete-btn'>DELETE</button></td>
-                        <td className='featured-td'><Link href='featuredupdate'><button className='admin-btn update-btn'>UPDATE</button></Link></td>
+                        <td className='featured-td'>{item.brand}</td>
+                        <td className='featured-td'>{item.alcohol}</td>
+                        <td className='featured-td'>{item.appelation}</td>
+                        <td className='featured-td'>{item.size}</td>
+                        <td className='featured-td'>${item.price}</td>
+                        <td className='featured-td'>{item.kind}</td>
+                        <td className='featured-td'><button onClick={() => handleDelete(item._id)} className='admin-btn delete-btn'>DELETE</button></td>
+                        <td className='featured-td'><button className='admin-btn update-btn'>UPDATE</button></td>
                       </tr>
                     </tbody>
                   ))
@@ -161,7 +176,6 @@ const FeaturedAdmin = () => {
               <button className='add-btn'>ADD</button>
             </form>
           </div>
-
         </div>
       </div>
 
