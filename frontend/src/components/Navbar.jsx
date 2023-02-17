@@ -267,7 +267,7 @@ import 'swiper/css/scrollbar';
 import axios from 'axios';
 
 
-const Navbar = ({ data }) => {
+const Navbar = ({ data,count }) => {
 
     const ref = useRef();
     const [isNavbarSmall, setIsNavbarSmall] = useState(true);
@@ -407,7 +407,9 @@ const Navbar = ({ data }) => {
                                     <i class="fa-solid fa-user"></i>
                                 </Link>
                                 <Link className="nav-link" to='wishlist' aria-expanded="false">
-                                    <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-heart">
+                                        {count}
+                                    </i>
                                 </Link>
                                 <Link className="nav-link" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-cart-shopping"></i>

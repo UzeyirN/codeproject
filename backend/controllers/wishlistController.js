@@ -30,18 +30,6 @@ exports.wishlist_getAll_byId = (req, res) => {
     })
 }
 
-// exports.wishlist_post = async (req, res) => {
-//     const wishlist = req.body
-//     try {
-//         await Wishlist.create(wishlist)
-//         res.status(200).json({
-//             message: "success"
-//         })
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-
 exports.wishlist_delete = (req, res) => {
     const { id } = req.params;
     Wishlist.findByIdAndDelete(id, (err) => {
@@ -54,8 +42,6 @@ exports.wishlist_delete = (req, res) => {
         }
     })
 }
-
-
 
 exports.wishlist_post = async (req, res) => {
     const { id } = req.body;

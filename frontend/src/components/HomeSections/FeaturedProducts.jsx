@@ -9,17 +9,11 @@ import 'swiper/css/scrollbar';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../Loading';
-const FeaturedProducts = () => {
 
+const FeaturedProducts = () => {
 
     const [featured, setFeatured] = useState(null)
     const [loading, setLoading] = useState(true);
-    // const [data, setData] = useState({
-    //     image: "",
-    //     brand: "",
-    //     appelation: "",
-    //     price: "",
-    // })
     const URL = 'http://localhost:3070/featured';
 
 
@@ -39,25 +33,6 @@ const FeaturedProducts = () => {
         });
     };
 
-
-
-
-    // const addToWishList = (id) => {
-    //     fetch('http://localhost:3070/wishlist', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ id })
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             console.log(data);
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //         });
-    // }
 
     useEffect(() => {
         getData()
@@ -128,70 +103,4 @@ export default FeaturedProducts
 
 
 
-// import { useEffect, useState } from "react";
 
-// const TrendingProduct = () => {
-//     const [data, setData] = useState(null);
-
-// const fetchData = async () => {
-//     const data = await fetch("http://localhost:3070/featured").then((res) =>
-//         res.json()
-//     );
-//     setData(data.data);
-// };
-
-
-// const fetchData = async () => {
-//     await fetch('http://localhost:3070/featured')
-//         .then((response) => response.json())
-//         .then((data) => setData(data));
-// }
-
-// const addToWishList = async (id) => {
-//     await fetch("http://localhost:3070/wishlist", {
-//         method: "Post",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ id }),
-//     });
-// };
-
-// useEffect(() => {
-//     fetchData();
-// }, []);
-// return (
-//     <div id="TrendingProduct">
-//         <div className="container">
-//             <div className="row">
-//                 <div className="col-12">
-//                     <p>Popular Item in the market</p>
-//                     <h1>Trending Product</h1>
-//                 </div>
-//             </div>
-//             <div className="row">
-//                 {data?.map((item) => (
-//                     <div className="col-12 col-sm-6 col-lg-3 mb-4" key={item._id}>
-//                         <div className="_card">
-//                             <div className="card-img mb-3">
-//                                 <img src={item.image} alt="" />
-//                                 <button onClick={() => addToWishList(item._id)}>
-//                                     <i class="fa-solid fa-heart"></i>
-//                                 </button>
-//                             </div>
-//                             <span className="category">{item.brand}</span>
-//                             <h6>{item.appelation}</h6>
-//                             <h6>{item.price}</h6>
-//                             {/* <span className="price">
-//                                     ${parseInt(item.price).toFixed(2)}
-//                                 </span> */}
-//                         </div>
-//                     </div>
-//                 ))}
-//             </div>
-//         </div>
-//     </div>
-// );
-// };
-
-// export default TrendingProduct;

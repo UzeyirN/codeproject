@@ -5,6 +5,7 @@ import axios from 'axios';
 import Loading from '../Loading';
 
 const LatestCollecions = () => {
+
     const [latestProducts, setLatestProducts] = useState(null)
     const [loading, setLoading] = useState(true);
     const URL = 'http://localhost:3070/latest';
@@ -16,11 +17,6 @@ const LatestCollecions = () => {
 
     }
 
-    // const getData = () => {
-    //     fetch('http://localhost:3070/latest')
-    //         .then((response) => response.json())
-    //         .then((data) => setLatestProducts(data));
-    // }
 
     useEffect(() => {
         getData()
@@ -38,21 +34,18 @@ const LatestCollecions = () => {
                     <div className="row ">
                         {
                             loading ? <Loading /> :
-                                latestProducts?.map((products) => (
+                                latestProducts?.map(({ _id, image, brand, appelation, price }) => (
                                     <div className="col-12 col-sm-6 col-lg-4 mb-5">
-                                        <div className="card-wrapper ">
+                                        <div className="card-wrapper " key={_id}>
                                             <div className="card">
                                                 <div className="card-body">
-                                                    <img style={{ width: "100%", height: "100%" }} src={products.image} alt="" />
-                                                    <button className='feature-fav__btn'>
-                                                        <i class="fa-solid fa-heart"></i>
-                                                    </button>
+                                                    <img style={{ width: "100%", height: "100%" }} src={image} alt="" />
                                                 </div>
                                             </div>
                                             <div className="card-content">
-                                                <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{products.brand}</p>
-                                                <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{products.appelation}</Link>
-                                                <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${products.price}.00</div>
+                                                <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{brand}</p>
+                                                <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{appelation}</Link>
+                                                <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${price}.00</div>
                                                 <button className='lato-font add-button '>ADD TO CART</button>
                                             </div>
                                         </div>
