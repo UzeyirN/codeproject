@@ -255,7 +255,7 @@
 
 import React from 'react'
 import '../styles/Navbar.css'
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom'
 import Loading from './Loading';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -267,7 +267,9 @@ import 'swiper/css/scrollbar';
 import axios from 'axios';
 
 
-const Navbar = ({ data,count }) => {
+
+const Navbar = ({ data }) => {
+
 
     const ref = useRef();
     const [isNavbarSmall, setIsNavbarSmall] = useState(true);
@@ -408,15 +410,17 @@ const Navbar = ({ data,count }) => {
                                 </Link>
                                 <Link className="nav-link" to='wishlist' aria-expanded="false">
                                     <i class="fa-solid fa-heart">
-                                        {count}
                                     </i>
                                 </Link>
-                                <Link className="nav-link" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <Link className="nav-link" to='addtocart' s aria-expanded="false">
                                     <i class="fa-solid fa-cart-shopping"></i>
                                 </Link>
-                                <div className="dropdown-menu nav-shopcart" aria-labelledby="navbarDropdown">
-                                    {data ? data : "Your cart is empty"}
-                                </div>
+                                <span className='cart-number'>0</span>
+
+                                {/* <div className="dropdown-menu nav-shopcart" aria-labelledby="navbarDropdown">
+                                    {
+                                        data ? data :   "Your cart is empty"}
+                                </div> */}
                                 <div className="nav-link nav-burger" id="mobil" onClick={() => setHideLightbox(s => !s)}>
                                     <i className={`fa-solid ${hideLightbox ? "fa-bars" : "fa-close"}`}></i>
                                 </div>
@@ -466,9 +470,19 @@ const Navbar = ({ data,count }) => {
                                             CONTACT US
                                         </Link>
                                     </li>
+                                    <li className='nav-item lato-font' >
+                                        <Link className="nav-link" to='login' aria-expanded="false" onClick={() => setHideLightbox(true)}>
+                                            LOGIN
+                                        </Link>
+                                    </li>
+                                    <li className='nav-item lato-font' >
+                                        <Link className="nav-link" to='signup' aria-expanded="false" onClick={() => setHideLightbox(true)}>
+                                            SIGN UP
+                                        </Link>
+                                    </li>
                                 </ul>
                             </div>
-                            <div className='burger-user'>
+                            {/* <div className='burger-user'>
                                 <ul className='nav-burger_ul'>
                                     <Link className="nav-link lato-font" to='' aria-expanded="false" onClick={() => setHideLightbox(true)}>
                                         GIFT CERTIFICATES
@@ -482,7 +496,7 @@ const Navbar = ({ data,count }) => {
                                         SIGN UP
                                     </Link>
                                 </ul>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div ref={ref} className={`${hideSearchbox ? "hide-searchbox" : `${y ? "show-searchboxfull" : "show-searchbox"}`}`}  >

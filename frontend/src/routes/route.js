@@ -25,6 +25,8 @@ import AdminRoot from '../pages/Admin/AdminRoot';
 import FeaturedAdmin from './../pages/Admin/AdminPages/FeaturedAdmin';
 import LatestAdmin from '../pages/Admin/AdminPages/LatestAdmin';
 import Wishlist from '../pages/Wishlist/Wishlist';
+import Admin from '../pages/Admin/AdminPages/Admin';
+import AddToCart from './../pages/AddToCart';
 
 
 
@@ -98,6 +100,10 @@ const ROUTES = [
                 element: <Wishlist />
             },
             {
+                path: "addtocart",
+                element: <AddToCart />
+            },
+            {
                 path: "addtobasket",
                 element: <AddToBasket />
             },
@@ -134,6 +140,10 @@ const ROUTES = [
         path: "admin",
         element: <AdminRoot />,
         children: [
+            {
+                path: "",
+                element: <Admin />,
+            },
             {
                 path: "featuredadmin/",
                 element: <FeaturedAdmin />,

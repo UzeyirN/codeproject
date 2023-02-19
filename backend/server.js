@@ -11,6 +11,7 @@ const latestRoute = require('./routes/latestRoute')
 const beConnectedRoute = require('./routes/beConnectedRoute')
 const contactUsRoute = require("./routes/contactUsRoute")
 const wishlistRoute = require("./routes/wishlistRoute")
+const authRoute = require("./routes/authRoute")
 
 
 dotenv.config();
@@ -24,6 +25,8 @@ app.use('/latest', latestRoute)
 app.use('/beconnected', beConnectedRoute)
 app.use('/contactus', contactUsRoute)
 app.use('/wishlist', wishlistRoute)
+// app.use('/', authRoute)
+
 
 
 
@@ -32,7 +35,7 @@ const DB = process.env.DB.replace("<password>", process.env.PASSWORD)
 mongoose.set("strictQuery", false)
 
 
-mongoose.connect(DB)
+mongoose.connect(DB, {})
     .then(() => {
         console.log("Connected database");
     })

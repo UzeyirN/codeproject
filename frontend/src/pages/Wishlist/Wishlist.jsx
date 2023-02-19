@@ -1,17 +1,33 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import '../../styles/Wishlist.css'
+
+// import WishlistContext from '../../Context/WishlistContext'
 
 const Wishlist = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true)
 
+
+    // const [count, setCount] = useState(0);
+    // const { setWishlistCount } = useContext(WishlistContext);
+
+
+
     const fetchData = async () => {
-        await axios.get("http://localhost:3070/wishlist").then((resp) => setData(resp.data));
-        setLoading(false);
-    }
+        try {
+            const response = await fetch('http://localhost:3070/wishlist');
+            const data = await response.json();
+            setData(data);
+            setLoading(false);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+
 
     const handleDelete = async (id) => {
         await fetch(`http://localhost:3070/wishlist/${id}`, {
@@ -20,12 +36,15 @@ const Wishlist = () => {
         fetchData();
     };
 
+
+
     useEffect(() => {
         fetchData();
     }, []);
     console.log(data);
 
     return (
+
         <div className="wish-wrapper">
             <div className='wish-top'>
                 <span className='wish-top__wrapper'>
@@ -59,6 +78,7 @@ const Wishlist = () => {
                 </div>
             </div>
         </div>
+
     );
 };
 
