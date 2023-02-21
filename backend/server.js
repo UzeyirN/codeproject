@@ -5,13 +5,17 @@ const app = express()
 const bodyParser = require('body-parser')
 const cors = require("cors")
 
+const errorMiddle = require("./middleware/errorMiddle")
+
 //!import routes
 const featuredRoute = require("./routes/featuredRoute")
 const latestRoute = require('./routes/latestRoute')
 const beConnectedRoute = require('./routes/beConnectedRoute')
 const contactUsRoute = require("./routes/contactUsRoute")
 const wishlistRoute = require("./routes/wishlistRoute")
-const authRoute = require("./routes/authRoute")
+
+const userRoute = require("./routes/userRoute")
+
 
 
 dotenv.config();
@@ -25,7 +29,8 @@ app.use('/latest', latestRoute)
 app.use('/beconnected', beConnectedRoute)
 app.use('/contactus', contactUsRoute)
 app.use('/wishlist', wishlistRoute)
-// app.use('/', authRoute)
+
+app.use("/", userRoute)
 
 
 

@@ -1,15 +1,15 @@
-const ErrorHander = require("../utils/errorhander");
-const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-const UserModel = require("../models/userModel");
-const send_token = require("../utils/jwtToken");
-const send_email = require("../utils/sendEmail");
+const ErrorHander = require("../utils/errorHanderUtil");
+const catchAsyncErrors = require("../middleware/catchAsyncErrorMiddle");
+const User = require("../models/userModel");
+const sendToken = require("../utils/jwtTokenUtil");
+const sendEmail = require("../utils/sendEmailUtil");
 const crypto = require("crypto");
-// const cloudinary = require("cloudinary");
 
 //Register a User
 exports.register_user = catchAsyncErrors(async (req, res, next) => {
-    const { email, password, confirm_password, firstname, lastname, companyname, phone_num, address_line1, address_line2, sburb_city, state, zip_code } = req.body;
-    const user = await UserModel.create({
+    const { email, password, confirm_password, firstname, lastname, companyname, phone_num, address_line1, sburb_city, zip_postcode } = req.body;
+    const user = await User.create({
+
         email,
         password,
         confirm_password,
@@ -18,14 +18,9 @@ exports.register_user = catchAsyncErrors(async (req, res, next) => {
         companyname,
         phone_num,
         address_line1,
-        address_line2,
         sburb_city,
-        state,
-        zip_code,
-        avatar: {
-            public_id: "This is a simple id",
-            url: "profilepiUrl",
-        },
+        zip_postcode
+
     });
     sendToken(user, 201, res);
 });
@@ -34,12 +29,13 @@ exports.register_user = catchAsyncErrors(async (req, res, next) => {
 exports.login_user = catchAsyncErrors(async (req, res, next) => {
     const { email, password } = req.body;
 
+    // checking if user has given password and email both
 
     if (!email || !password) {
         return next(new ErrorHander("Please Enter Email & Password", 400));
     }
 
-    const user = await UserModel.findOne({ email }).select("+password");
+    const user = await User.findOne({ email }).select("+password");
 
     if (!user) {
         return next(new ErrorHander("Invalid email or password", 401));
@@ -68,25 +64,25 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
 
 // Forgot Password
 exports.forgot_password = catchAsyncErrors(async (req, res, next) => {
-    const user = await UserModel.findOne({ email: req.body.email });
+    const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
         return next(new ErrorHander("User not found", 404));
     }
 
     // Get ResetPassword Token
-    const reset_token = user.getResetPasswordToken();
+    const resetToken = user.getResetPasswordToken();
 
     await user.save({ validateBeforeSave: false });
 
-    const reset_passwordUrl = `${req.protocol}://${req.get(
+    const resetPasswordUrl = `${req.protocol}://${req.get(
         "host"
-    )}/password/reset/${reset_token}`;
+    )}/password/reset/${resetToken}`;
 
-    const message = `Your password reset token is :- \n\n ${reset_passwordUrl} \n\nIf you have not requested this email then, please ignore it.`;
+    const message = `Your password reset token is :- \n\n ${resetPasswordUrl} \n\nIf you have not requested this email then, please ignore it.`;
 
     try {
-        await send_email({
+        await sendEmail({
             email: user.email,
             subject: `Ecommerce Password Recovery`,
             message,
@@ -97,8 +93,8 @@ exports.forgot_password = catchAsyncErrors(async (req, res, next) => {
             message: `Email sent to ${user.email} successfully`,
         });
     } catch (error) {
-        user.reset_passwordToken = undefined;
-        user.reset_passwordExpire = undefined;
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpire = undefined;
 
         await user.save({ validateBeforeSave: false });
 
@@ -114,7 +110,7 @@ exports.reset_password = catchAsyncErrors(async (req, res, next) => {
         .update(req.params.token)
         .digest("hex");
 
-    const user = await UserModel.findOne({
+    const user = await User.findOne({
         resetPasswordToken,
         resetPasswordExpire: { $gt: Date.now() },
     });
@@ -138,12 +134,12 @@ exports.reset_password = catchAsyncErrors(async (req, res, next) => {
 
     await user.save();
 
-    send_token(user, 200, res);
+    sendToken(user, 200, res);
 });
 
 // Get User Detail
-exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
-    const user = await UserModel.findById(req.user.id);
+exports.getUser_details = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.user.id);
 
     res.status(200).json({
         success: true,
@@ -152,8 +148,8 @@ exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
 });
 
 // update User password
-exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
-    const user = await UserModel.findById(req.user.id).select("+password");
+exports.update_password = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.user.id).select("+password");
 
     const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
 
@@ -169,16 +165,16 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
 
     await user.save();
 
-    send_token(user, 200, res);
+    sendToken(user, 200, res);
 });
 
-exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
+exports.update_profile = catchAsyncErrors(async (req, res, next) => {
     const newUserData = {
-        name: req.body.name,
+        firstname: req.body.firstname,
         email: req.body.email,
     };
 
-    const user = UserModel.findByIdAndUpdate(req.user.id, newUserData, {
+    const user = User.findByIdAndUpdate(req.user.id, newUserData, {
         new: true,
         runValidators: true,
         useFindAndModify: false,
@@ -190,8 +186,8 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
 });
 
 // Get all users(admin)
-exports.getAllUser = catchAsyncErrors(async (req, res, next) => {
-    const users = await UserModel.find();
+exports.getAll_user = catchAsyncErrors(async (req, res, next) => {
+    const users = await User.find();
 
     res.status(200).json({
         success: true,
@@ -200,8 +196,8 @@ exports.getAllUser = catchAsyncErrors(async (req, res, next) => {
 });
 
 // Get single user (admin)
-exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
-    const user = await UserModel.findById(req.params.id);
+exports.getSingle_user = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.params.id);
 
     if (!user) {
         return next(
@@ -216,14 +212,14 @@ exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
 });
 
 // update User Role -- Admin
-exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
+exports.updateUser_role = catchAsyncErrors(async (req, res, next) => {
     const newUserData = {
-        name: req.body.name,
+        firstname: req.body.firstname,
         email: req.body.email,
         role: req.body.role,
     };
 
-    await UserModel.findByIdAndUpdate(req.params.id, newUserData, {
+    await User.findByIdAndUpdate(req.params.id, newUserData, {
         new: true,
         runValidators: true,
         useFindAndModify: false,
@@ -236,7 +232,7 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
 
 // Delete User --Admin
 exports.delete_user = catchAsyncErrors(async (req, res, next) => {
-    const user = await UserModel.findById(req.params.id);
+    const user = await User.findById(req.params.id);
 
     if (!user) {
         return next(

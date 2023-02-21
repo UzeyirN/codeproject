@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../Loading';
 
+
 const FeaturedProducts = () => {
 
     const [featured, setFeatured] = useState(null)
