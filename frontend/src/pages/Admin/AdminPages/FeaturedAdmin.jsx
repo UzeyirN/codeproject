@@ -64,7 +64,9 @@ const FeaturedAdmin = () => {
   }
   const handleDelete = async (id) => {
     await axios.delete(`http://localhost:3070/featured/${id}`)
-    getData()
+    getData();
+    window.alert("Are you sure you want to delete this item?");
+
   }
 
   const handleChange = (e) => {

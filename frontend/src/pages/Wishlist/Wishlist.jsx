@@ -97,6 +97,8 @@ const Wishlist = () => {
 
     const [quantities, setQuantities] = useState({});
 
+    // const [showAlert, setShowAlert] = useState(false);
+
     const increaseQuantity = (id) => {
         setQuantities({ ...quantities, [id]: (quantities[id] || 0) + 1 });
     };
@@ -123,10 +125,13 @@ const Wishlist = () => {
     };
 
     const handleDelete = async (id) => {
+        // setShowAlert(true);
         await fetch(`http://localhost:3070/wishlist/${id}`, {
             method: "DELETE",
         });
         fetchData();
+
+        window.alert("Are you sure you want to delete this item?");
     };
 
     useEffect(() => {
@@ -134,7 +139,7 @@ const Wishlist = () => {
     }, []);
 
     const price = product?.reduce((sum, products) => sum + parseFloat(products.price) * (quantities[products._id] || 0), 0)
-    
+
     return (
         <div className="wishlist">
             <Helmet>
@@ -189,6 +194,7 @@ const Wishlist = () => {
                                         <td className='cart-td'>
                                             <div className="wish-price__total">
                                                 <span className="lato-font wish-total__p">${parseFloat(products.price) * (quantities[products._id] || 0)}</span>
+                                               
                                                 <i onClick={() => handleDelete(products._id)} class="fa-solid fa-circle-xmark"></i>
                                             </div>
                                         </td>

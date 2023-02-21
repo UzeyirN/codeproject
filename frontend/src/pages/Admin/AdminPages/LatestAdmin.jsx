@@ -208,7 +208,9 @@ const LatestAdmin = () => {
   }
   const handleDelete = async (id) => {
     await axios.delete(`http://localhost:3070/latest/${id}`)
-    getData()
+    getData();
+    window.alert("Are you sure you want to delete this item?");
+
   }
 
   const handleChange = (e) => {
