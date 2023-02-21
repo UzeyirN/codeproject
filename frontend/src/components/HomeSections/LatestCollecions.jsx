@@ -17,6 +17,8 @@ const LatestCollecions = () => {
 
     }
 
+    
+
 
     useEffect(() => {
         getData()
@@ -46,7 +48,7 @@ const LatestCollecions = () => {
                                                 <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{brand}</p>
                                                 <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{appelation}</Link>
                                                 <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${price}.00</div>
-                                                <button className='lato-font add-button '>ADD TO CART</button>
+                                                {/* <button className='lato-font add-button '>ADD TO CART</button> */}
                                             </div>
                                         </div>
                                     </div>

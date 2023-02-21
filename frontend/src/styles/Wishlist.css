@@ -1,7 +1,3 @@
-.wishlist{
-    background-color: #F2F2F2
-}
-
 .wish-top {
     width: 100%;
     height: 40vh;
@@ -19,9 +15,124 @@
     align-items: center
 }
 
-.wish-card__wrapper {
+.wish-table__wrapper {
+    margin: 100px auto;
+    border: 2px solid #f2f2f2;
+}
+
+.cart-th {
+    font-weight: 600;
+    padding: 20px 0;
+
+}
+
+.cart-td {
+    border-bottom: 2px solid #f2f2f2;
+}
+
+.wish-brand__p {
+    color: RGB(165, 165, 165);
+    margin-top: 20px;
+}
+
+.wish-appelation__p {
+    color: RGB(176, 151, 109);
+    font-size: 20px;
+}
+
+.wish-price__p {
+    font-size: 20px;
+    margin-top: 45px;
+}
+
+.quantity-btn__wrapper {
+    display: flex;
+    margin-top: 35px;
+
+}
+
+.quantity-btn {
+    width: 33%;
+    padding: 5px 0;
+    background-color: #B0976D;
+    border: none;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+}
+
+.quantity-btn:hover {
+    background: #000;
+}
+
+.quantity-num {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #B0976D;
+    color: white;
+    font-size: 20px;
+}
+
+.wish-price__total {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 43px;
+}
+
+.wish-total__p {
+    font-size: 20px;
+}
+
+.fa-circle-xmark {
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.fa-circle-xmark:hover {
+    color: #B0976D;
+}
+
+.subtotal-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-end;
+    gap: 20px;
     margin: 50px 0;
 }
+
+.subtotal-inner {
+    border-bottom: 2px solid #f2f2f2;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.subtotal-p {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.payment-btn {
+    /* margin-top: 70px; */
+    color: white;
+    background-color: #000;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 15px 40px;
+    border: none;
+    letter-spacing: 2px;
+}
+
+.payment-btn:hover {
+    background-color: #b0976d;
+    border: none;
+}
+
 
 
 @media screen and (max-width: 1100px) {
@@ -32,13 +143,13 @@
 
 @media screen and (max-width: 1100px) {
     .wish-top {
-        padding-top:8%;
+        padding-top: 8%;
     }
 }
 
 @media screen and (max-width: 800px) {
     .wish-top {
-        padding-top:9%;
+        padding-top: 9%;
     }
 }
 

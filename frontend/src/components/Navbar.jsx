@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/Navbar.css'
-import { useEffect, useState, useRef, useContext } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom'
 import Loading from './Loading';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -10,7 +10,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import axios from 'axios';
-
 
 
 const Navbar = ({ data }) => {
@@ -95,6 +94,16 @@ const Navbar = ({ data }) => {
             setIsNavbarSmall(true);
         }
     };
+
+    const addToWishList = async (id) => {
+        await fetch("http://localhost:3070/wishlist", {
+            method: "Post",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id }),
+        });
+    };
     return (
         <>
             <div>
@@ -154,8 +163,7 @@ const Navbar = ({ data }) => {
                                     <i class="fa-solid fa-user"></i>
                                 </Link>
                                 <Link className="nav-link" to='wishlist' aria-expanded="false">
-                                    <i class="fa-solid fa-heart">
-                                    </i>
+                                    <i class="fa-solid fa-cart-shopping"></i>
                                 </Link>
                                 <span className='cart-number'>0</span>
 
@@ -278,23 +286,23 @@ const Navbar = ({ data }) => {
                                                     return value.trim().toLowerCase() === "" ? data : data.appelation.toLowerCase().includes(value.toLowerCase())
 
                                                 })
-                                                    .map((prod) => (
+                                                    .map(({ _id, image, brand, appelation, price }) => (
                                                         <SwiperSlide >
 
                                                             <div className="search-card__wrapper">
                                                                 <div hideSearchbox className="search-card__f">
                                                                     <div className="search-card__body">
-                                                                        <img style={{ height: "100%" }} src={prod.image} alt="" />
-                                                                        <button className='feature-fav__btn'>
+                                                                        <img style={{ height: "100%" }} src={image} alt="" />
+                                                                        {/* <button className='feature-fav__btn'>
                                                                             <i class="fa-solid fa-heart"></i>
-                                                                        </button>
+                                                                        </button> */}
                                                                     </div>
                                                                 </div>
                                                                 <div className="searchCard-content__f">
-                                                                    <p className='lato-font' style={{ color: "RGB(176, 151, 109)", fontSize: "12px" }}>{prod.brand}</p>
-                                                                    <Link className='playfair-font card-link' style={{ marginBottom: "5px", fontSize: "14px" }} >{prod.appelation}</Link>
-                                                                    <div style={{ color: "RGB(176, 151, 109)", margin: "10px 0", fontSize: "16px" }} className='notoserif-font'>${prod.price}</div>
-                                                                    <button className='lato-font search__add-button'>ADD TO CART</button>
+                                                                    <p className='lato-font' style={{ color: "RGB(176, 151, 109)", fontSize: "12px" }}>{brand}</p>
+                                                                    <Link className='playfair-font card-link' style={{ marginBottom: "5px", fontSize: "14px" }} >{appelation}</Link>
+                                                                    <div style={{ color: "RGB(176, 151, 109)", margin: "10px 0", fontSize: "16px" }} className='notoserif-font'>${price}</div>
+                                                                    <button onClick={() => addToWishList(_id)} className='lato-font search__add-button'>ADD TO CART</button>
                                                                 </div>
                                                             </div>
                                                         </SwiperSlide>
