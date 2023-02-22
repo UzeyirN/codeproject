@@ -162,6 +162,16 @@ const AllShopWines = () => {
         setKindPlus(!kindPlus);
     };
 
+    const addToWishList = async (id) => {
+        await fetch("http://localhost:3070/wishlist", {
+            method: "Post",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id }),
+        });
+    };
+
     const brands = [...new Set(data.map((item) => item.brand))]; // get unique brands
     const alcohol = [...new Set(data.map((item) => item.alcohol))]; // get unique alcohol
     const appelation = [...new Set(data.map((item) => item.appelation))]; // get unique appelation
@@ -346,18 +356,19 @@ const AllShopWines = () => {
                                 {
                                     loading ? <Loading /> :
 
-                                        filteredData.map((item, index) => (
+                                        filteredData.map(({ _id, image, brand, appelation, price }) => (
                                             <div className="cards col-6">
-                                                <div className="card-all" key={index}>
+                                                <div className="card-all" key={_id}>
                                                     <div className="allCard-body">
-                                                        <img style={{ height: "100%" }} src={item.image} alt="" />
+                                                        <img style={{ height: "100%" }} src={image} alt="" />
                                                     </div>
                                                 </div>
                                                 <div className="card-content__all">
-                                                    <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{item.brand}</p>
-                                                    <Link className='playfair-font card-link appelation' >{item.appelation}</Link>
-                                                    <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${item.price}.00</div>
-                                                    <button className='lato-font add-button shop-btn'>ADD TO CART</button>
+                                                    <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{brand}</p>
+                                                    <Link className='playfair-font card-link appelation' >{appelation}</Link>
+                                                    <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${price}.00</div>
+                                                    <button onClick={() => addToWishList(_id)} className='lato-font add-button'>
+                                                        ADD TO CART</button>
                                                 </div>
                                             </div>
                                         ))}

@@ -155,7 +155,7 @@ const RoseWines = () => {
     return (
         <>
             <Helmet>
-                <title>rose Wines</title>
+                <title>Rose Wines</title>
             </Helmet>
 
             <div className='rose-wines__top'>
@@ -284,22 +284,43 @@ const RoseWines = () => {
                         <div className="rose-card__wrapper">
                             <div className="row">
                                 {
-                                    loading ? <Loading /> :
+                                    loading ? (
+                                        <Loading />
+                                    ) : filteredData && filteredData.length ? (
                                         filteredData.map((item, index) => (
-                                            <div className="cards col-6">
-                                                <div className="card-rose" key={index}>
+                                            <div className="cards col-6" key={index}>
+                                                <div className="card-rose">
                                                     <div className="roseCard-body">
                                                         <img style={{ height: "100%" }} src={item.image} alt="" />
                                                     </div>
                                                 </div>
                                                 <div className="card-content__rose">
-                                                    <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{item.brand}</p>
-                                                    <Link className='playfair-font card-link appelation' >{item.appelation}</Link>
-                                                    <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${item.price}.00</div>
-                                                    <button className='lato-font add-button shop-btn'>ADD TO CART</button>
+                                                    <p className="lato-font" style={{ color: "RGB(176, 151, 109)" }}>
+                                                        {item.brand}
+                                                    </p>
+                                                    <Link className="playfair-font card-link appelation">
+                                                        {item.appelation}
+                                                    </Link>
+                                                    <div
+                                                        style={{
+                                                            color: "RGB(176, 151, 109)",
+                                                            margin: "30px 0",
+                                                            fontSize: "21px",
+                                                        }}
+                                                        className="notoserif-font"
+                                                    >
+                                                        ${item.price}.00
+                                                    </div>
+                                                    <button className="lato-font add-button shop-btn">
+                                                        ADD TO CART
+                                                    </button>
                                                 </div>
                                             </div>
-                                        ))}
+                                        ))
+                                    ) : (
+                                        <span style={{position:"relative",bottom:"290px"}}>There are no products listed under this category.</span>
+                                    )
+                                }
                             </div>
                         </div>
                     </div>

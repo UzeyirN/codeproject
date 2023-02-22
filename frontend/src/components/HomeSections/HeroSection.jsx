@@ -5,6 +5,7 @@ import { A11y, Navigation, Pagination, Scrollbar } from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
 import "swiper/css/pagination";
+import { Link } from 'react-router-dom';
 
 
 const HeroSection = () => {
@@ -26,7 +27,7 @@ const HeroSection = () => {
                                 <div className="col-lg-6 col-md-6 col-sm-6 hero-content">
                                     <p className='lato-font herosec-p'>VILLENOIR WINES</p>
                                     <h1 className='playfair-font herosec-h1'>Tradition in a glass</h1>
-                                    <button className='herosec-btn lato-font'>SHOP NOW</button>
+                                    <button className='herosec-btn lato-font'><Link to='allshopwines' className='lato-font hero-link'>SHOP NOW</Link></button>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +38,7 @@ const HeroSection = () => {
                                 <div className="col-lg-6 col-md-6 col-sm-6 hero-content">
                                     <p className='lato-font herosec-p'>VILLENOIR WINES</p>
                                     <p className='playfair-font herosec-h1'>Tradition in a glass</p>
-                                    <button className='herosec-btn lato-font'>SHOP THE WINES</button>
+                                    <button className='herosec-btn lato-font'><Link to='allshopwines' className='lato-font hero-link'>SHOP THE WINES</Link></button>
                                 </div>
                             </div>
                         </div>
