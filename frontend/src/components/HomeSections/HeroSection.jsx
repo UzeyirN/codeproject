@@ -15,13 +15,14 @@ const HeroSection = () => {
                 <Swiper
                     className='hero-swiper'
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
-                    spaceBetween={50}
+                    spaceBetween={0}
                     slidesPerView={1}
                     pagination={{ clickable: true }}
                     onSwiper={(swiper) => console.log(swiper)}
                     onSlideChange={() => console.log('slide change')}
                 >
                     <SwiperSlide className='slider1'>
+                        {/* <img st src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/original/carousel/15/slide-2-background__86858.jpg?c=2" alt="" /> */}
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-6 col-md-6 col-sm-6 hero-content">

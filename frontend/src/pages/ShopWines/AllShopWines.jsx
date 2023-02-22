@@ -96,14 +96,14 @@ const AllShopWines = () => {
         if (selectedAppelation.includes(appelation)) {
             setSelectedAppelation(selectedAppelation.filter((ap) => ap !== appelation));
         } else {
-            setSelectedAppelation([...selectedAlcohol, appelation]);
+            setSelectedAppelation([...selectedAppelation, appelation]);
         }
     };
 
     const handleSizeChange = (event) => {
         const size = event.target.value;
         if (selectedSize.includes(size)) {
-            setSelectedSize(selectedSize.filter((ap) => ap !== size));
+            setSelectedSize(selectedSize.filter((s) => s !== size));
         } else {
             setSelectedSize([...selectedSize, size]);
         }

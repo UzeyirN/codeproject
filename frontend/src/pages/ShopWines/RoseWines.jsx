@@ -318,7 +318,7 @@ const RoseWines = () => {
                                             </div>
                                         ))
                                     ) : (
-                                        <span>There are no products listed under this category.</span>
+                                        <span className="no-data">There are no products listed under this category.</span>
                                     )
                                 }
                             </div>

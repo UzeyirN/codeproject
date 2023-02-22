@@ -12,7 +12,9 @@ import 'swiper/css/scrollbar';
 import axios from 'axios';
 
 
-const Navbar = ({ data }) => {
+
+const Navbar = () => {
+
 
 
     const ref = useRef();
@@ -104,6 +106,9 @@ const Navbar = ({ data }) => {
             body: JSON.stringify({ id }),
         });
     };
+
+
+
     return (
         <>
             <div>

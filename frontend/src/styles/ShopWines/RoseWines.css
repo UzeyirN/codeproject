@@ -168,6 +168,11 @@
     font-size: 20px;
 }
 
+.no-data{
+    position: relative;
+    bottom: 295px;
+}
+
 
 @media screen and (max-width: 1200px) {
     .card-rose {
@@ -215,6 +220,10 @@
 
     .rose-card__wrapper {
         margin-top: 20px;
+    }
+
+    .no-data{
+        position:static;
     }
 }
 
