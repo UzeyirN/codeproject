@@ -165,7 +165,6 @@ const Navbar = ({ data }) => {
                                 <Link className="nav-link" to='wishlist' aria-expanded="false">
                                     <i class="fa-solid fa-cart-shopping"></i>
                                 </Link>
-                                <span className='cart-number'>0</span>
                                 <div className="nav-link nav-burger" id="mobil" onClick={() => setHideLightbox(s => !s)}>
                                     <i className={`fa-solid ${hideLightbox ? "fa-bars" : "fa-close"}`}></i>
                                 </div>

@@ -318,7 +318,7 @@ const RoseWines = () => {
                                             </div>
                                         ))
                                     ) : (
-                                        <span style={{position:"relative",bottom:"290px"}}>There are no products listed under this category.</span>
+                                        <span>There are no products listed under this category.</span>
                                     )
                                 }
                             </div>
