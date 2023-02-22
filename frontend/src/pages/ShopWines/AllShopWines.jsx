@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import '../../styles/ShopWines/AllShopWines.css'
 import { useState } from 'react';
 import { useEffect } from 'react';
+import Loading from './../../components/Loading';
 
 const AllShopWines = () => {
 
@@ -16,6 +17,7 @@ const AllShopWines = () => {
     const [selectedKinds, setSelectedKinds] = useState([]);
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
+    const [loading, setLoading] = useState(true);
 
     const [hiddenBrand, setHiddenBrand] = useState(true);
     const [hiddenAlcohol, setHiddenAlcohol] = useState(true);
@@ -34,6 +36,7 @@ const AllShopWines = () => {
             .then((response) => response.json())
             .then((data) => setData(data))
             .catch((error) => console.log(error));
+        setLoading(false);
     }, []);
 
     useEffect(() => {
@@ -340,21 +343,24 @@ const AllShopWines = () => {
                         <div className="all-card__wrapper">
                             <div className="row">
 
-                                {filteredData.map((item, index) => (
-                                    <div className="cards col-6">
-                                        <div className="card-all" key={index}>
-                                            <div className="allCard-body">
-                                                <img style={{ height: "100%" }} src={item.image} alt="" />
+                                {
+                                    loading ? <Loading /> :
+
+                                        filteredData.map((item, index) => (
+                                            <div className="cards col-6">
+                                                <div className="card-all" key={index}>
+                                                    <div className="allCard-body">
+                                                        <img style={{ height: "100%" }} src={item.image} alt="" />
+                                                    </div>
+                                                </div>
+                                                <div className="card-content__all">
+                                                    <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{item.brand}</p>
+                                                    <Link className='playfair-font card-link appelation' >{item.appelation}</Link>
+                                                    <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${item.price}.00</div>
+                                                    <button className='lato-font add-button shop-btn'>ADD TO CART</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="card-content__all">
-                                            <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{item.brand}</p>
-                                            <Link className='playfair-font card-link appelation' >{item.appelation}</Link>
-                                            <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${item.price}.00</div>
-                                            <button className='lato-font add-button shop-btn'>ADD TO CART</button>
-                                        </div>
-                                    </div>
-                                ))}
+                                        ))}
                             </div>
                         </div>
                     </div>
