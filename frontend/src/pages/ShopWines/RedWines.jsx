@@ -154,7 +154,7 @@ const RedWines = () => {
     return (
         <>
             <Helmet>
-                <title>red Wines</title>
+                <title>Red Wines</title>
             </Helmet>
 
             <div className='red-wines__top'>

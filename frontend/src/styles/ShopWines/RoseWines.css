@@ -1,0 +1,315 @@
+.rose-wines__top {
+    width: 100%;
+    height: 50vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8%;
+}
+
+.rose-top__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.rose-nav {
+    margin-top: 2%;
+}
+
+.rose-content__wrapper {
+    margin: 100px auto;
+}
+
+.rose-card__wrapper {
+    padding: 0 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 65%;
+}
+
+.card-rose {
+    position: relative;
+    width: 380px;
+    height: 450px;
+    overflow: hidden;
+    object-fit: cover;
+    background: #F2F2F2;
+    border: none;
+    margin: 0 auto;
+}
+
+.roseCard-body {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card-content__rose {
+    position: relative;
+    width: 380px;
+    overflow: hidden;
+    object-fit: cover;
+    text-align: center;
+    padding: 15px 0;
+    background-color: #fff;
+    background: #F2F2F2;
+    margin: 20px auto;
+}
+
+.rose-filter__wrapper {
+    width: 30%;
+    height: 50%;
+    border: 2px solid #e6e6e6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.cards {
+    margin-bottom: 50px;
+}
+
+.shop-wines {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.border-line {
+    border: 3px solid #e6e6e6;
+    width: 100%;
+    margin: 10px auto 25px auto;
+    border-radius: 5px;
+}
+
+.shop-wines__links {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.shop-link {
+    text-decoration: none;
+    color: RGB(176, 151, 109);
+}
+
+.shop-link:hover {
+    color: RGB(176, 151, 109);
+}
+
+.filter-box {
+    border-bottom: 2px solid #e6e6e6;
+    width: 100%;
+    padding: 40px;
+}
+
+.brand {
+    margin-top: 50px;
+}
+
+.item-h5 {
+    cursor: pointer;
+}
+
+.filter-item {
+    margin-bottom: 30px;
+}
+
+.filter-reset__btn {
+    width: 100%;
+    border: 2px solid black;
+    background: none;
+    padding: 15px 0;
+    font-weight: 600;
+}
+
+.filter-reset__btn:hover {
+    border: 2px solid RGB(176, 151, 109);
+    color: RGB(176, 151, 109);
+    transition: white 0.3s;
+}
+
+.price-input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #e6e6e6;
+}
+
+.filter-input[type=checkbox] {
+    margin-right: 5px;
+    border-radius: 0;
+}
+
+.plus {
+    color: black;
+}
+
+.minus {
+    color: RGB(176, 151, 109);
+}
+
+.appelation {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .card-rose {
+        width: 300px;
+        height: 450px;
+    }
+
+    .card-content__rose {
+        width: 300px;
+    }
+
+    .rose-content__wrapper {
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .rose-content__wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rose-filter__wrapper {
+        width: 100%;
+    }
+
+    .rose-card__wrapper {
+        width: 100%;
+    }
+
+    .filter-box {
+        padding: 20px;
+    }
+
+    .filter-item {
+        border-top: 1px solid #e6e6e6;
+        width: 100%;
+        margin: 0;
+        padding: 10px 0;
+    }
+
+    .shop-wines {
+        border: none;
+    }
+
+    .rose-card__wrapper {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .rose-top__wrapper {
+        padding-top: 5%;
+    }
+
+    .card-rose {
+        width: 250px;
+        height: 420px;
+    }
+
+    .card-content__rose {
+        width: 250px;
+    }
+
+    .rose-content__wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filter-wrapper {
+        width: 100%;
+    }
+
+    .appelation {
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .rose-top {
+        padding-top: 12%;
+    }
+}
+
+@media screen and (max-width: 567px) {
+
+    .rose-nav {
+        display: none;
+    }
+
+    .rose-top__wrapper {
+        padding-top: 12%;
+    }
+
+    .cards {
+        width: 100%;
+    }
+
+    .card-rose {
+        width: 380px;
+        height: 450px;
+    }
+
+    .card-content__rose {
+        width: 380px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    .rose-top {
+        padding-top: 22%;
+    }
+
+    .card-rose {
+        width: 300px;
+        height: 400px;
+    }
+
+    .card-content__rose {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+
+    .rose-top__wrapper {
+        padding-top: 30%;
+    }
+
+    .rose-top__article{
+        display: none;
+    }
+
+    .card-rose {
+        width: 275px;
+        height: 350px;
+    }
+
+    .card-content__rose {
+        width: 275px;
+    }
+}
