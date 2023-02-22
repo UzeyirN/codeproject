@@ -210,7 +210,7 @@ const Wishlist = () => {
                         <span className="lato-font wish-total__p">$ {price}</span>
                     </div>
                     <button className="payment-btn lato-font">
-                        SALAM
+                        PAYMENT
                     </button>
                 </div>
             </div>

@@ -1,0 +1,167 @@
+.all-top {
+    width: 100%;
+    height: 40vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 9%;
+}
+
+.all-top__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+
+.all-content__wrapper {
+    margin: 100px auto;
+}
+
+.all-card__wrapper {
+    padding: 0 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+
+.card-all {
+    position: relative;
+    width: 380px;
+    height: 450px;
+    overflow: hidden;
+    object-fit: cover;
+    background: #F2F2F2;
+    border: none;
+    margin: 0 auto;
+
+}
+
+.allCard-body {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card-content__all {
+    position: relative;
+    width: 380px;
+    overflow: hidden;
+    object-fit: cover;
+    text-align: center;
+    padding: 15px 0;
+    background-color: #fff;
+    background: #F2F2F2;
+    margin: 20px auto;
+}
+
+.all-filter__wrapper {
+    width: 30%;
+    height: 50%;
+    border: 2px solid #e6e6e6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.all-card__wrapper {
+    width: 65%;
+}
+
+.cards {
+    margin-bottom: 50px;
+}
+
+.shop-wines {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.border-line {
+    border: 3px solid #e6e6e6;
+    width: 100%;
+    margin: 10px auto 25px auto;
+    border-radius: 5px;
+}
+
+.shop-wines__links {
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.shop-link {
+    text-decoration: none;
+    color: RGB(176, 151, 109);
+}
+
+.shop-link:hover{
+    color: RGB(176, 151, 109);
+}
+
+.filter-box{
+    border-bottom: 2px solid #e6e6e6;
+    width: 100%;
+    padding: 40px;
+}
+.brand{
+    margin-top: 50px;
+}
+
+.brand-h5{
+    cursor: pointer;
+}
+
+
+
+
+
+@media screen and (max-width: 700px) {
+
+
+    .all-top {
+        padding-top: 12%;
+
+    }
+}
+
+@media screen and (max-width: 567px) {
+
+    .all-nav {
+        display: none;
+    }
+
+    .all-top {
+        padding-top: 10%;
+
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+
+    .all-top {
+        padding-top: 18%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+
+    .all-top {
+        padding-top: 35%;
+    }
+}

@@ -27,6 +27,7 @@ import LatestAdmin from '../pages/Admin/AdminPages/LatestAdmin';
 import Wishlist from '../pages/Wishlist/Wishlist';
 import Admin from '../pages/Admin/AdminPages/Admin';
 import AddToCart from './../pages/AddToCart';
+import ShopWinesRoot from '../pages/ShopWines/ShopWinesRoot';
 
 
 
@@ -40,8 +41,27 @@ const ROUTES = [
                 element: <Home />
             },
             {
-                path: "allshopwines",
-                element: <AllShopWines />
+                path: "allshopwines/",
+                element: <ShopWinesRoot />,
+                children: [
+                    {
+                        path: "",
+                        element: <AllShopWines />
+                    },
+                    {
+                        path: "redwines",
+                        element: <RedWines />
+                    },
+                    {
+                        path: "whitewines",
+                        element: <WhiteWines />
+                    },
+                    {
+                        path: "rosewines",
+                        element: <RoseWines />
+                    },
+
+                ]
             },
             {
                 path: "redwines",

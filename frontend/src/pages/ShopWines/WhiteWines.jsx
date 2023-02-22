@@ -25,8 +25,6 @@ const WhiteWines = () => {
                             <span style={{ color: "RGB(176, 151, 109)" }}> / Shop Wines</span> / White Wines</p>
                     </span>
                 </div>
-
-
             </div>
 
             <div className="white-wrapper">
