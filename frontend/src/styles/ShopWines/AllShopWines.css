@@ -25,6 +25,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 65%;
+    /* border: 1px solid red; */
+
 
 
 }
@@ -75,9 +78,6 @@
     align-items: center;
 }
 
-.all-card__wrapper {
-    width: 65%;
-}
 
 .cards {
     margin-bottom: 50px;
@@ -109,25 +109,145 @@
     color: RGB(176, 151, 109);
 }
 
-.shop-link:hover{
+.shop-link:hover {
     color: RGB(176, 151, 109);
 }
 
-.filter-box{
+.filter-box {
     border-bottom: 2px solid #e6e6e6;
     width: 100%;
     padding: 40px;
 }
-.brand{
+
+.brand {
     margin-top: 50px;
 }
 
-.brand-h5{
+.item-h5 {
     cursor: pointer;
 }
 
+.filter-item {
+    margin-bottom: 30px;
+}
+
+.filter-reset__btn {
+    width: 100%;
+    border: 2px solid black;
+    background: none;
+    padding: 15px 0;
+    font-weight: 600;
+}
+
+.filter-reset__btn:hover {
+    border: 2px solid RGB(176, 151, 109);
+    color: RGB(176, 151, 109);
+    transition: all 0.3s;
+}
+
+.price-input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #e6e6e6;
+}
+
+.filter-input[type=checkbox] {
+    margin-right: 5px;
+    border-radius: 0;
+}
+
+.plus {
+    color: black;
+}
+
+.minus {
+    color: RGB(176, 151, 109);
+}
+
+.appelation {
+
+    margin-bottom: 20px;
+    font-size: 20px;
+}
 
 
+@media screen and (max-width: 1200px) {
+    .card-all {
+        width: 300px;
+        height: 450px;
+    }
+
+    .card-content__all {
+        width: 300px;
+    }
+
+    .all-content__wrapper {
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .all-content__wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .all-filter__wrapper {
+        width: 100%;
+    }
+
+    .all-card__wrapper {
+        width: 100%;
+    }
+
+    .filter-box {
+        padding: 20px;
+    }
+
+    .filter-item {
+        border-top: 1px solid #e6e6e6;
+        width: 100%;
+        margin: 0;
+        padding: 10px 0;
+    }
+
+    .shop-wines {
+        border: none;
+    }
+
+    .all-card__wrapper {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card-all {
+        width: 250px;
+        height: 420px;
+    }
+
+    .card-content__all {
+        width: 250px;
+    }
+
+    .all-content__wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filter-wrapper {
+        width: 100%;
+    }
+
+    .appelation {
+
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+
+}
 
 
 @media screen and (max-width: 700px) {
@@ -147,9 +267,20 @@
 
     .all-top {
         padding-top: 10%;
-
     }
 
+    .cards {
+        width: 100%;
+    }
+
+    .card-all {
+        width: 380px;
+        height: 450px;
+    }
+
+    .card-content__all {
+        width: 380px;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -157,11 +288,29 @@
     .all-top {
         padding-top: 18%;
     }
+
+    .card-all {
+        width: 300px;
+        height: 400px;
+    }
+
+    .card-content__all {
+        width: 300px;
+    }
 }
 
 @media screen and (max-width: 350px) {
 
     .all-top {
-        padding-top: 35%;
+        padding-top: 40%;
+    }
+
+    .card-all {
+        width: 275px;
+        height: 350px;
+    }
+
+    .card-content__all {
+        width: 275px;
     }
 }

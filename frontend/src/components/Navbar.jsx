@@ -166,16 +166,6 @@ const Navbar = ({ data }) => {
                                     <i class="fa-solid fa-cart-shopping"></i>
                                 </Link>
                                 <span className='cart-number'>0</span>
-
-                                {/* <Link className="nav-link" to='addtocart' s aria-expanded="false">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </Link>
-                                <span className='cart-number'>0</span> */}
-
-                                {/* <div className="dropdown-menu nav-shopcart" aria-labelledby="navbarDropdown">
-                                    {
-                                        data ? data :   "Your cart is empty"}
-                                </div> */}
                                 <div className="nav-link nav-burger" id="mobil" onClick={() => setHideLightbox(s => !s)}>
                                     <i className={`fa-solid ${hideLightbox ? "fa-bars" : "fa-close"}`}></i>
                                 </div>
@@ -184,9 +174,6 @@ const Navbar = ({ data }) => {
                     </div>
                     <div className={`lightbox ${hideLightbox ? "hide-lightbox" : "show-lightbox"}`}>
                         <div className="container">
-                            {/* <div className='burger-search py-5'>
-                                <input className='burger-input lato-font' type="text" placeholder='SEARCH THE STORE' />
-                            </div> */}
                             <div className='burger-pages'>
                                 <ul className='nav-burger_ul'>
                                     <li className='nav-item burger-item' onClick={() => setHideLightbox(true)}>
@@ -237,21 +224,6 @@ const Navbar = ({ data }) => {
                                     </li>
                                 </ul>
                             </div>
-                            {/* <div className='burger-user'>
-                                <ul className='nav-burger_ul'>
-                                    <Link className="nav-link lato-font" to='' aria-expanded="false" onClick={() => setHideLightbox(true)}>
-                                        GIFT CERTIFICATES
-                                    </Link>
-
-                                    <Link className="nav-link lato-font" to='' aria-expanded="false" onClick={() => setHideLightbox(true)}>
-                                        LOGIN
-                                    </Link>
-
-                                    <Link className="nav-link lato-font" to='' aria-expanded="false" onClick={() => setHideLightbox(true)}>
-                                        SIGN UP
-                                    </Link>
-                                </ul>
-                            </div> */}
                         </div>
                     </div>
                     <div ref={ref} className={`${hideSearchbox ? "hide-searchbox" : `${y ? "show-searchboxfull" : "show-searchbox"}`}`}  >
@@ -293,9 +265,6 @@ const Navbar = ({ data }) => {
                                                                 <div hideSearchbox className="search-card__f">
                                                                     <div className="search-card__body">
                                                                         <img style={{ height: "100%" }} src={image} alt="" />
-                                                                        {/* <button className='feature-fav__btn'>
-                                                                            <i class="fa-solid fa-heart"></i>
-                                                                        </button> */}
                                                                     </div>
                                                                 </div>
                                                                 <div className="searchCard-content__f">

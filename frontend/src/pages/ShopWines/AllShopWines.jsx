@@ -1,276 +1,3 @@
-// import React from "react";
-// import { Helmet } from 'react-helmet'
-
-// const AllShopWines = () => {
-//     return (
-//         <>
-//             <Helmet>
-//                 <title>All Shop Wines</title>
-//             </Helmet>
-//             <h1 style={{marginTop:"500px"}}>All Shop Wines</h1>
-//         </>
-//     )
-// }
-
-// export default AllShopWines
-
-
-
-// import React, { useState, useEffect } from 'react';
-
-// function FilterableData() {
-//     const [data, setData] = useState([]);
-//     const [filteredData, setFilteredData] = useState([]);
-//     const [selectedBrand, setSelectedBrand] = useState(null);
-//     const [selectedKind, setSelectedKind] = useState(null);
-
-//     const [minPrice, setMinPrice] = useState('');
-//     const [maxPrice, setMaxPrice] = useState('');
-
-//     useEffect(() => {
-//         fetch('http://localhost:3070/featured')
-//             .then((response) => response.json())
-//             .then((data) => setData(data))
-//             .catch((error) => console.log(error));
-//     }, []);
-
-//     useEffect(() => {
-//         let filtered = [...data];
-
-//         if (selectedBrand) {
-//             filtered = filtered.filter((item) => item.brand === selectedBrand);
-//         }
-
-//         if (selectedKind) {
-//             filtered = filtered.filter((item) => item.kind === selectedKind);
-//         }
-
-//         if (minPrice !== '') {
-//             filtered = filtered.filter((item) => item.price >= minPrice);
-//         }
-
-//         if (maxPrice !== '') {
-//             filtered = filtered.filter((item) => item.price <= maxPrice);
-//         }
-
-//         setFilteredData(filtered);
-//     }, [data, selectedBrand, selectedKind, minPrice, maxPrice]);
-
-//     const handleBrandChange = (event) => {
-//         const brand = event.target.value === 'all' ? null : event.target.value;
-//         setSelectedBrand(brand);
-//     };
-
-//     const handleKindChange = (event) => {
-//         const kind = event.target.value === 'all' ? null : event.target.value;
-//         setSelectedKind(kind);
-//     };
-
-//     const handleMinPriceChange = (event) => {
-//         setMinPrice(event.target.value);
-//     };
-
-//     const handleMaxPriceChange = (event) => {
-//         setMaxPrice(event.target.value);
-//     };
-
-//     const handleReset = () => {
-//         setSelectedBrand('');
-//         setSelectedKind('');
-//         setMinPrice('');
-//         setMaxPrice('');
-//         setFilteredData(data);
-//     };
-
-//     const brands = [...new Set(data.map((item) => item.brand))]; // get unique brands
-//     const kinds = [...new Set(data.map((item) => item.kind))]; // get unique kinds
-
-//     return (
-//         <div style={{ margin: "200px auto" }}>
-//             <h2>Filterable Data:</h2>
-//             <div>
-//                 <label>
-//                     Brand:
-//                     <select value={selectedBrand || 'all'} onChange={handleBrandChange}>
-//                         <option value="all">All</option>
-//                         {brands.map((brand, index) => (
-//                             <option key={index} value={brand}>
-//                                 {brand}
-//                             </option>
-//                         ))}
-//                     </select>
-//                 </label>
-//                 <label>
-//                     Kind:
-//                     <select value={selectedKind || 'all'} onChange={handleKindChange}>
-//                         <option value="all">All</option>
-//                         {kinds.map((kind, index) => (
-//                             <option key={index} value={kind}>
-//                                 {kind}
-//                             </option>
-//                         ))}
-//                     </select>
-//                 </label>
-//                 <label>
-//                     Minimum Price:
-//                     <input type="number" value={minPrice} onChange={handleMinPriceChange} />
-//                 </label>
-//                 <label>
-//                     Maximum Price:
-//                     <input type="number" value={maxPrice} onChange={handleMaxPriceChange} />
-//                 </label>
-//                 <button onClick={handleReset}>Reset</button>
-//             </div>
-//             <ul>
-//                 {filteredData.map((item, index) => (
-//                     <li key={index}>
-//                         {item.brand}, {item.kind}, {item.name},{item.price}
-//                     </li>
-//                 ))}
-//             </ul>
-//         </div>
-//     );
-// }
-
-// export default FilterableData;
-
-
-
-
-//! MAIN 
-
-// import React, { useState, useEffect } from 'react';
-
-// function FilterableData() {
-//     const [data, setData] = useState([]);
-//     const [filteredData, setFilteredData] = useState([]);
-//     const [selectedBrands, setSelectedBrands] = useState([]);
-//     const [selectedKinds, setSelectedKinds] = useState([]);
-//     const [minPrice, setMinPrice] = useState('');
-//     const [maxPrice, setMaxPrice] = useState('');
-
-//     useEffect(() => {
-//         fetch('http://localhost:3070/featured')
-//             .then((response) => response.json())
-//             .then((data) => setData(data))
-//             .catch((error) => console.log(error));
-//     }, []);
-
-//     useEffect(() => {
-//         let filtered = [...data];
-
-//         if (selectedBrands.length > 0) {
-//             filtered = filtered.filter((item) => selectedBrands.includes(item.brand));
-//         }
-
-//         if (selectedKinds.length > 0) {
-//             filtered = filtered.filter((item) => selectedKinds.includes(item.kind));
-//         }
-
-//         if (minPrice !== '') {
-//             filtered = filtered.filter((item) => item.price >= minPrice);
-//         }
-
-//         if (maxPrice !== '') {
-//             filtered = filtered.filter((item) => item.price <= maxPrice);
-//         }
-
-//         setFilteredData(filtered);
-//     }, [data, selectedBrands, selectedKinds, minPrice, maxPrice]);
-
-//     const handleBrandChange = (event) => {
-//         const brand = event.target.value;
-//         if (selectedBrands.includes(brand)) {
-//             setSelectedBrands(selectedBrands.filter((b) => b !== brand));
-//         } else {
-//             setSelectedBrands([...selectedBrands, brand]);
-//         }
-//     };
-
-//     const handleKindChange = (event) => {
-//         const kind = event.target.value;
-//         if (selectedKinds.includes(kind)) {
-//             setSelectedKinds(selectedKinds.filter((k) => k !== kind));
-//         } else {
-//             setSelectedKinds([...selectedKinds, kind]);
-//         }
-//     };
-
-//     const handleMinPriceChange = (event) => {
-//         setMinPrice(event.target.value);
-//     };
-
-//     const handleMaxPriceChange = (event) => {
-//         setMaxPrice(event.target.value);
-//     };
-
-//     const handleReset = () => {
-//         setSelectedBrands([]);
-//         setSelectedKinds([]);
-//         setMinPrice('');
-//         setMaxPrice('');
-//         setFilteredData(data);
-//     };
-
-//     const brands = [...new Set(data.map((item) => item.brand))]; // get unique brands
-//     const kinds = [...new Set(data.map((item) => item.kind))]; // get unique kinds
-
-//     return (
-//         <div style={{ margin: "200px auto" }}>
-//             <h2>Filterable Data:</h2>
-//             <div>
-//                 <label>Brand:</label>
-//                 <br />
-//                 {brands.map((brand, index) => (
-//                     <label key={index}>
-//                         <input
-//                             type="checkbox"
-//                             value={brand}
-//                             checked={selectedBrands.includes(brand)}
-//                             onChange={handleBrandChange}
-//                         />
-//                         {brand}
-//                     </label>
-//                 ))}
-//                 <br />
-//                 <label>Kind:</label>
-//                 <br />
-//                 {kinds.map((kind, index) => (
-//                     <label key={index}>
-//                         <input
-//                             type="checkbox"
-//                             value={kind}
-//                             checked={selectedKinds.includes(kind)}
-//                             onChange={handleKindChange}
-//                         />
-//                         {kind}
-//                     </label>
-//                 ))}
-//                 <br />
-//                 <label>
-//                     Minimum Price:
-//                     <input type="number" value={minPrice} onChange={handleMinPriceChange} />
-//                 </label>
-//                 <label>
-//                     Maximum Price:
-//                     <input type="number" value={maxPrice} onChange={handleMaxPriceChange} />
-//                 </label>
-//                 <button onClick={handleReset}>Reset</button>
-//             </div>
-//             <ul>                 {filteredData.map((item, index) => (
-//                 <li key={index}>
-//                     {item.brand}, {item.kind}, {item.name},{item.price}
-//                 </li>
-//             ))}
-//             </ul>
-//         </div>
-//     );
-// }
-
-// export default FilterableData;
-
-
-
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
@@ -279,12 +6,6 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 const AllShopWines = () => {
-
-    // const [toggle, setToggle] = useState(false)
-
-
-
-
 
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
@@ -301,7 +22,12 @@ const AllShopWines = () => {
     const [hiddenAppelation, setHiddenAppelation] = useState(true);
     const [hiddenSize, setHiddenSize] = useState(true);
     const [hiddenKind, setHiddenKind] = useState(true);
-    // const [hiddenPrice, setHiddenPrice] = useState(true);
+
+    const [brandPlus, setBrandPlus] = useState(true);
+    const [alcoholPlus, setAlcoholPlus] = useState(true);
+    const [appelationPlus, setAppelationPlus] = useState(true);
+    const [sizePlus, setSizePlus] = useState(true);
+    const [kindPlus, setKindPlus] = useState(true);
 
     useEffect(() => {
         fetch('http://localhost:3070/featured')
@@ -342,7 +68,7 @@ const AllShopWines = () => {
         }
 
         setFilteredData(filtered);
-    }, [data, selectedBrands, selectedAlcohol, selectedAppelation, selectedKinds, minPrice, maxPrice]);
+    }, [data, selectedBrands, selectedAlcohol, selectedAppelation, selectedSize, selectedKinds, minPrice, maxPrice]);
 
     const handleBrandChange = (event) => {
         const brand = event.target.value;
@@ -410,22 +136,27 @@ const AllShopWines = () => {
 
     const brandToggle = () => {
         setHiddenBrand(!hiddenBrand);
+        setBrandPlus(!brandPlus);
     };
 
     const alcoholToggle = () => {
         setHiddenAlcohol(!hiddenAlcohol);
+        setAlcoholPlus(!alcoholPlus)
     };
 
     const appelationToggle = () => {
         setHiddenAppelation(!hiddenAppelation);
+        setAppelationPlus(!appelationPlus);
     };
 
     const sizeToggle = () => {
         setHiddenSize(!hiddenSize);
+        setSizePlus(!sizePlus);
     };
 
     const kindToggle = () => {
         setHiddenKind(!hiddenKind);
+        setKindPlus(!kindPlus);
     };
 
     const brands = [...new Set(data.map((item) => item.brand))]; // get unique brands
@@ -433,8 +164,6 @@ const AllShopWines = () => {
     const appelation = [...new Set(data.map((item) => item.appelation))]; // get unique appelation
     const size = [...new Set(data.map((item) => item.size))]; // get unique size
     const kind = [...new Set(data.map((item) => item.kind))]; // get unique kinds
-
-
 
 
     return (
@@ -470,19 +199,22 @@ const AllShopWines = () => {
                                 <div className="refine-by">
                                     <h5 className='playfair-font'>Refine by</h5>
                                     <div className='border-line'></div>
-                                    <div className="brand" >
-                                        <h5 className='playfair-font brand-h5' onClick={brandToggle}>Brand </h5>
+                                    <div className="brand filter-item" >
+                                        <h5 className={`playfair-font item-h5 ${brandPlus ? 'plus' : 'minus'}`} onClick={brandToggle}>{brandPlus ? '+' : '-'}
+                                            {' '} Brand </h5>
                                         {
                                             hiddenBrand ? null : (
                                                 <ul>
                                                     {brands.map((brand, index) => (
-                                                        <li>
+                                                        <li className='lato-font'>
                                                             <label key={index}>
                                                                 <input
                                                                     type="checkbox"
                                                                     value={brand}
                                                                     checked={selectedBrands.includes(brand)}
                                                                     onChange={handleBrandChange}
+                                                                    className='filter-input'
+
                                                                 />
                                                                 {brand}
                                                             </label>
@@ -494,18 +226,21 @@ const AllShopWines = () => {
 
                                     </div>
 
-                                    <div className="alcohol" >
-                                        <h5 className='playfair-font brand-h5' onClick={alcoholToggle}>Alcohol</h5>
+                                    <div className="alcohol filter-item" >
+                                        <h5 className={`playfair-font item-h5 ${alcoholPlus ? 'plus' : 'minus'}`} onClick={alcoholToggle}>{alcoholPlus ? '+' : '-'}
+                                            {' '} Alcohol</h5>
                                         {hiddenAlcohol ? null : (
                                             <ul>
                                                 {alcohol.map((alcohol, index) => (
-                                                    <li>
+                                                    <li className='lato-font'>
                                                         <label key={index}>
                                                             <input
                                                                 type="checkbox"
                                                                 value={alcohol}
                                                                 checked={selectedAlcohol.includes(alcohol)}
                                                                 onChange={handleAlcoholChange}
+                                                                className='filter-input'
+
                                                             />
                                                             {alcohol}
                                                         </label>
@@ -517,41 +252,44 @@ const AllShopWines = () => {
 
                                     </div>
 
-                                    <div className="appelation" >
-                                        <h5 className='playfair-font brand-h5' onClick={appelationToggle}>Appelation</h5>
+                                    <div className="appelation filter-item" >
+                                        <h5 className={`playfair-font item-h5 ${appelationPlus ? 'plus' : 'minus'}`} onClick={appelationToggle}>{appelationPlus ? '+' : '-'}
+                                            {' '} Appelation</h5>
                                         {hiddenAppelation ? null : (
                                             <ul>
                                                 {appelation.map((appelation, index) => (
-                                                    <li>
+                                                    <li className='lato-font'>
                                                         <label key={index}>
                                                             <input
                                                                 type="checkbox"
                                                                 value={appelation}
                                                                 checked={selectedAppelation.includes(appelation)}
                                                                 onChange={handleAppelationChange}
+                                                                className='filter-input'
                                                             />
                                                             {appelation}
                                                         </label>
                                                     </li>
                                                 ))}
                                             </ul>
-
                                         )}
 
                                     </div>
 
-                                    <div className="size" >
-                                        <h5 className='playfair-font brand-h5' onClick={sizeToggle}>Size</h5>
+                                    <div className="size  filter-item" >
+                                        <h5 className={`playfair-font item-h5 ${sizePlus ? 'plus' : 'minus'}`} onClick={sizeToggle}>{sizePlus ? '+' : '-'}
+                                            {' '} Size</h5>
                                         {hiddenSize ? null : (
                                             <ul>
                                                 {size.map((size, index) => (
-                                                    <li>
+                                                    <li className='lato-font'>
                                                         <label key={index}>
                                                             <input
                                                                 type="checkbox"
                                                                 value={size}
                                                                 checked={selectedSize.includes(size)}
                                                                 onChange={handleSizeChange}
+                                                                className='filter-input'
                                                             />
                                                             {size}
                                                         </label>
@@ -563,18 +301,21 @@ const AllShopWines = () => {
 
                                     </div>
 
-                                    <div className="kind" >
-                                        <h5 className='playfair-font brand-h5' onClick={kindToggle}>Kind</h5>
+                                    <div className="kind  filter-item" >
+                                        <h5 className={`playfair-font item-h5 ${kindPlus ? 'plus' : 'minus'}`} onClick={kindToggle}>{kindPlus ? '+' : '-'}
+                                            {' '} Kind</h5>
                                         {hiddenKind ? null : (
                                             <ul>
                                                 {kind.map((kind, index) => (
-                                                    <li>
+                                                    <li className='lato-font'>
                                                         <label key={index}>
                                                             <input
                                                                 type="checkbox"
                                                                 value={kind}
                                                                 checked={selectedKinds.includes(kind)}
                                                                 onChange={handleKindChange}
+                                                                className='filter-input'
+
                                                             />
                                                             {kind}
                                                         </label>
@@ -586,14 +327,13 @@ const AllShopWines = () => {
 
                                     </div>
 
-                                    <div>
-
-                                        <h5 className='playfair-font brand-h5'>Price</h5>
-                                        <input placeholder='min' type="number" value={minPrice} onChange={handleMinPriceChange} />
-                                        <input placeholder='max' type="number" value={maxPrice} onChange={handleMaxPriceChange} />
+                                    <div className='filter-item'>
+                                        <h5 className='playfair-font item-h5'>Price</h5>
+                                        <input placeholder='MIN' type="number" value={minPrice} onChange={handleMinPriceChange} className='price-input' />
+                                        <input placeholder='MAX' type="number" value={maxPrice} onChange={handleMaxPriceChange} className='price-input' />
                                     </div>
 
-                                    <button onClick={handleReset}>Reset</button>
+                                    <button className='filter-reset__btn lato-font' onClick={handleReset}>UPDATE</button>
                                 </div>
                             </div>
                         </div>
@@ -609,9 +349,9 @@ const AllShopWines = () => {
                                         </div>
                                         <div className="card-content__all">
                                             <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{item.brand}</p>
-                                            <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{item.appelation}</Link>
+                                            <Link className='playfair-font card-link appelation' >{item.appelation}</Link>
                                             <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${item.price}.00</div>
-                                            <button className='lato-font add-button'>ADD TO CART</button>
+                                            <button className='lato-font add-button shop-btn'>ADD TO CART</button>
                                         </div>
                                     </div>
                                 ))}
