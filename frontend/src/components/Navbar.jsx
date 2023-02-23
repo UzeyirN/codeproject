@@ -56,23 +56,44 @@ const Navbar = () => {
         setLoading(false);
     }
 
-    const searchData = (e) => {
-        setValue(e.target.value)
+    // const searchData = (e) => {
+    //     setValue(e.target.value)
 
-        let count = 0;
-        products?.filter((data) => {
-            if (data.appelation.toLowerCase().includes(e.target.value.toLowerCase())
-            ) {
-                count++;
-            }
-        })
-        if (count === 0) {
-            sety(false)
+    //     let count = 0;
+    //     products?.filter((data) => {
+    //         if (data.appelation.toLowerCase().includes(e.target.value.toLowerCase())
+    //         ) {
+    //             count++;
+    //         }
+    //     })
+    //     if (count === 0) {
+    //         sety(false)
+    //     }
+    //     else {
+    //         sety(true)
+    //     }
+    // }
+
+
+    // const searchData = (e) => {
+    //     setValue(e.target.value)
+    //     let count = 0;
+    //     products?.filter((data) => data.appelation.toLowerCase().includes(e.target.value.toLowerCase() ? count++ : null) || count === 0 ? sety(false) : sety(true));
+    // }
+
+    const searchData = (e) => {
+        setValue(e.target.value);
+
+        const filteredProducts = products?.filter((data) => {
+            return data.appelation.toLowerCase().includes(e.target.value.toLowerCase());
+        });
+
+        if (filteredProducts.length === 0) {
+            sety(false);
+        } else {
+            sety(true);
         }
-        else {
-            sety(true)
-        }
-    }
+    };
 
     useEffect(() => {
         getData()
