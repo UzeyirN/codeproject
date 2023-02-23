@@ -4,33 +4,48 @@
     margin-top: 5%;
 }
 
-.hero-link{
+.hero-link {
     text-decoration: none;
     color: white;
 }
 
-.hero-link:hover{
+.hero-link:hover {
     color: white;
 }
 
 .slider1 {
     width: 100%;
-    height: 100vh;
-    background: url(https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/original/carousel/15/slide-2-background__86858.jpg?c=2);
+    /* height: 100vh; */
+    /* background: url(https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/original/carousel/15/slide-2-background__86858.jpg?c=2);
+    background-repeat: no-repeat;
+    background-size: cover; */
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero-text {
+    position: absolute;
+    width: 40%;
+    top: 30%;
+    left: 8%;
+    transform: translate(-30%, 0, 0, -8%);
+}
+
+
+
+.slider2 {
+    width: 100%;
+    /* height: 100vh; */
+    background: url(https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/original/carousel/9/slide-1-background.jpg?c=2);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     align-items: center;
 }
 
-.slider2 {
-    width: 100%;
-    height: 100vh;
-    background: url(https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/original/carousel/9/slide-1-background.jpg?c=2);
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
+.dropdown-toggle::after {
+    margin-left: 0.55em;
 }
 
 .herosec-btn {
@@ -66,6 +81,28 @@
     background-size: cover;
 }
 
+@media screen and (max-width: 1200px) {
+
+    .hero-text {
+        position: absolute;
+        top: 25%;
+        left: 12%;
+        transform: translate(-25%, 0, 0, -12%);
+    }
+}
+
+@media screen and (max-width: 1137px) {
+
+    .hero-swiper {
+        height: 100vh;
+    }
+
+    .hero-text {
+        position: absolute;
+        top: 25%;
+    }
+}
+
 @media screen and (max-width: 992px) {
     .herosec-p {
         font-size: 12px;
@@ -73,6 +110,14 @@
 
     .herosec-h1 {
         font-size: 45px;
+    }
+
+    .hero-text {
+        position: absolute;
+        top: 35%;
+        left: 12%;
+        transform: translate(-30%, 0, 0, -8%);
+        width: 60%;
     }
 
     .herosec-btn {
@@ -84,8 +129,6 @@
         border: none;
         letter-spacing: 2px;
     }
-
-    
 }
 
 @media screen and (max-width: 768px) {
@@ -100,8 +143,6 @@
     .herosec-btn {
         margin-top: 20px;
     }
-
-   
 }
 
 @media screen and (max-width: 640px) {
@@ -157,7 +198,15 @@
         letter-spacing: 2px;
     }
 
+    .hero-text{
+        width: 60%;
+    }
+}
 
+@media screen and (max-width: 461px) {
+    .hero-text{
+        width: 60%;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -177,5 +226,17 @@
         font-weight: 400;
         border: none;
         letter-spacing: 2px;
+    }
+
+    .hero-text{
+        top: 40%;
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .hero-text{
+        top: 45%;
+        width: 60%;
     }
 }

@@ -11,10 +11,15 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import axios from 'axios';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
 const Navbar = () => {
+
+
 
 
 
@@ -120,12 +125,16 @@ const Navbar = () => {
             },
             body: JSON.stringify({ id }),
         });
+        toast.success('Added to cart!');
+
     };
 
 
 
     return (
         <>
+            <ToastContainer />
+
             <div>
                 <nav className={`navbar-wrapper ${isNavbarSmall ? "navbar-large" : "navbar-small"}`}>
                     <div className="container">
