@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import '../../styles/LoginPages/CreateAcc.css'
-import axios from 'axios'
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -82,10 +81,10 @@ const CreateAcc = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevState)=>{
+    setFormData((prevState) => {
       return {
         ...prevState,
-        [name]:value
+        [name]: value
       }
     })
   }
@@ -196,29 +195,23 @@ const CreateAcc = () => {
               {/* sixth input wrapper */}
 
               <div className='input-wrapper'>
-
-                {/* <div style={{ width: "100%" }}>
-                  <select name="Azerbaijan" id="createacc-select">
-                    <option value="Romania">Romania</option>
-                    <option value="Azerbaijan">Azerbaijan</option>
-                    <option value="Turkey">Turkey</option>
-                    <option value="Georgia">Georgia</option>
-                  </select>
-                </div> */}
-
-                <div style={{ width: "49%" }}>
+                <div style={{ width: "100%" }}>
                   <input type="text" placeholder='State/Province' name='state' value={formData.state} onChange={handleChange} className=' createacc-input' />
                 </div>
-              </div>
-
-              {/* seventh input wrapper */}
-
-              <div className='input-wrapper'>
                 <div style={{ width: "100%" }}>
                   <input {...register("zip_code")} type="number" required placeholder='Zip/Postcode' name='zip_code' value={formData.zip_code} onChange={handleChange} className=' createacc-input zip-input' />
                   <p className='createacc-error__message'>{errors.zip?.message}</p>
                 </div>
               </div>
+
+              {/* seventh input wrapper */}
+
+              {/* <div className='input-wrapper'>
+                <div style={{ width: "100%" }}>
+                  <input {...register("zip_code")} type="number" required placeholder='Zip/Postcode' name='zip_code' value={formData.zip_code} onChange={handleChange} className=' createacc-input zip-input' />
+                  <p className='createacc-error__message'>{errors.zip?.message}</p>
+                </div>
+              </div> */}
 
               <button className='createacc-btn lato-font'>SUBMIT FORM</button>
             </form>

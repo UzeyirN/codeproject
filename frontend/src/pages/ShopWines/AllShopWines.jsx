@@ -210,6 +210,7 @@ const AllShopWines = () => {
                                     <div className='shop-wines__links'>
                                         <Link to='redwines' className='shop-link'>Red Wines</Link>
                                         <Link to='whitewines' className='shop-link'>White Wines</Link>
+                                        <Link to='rosewines' className='shop-link'>Rose Wines</Link>
                                     </div>
                                 </div>
                             </div>

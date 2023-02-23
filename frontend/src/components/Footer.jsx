@@ -51,11 +51,11 @@ const Footer = () => {
                                     </div>
                                 </div>
                                 <div className="col-12 footer-bottom footer-cols">
-                                    <i class="fa-brands fa-cc-amex"></i>
-                                    <i class="fa-brands fa-cc-discover"></i>
-                                    <i class="fa-brands fa-cc-mastercard"></i>
-                                    <i class="fa-brands fa-cc-paypal"></i>
-                                    <i class="fa-brands fa-cc-visa"></i>
+                                    <i className="fa-brands fa-cc-amex"></i>
+                                    <i className="fa-brands fa-cc-discover"></i>
+                                    <i className="fa-brands fa-cc-mastercard"></i>
+                                    <i className="fa-brands fa-cc-paypal"></i>
+                                    <i className="fa-brands fa-cc-visa"></i>
                                 </div>
                             </div>
 

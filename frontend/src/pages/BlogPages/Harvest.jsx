@@ -41,11 +41,11 @@ const Harvest = () => {
                         </p>
 
                         <div className='blog-pages-social__wrapper'>
-                            <Link className='blog-pages__social-link'><i class="fa-brands fa-square-facebook blog-pages-social"></i></Link>
-                            <Link className='blog-pages__social-link'><i class="fa-solid fa-envelope blog-pages-social"></i></Link>
-                            <Link className='blog-pages__social-link'><i class="fa-solid fa-print blog-pages-social"></i></Link>
-                            <Link className='blog-pages__social-link'><i class="fa-brands fa-square-twitter blog-pages-social"></i></Link>
-                            <Link className='blog-pages__social-link'><i class="fa-brands fa-square-pinterest blog-pages-social"></i></Link>
+                            <Link className='blog-pages__social-link'><i className="fa-brands fa-square-facebook blog-pages-social"></i></Link>
+                            <Link className='blog-pages__social-link'><i className="fa-solid fa-envelope blog-pages-social"></i></Link>
+                            <Link className='blog-pages__social-link'><i className="fa-solid fa-print blog-pages-social"></i></Link>
+                            <Link className='blog-pages__social-link'><i className="fa-brands fa-square-twitter blog-pages-social"></i></Link>
+                            <Link className='blog-pages__social-link'><i className="fa-brands fa-square-pinterest blog-pages-social"></i></Link>
                         </div>
                     </div>
                 </div>

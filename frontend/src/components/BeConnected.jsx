@@ -46,7 +46,7 @@ const BeConnected = () => {
                     <p className='lato-font beconnect-p'>BE CONNECTED</p>
                     <h2 className='playfair-font beconnect-h2'>Join Our Newsletter</h2>
                     <form onSubmit={handleSubmit(onSubmitHandler)} className="input-group mb-3 beconnect-input__group" style={{ marginTop: "80px" }}>
-                        <input name="email" value={state.email} {...register("email")} type="email" class=" beconnect-input" placeholder="YOUR EMAIL ADDRESS" onChange={handleChange} />
+                        <input name="email" value={state.email} {...register("email")} type="email" className=" beconnect-input" placeholder="YOUR EMAIL ADDRESS" onChange={handleChange} />
                         <button className="btn beconnect-btn">SUBSCRIBE</button>
                         <p className='lato-font' style={{ color: "red" }}>{errors.email?.message}</p>
                     </form>

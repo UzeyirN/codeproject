@@ -28,7 +28,6 @@
     padding: 0 !important;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     width: 65%;
 }
 
@@ -168,10 +167,6 @@
     font-size: 20px;
 }
 
-.no-data{
-    position: relative;
-    bottom: 295px;
-}
 
 
 @media screen and (max-width: 1200px) {

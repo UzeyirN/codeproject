@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import '../../styles/HomeSections/FeaturedProducts.css'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,6 +16,19 @@ const FeaturedProducts = () => {
     const [featured, setFeatured] = useState(null)
     const [loading, setLoading] = useState(true);
     const URL = 'http://localhost:3070/featured';
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useLayoutEffect(() => {
+        function updateIsMobile() {
+            setIsMobile(window.innerWidth <= 768); // adjust the value as needed
+        }
+
+        window.addEventListener('resize', updateIsMobile);
+        updateIsMobile();
+
+        return () => window.removeEventListener('resize', updateIsMobile);
+    }, []);
 
 
     const getData = async () => {
@@ -51,8 +64,9 @@ const FeaturedProducts = () => {
                         <Swiper
                             modules={[Navigation, Pagination, Scrollbar, A11y]}
                             spaceBetween={0}
+                            className='swiper'
                             slidesPerView={3}
-                            navigation={true}
+                            navigation={!isMobile}
                             onSwiper={(swiper) => console.log(swiper)}
                             onSlideChange={() => console.log('slide change')}
                             breakpoints={{
@@ -67,6 +81,7 @@ const FeaturedProducts = () => {
                                     spaceBetween: 50,
                                 },
                             }}
+                            style={{ "--swiper-navigation-color": "b0976d" }}
                         >{
                                 loading ? <Loading /> :
                                     featured?.map(({ _id, image, brand, appelation, price }) => (
@@ -75,9 +90,6 @@ const FeaturedProducts = () => {
                                                 <div className="card-f">
                                                     <div className="card-body">
                                                         <img style={{ height: "100%" }} src={image} alt="" />
-                                                        {/* <button className='feature-fav__btn'>
-                                                            <i class="fa-solid fa-heart"></i>
-                                                        </button> */}
                                                     </div>
                                                 </div>
                                                 <div className="card-content__f">
@@ -94,6 +106,9 @@ const FeaturedProducts = () => {
                                     ))
                             }
                         </Swiper>
+
+
+
                     </div>
                 </div>
             </div>

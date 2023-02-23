@@ -21,7 +21,6 @@ img {
     background: #F2F2F2;
     border: none;
     margin: 0 auto;
-
 }
 
 .card-body {
@@ -108,7 +107,7 @@ img {
     text-decoration: none;
 }
 
-.add-link:hover{
+.add-link:hover {
     color: #fff;
 }
 
@@ -116,4 +115,9 @@ img {
     background-color: #b0976d;
     transition: all 0.5s;
     border: none;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: #b0976d;
 }

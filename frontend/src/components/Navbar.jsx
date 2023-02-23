@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/Navbar.css'
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom'
 import Loading from './Loading';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -28,7 +28,19 @@ const Navbar = () => {
     const [loading, setLoading] = useState(true);
     const URL = 'http://localhost:3070/featured';
 
- 
+    const [isMobile, setIsMobile] = useState(false);
+
+    useLayoutEffect(() => {
+        function updateIsMobile() {
+            setIsMobile(window.innerWidth <= 768); // adjust the value as needed
+        }
+
+        window.addEventListener('resize', updateIsMobile);
+        updateIsMobile();
+
+        return () => window.removeEventListener('resize', updateIsMobile);
+    }, []);
+
 
     // searching
     const [products, setProducts] = useState(null)
@@ -43,7 +55,7 @@ const Navbar = () => {
         setValue(e.target.value)
 
         let count = 0;
-        products?.filter(data => {
+        products?.filter((data) => {
             if (data.appelation.toLowerCase().includes(e.target.value.toLowerCase())
             ) {
                 count++;
@@ -222,12 +234,7 @@ const Navbar = () => {
                                         </Link>
                                     </li>
                                     <li className='nav-item lato-font' >
-                                        <Link className="nav-link" to='login' aria-expanded="false" onClick={() => setHideLightbox(true)}>
-                                            LOGIN
-                                        </Link>
-                                    </li>
-                                    <li className='nav-item lato-font' >
-                                        <Link className="nav-link" to='signup' aria-expanded="false" onClick={() => setHideLightbox(true)}>
+                                        <Link className="nav-link" to='login/createaccount' aria-expanded="false" onClick={() => setHideLightbox(true)}>
                                             SIGN UP
                                         </Link>
                                     </li>
@@ -245,7 +252,7 @@ const Navbar = () => {
                                         modules={[Navigation, Pagination, Scrollbar, A11y]}
                                         spaceBetween={0}
                                         slidesPerView={3}
-                                        navigation={true}
+                                        navigation={!isMobile}
                                         onSwiper={(swiper) => console.log(swiper)}
                                         onSlideChange={() => console.log('slide change')}
                                         breakpoints={{

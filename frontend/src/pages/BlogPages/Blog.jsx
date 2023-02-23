@@ -54,13 +54,10 @@ const Blog = () => {
             </Link>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rhoncus posuere mattis.
               Suspendisse venenatis massa in mattis condimentum. Vivamus porta, tellus vel ultricies facilisis, dolor arcu grav …</p>
-
             <Link to='winery' style={{ color: "RGB(176, 151, 109)", textDecoration: "none" }}>read more</Link>
           </div>
         </div>
-
       </div>
-
     </>
   )
 }
