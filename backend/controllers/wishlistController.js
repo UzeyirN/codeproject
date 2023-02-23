@@ -61,6 +61,21 @@ exports.wishlist_post = async (req, res) => {
 }
 
 
+exports.wishlist_deleteAll = (req, res) => {
+    Wishlist.deleteMany((err) => {
+        if (!err) {
+            res.send("SUCCESSFULY DELETE")
+        } else {
+            res.status(500).json({
+                message: err
+            })
+        }
+    })
+};
+
+
+
+
 
 
 

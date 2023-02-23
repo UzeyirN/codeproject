@@ -6,6 +6,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Loading from './../../components/Loading';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const AllShopWines = () => {
 
     const [data, setData] = useState([]);
@@ -18,6 +21,7 @@ const AllShopWines = () => {
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
     const [loading, setLoading] = useState(true);
+
 
     const [hiddenBrand, setHiddenBrand] = useState(true);
     const [hiddenAlcohol, setHiddenAlcohol] = useState(true);
@@ -170,7 +174,8 @@ const AllShopWines = () => {
             },
             body: JSON.stringify({ id }),
         });
-    };
+        toast.success('Added to cart!');
+        };
 
     const brands = [...new Set(data.map((item) => item.brand))]; // get unique brands
     const alcohol = [...new Set(data.map((item) => item.alcohol))]; // get unique alcohol
@@ -184,6 +189,7 @@ const AllShopWines = () => {
             <Helmet>
                 <title>All Shop Wines</title>
             </Helmet>
+            <ToastContainer />
 
             <div className='all-top'>
                 <span className='all-top__wrapper'>

@@ -1,95 +1,10 @@
-// import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-// import Loading from "../../components/Loading";
-// import '../../styles/Wishlist.css'
-// import { Helmet } from 'react-helmet';
-
-// const Wishlist = () => {
-//     const [product, setProduct] = useState(null);
-//     const [loading, setLoading] = useState(true)
-
-
-
-//     const fetchData = async () => {
-//         try {
-//             const response = await fetch('http://localhost:3070/wishlist');
-//             const data = await response.json();
-//             setProduct(data);
-//             setLoading(false);
-
-
-
-//         } catch (error) {
-//             console.error(error);
-//         }
-//     };
-
-
-//     const handleDelete = async (id) => {
-//         await fetch(`http://localhost:3070/wishlist/${id}`, {
-//             method: "DELETE",
-//         });
-//         fetchData();
-//     };
-
-
-
-//     useEffect(() => {
-//         fetchData();
-//     }, []);
-
-//     return (
-//         <>
-//             <Helmet>
-//                 <title>WISHLIST</title>
-//             </Helmet>
-
-//             <div className="wish-wrapper">
-//                 <div className='wish-top'>
-//                     <span className='wish-top__wrapper'>
-//                         <h2 className='playfair-font' style={{ color: "white" }}>WISHLIST</h2>
-//                     </span>
-
-//                 </div>
-//                 <div className=" container-fluid container-xl ">
-//                     <div className="row ">
-//                         {
-//                             loading ? <Loading /> :
-//                                 product?.map((products) => (
-//                                     <div className="col-12 col-sm-6 col-lg-4 mb-5">
-//                                         <div className="card-wrapper wish-card__wrapper">
-//                                             <div className="card">
-//                                                 <div className="card-body">
-//                                                     <img style={{ width: "100%", height: "100%" }} src={products.image} alt="" />
-//                                                 </div>
-//                                             </div>
-//                                             <div className="card-content">
-//                                                 <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{products.brand}</p>
-//                                                 <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{products.appelation}</Link>
-//                                                 <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${products.price}</div>
-//                                                 <button className='lato-font add-button '>ADD TO CART</button>
-//                                                 <button onClick={() => handleDelete(products._id)} className='lato-font add-button ' style={{ marginTop: "10px" }}>DELETE</button>
-//                                             </div>
-//                                         </div>
-//                                     </div>
-//                                 ))
-//                         }
-//                     </div>
-//                 </div>
-//             </div>
-//         </>
-
-
-
-//     );
-// };
-
-// export default Wishlist;
-
 import React, { useEffect, useState } from "react";
 import Loading from "../../components/Loading";
 import '../../styles/Wishlist.css'
 import { Helmet } from 'react-helmet';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Wishlist = () => {
     const [product, setProduct] = useState(null);
@@ -97,14 +12,16 @@ const Wishlist = () => {
 
     const [quantities, setQuantities] = useState({});
 
-    // const [showAlert, setShowAlert] = useState(false);
 
     const increaseQuantity = (id) => {
         setQuantities({ ...quantities, [id]: (quantities[id] || 0) + 1 });
+        localStorage.setItem("quantites", JSON.stringify(quantities));
     };
 
     const decreaseQuantity = (id) => {
         setQuantities({ ...quantities, [id]: (quantities[id] || 1) - 1 });
+        localStorage.setItem("quantites", JSON.stringify(quantities));
+
     };
 
     const fetchData = async () => {
@@ -122,29 +39,48 @@ const Wishlist = () => {
         } catch (error) {
             console.error(error);
         }
+        localStorage.setItem("quantites", JSON.stringify(quantities));
+
     };
 
     const handleDelete = async (id) => {
-        // setShowAlert(true);
         await fetch(`http://localhost:3070/wishlist/${id}`, {
             method: "DELETE",
         });
         fetchData();
 
         window.alert("Are you sure you want to delete this item?");
+        toast.success('Successfuly delete!');
+        localStorage.setItem("quantites", JSON.stringify(quantities));
+    };
+
+    const handleClear = async () => {
+        try {
+            await fetch("http://localhost:3070/wishlist", {
+                method: "DELETE",
+            });
+            window.alert("Are you sure you want to delete all items?");
+            toast.success("All Wishlist items have been deleted!");
+            fetchData();
+        } catch (error) {
+            console.error(error);
+        }
+        localStorage.setItem("quantites", JSON.stringify(quantities));
     };
 
     useEffect(() => {
         fetchData();
     }, []);
 
-    const price = product?.reduce((sum, products) => sum + parseFloat(products.price) * (quantities[products._id] || 0), 0)
+    const price = product?.reduce((sum, products) => sum + parseFloat(products.price) * (quantities[products._id] || 1), 0)
 
     return (
         <div className="wishlist">
             <Helmet>
                 <title>WISHLIST</title>
             </Helmet>
+            <ToastContainer />
+
 
             <div className='wish-top'>
                 <span className='wish-top__wrapper'>
@@ -168,33 +104,33 @@ const Wishlist = () => {
                         loading ? <Loading /> :
 
                             product?.map((products) => (
-                                <tbody>
+                                <tbody >
                                     <tr>
 
-                                        <td>
+                                        <td className="col-sm-12">
                                             <div className='image-wrapper' key={products._id}>
                                                 <img style={{ width: "100%", height: "100%" }} src={products.image} alt="" />
                                             </div>
                                         </td>
 
-                                        <td className='cart-td'><p className="lato-font wish-brand__p">{products.brand}</p>
+                                        <td className='cart-td col-sm-12'><p className="lato-font wish-brand__p">{products.brand}</p>
                                             <p className="playfair-font wish-appelation__p"> {products.appelation}</p>
                                         </td>
 
-                                        <td className='cart-td '><p className="lato-font wish-price__p"> ${products.price}</p></td>
+                                        <td className='cart-td col-sm-12 '><p className="lato-font wish-price__p"> ${products.price}</p></td>
 
-                                        <td className='cart-td'>
+                                        <td className='cart-td col-sm-12'>
                                             <div className="quantity-btn__wrapper">
                                                 <button onClick={() => increaseQuantity(products._id)} className="quantity-btn">+</button>
-                                                <div className="quantity-num">{quantities[products._id] || 0}</div>
+                                                <div className="quantity-num">{quantities[products._id] || 1}</div>
                                                 <button onClick={() => decreaseQuantity(products._id)} className="quantity-btn">-</button>
                                             </div>
                                         </td>
 
-                                        <td className='cart-td'>
+                                        <td className='cart-td col-sm-12'>
                                             <div className="wish-price__total">
-                                                <span className="lato-font wish-total__p">${parseFloat(products.price) * (quantities[products._id] || 0)}</span>
-                                               
+                                                <span className="lato-font wish-total__p">${parseFloat(products.price) * (quantities[products._id] || 1)}</span>
+
                                                 <i onClick={() => handleDelete(products._id)} class="fa-solid fa-circle-xmark"></i>
                                             </div>
                                         </td>
@@ -209,9 +145,14 @@ const Wishlist = () => {
                         <span className="subtotal-p lato-font">Subtotal</span>
                         <span className="lato-font wish-total__p">$ {price}</span>
                     </div>
-                    <button className="payment-btn lato-font">
-                        PAYMENT
-                    </button>
+                    <div>
+                        <button onClick={handleClear} style={{ marginRight: "10px" }} className="payment-btn clear-btn lato-font">
+                            CLEAR ALL
+                        </button>
+                        <button className="payment-btn lato-font">
+                            PAYMENT
+                        </button>
+                    </div>
                 </div>
             </div>
         </div >

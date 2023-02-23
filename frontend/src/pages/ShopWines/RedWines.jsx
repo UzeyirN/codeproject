@@ -3,6 +3,10 @@ import { Helmet } from 'react-helmet'
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import '../../styles/ShopWines/RedWines.css'
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const RedWines = () => {
 
     const [data, setData] = useState([]);
@@ -152,6 +156,8 @@ const RedWines = () => {
             },
             body: JSON.stringify({ id }),
         });
+        toast.success('Added to cart!');
+
     };
 
 
@@ -166,6 +172,8 @@ const RedWines = () => {
             <Helmet>
                 <title>Red Wines</title>
             </Helmet>
+            <ToastContainer />
+
 
             <div className='red-wines__top'>
                 <div className="container">

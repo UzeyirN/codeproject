@@ -12,6 +12,10 @@ router.post("/", wishlistController.wishlist_post)
 
 router.delete("/:id", wishlistController.wishlist_delete)
 
+router.delete('/', wishlistController.wishlist_deleteAll);
+
+// router.delete('/', );
+
 
 
 

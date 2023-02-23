@@ -13,6 +13,7 @@ import axios from 'axios';
 
 
 
+
 const Navbar = () => {
 
 
@@ -26,6 +27,8 @@ const Navbar = () => {
 
     const [loading, setLoading] = useState(true);
     const URL = 'http://localhost:3070/featured';
+
+ 
 
     // searching
     const [products, setProducts] = useState(null)
@@ -167,9 +170,11 @@ const Navbar = () => {
                                 <Link className="nav-link" to='login' aria-expanded="false">
                                     <i class="fa-solid fa-user"></i>
                                 </Link>
-                                <Link className="nav-link" to='wishlist' aria-expanded="false">
-                                    <i class="fa-solid fa-cart-shopping"></i>
+                                <Link to='wishlist' className="nav-link" aria-expanded="false">
+                                    <i className="fa-solid fa-cart-shopping"></i>
+
                                 </Link>
+
                                 <div className="nav-link nav-burger" id="mobil" onClick={() => setHideLightbox(s => !s)}>
                                     <i className={`fa-solid ${hideLightbox ? "fa-bars" : "fa-close"}`}></i>
                                 </div>
