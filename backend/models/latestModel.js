@@ -12,7 +12,7 @@ const latestSchema = new mongoose.Schema(
             // required: [true, "Please enter brand!"]
         },
         alcohol: {
-            type: String,
+            type: Number,
             // required: [true, "Please enter alcohol!"]
         },
         appelation: {
@@ -20,11 +20,11 @@ const latestSchema = new mongoose.Schema(
             // required: [true, "Please enter appelation!"]
         },
         size: {
-            type: String,
+            type: Number,
             // required: [true, "Please enter size!"]
         },
         price: {
-            type: String,
+            type: Number,
             // required: [true, "Please enter price!"]
         },
         kind: {

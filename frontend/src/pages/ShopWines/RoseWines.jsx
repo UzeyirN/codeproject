@@ -17,6 +17,22 @@ const RoseWines = () => {
 
     const [loading, setLoading] = useState(true);
 
+
+    //!
+    const [showPriceInputs, setShowPriceInputs] = useState(false);
+    const [priceText, setPriceText] = useState('+');
+
+
+    const handlePriceHeaderClick = () => {
+        setShowPriceInputs(!showPriceInputs);
+        setPriceText(priceText === '+' ? '-' : '+');
+    }
+
+    //!Price style
+    const styles = {
+        color: showPriceInputs ? 'RGB(176, 151, 109)' : 'black'
+    };
+
     const [hiddenBrand, setHiddenBrand] = useState(true);
     const [hiddenAlcohol, setHiddenAlcohol] = useState(true);
     const [hiddenAppelation, setHiddenAppelation] = useState(true);
@@ -273,10 +289,15 @@ const RoseWines = () => {
                                     </div>
 
                                     <div className='filter-item'>
-                                        <h5 className='playfair-font item-h5'>Price</h5>
-                                        <input placeholder='MIN' type="number" value={minPrice} onChange={handleMinPriceChange} className='price-input' />
-                                        <input placeholder='MAX' type="number" value={maxPrice} onChange={handleMaxPriceChange} className='price-input' />
+                                        <h5 className='playfair-font item-h5' onClick={handlePriceHeaderClick} style={styles}>{priceText} Price</h5>
+                                        {showPriceInputs && (
+                                            <>
+                                                <input placeholder='MIN' type="number" value={minPrice} onChange={handleMinPriceChange} className='price-input' />
+                                                <input placeholder='MAX' type="number" value={maxPrice} onChange={handleMaxPriceChange} className='price-input' />
+                                            </>
+                                        )}
                                     </div>
+
                                     <button className='filter-reset__btn lato-font' onClick={handleReset}>UPDATE</button>
                                 </div>
                             </div>

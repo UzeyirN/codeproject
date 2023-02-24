@@ -20,18 +20,15 @@ const BeConnected = () => {
         baseURL: "http://localhost:3070",
     });
 
-
     const addData = async () => {
         await URL.post("/beconnected", state);
         setState({
             email: "",
-
         });
     };
 
     const handleChange = (e) => {
         setState({ ...state, [e.target.name]: e.target.value })
-
     }
 
     const onSubmitHandler = (data) => {
@@ -52,7 +49,7 @@ const BeConnected = () => {
                     </form>
                 </div>
             </div>
-        </>     
+        </>
     )
 }
 

@@ -23,17 +23,23 @@ const AllShopWines = () => {
     const [loading, setLoading] = useState(true);
 
 
+    //!hidden
     const [hiddenBrand, setHiddenBrand] = useState(true);
     const [hiddenAlcohol, setHiddenAlcohol] = useState(true);
     const [hiddenAppelation, setHiddenAppelation] = useState(true);
     const [hiddenSize, setHiddenSize] = useState(true);
     const [hiddenKind, setHiddenKind] = useState(true);
+    const [showPriceInputs, setShowPriceInputs] = useState(false);
 
+
+    //! toggle + ,toggle -
     const [brandPlus, setBrandPlus] = useState(true);
     const [alcoholPlus, setAlcoholPlus] = useState(true);
     const [appelationPlus, setAppelationPlus] = useState(true);
     const [sizePlus, setSizePlus] = useState(true);
     const [kindPlus, setKindPlus] = useState(true);
+    const [priceText, setPriceText] = useState('+');
+
 
     useEffect(() => {
         fetch('http://localhost:3070/featured')
@@ -77,6 +83,8 @@ const AllShopWines = () => {
         setFilteredData(filtered);
     }, [data, selectedBrands, selectedAlcohol, selectedAppelation, selectedSize, selectedKinds, minPrice, maxPrice]);
 
+
+    //!filter
     const handleBrandChange = (event) => {
         const brand = event.target.value;
         if (selectedBrands.includes(brand)) {
@@ -130,6 +138,7 @@ const AllShopWines = () => {
         setMaxPrice(event.target.value);
     };
 
+    //!update
     const handleReset = () => {
         setSelectedBrands([]);
         setSelectedKinds([]);
@@ -141,6 +150,14 @@ const AllShopWines = () => {
         setFilteredData(data);
     };
 
+
+    //!Price style
+    const styles = {
+        color: showPriceInputs ? 'RGB(176, 151, 109)' : 'black'
+    };
+
+
+    //!toggle
     const brandToggle = () => {
         setHiddenBrand(!hiddenBrand);
         setBrandPlus(!brandPlus);
@@ -166,6 +183,13 @@ const AllShopWines = () => {
         setKindPlus(!kindPlus);
     };
 
+    const handlePriceHeaderClick = () => {
+        setShowPriceInputs(!showPriceInputs);
+        setPriceText(priceText === '+' ? '-' : '+');
+    }
+
+    //!add to cart
+
     const addToWishList = async (id) => {
         await fetch("http://localhost:3070/wishlist", {
             method: "Post",
@@ -175,7 +199,7 @@ const AllShopWines = () => {
             body: JSON.stringify({ id }),
         });
         toast.success('Added to cart!');
-        };
+    };
 
     const brands = [...new Set(data.map((item) => item.brand))]; // get unique brands
     const alcohol = [...new Set(data.map((item) => item.alcohol))]; // get unique alcohol
@@ -348,9 +372,13 @@ const AllShopWines = () => {
                                     </div>
 
                                     <div className='filter-item'>
-                                        <h5 className='playfair-font item-h5'>Price</h5>
-                                        <input placeholder='MIN' type="number" value={minPrice} onChange={handleMinPriceChange} className='price-input' />
-                                        <input placeholder='MAX' type="number" value={maxPrice} onChange={handleMaxPriceChange} className='price-input' />
+                                        <h5 className='playfair-font item-h5' onClick={handlePriceHeaderClick} style={styles}>{priceText} Price</h5>
+                                        {showPriceInputs && (
+                                            <>
+                                                <input placeholder='MIN' type="number" value={minPrice} onChange={handleMinPriceChange} className='price-input' />
+                                                <input placeholder='MAX' type="number" value={maxPrice} onChange={handleMaxPriceChange} className='price-input' />
+                                            </>
+                                        )}
                                     </div>
 
                                     <button className='filter-reset__btn lato-font' onClick={handleReset}>UPDATE</button>
