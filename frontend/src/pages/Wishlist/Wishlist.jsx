@@ -84,6 +84,7 @@ const Wishlist = () => {
 
     const price = product?.reduce((sum, products) => sum + parseFloat(products.price) * (quantities[products._id] || 1), 0)
 
+
     return (
         <div className="wishlist">
             <Helmet>
@@ -100,60 +101,10 @@ const Wishlist = () => {
                 </span>
             </div>
             <div className="container">
-                {/* <table className="table wish-table__wrapper">
-                    <thead>
-                        <tr>
-                            <th className="cart-th" scope="col">ITEM</th>
-                            <th className="cart-th" scope="col">BRAND</th>
-                            <th className="cart-th" scope="col">PRICE</th>
-                            <th className="cart-th" scope="col">QUANTITY</th>
-                            <th className="cart-th" scope="col">TOTAL</th>
-
-                        </tr>
-                    </thead>
-                    {
-                        loading ? <Loading /> :
-
-                            product?.map((products) => (
-                                <tbody >
-                                    <tr>
-
-                                        <td>
-                                            <div className='image-wrapper' key={products._id}>
-                                                <img style={{ width: "100%", height: "100%" }} src={products.image} alt="" />
-                                            </div>
-                                        </td>
-
-                                        <td className='cart-td'><p className="lato-font wish-brand__p">{products.brand}</p>
-                                            <p className="playfair-font wish-appelation__p"> {products.appelation}</p>
-                                        </td>
-
-                                        <td className='cart-td '><p className="lato-font wish-price__p"> ${products.price}</p></td>
-
-                                        <td className='cart-td'>
-                                            <div className="quantity-btn__wrapper">
-                                                <button onClick={() => increaseQuantity(products._id)} className="quantity-btn">+</button>
-                                                <div className="quantity-num">{quantities[products._id] || 1}</div>
-                                                <button onClick={() => decreaseQuantity(products._id)} className="quantity-btn">-</button>
-                                            </div>
-                                        </td>
-
-                                        <td className='cart-td'>
-                                            <div className="wish-price__total">
-                                                <span className="lato-font wish-total__p">${parseFloat(products.price) * (quantities[products._id] || 1)}</span>
-
-                                                <i onClick={() => handleDelete(products._id)} class="fa-solid fa-circle-xmark"></i>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            ))
-                    }
-                </table> */}
 
                 <div className="table-responsive">
                     <table className="table wish-table__wrapper">
-                        <thead>
+                        <thead style={{border:"2px solid #f2f2f2"}}>
                             <tr>
                                 <th className="cart-th" scope="col">ITEM</th>
                                 <th className="cart-th" scope="col">BRAND</th>
