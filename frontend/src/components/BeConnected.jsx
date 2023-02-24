@@ -5,6 +5,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from 'axios'
 import beConnected_schema from '../Schema/BeConnected';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const BeConnected = () => {
     const [state, setState] = useState({
         email: ""
@@ -25,6 +28,8 @@ const BeConnected = () => {
         setState({
             email: "",
         });
+        toast.success('Successfully subscribe !');
+
     };
 
     const handleChange = (e) => {
@@ -38,6 +43,7 @@ const BeConnected = () => {
 
     return (
         <>
+            <ToastContainer />
             <div className="be-connected__wrapper">
                 <div className="be-connected__content">
                     <p className='lato-font beconnect-p'>BE CONNECTED</p>

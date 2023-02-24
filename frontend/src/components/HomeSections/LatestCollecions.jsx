@@ -18,6 +18,7 @@ const LatestCollecions = () => {
     }
 
     
+    
 
 
     useEffect(() => {
@@ -32,12 +33,12 @@ const LatestCollecions = () => {
                     <p className='lato-font' style={{ fontSize: "14px", fontWeight: "700", color: "RGB(176, 151, 109)" }}>LATEST COLLECTION</p>
                     <h2 className='playfair-font' style={{ fontSize: "41px" }}>New Products</h2>
                 </div>
-                <div className=" container-fluid container-xl ">
+                <div className=" container container-xl">
                     <div className="row ">
                         {
                             loading ? <Loading /> :
                                 latestProducts?.map(({ _id, image, brand, appelation, price }) => (
-                                    <div className="col-12 col-sm-6 col-lg-4 mb-5">
+                                    <div className="col-12 col-lg-4  mb-5">
                                         <div className="card-wrapper " key={_id}>
                                             <div className="card">
                                                 <div className="card-body">
@@ -45,8 +46,8 @@ const LatestCollecions = () => {
                                                 </div>
                                             </div>
                                             <div className="card-content">
-                                                <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{brand}</p>
-                                                <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{appelation}</Link>
+                                                <p className='lato-font latest-card__p' style={{ color: "RGB(176, 151, 109)" }}>{brand}</p>
+                                                <Link className='playfair-font card-link'   >{appelation}</Link>
                                                 <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${price}.00</div>
                                                 {/* <button className='lato-font add-button '>ADD TO CART</button> */}
                                             </div>

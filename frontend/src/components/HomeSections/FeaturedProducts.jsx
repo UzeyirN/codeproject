@@ -21,7 +21,7 @@ const FeaturedProducts = () => {
 
     useLayoutEffect(() => {
         function updateIsMobile() {
-            setIsMobile(window.innerWidth <= 768); // adjust the value as needed
+            setIsMobile(window.innerWidth <= 992); 
         }
 
         window.addEventListener('resize', updateIsMobile);
@@ -64,11 +64,13 @@ const FeaturedProducts = () => {
                         <Swiper
                             modules={[Navigation, Pagination, Scrollbar, A11y]}
                             spaceBetween={0}
-                            className='swiper'
+                            className='swiper-f'
                             slidesPerView={3}
+                            pagination={isMobile}
                             navigation={!isMobile}
                             onSwiper={(swiper) => console.log(swiper)}
                             onSlideChange={() => console.log('slide change')}
+
                             breakpoints={{
                                 300: {
                                     slidesPerView: 1,
@@ -81,7 +83,7 @@ const FeaturedProducts = () => {
                                     spaceBetween: 50,
                                 },
                             }}
-                            style={{ "--swiper-navigation-color": "b0976d" }}
+                            style={{ "--swiper-navigation-color": "b0976d","--swiper-pagination-color": "#b0976d" }}
                         >{
                                 loading ? <Loading /> :
                                     featured?.map(({ _id, image, brand, appelation, price }) => (
@@ -96,8 +98,11 @@ const FeaturedProducts = () => {
                                                     <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{brand}</p>
                                                     <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{appelation}</Link>
                                                     <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${price}.00</div>
+                                                    {/* <button onClick={() => addToWishList(_id)} className='lato-font add-button'>
+                                                        <Link className='add-link lato-font' to='wishlist'> ADD TO CART</Link></button> */}
+
                                                     <button onClick={() => addToWishList(_id)} className='lato-font add-button'>
-                                                        <Link className='add-link lato-font' to='wishlist'> ADD TO CART</Link></button>
+                                                        ADD TO CART</button>
                                                 </div>
                                             </div>
 

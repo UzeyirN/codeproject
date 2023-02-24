@@ -163,9 +163,9 @@ const LatestAdmin = () => {
   const [state, setState] = useState({
     image: "",
     brand: "",
-    alcohol: null,
+    alcohol: "",
     appelation: "",
-    size: null,
+    size: "",
     price: null,
     kind: ""
   })
@@ -312,13 +312,13 @@ const LatestAdmin = () => {
               <input name='brand' value={state.brand} {...register("brand")} className='add-input' type="text" placeholder='brand' onChange={handleChange} />
               <p className='error-message'>{errors.brand?.message}</p>
 
-              <input name='alcohol' value={state.alcohol} {...register("alcohol")} className='add-input' type="number" placeholder='alcohol' onChange={handleChange} />
+              <input name='alcohol' value={state.alcohol} {...register("alcohol")} className='add-input' type="text" placeholder='alcohol' onChange={handleChange} />
               <p className='error-message'>{errors.alcohol?.message}</p>
 
               <input name='appelation' value={state.appelation} {...register("appelation")} className='add-input' type="text" placeholder='appelation' onChange={handleChange} />
               <p className='error-message'>{errors.appelation?.message}</p>
 
-              <input name='size' value={state.size} {...register("size")} className='add-input' type="number" placeholder='size' onChange={handleChange} />
+              <input name='size' value={state.size} {...register("size")} className='add-input' type="text" placeholder='size' onChange={handleChange} />
               <p className='error-message'>{errors.size?.message}</p>
 
               <input name='price' value={state.price} {...register("price")} className='add-input' type="number" placeholder='price' onChange={handleChange} />

@@ -20,7 +20,8 @@ const HeroSection = () => {
                     pagination={{ clickable: true }}
                     onSwiper={(swiper) => console.log(swiper)}
                     onSlideChange={() => console.log('slide change')}
-                    style={{ "--swiper-pagination-color": "#b0976d" }}
+                    style={{ "--swiper-navigation-color": "b0976d", "--swiper-pagination-color": "#b0976d" }}
+
                 >
                     <SwiperSlide className='slider1 slider'>
                         <img style={{ width: "100%", height: "100%", objectFit: "cover" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/original/carousel/15/slide-2-background__86858.jpg?c=2" alt="" />

@@ -170,6 +170,23 @@
     font-size: 20px;
 }
 
+@media screen and (max-width: 1400px) {
+
+    .red-top {
+        padding-top: 8%
+    }
+
+    .card-red {
+        width: 300px;
+        height: 420px;
+    }
+
+    .card-content__red {
+        width: 300px;
+    }
+
+}
+
 
 @media screen and (max-width: 1200px) {
     .card-red {
@@ -309,7 +326,7 @@
         padding-top: 30%;
     }
 
-    .red-top__article{
+    .red-top__article {
         display: none;
     }
 

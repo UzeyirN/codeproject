@@ -19,10 +19,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
 
-
-
-
-
     const ref = useRef();
     const [isNavbarSmall, setIsNavbarSmall] = useState(true);
     const [hideLightbox, setHideLightbox] = useState(true);
@@ -37,7 +33,7 @@ const Navbar = () => {
 
     useLayoutEffect(() => {
         function updateIsMobile() {
-            setIsMobile(window.innerWidth <= 768); // adjust the value as needed
+            setIsMobile(window.innerWidth <= 992);
         }
 
         window.addEventListener('resize', updateIsMobile);
@@ -56,30 +52,6 @@ const Navbar = () => {
         setLoading(false);
     }
 
-    // const searchData = (e) => {
-    //     setValue(e.target.value)
-
-    //     let count = 0;
-    //     products?.filter((data) => {
-    //         if (data.appelation.toLowerCase().includes(e.target.value.toLowerCase())
-    //         ) {
-    //             count++;
-    //         }
-    //     })
-    //     if (count === 0) {
-    //         sety(false)
-    //     }
-    //     else {
-    //         sety(true)
-    //     }
-    // }
-
-
-    // const searchData = (e) => {
-    //     setValue(e.target.value)
-    //     let count = 0;
-    //     products?.filter((data) => data.appelation.toLowerCase().includes(e.target.value.toLowerCase() ? count++ : null) || count === 0 ? sety(false) : sety(true));
-    // }
 
     const searchData = (e) => {
         setValue(e.target.value);
@@ -149,8 +121,6 @@ const Navbar = () => {
         toast.success('Added to cart!');
 
     };
-
-
 
     return (
         <>
@@ -283,6 +253,7 @@ const Navbar = () => {
                                         spaceBetween={0}
                                         slidesPerView={3}
                                         navigation={!isMobile}
+                                        pagination={isMobile}
                                         onSwiper={(swiper) => console.log(swiper)}
                                         onSlideChange={() => console.log('slide change')}
                                         breakpoints={{
@@ -297,6 +268,8 @@ const Navbar = () => {
                                                 spaceBetween: 50,
                                             },
                                         }}
+                                        style={{ "--swiper-navigation-color": "b0976d", "--swiper-pagination-color": "#b0976d" }}
+
                                     >{
                                             loading ? <Loading /> :
                                                 products?.filter(data => {

@@ -36,11 +36,10 @@
 .show-lightbox {
     background-color: #121212;
     color: #fff;
-    height: 80vh;
+    height: 55vh;
     width: 100%;
     transition: all 0.5s;
     position: absolute;
-    top: 7vh;
     left: 0;
     overflow-y: scroll;
     padding: 0 50px;
