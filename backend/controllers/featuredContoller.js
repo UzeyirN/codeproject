@@ -40,12 +40,6 @@ exports.featured_post = async (req, res) => {
     }
 }
 
-// exports.featured_post = (req, res) => {
-//     console.log(req.body);
-//     res.status(201).send('Created product')
-// }
-
-
 
 exports.featured_delete = (req, res) => {
     const { id } = req.params;

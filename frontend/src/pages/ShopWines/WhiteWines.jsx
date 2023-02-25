@@ -8,6 +8,9 @@ const WhiteWines = () => {
 
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    //!selected
     const [selectedBrands, setSelectedBrands] = useState([]);
     const [selectedAlcohol, setSelectedAlcohol] = useState([]);
     const [selectedAppelation, setSelectedAppelation] = useState([]);
@@ -15,32 +18,19 @@ const WhiteWines = () => {
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
 
-    const [loading, setLoading] = useState(true);
-
+    //!hidden
     const [hiddenBrand, setHiddenBrand] = useState(true);
     const [hiddenAlcohol, setHiddenAlcohol] = useState(true);
     const [hiddenAppelation, setHiddenAppelation] = useState(true);
     const [hiddenSize, setHiddenSize] = useState(true);
+    const [showPriceInputs, setShowPriceInputs] = useState(false);
 
+    //! toggle + ,toggle -
     const [brandPlus, setBrandPlus] = useState(true);
     const [alcoholPlus, setAlcoholPlus] = useState(true);
     const [appelationPlus, setAppelationPlus] = useState(true);
     const [sizePlus, setSizePlus] = useState(true);
-
-    //!
-    const [showPriceInputs, setShowPriceInputs] = useState(false);
     const [priceText, setPriceText] = useState('+');
-
-
-    const handlePriceHeaderClick = () => {
-        setShowPriceInputs(!showPriceInputs);
-        setPriceText(priceText === '+' ? '-' : '+');
-    }
-
-    //!Price style
-    const styles = {
-        color: showPriceInputs ? 'RGB(176, 151, 109)' : 'black'
-    };
 
 
     useEffect(() => {
@@ -85,8 +75,10 @@ const WhiteWines = () => {
         }
 
         setFilteredData(filtered);
-    }, [data, selectedBrands, selectedAlcohol, selectedAppelation, selectedSize, minPrice, maxPrice]);
+    }, [data, selectedBrands, selectedAlcohol,selectedAppelation, selectedSize, minPrice, maxPrice]);
 
+
+    //!filter
     const handleBrandChange = (event) => {
         const brand = event.target.value;
         if (selectedBrands.includes(brand)) {
@@ -110,7 +102,7 @@ const WhiteWines = () => {
         if (selectedAppelation.includes(appelation)) {
             setSelectedAppelation(selectedAppelation.filter((ap) => ap !== appelation));
         } else {
-            setSelectedAppelation([...selectedAlcohol, appelation]);
+            setSelectedAppelation([...selectedAppelation, appelation]);
         }
     };
 
@@ -131,6 +123,8 @@ const WhiteWines = () => {
         setMaxPrice(event.target.value);
     };
 
+
+    //!update
     const handleReset = () => {
         setSelectedBrands([]);
         setSelectedAlcohol([]);
@@ -141,6 +135,12 @@ const WhiteWines = () => {
         setFilteredData(data);
     };
 
+    //!Price style
+    const styles = {
+        color: showPriceInputs ? 'RGB(176, 151, 109)' : 'black'
+    };
+
+    //!toggle
     const brandToggle = () => {
         setHiddenBrand(!hiddenBrand);
         setBrandPlus(!brandPlus);
@@ -161,6 +161,13 @@ const WhiteWines = () => {
         setSizePlus(!sizePlus);
     };
 
+    const handlePriceHeaderClick = () => {
+        setShowPriceInputs(!showPriceInputs);
+        setPriceText(priceText === '+' ? '-' : '+');
+    }
+
+
+    //!add to wishlist
     const addToWishList = async (id) => {
         await fetch("http://localhost:3070/wishlist", {
             method: "Post",
@@ -184,6 +191,7 @@ const WhiteWines = () => {
             behavior: "smooth"
         });
     }, [])
+
     return (
         <>
             <Helmet>
@@ -260,7 +268,8 @@ const WhiteWines = () => {
                                     </div>
 
                                     <div className="appelation filter-item" >
-                                        <h5 className={`playfair-font item-h5 ${appelationPlus ? 'plus' : 'minus'}`} onClick={appelationToggle}>{appelationPlus ? '+' : '-'}
+                                        <h5 className={`playfair-font item-h5 ${appelationPlus ? 'plus' : 'minus'}`} onClick={appelationToggle}>
+                                            {appelationPlus ? '+' : '-'}
                                             {' '} Appelation</h5>
                                         {hiddenAppelation ? null : (
                                             <ul>
@@ -322,23 +331,43 @@ const WhiteWines = () => {
                         <div className="white-card__wrapper">
                             <div className="row">
                                 {
-                                    loading ? <Loading /> :
+                                    loading ? (
+                                        <Loading />
+                                    ) : filteredData && filteredData.length ? (
                                         filteredData.map(({ _id, image, brand, appelation, price }) => (
-                                            <div className="cards col-6">
-                                                <div className="card-white" key={_id}>
+                                            <div className="cards col-6" key={_id}>
+                                                <div className="card-white">
                                                     <div className="whiteCard-body">
                                                         <img style={{ height: "100%" }} src={image} alt="" />
                                                     </div>
                                                 </div>
                                                 <div className="card-content__white">
-                                                    <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{brand}</p>
-                                                    <Link className='playfair-font card-link appelation' >{appelation}</Link>
-                                                    <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${price}.00</div>
-                                                    <button onClick={() => addToWishList(_id)} className='lato-font add-button'>
-                                                        ADD TO CART</button>
+                                                    <p className="lato-font" style={{ color: "RGB(176, 151, 109)" }}>
+                                                        {brand}
+                                                    </p>
+                                                    <Link className="playfair-font card-link appelation">
+                                                        {appelation}
+                                                    </Link>
+                                                    <div
+                                                        style={{
+                                                            color: "RGB(176, 151, 109)",
+                                                            margin: "30px 0",
+                                                            fontSize: "21px",
+                                                        }}
+                                                        className="notoserif-font"
+                                                    >
+                                                        ${price}.00
+                                                    </div>
+                                                    <button onClick={() => addToWishList(_id)} className="lato-font add-button shop-btn">
+                                                        ADD TO CART
+                                                    </button>
                                                 </div>
                                             </div>
-                                        ))}
+                                        ))
+                                    ) : (
+                                        <span className="no-data">There are no products listed under this category.</span>
+                                    )
+                                }
                             </div>
                         </div>
                     </div>

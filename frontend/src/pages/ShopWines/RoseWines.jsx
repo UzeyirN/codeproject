@@ -3,11 +3,16 @@ import { Helmet } from 'react-helmet'
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import '../../styles/ShopWines/RoseWines.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RoseWines = () => {
 
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    //!selected
     const [selectedBrands, setSelectedBrands] = useState([]);
     const [selectedAlcohol, setSelectedAlcohol] = useState([]);
     const [selectedAppelation, setSelectedAppelation] = useState([]);
@@ -15,33 +20,20 @@ const RoseWines = () => {
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
 
-    const [loading, setLoading] = useState(true);
-
-
-    //!
-    const [showPriceInputs, setShowPriceInputs] = useState(false);
-    const [priceText, setPriceText] = useState('+');
-
-
-    const handlePriceHeaderClick = () => {
-        setShowPriceInputs(!showPriceInputs);
-        setPriceText(priceText === '+' ? '-' : '+');
-    }
-
-    //!Price style
-    const styles = {
-        color: showPriceInputs ? 'RGB(176, 151, 109)' : 'black'
-    };
-
+    //!hidden
     const [hiddenBrand, setHiddenBrand] = useState(true);
     const [hiddenAlcohol, setHiddenAlcohol] = useState(true);
     const [hiddenAppelation, setHiddenAppelation] = useState(true);
     const [hiddenSize, setHiddenSize] = useState(true);
+    const [showPriceInputs, setShowPriceInputs] = useState(false);
 
+    //! toggle + ,toggle -
     const [brandPlus, setBrandPlus] = useState(true);
     const [alcoholPlus, setAlcoholPlus] = useState(true);
     const [appelationPlus, setAppelationPlus] = useState(true);
     const [sizePlus, setSizePlus] = useState(true);
+    const [priceText, setPriceText] = useState('+');
+
 
     useEffect(() => {
         fetch('http://localhost:3070/featured')
@@ -55,7 +47,6 @@ const RoseWines = () => {
                 console.log(error);
             });
     }, []);
-
 
     useEffect(() => {
         let filtered = [...data];
@@ -87,6 +78,8 @@ const RoseWines = () => {
         setFilteredData(filtered);
     }, [data, selectedBrands, selectedAlcohol, selectedAppelation, selectedSize, minPrice, maxPrice]);
 
+
+    //!filter
     const handleBrandChange = (event) => {
         const brand = event.target.value;
         if (selectedBrands.includes(brand)) {
@@ -110,7 +103,7 @@ const RoseWines = () => {
         if (selectedAppelation.includes(appelation)) {
             setSelectedAppelation(selectedAppelation.filter((ap) => ap !== appelation));
         } else {
-            setSelectedAppelation([...selectedAlcohol, appelation]);
+            setSelectedAppelation([...selectedAppelation, appelation]);
         }
     };
 
@@ -131,6 +124,8 @@ const RoseWines = () => {
         setMaxPrice(event.target.value);
     };
 
+
+    //!update
     const handleReset = () => {
         setSelectedBrands([]);
         setSelectedAlcohol([]);
@@ -141,6 +136,12 @@ const RoseWines = () => {
         setFilteredData(data);
     };
 
+    //!Price style
+    const styles = {
+        color: showPriceInputs ? 'RGB(176, 151, 109)' : 'black'
+    };
+
+    //!toggle
     const brandToggle = () => {
         setHiddenBrand(!hiddenBrand);
         setBrandPlus(!brandPlus);
@@ -161,6 +162,23 @@ const RoseWines = () => {
         setSizePlus(!sizePlus);
     };
 
+    const handlePriceHeaderClick = () => {
+        setShowPriceInputs(!showPriceInputs);
+        setPriceText(priceText === '+' ? '-' : '+');
+    }
+
+    //!add to wishlist
+    const addToWishList = async (id) => {
+        await fetch("http://localhost:3070/wishlist", {
+            method: "Post",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id }),
+        });
+        toast.success('Added to cart!');
+
+    };
 
     const brands = [...new Set(data.map((item) => item.brand))]; // get unique brands
     const alcohol = [...new Set(data.map((item) => item.alcohol))]; // get unique alcohol
@@ -180,6 +198,8 @@ const RoseWines = () => {
             <Helmet>
                 <title>Rose Wines</title>
             </Helmet>
+            <ToastContainer />
+
 
             <div className='rose-wines__top'>
                 <div className="container">
@@ -250,7 +270,8 @@ const RoseWines = () => {
                                     </div>
 
                                     <div className="appelation filter-item" >
-                                        <h5 className={`playfair-font item-h5 ${appelationPlus ? 'plus' : 'minus'}`} onClick={appelationToggle}>{appelationPlus ? '+' : '-'}
+                                        <h5 className={`playfair-font item-h5 ${appelationPlus ? 'plus' : 'minus'}`} onClick={appelationToggle}>
+                                            {appelationPlus ? '+' : '-'}
                                             {' '} Appelation</h5>
                                         {hiddenAppelation ? null : (
                                             <ul>
@@ -315,19 +336,19 @@ const RoseWines = () => {
                                     loading ? (
                                         <Loading />
                                     ) : filteredData && filteredData.length ? (
-                                        filteredData.map((item, index) => (
-                                            <div className="cards col-6" key={index}>
+                                        filteredData.map(({ _id, image, brand, appelation, price }) => (
+                                            <div className="cards col-6" key={_id}>
                                                 <div className="card-rose">
                                                     <div className="roseCard-body">
-                                                        <img style={{ height: "100%" }} src={item.image} alt="" />
+                                                        <img style={{ height: "100%" }} src={image} alt="" />
                                                     </div>
                                                 </div>
                                                 <div className="card-content__rose">
                                                     <p className="lato-font" style={{ color: "RGB(176, 151, 109)" }}>
-                                                        {item.brand}
+                                                        {brand}
                                                     </p>
                                                     <Link className="playfair-font card-link appelation">
-                                                        {item.appelation}
+                                                        {appelation}
                                                     </Link>
                                                     <div
                                                         style={{
@@ -337,9 +358,9 @@ const RoseWines = () => {
                                                         }}
                                                         className="notoserif-font"
                                                     >
-                                                        ${item.price}.00
+                                                        ${price}.00
                                                     </div>
-                                                    <button className="lato-font add-button shop-btn">
+                                                    <button onClick={() => addToWishList(_id)} className="lato-font add-button shop-btn">
                                                         ADD TO CART
                                                     </button>
                                                 </div>

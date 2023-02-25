@@ -5,7 +5,6 @@ import '../../styles/ShopWines/AllShopWines.css'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Loading from './../../components/Loading';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,6 +12,9 @@ const AllShopWines = () => {
 
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    //!selected
     const [selectedBrands, setSelectedBrands] = useState([]);
     const [selectedAlcohol, setSelectedAlcohol] = useState([]);
     const [selectedAppelation, setSelectedAppelation] = useState([]);
@@ -20,8 +22,6 @@ const AllShopWines = () => {
     const [selectedKinds, setSelectedKinds] = useState([]);
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
-    const [loading, setLoading] = useState(true);
-
 
     //!hidden
     const [hiddenBrand, setHiddenBrand] = useState(true);
@@ -30,7 +30,6 @@ const AllShopWines = () => {
     const [hiddenSize, setHiddenSize] = useState(true);
     const [hiddenKind, setHiddenKind] = useState(true);
     const [showPriceInputs, setShowPriceInputs] = useState(false);
-
 
     //! toggle + ,toggle -
     const [brandPlus, setBrandPlus] = useState(true);
@@ -206,7 +205,7 @@ const AllShopWines = () => {
     const appelation = [...new Set(data.map((item) => item.appelation))]; // get unique appelation
     const size = [...new Set(data.map((item) => item.size))]; // get unique size
     const kind = [...new Set(data.map((item) => item.kind))]; // get unique kinds
-    
+
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -304,7 +303,8 @@ const AllShopWines = () => {
                                     </div>
 
                                     <div className="appelation filter-item" >
-                                        <h5 className={`playfair-font item-h5 ${appelationPlus ? 'plus' : 'minus'}`} onClick={appelationToggle}>{appelationPlus ? '+' : '-'}
+                                        <h5 className={`playfair-font item-h5 ${appelationPlus ? 'plus' : 'minus'}`} onClick={appelationToggle}>
+                                            {appelationPlus ? '+' : '-'}
                                             {' '} Appelation</h5>
                                         {hiddenAppelation ? null : (
                                             <ul>
@@ -324,7 +324,6 @@ const AllShopWines = () => {
                                                 ))}
                                             </ul>
                                         )}
-
                                     </div>
 
                                     <div className="size  filter-item" >
@@ -393,26 +392,45 @@ const AllShopWines = () => {
                             </div>
                         </div>
                         <div className="all-card__wrapper">
-                            <div className="row d-flex justify-content-center">
+                            <div className="row">
                                 {
-                                    loading ? <Loading /> :
-
+                                    loading ? (
+                                        <Loading />
+                                    ) : filteredData && filteredData.length ? (
                                         filteredData.map(({ _id, image, brand, appelation, price }) => (
-                                            <div className="cards col-6">
-                                                <div className="card-all" key={_id}>
+                                            <div className="cards col-6" key={_id}>
+                                                <div className="card-all">
                                                     <div className="allCard-body">
                                                         <img style={{ height: "100%" }} src={image} alt="" />
                                                     </div>
                                                 </div>
                                                 <div className="card-content__all">
-                                                    <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{brand}</p>
-                                                    <Link className='playfair-font card-link appelation' >{appelation}</Link>
-                                                    <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${price}.00</div>
-                                                    <button onClick={() => addToWishList(_id)} className='lato-font add-button'>
-                                                        ADD TO CART</button>
+                                                    <p className="lato-font" style={{ color: "RGB(176, 151, 109)" }}>
+                                                        {brand}
+                                                    </p>
+                                                    <Link className="playfair-font card-link appelation">
+                                                        {appelation}
+                                                    </Link>
+                                                    <div
+                                                        style={{
+                                                            color: "RGB(176, 151, 109)",
+                                                            margin: "30px 0",
+                                                            fontSize: "21px",
+                                                        }}
+                                                        className="notoserif-font"
+                                                    >
+                                                        ${price}.00
+                                                    </div>
+                                                    <button onClick={() => addToWishList(_id)} className="lato-font add-button shop-btn">
+                                                        ADD TO CART
+                                                    </button>
                                                 </div>
                                             </div>
-                                        ))}
+                                        ))
+                                    ) : (
+                                        <span className="no-data">There are no products listed under this category.</span>
+                                    )
+                                }
                             </div>
                         </div>
                     </div>
