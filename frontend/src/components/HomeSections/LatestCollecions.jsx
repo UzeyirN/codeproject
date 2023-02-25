@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import '../../styles/HomeSections/LatestCollecions.css'
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../Loading';
 
@@ -17,14 +16,9 @@ const LatestCollecions = () => {
 
     }
 
-    
-    
-
-
     useEffect(() => {
         getData()
     }, [])
-
 
     return (
         <>
@@ -47,9 +41,8 @@ const LatestCollecions = () => {
                                             </div>
                                             <div className="card-content">
                                                 <p className='lato-font latest-card__p' style={{ color: "RGB(176, 151, 109)" }}>{brand}</p>
-                                                <Link className='playfair-font card-link'   >{appelation}</Link>
+                                                <p className='playfair-font card-appelation'>{appelation}</p>
                                                 <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${price}.00</div>
-                                                {/* <button className='lato-font add-button '>ADD TO CART</button> */}
                                             </div>
                                         </div>
                                     </div>

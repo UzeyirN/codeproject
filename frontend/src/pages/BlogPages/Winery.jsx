@@ -2,7 +2,17 @@ import React from 'react'
 import '../../styles/BlogPages/BlogPages.css'
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 const Winery = () => {
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        });
+    }, [])
+
     return (
         <>
             <Helmet>
@@ -14,10 +24,7 @@ const Winery = () => {
                     <p className='lato-font blog-pages-nav' style={{ color: "gray" }}><span style={{ color: "RGB(176, 151, 109)" }}>Home</span>
                         <span style={{ color: "RGB(176, 151, 109)" }}> / Blog</span> / Winery of the Year</p>
                 </span>
-
-
             </div>
-
 
             <div className="container">
                 <div className="blog-pages__wrapper">

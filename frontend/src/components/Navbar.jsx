@@ -10,11 +10,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import axios from 'axios';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
 
 
 const Navbar = () => {
@@ -25,10 +22,8 @@ const Navbar = () => {
     const [hideSearchbox, setHideSearchbox] = useState(true);
     const [x, setx] = useState(true);
     const [y, sety] = useState(true);
-
     const [loading, setLoading] = useState(true);
     const URL = 'http://localhost:3070/featured';
-
     const [isMobile, setIsMobile] = useState(false);
 
     useLayoutEffect(() => {
@@ -51,7 +46,6 @@ const Navbar = () => {
         await axios.get(URL).then((resp) => setProducts(resp.data));
         setLoading(false);
     }
-
 
     const searchData = (e) => {
         setValue(e.target.value);

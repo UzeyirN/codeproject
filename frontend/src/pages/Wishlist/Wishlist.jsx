@@ -48,35 +48,47 @@ const Wishlist = () => {
     };
 
 
-
     const handleDelete = async (id) => {
-        await fetch(`http://localhost:3070/wishlist/${id}`, {
-            method: "DELETE",
-        });
+        const confirmed = window.confirm("Are you sure you want to delete this item?");
 
-        const existingItems = JSON.parse(localStorage.getItem("wishlistItems")) || [];
-        const updatedItems = existingItems.filter((item) => item.id !== id);
-        localStorage.setItem("wishlistItems", JSON.stringify(updatedItems));
+        if (confirmed) {
+            try {
+                await fetch(`http://localhost:3070/wishlist/${id}`, {
+                    method: "DELETE",
+                });
 
-        fetchData();
-        window.alert("Are you sure you want to delete this item?");
-        toast.success('Successfuly delete!');
-    };
+                const existingItems = JSON.parse(localStorage.getItem("wishlistItems")) || [];
+                const updatedItems = existingItems.filter((item) => item.id !== id);
+                localStorage.setItem("wishlistItems", JSON.stringify(updatedItems));
 
-    const handleClear = async () => {
-        try {
-            await fetch("http://localhost:3070/wishlist", {
-                method: "DELETE",
-            });
-
-            localStorage.removeItem("wishlistItems");
-            window.alert("Are you sure you want to delete all items?");
-            toast.success("All Wishlist items have been deleted!");
-            fetchData();
-        } catch (error) {
-            console.error(error);
+                fetchData();
+                toast.success("Successfully deleted!");
+            } catch (error) {
+                console.error(error);
+            }
         }
     };
+
+
+
+    const handleClear = async () => {
+        const confirmed = window.confirm("Are you sure you want to delete all items?");
+
+        if (confirmed) {
+            try {
+                await fetch("http://localhost:3070/wishlist", {
+                    method: "DELETE",
+                });
+
+                localStorage.removeItem("wishlistItems");
+                toast.success("All Wishlist items have been deleted!");
+                fetchData();
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    };
+
 
     useEffect(() => {
         fetchData();

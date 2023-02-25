@@ -25,14 +25,12 @@
 }
 
 .contact-inputs__wrapper {
-    /* border: 1px solid red; */
-    /* height: 60vh; */
+
     margin-top: 30px;
 }
 
 .contact-form {
     width: 100%;
-    /* height: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -73,7 +71,6 @@
     background-color: #b0976d;
     transition: all 0.3s;
     border: none;
-
 }
 
 .contact-error__message{
@@ -83,7 +80,6 @@
 @media screen and (max-width: 1200px) {
     .contact-top {
         padding-top: 13%;
-
     }
 
     .contact-wrapper {
@@ -95,7 +91,6 @@
     .contact-wrapper {
         width: 90%;
     }
-
 }
 
 @media screen and (max-width: 760px) {
@@ -114,7 +109,6 @@
     .contact-heading__wrapper {
         width: 90%;
     }
-
 }
 
 @media screen and (max-width: 600px) {
@@ -147,7 +141,6 @@
     .contact-btn {
         width: 100%;
         padding: 20px 40px;
-
     }
 }
 

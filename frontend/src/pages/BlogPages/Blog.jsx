@@ -2,20 +2,32 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import '../../styles/Blog.css'
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Blog = () => {
+
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, [])
+
   return (
     <>
       <Helmet>
         <title>Blog</title>
       </Helmet>
+
       <div className='blog-top'>
         <span className='blog-top__wrapper'>
           <h2 className='playfair-font' style={{ color: "white" }}>BLOG</h2>
           <p className='lato-font blog-nav' style={{ color: "gray" }}><span style={{ color: "RGB(176, 151, 109)" }}>Home</span> / Blog</p>
         </span>
-
       </div>
+      
       <div className="container">
         <div className="blog-wrapper">
           <div className='blog-head'>

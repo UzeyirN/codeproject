@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import '../styles/ContactUs.css'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import contact_schema from '../Schema/ContactValidation';
@@ -42,6 +43,7 @@ const ContactUs = () => {
       comments: "",
 
     });
+    toast.success('Success !');
   };
 
   const handleChange = (e) => {
@@ -67,6 +69,7 @@ const ContactUs = () => {
       <Helmet>
         <title>Contact Us</title>
       </Helmet>
+      <ToastContainer />
 
       <div className='contact-top'>
         <span className='contact-top__wrapper'>

@@ -36,7 +36,7 @@
 .show-lightbox {
     background-color: #121212;
     color: #fff;
-    height: 55vh;
+    /* height: 55vh; */
     width: 100%;
     transition: all 0.5s;
     position: absolute;
@@ -265,9 +265,6 @@
         display: block;
     }
 
-    .show-lightbox {
-        top: 8vh;
-    }
 }
 
 @media screen and (max-width: 350px) {

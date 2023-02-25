@@ -62,16 +62,11 @@
     border: none;
 }
 
-.card-link {
+.card-appelation {
     font-size: 20px;
     color: black;
     text-decoration: none;
     font-weight: 600;
-}
-
-.card-link:hover {
-    color: RGB(176, 151, 109);
-    transition: all 0.6s;
 }
 
 .add-button {
@@ -91,7 +86,6 @@
     border: none;
 }
 
-
 .feature-fav__btn {
     position: absolute;
     right: 10px;
@@ -103,7 +97,6 @@
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     border: none;
     transition: 0.3s ease;
-
 }
 
 .feature-fav__btn:active {

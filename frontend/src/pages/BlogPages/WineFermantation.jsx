@@ -2,7 +2,17 @@ import React from 'react'
 import '../../styles/BlogPages/BlogPages.css'
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 const WineFermantation = () => {
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        });
+    }, [])
+
     return (
         <>
             <Helmet>

@@ -71,9 +71,9 @@
     align-items: center;
 }
 
-/* .cards {
+.cards {
     margin-bottom: 50px;
-} */
+}
 
 .shop-wines {
     width: 100%;
@@ -177,7 +177,6 @@
     .card-content__all {
         width: 300px;
     }
-
 }
 
 @media screen and (max-width: 1200px) {
@@ -255,16 +254,12 @@
         font-size: 16px;
     }
 
-
 }
-
 
 @media screen and (max-width: 700px) {
 
-
     .all-top {
         padding-top: 12%;
-
     }
 }
 
