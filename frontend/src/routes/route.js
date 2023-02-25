@@ -14,7 +14,6 @@ import RedWines from '../pages/ShopWines/RedWines'
 import RoseWines from '../pages/ShopWines/RoseWines'
 import WhiteWines from '../pages/ShopWines/WhiteWines'
 import Harvest from './../pages/BlogPages/Harvest';
-import AddToBasket from '../pages/AddtoBasket';
 import LoginRoot from './../pages/LoginPages/LoginRoot';
 import Login from '../pages/LoginPages/Login';
 import CreateAcc from './../pages/LoginPages/CreateAcc';
@@ -26,7 +25,6 @@ import FeaturedAdmin from './../pages/Admin/AdminPages/FeaturedAdmin';
 import LatestAdmin from '../pages/Admin/AdminPages/LatestAdmin';
 import Wishlist from '../pages/Wishlist/Wishlist';
 import Admin from '../pages/Admin/AdminPages/Admin';
-import AddToCart from './../pages/AddToCart';
 import ShopWinesRoot from '../pages/ShopWines/ShopWinesRoot';
 
 
@@ -120,14 +118,6 @@ const ROUTES = [
                 element: <Wishlist />
             },
             {
-                path: "addtocart",
-                element: <AddToCart />
-            },
-            {
-                path: "addtobasket",
-                element: <AddToBasket />
-            },
-            {
                 path: "login/",
                 element: <LoginRoot />,
                 children: [
@@ -171,7 +161,7 @@ const ROUTES = [
             {
                 path: "latestadmin",
                 element: <LatestAdmin />,
-            }
+            },
         ]
     },
 ]

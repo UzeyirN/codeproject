@@ -167,6 +167,13 @@ const RoseWines = () => {
     const appelation = [...new Set(data.map((item) => item.appelation))]; // get unique appelation
     const size = [...new Set(data.map((item) => item.size))]; // get unique size
 
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        });
+    }, [])
 
     return (
         <>

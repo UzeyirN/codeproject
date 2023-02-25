@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import login__schema from '../../Schema/LoginValidation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import { useEffect } from 'react';
 
 const Login = () => {
 
@@ -15,6 +16,15 @@ const Login = () => {
     console.log({ data });
     reset();
   };
+
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, [])
 
   return (
     <>
@@ -36,10 +46,10 @@ const Login = () => {
               <div className="login-input__wrapper">
                 <form onSubmit={handleSubmit(onSubmitHandler)} action="" className='login-form'>
                   <input {...register("email")} type="email" placeholder='Email Address' className='login-input login-form__element' />
-                  <p style={{color:"red"}}>{errors.email?.message}</p>
+                  <p style={{ color: "red" }}>{errors.email?.message}</p>
 
                   <input {...register("password")} type="password" placeholder='Password' className='login-input login-form__element' />
-                  <p style={{color:"red"}}>{errors.password?.message}</p>
+                  <p style={{ color: "red" }}>{errors.password?.message}</p>
 
 
                   <div className='login-btn__wrapper login-form__element'>

@@ -96,7 +96,7 @@ const FeaturedProducts = () => {
                                                 </div>
                                                 <div className="card-content__f">
                                                     <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{brand}</p>
-                                                    <Link className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{appelation}</Link>
+                                                    <Link to='allshopwines' className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{appelation}</Link>
                                                     <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${price}.00</div>
                                                     {/* <button onClick={() => addToWishList(_id)} className='lato-font add-button'>
                                                         <Link className='add-link lato-font' to='wishlist'> ADD TO CART</Link></button> */}

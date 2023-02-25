@@ -85,6 +85,16 @@ const Wishlist = () => {
     const price = product?.reduce((sum, products) => sum + parseFloat(products.price) * (quantities[products._id] || 1), 0)
 
 
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        });
+    }, [])
+
+
     return (
         <div className="wishlist">
             <Helmet>
@@ -104,7 +114,7 @@ const Wishlist = () => {
 
                 <div className="table-responsive">
                     <table className="table wish-table__wrapper">
-                        <thead style={{border:"2px solid #f2f2f2"}}>
+                        <thead style={{ border: "2px solid #f2f2f2" }}>
                             <tr>
                                 <th className="cart-th" scope="col">ITEM</th>
                                 <th className="cart-th" scope="col">BRAND</th>

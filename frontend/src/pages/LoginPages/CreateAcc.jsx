@@ -5,6 +5,7 @@ import '../../styles/LoginPages/CreateAcc.css'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import createacc_schema from './../../Schema/CreateAcc';
+import { useEffect } from 'react';
 
 const CreateAcc = () => {
 
@@ -100,6 +101,14 @@ const CreateAcc = () => {
     // addData();
     reset();
   };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, [])
   return (
     <>
       <Helmet>

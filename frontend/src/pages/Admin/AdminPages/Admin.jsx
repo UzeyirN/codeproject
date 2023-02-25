@@ -1,10 +1,23 @@
 import React from 'react'
+import { useEffect } from 'react';
+
+
 
 const Admin = () => {
+
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        });
+    }, [])
     return (
-        <div style={{display:"flex",height:"100vh",justifyContent:"center",alignItems:"center"}}>
-            <h1>WELCOME TO ADMIN PANEL</h1>
-        </div>
+        <>
+            <h1>WELCOME</h1>
+
+        </>
     )
 }
 

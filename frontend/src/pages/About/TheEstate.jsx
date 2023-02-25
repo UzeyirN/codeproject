@@ -1,8 +1,17 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Helmet } from 'react-helmet'
 import '../../styles/About/TheEstate.css'
 
 const TheEstate = () => {
+
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        });
+    }, [])
     return (
         <>
             <Helmet>
@@ -39,7 +48,7 @@ const TheEstate = () => {
                     <div className="estate-article">
                         <h2 className='playfair-font estate-h2'>The location</h2>
                         <p className="lato-font estate-p">In tempor, mauris nec viverra molestie, lorem diam dignissim ex, quis lobortis dui turpis ut enim. Aenean dui nulla, placerat in massa
-                         eget, lacinia accumsan nunc. Curabitur et mauris dolor.</p>
+                            eget, lacinia accumsan nunc. Curabitur et mauris dolor.</p>
                     </div>
                 </div>
             </div>

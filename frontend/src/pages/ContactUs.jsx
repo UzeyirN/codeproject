@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import contact_schema from '../Schema/ContactValidation';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 const ContactUs = () => {
   const [state, setState] = useState({
@@ -52,6 +53,15 @@ const ContactUs = () => {
     console.log(data);
     addData();
   };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, [])
+
   return (
     <>
       <Helmet>

@@ -5,7 +5,8 @@ const app = express()
 const bodyParser = require('body-parser')
 const cors = require("cors")
 
-const errorMiddle = require("./middleware/errorMiddle")
+
+
 
 //!import routes
 const featuredRoute = require("./routes/featuredRoute")
@@ -14,7 +15,9 @@ const beConnectedRoute = require('./routes/beConnectedRoute')
 const contactUsRoute = require("./routes/contactUsRoute")
 const wishlistRoute = require("./routes/wishlistRoute")
 
-const userRoute = require("./routes/userRoute")
+// const adminRoute = require("./routes/adminRoute")
+const authRoutes = require('./routes/authRoute');
+
 
 
 
@@ -30,7 +33,12 @@ app.use('/beconnected', beConnectedRoute)
 app.use('/contactus', contactUsRoute)
 app.use('/wishlist', wishlistRoute)
 
-app.use("/", userRoute)
+app.use('/', authRoutes)
+
+
+
+
+
 
 
 
@@ -52,3 +60,4 @@ mongoose.connect(DB, {})
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`)
 })
+

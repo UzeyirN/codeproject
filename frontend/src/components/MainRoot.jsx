@@ -7,9 +7,11 @@ import BeConnected from './BeConnected';
 
 
 const MainRoot = () => {
+
+ 
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <Outlet />
       <OurAdress />
       <BeConnected />

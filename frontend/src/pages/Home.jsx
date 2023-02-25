@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Helmet } from 'react-helmet'
 import FeaturedProducts from "../components/HomeSections/FeaturedProducts";
 import HeroSection from "../components/HomeSections/HeroSection";
@@ -7,6 +7,14 @@ import MessageSec from "../components/HomeSections/MessageSec";
 import '../styles/Home.css'
 
 const Home = () => {
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        });
+    }, [])
     return (
         <>
             <Helmet>
@@ -18,7 +26,7 @@ const Home = () => {
             <FeaturedProducts />
 
 
-           
+
         </>
     )
 }
