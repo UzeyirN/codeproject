@@ -26,6 +26,8 @@ import LatestAdmin from '../pages/Admin/AdminPages/LatestAdmin';
 import Wishlist from '../pages/Wishlist/Wishlist';
 import Admin from '../pages/Admin/AdminPages/Admin';
 import ShopWinesRoot from '../pages/ShopWines/ShopWinesRoot';
+import AdminLogin from './../pages/Admin/AdminLogin';
+import AdminReg from './../pages/Admin/AdminReg';
 
 
 
@@ -162,6 +164,14 @@ const ROUTES = [
                 path: "latestadmin",
                 element: <LatestAdmin />,
             },
+            {
+                path: "adminlogin",
+                element: <AdminLogin />
+            },
+            {
+                path: "adminreg",
+                element: <AdminReg />
+            }
         ]
     },
 ]

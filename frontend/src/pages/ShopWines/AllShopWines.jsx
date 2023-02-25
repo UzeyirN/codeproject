@@ -393,12 +393,12 @@ const AllShopWines = () => {
                             </div>
                         </div>
                         <div className="all-card__wrapper">
-                            <div className="row">
+                            <div className="row d-flex justify-content-center">
                                 {
                                     loading ? <Loading /> :
 
                                         filteredData.map(({ _id, image, brand, appelation, price }) => (
-                                            <div className="cards g-0 col-6">
+                                            <div className="cards col-6">
                                                 <div className="card-all" key={_id}>
                                                     <div className="allCard-body">
                                                         <img style={{ height: "100%" }} src={image} alt="" />
