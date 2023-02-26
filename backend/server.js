@@ -15,8 +15,8 @@ const beConnectedRoute = require('./routes/beConnectedRoute')
 const contactUsRoute = require("./routes/contactUsRoute")
 const wishlistRoute = require("./routes/wishlistRoute")
 
-// const adminRoute = require("./routes/adminRoute")
 const authRoutes = require('./routes/authRoute');
+const customerRoutes = require('./routes/customerRoute')
 
 
 
@@ -34,11 +34,7 @@ app.use('/contactus', contactUsRoute)
 app.use('/wishlist', wishlistRoute)
 
 app.use('/', authRoutes)
-
-
-
-
-
+app.use('/', customerRoutes)
 
 
 

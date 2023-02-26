@@ -173,7 +173,7 @@ const Navbar = () => {
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </div>
 
-                                <Link className="nav-link" to='login' aria-expanded="false">
+                                <Link className="nav-link" to='customerlogin' aria-expanded="false">
                                     <i class="fa-solid fa-user"></i>
                                 </Link>
                                 <Link to='wishlist' className="nav-link" aria-expanded="false">
@@ -228,7 +228,7 @@ const Navbar = () => {
                                         </Link>
                                     </li>
                                     <li className='nav-item lato-font' >
-                                        <Link className="nav-link" to='login/createaccount' aria-expanded="false" onClick={() => setHideLightbox(true)}>
+                                        <Link className="nav-link" to='customerlogin/createaccount' aria-expanded="false" onClick={() => setHideLightbox(true)}>
                                             SIGN UP
                                         </Link>
                                     </li>

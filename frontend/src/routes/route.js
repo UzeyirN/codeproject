@@ -120,7 +120,7 @@ const ROUTES = [
                 element: <Wishlist />
             },
             {
-                path: "login/",
+                path: "customerlogin/",
                 element: <LoginRoot />,
                 children: [
                     {
