@@ -1,150 +1,3 @@
-// import React, { useState } from "react";
-// import axios from "axios";
-// import { useEffect } from "react";
-
-// const App = () => {
-//   const [products, setProducts] = useState([]);
-//   const [state, setState] = useState({
-//     image: "",
-//     brand: "",
-//     alcohol: "",
-//     appelation: "",
-//     size: "",
-//     price: "",
-//     kind: ""
-//   });
-//   const [id, setId] = useState();
-
-//   const getData = async () => {
-//     const res = await axios.get("http://localhost:3070/latest");
-//     setProducts(res.data);
-//   };
-
-//   useEffect(() => {
-//     getData();
-//   }, []);
-
-//   const handleChange = (e) => {
-//     setState({ ...state, [e.target.name]: e.target.value });
-//   };
-
-//   const addData = (e) => {
-//     e.preventDefault();
-
-//     if (!state.image || !state.brand || !state.alcohol || !state.appelation || !state.size || !state.price || !state.kind) return;
-
-//     axios.post("http://localhost:3070/latest", state);
-//     getData();
-//   };
-
-//   const deleteData = async (id) => {
-//     await axios.delete(`http://localhost:3070/latest/${id}`);
-//     getData();
-//   };
-
-//   const handleEditClick = (data) => {
-//     setState({
-//       image: data.image,
-//       brand: data.brand,
-//       alcohol: data.alcohol,
-//       appelation: data.appelation,
-//       size: data.size,
-//       price: data.price,
-//       kind: data.kind,
-//     });
-//     setId(data._id);
-
-//   };
-
-//   console.log(id);
-
-//   const updateData = async (dataId) => {
-
-//     await axios.put(`http://localhost:3070/latest/${dataId}`, state);
-//     getData();
-//     console.log(dataId);
-
-//   };
-
-//   return (
-//     <>
-//       <form onSubmit={addData}>
-//         <input
-//           name="image"
-//           type="text"
-//           value={state.image}
-//           placeholder="image"
-//           onChange={handleChange}
-//         />
-//         <input
-//           name="brand"
-//           type="text"
-//           value={state.brand}
-//           placeholder="brand"
-//           onChange={handleChange}
-//         />
-//         <input
-//           name="alcohol"
-//           type="text"
-//           value={state.alcohol}
-//           placeholder="alcohol"
-//           onChange={handleChange}
-//         />
-//         <input
-//           name="appelation"
-//           type="text"
-//           value={state.appelation}
-//           placeholder="appelation"
-//           onChange={handleChange}
-//         />
-//         <input
-//           name="size"
-//           type="text"
-//           value={state.size}
-//           placeholder="size"
-//           onChange={handleChange}
-//         />
-//         <input
-//           name="price"
-//           type="text"
-//           value={state.price}
-//           placeholder="price"
-//           onChange={handleChange}
-//         />
-//         <input
-//           name="kind"
-//           type="text"
-//           value={state.kind}
-//           placeholder="kind"
-//           onChange={handleChange}
-//         />
-//         <button>add</button>
-//       </form>
-//       <button onClick={() => updateData(id)}>update</button>
-
-//       {products?.map((prod) => (
-//         <li key={prod.id}>
-//           <span>{prod.id}</span>
-//           <p>{prod.image}</p>
-//           <p style={{ margin: 20 }}>{prod.brand}</p>
-//           <p style={{ margin: 20 }}>{prod.appelation}</p>
-//           <p style={{ margin: 20 }}>{prod.alcohol}</p>
-//           <p style={{ margin: 20 }}>{prod.size}</p>
-//           <p style={{ margin: 20 }}>{prod.price}</p>
-//           <p style={{ margin: 20 }}>{prod.kind}</p>
-//           <button onClick={() => deleteData(prod._id)}>delete</button>
-//           <button onClick={() => handleEditClick(prod)}>select</button>
-//         </li>
-//       ))}
-//     </>
-//   );
-// };
-
-// export default App;
-
-
-
-
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import Loading from '../../../components/Loading';
@@ -153,7 +6,41 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import products_schema from '../../../Schema/ProductsVal';
 
+
+// get the token from the cookie
+const getAuthToken = () => {
+  const name = 'token=';
+  const cookieArr = document.cookie.split(';');
+  for (let i = 0; i < cookieArr.length; i++) {
+    let cookie = cookieArr[i].trim();
+    if (cookie.indexOf(name) === 0) {
+      return cookie.substring(name.length, cookie.length);
+    }
+  }
+  return null;
+};
+
+
+const tokenRequired = () => {
+  // get the token from the cookie
+  const token = getAuthToken();
+
+  // use the token in an axios request
+  axios.post('http://127.0.0.1:3070/tokenRequired/', { token })
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+      window.location.href = '/admin/adminlogin';
+
+    });
+}
+
+
+
 const LatestAdmin = () => {
+  tokenRequired()
 
   const [latest, setLatest] = useState(null)
   const [value, setValue] = useState("")

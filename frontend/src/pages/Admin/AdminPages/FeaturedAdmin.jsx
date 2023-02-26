@@ -6,9 +6,42 @@ import '../AdminStyles/FeaturedAdmin.css'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import products_schema from '../../../Schema/ProductsVal';
-// import { Link } from 'react-router-dom';
+
+
+// get the token from the cookie
+const getAuthToken = () => {
+  const name = 'token=';
+  const cookieArr = document.cookie.split(';');
+  for (let i = 0; i < cookieArr.length; i++) {
+    let cookie = cookieArr[i].trim();
+    if (cookie.indexOf(name) === 0) {
+      return cookie.substring(name.length, cookie.length);
+    }
+  }
+  return null;
+};
+
+
+const tokenRequired = () => {
+  // get the token from the cookie
+  const token = getAuthToken();
+
+  // use the token in an axios request
+  axios.post('http://127.0.0.1:3070/tokenRequired/', { token })
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+      window.location.href = '/admin/adminlogin';
+
+    });
+}
+
 
 const FeaturedAdmin = () => {
+
+  tokenRequired()
 
   const [featured, setFeatured] = useState(null)
   const [value, setValue] = useState("")
@@ -62,12 +95,6 @@ const FeaturedAdmin = () => {
   const searchData = (e) => {
     setValue(e.target.value)
   }
-  // const handleDelete = async (id) => {
-  //   await axios.delete(`http://localhost:3070/featured/${id}`)
-  //   getData();
-  //   window.alert("Are you sure you want to delete this item?");
-
-  // }
 
   const handleDelete = async (id) => {
     const confirmed = window.confirm("Are you sure you want to delete this item?");

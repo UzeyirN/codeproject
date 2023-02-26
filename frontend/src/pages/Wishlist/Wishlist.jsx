@@ -146,7 +146,7 @@ const Wishlist = () => {
                                                 <img
                                                     style={{ width: "100%", height: "100%" }}
                                                     src={products.image}
-                                                    alt=""
+                                                    alt="wine"
                                                 />
                                             </div>
                                         </td>
