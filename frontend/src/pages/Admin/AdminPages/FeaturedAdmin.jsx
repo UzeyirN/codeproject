@@ -2,13 +2,11 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import Loading from '../../../components/Loading';
 import '../AdminStyles/FeaturedAdmin.css'
-
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import products_schema from '../../../Schema/ProductsVal';
 
 
-// get the token from the cookie
 const getAuthToken = () => {
   const name = 'token=';
   const cookieArr = document.cookie.split(';');
@@ -23,10 +21,9 @@ const getAuthToken = () => {
 
 
 const tokenRequired = () => {
-  // get the token from the cookie
+
   const token = getAuthToken();
 
-  // use the token in an axios request
   axios.post('http://127.0.0.1:3070/tokenRequired/', { token })
     .then((response) => {
       console.log(response.data);
