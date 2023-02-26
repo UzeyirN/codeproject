@@ -24,12 +24,6 @@
     margin: 100px auto;
 }
 
-.red-card__wrapper {
-    padding: 0 !important;
-    display: flex;
-    justify-content: space-between;
-    width: 65%;
-}
 
 .card-red {
     position: relative;
@@ -69,8 +63,7 @@
 }
 
 .red-filter__wrapper {
-    width: 30%;
-    height: 50%;
+    width: 100%;
     border: 2px solid #e6e6e6;
     display: flex;
     flex-direction: column;
@@ -195,16 +188,11 @@
         width: 300px;
     }
 
-    .red-content__wrapper {
-        gap: 10px;
-    }
+
 }
 
 @media screen and (max-width: 992px) {
-    .red-content__wrapper {
-        display: flex;
-        flex-direction: column;
-    }
+
 
     .red-filter__wrapper {
         width: 100%;
@@ -249,10 +237,6 @@
         width: 250px;
     }
 
-    .red-content__wrapper {
-        display: flex;
-        flex-direction: column;
-    }
 
     .filter-wrapper {
         width: 100%;

@@ -17,13 +17,7 @@
 
 .all-content__wrapper {
     margin: 100px auto;
-}
-
-.all-card__wrapper {
-    padding: 0 !important;
-    display: flex;
-    justify-content: space-between;
-    width: 65%;
+    width: 100%;
 }
 
 .card-all {
@@ -62,9 +56,7 @@
     margin: 20px auto;
 }
 
-.all-filter__wrapper {
-    width: 30%;
-    height: 50%;
+.all-filter__wrapper {    
     border: 2px solid #e6e6e6;
     display: flex;
     flex-direction: column;
@@ -90,7 +82,6 @@
 }
 
 .shop-wines__links {
-
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -158,7 +149,6 @@
 }
 
 .appelation {
-
     margin-bottom: 20px;
     font-size: 20px;
 }
@@ -189,17 +179,10 @@
         width: 300px;
     }
 
-    .all-content__wrapper {
-        gap: 10px;
-    }
 }
 
 @media screen and (max-width: 992px) {
-    .all-content__wrapper {
-        display: flex;
-        flex-direction: column;
-    }
-
+   
     .all-filter__wrapper {
         width: 100%;
     }
@@ -226,7 +209,6 @@
     .all-card__wrapper {
         margin-top: 20px;
     }
-
 }
 
 @media screen and (max-width: 768px) {
@@ -239,21 +221,14 @@
         width: 250px;
     }
 
-    .all-content__wrapper {
-        display: flex;
-        flex-direction: column;
-    }
-
     .filter-wrapper {
         width: 100%;
     }
 
     .appelation {
-
         margin-bottom: 20px;
         font-size: 16px;
     }
-
 }
 
 @media screen and (max-width: 700px) {

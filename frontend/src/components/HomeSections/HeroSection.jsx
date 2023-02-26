@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../styles/HomeSections/HeroSection.css'
-
 import { A11y, Navigation, Pagination, Scrollbar } from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
@@ -8,7 +7,11 @@ import "swiper/css/pagination";
 import { Link } from 'react-router-dom';
 
 
+
+
 const HeroSection = () => {
+
+
     return (
         <>
             <div className="herosec-wrapper">

@@ -17,7 +17,6 @@
 
 .blog-wrapper {
     width: 60%;
-    /* height: 100vh; */
     margin: 50px auto 100px auto;
 }
 
@@ -33,6 +32,13 @@
 
 .blog-img {
     margin: 20px 0;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .blog-top {
+        height: 25vh;
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -53,8 +59,7 @@
     }
 
     .blog-top {
-        padding-top: 20%;
-
+        padding-top: 10%;
     }
 }
 
@@ -65,7 +70,8 @@
     }
 
     .blog-top {
-        padding-top: 25%;
+        padding-top: 15%;
+        height: 20vh;
 
     }
 
