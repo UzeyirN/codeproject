@@ -7,23 +7,6 @@ const AdminLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     axios.post('http://127.0.0.1:3070/login/', { email, password })
-    //         .then((response) => {
-
-    //             console.log("succcess", response)
-    //             document.cookie = `token=${response.data.token}; expires=${new Date(Date.now() + 36000000).toUTCString()}; path=/`;
-    //             window.location.href = '/admin';
-    //             setEmail('');
-    //             setPassword('');
-
-    //         })
-    //         .catch((error) => {
-    //             console.log("catch", error)
-    //         });
-    //     window.alert("success login")
-    // };
 
     const handleSubmit = (event) => {
         event.preventDefault();

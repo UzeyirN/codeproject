@@ -9,8 +9,8 @@ import 'swiper/css/scrollbar';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../Loading';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 
 const FeaturedProducts = () => {
@@ -46,7 +46,7 @@ const FeaturedProducts = () => {
             },
             body: JSON.stringify({ id }),
         });
-        toast.success('Added to cart!');
+        // toast.success('Added to cart!');
     };
 
     useEffect(() => {
@@ -55,7 +55,7 @@ const FeaturedProducts = () => {
 
     return (
         <>
-            <ToastContainer />
+            {/* <ToastContainer /> */}
             <div className="featured-products__wrapper">
                 <div style={{ margin: "0 auto 50px auto", textAlign: "center" }}>
                     <p className='lato-font' style={{ fontSize: "14px", fontWeight: "700", color: "RGB(176, 151, 109)" }}>CAREFULLY SELECTED PRODUCTS</p>
@@ -104,7 +104,7 @@ const FeaturedProducts = () => {
                                                         <Link className='add-link lato-font' to='wishlist'> ADD TO CART</Link></button> */}
 
                                                     <button onClick={() => addToWishList(_id)} className='lato-font add-button'>
-                                                        ADD TO CART</button>
+                                                        <Link to='wishlist'>ADD TO CART</Link></button>
                                                 </div>
                                             </div>
                                         </SwiperSlide>

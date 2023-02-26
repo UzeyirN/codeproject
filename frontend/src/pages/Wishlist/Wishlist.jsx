@@ -4,8 +4,40 @@ import '../../styles/Wishlist.css'
 import { Helmet } from 'react-helmet';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
+
+const getAuthToken = () => {
+    const name = 'token=';
+    const cookieArr = document.cookie.split(';');
+    for (let i = 0; i < cookieArr.length; i++) {
+        let cookie = cookieArr[i].trim();
+        if (cookie.indexOf(name) === 0) {
+            return cookie.substring(name.length, cookie.length);
+        }
+    }
+    return null;
+};
+
+
+const tokenRequired = () => {
+    const token = getAuthToken();
+
+    axios.post('http://127.0.0.1:3070/customertoken/', { token })
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+            window.location.href = '/customerlogin';
+
+        });
+}
 
 const Wishlist = () => {
+
+    tokenRequired()
+
+
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true)
     const [quantities, setQuantities] = useState({});

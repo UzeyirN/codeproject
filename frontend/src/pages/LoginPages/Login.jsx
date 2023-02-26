@@ -2,19 +2,34 @@ import React from 'react'
 import { Helmet } from 'react-helmet';
 import '../../styles/LoginPages/Login.css'
 import { Link } from 'react-router-dom';
-import login__schema from '../../Schema/LoginValidation';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
+import { useState } from 'react';
+import axios from 'axios';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm({
-    resolver: yupResolver(login__schema),
-  });
-  const onSubmitHandler = (data) => {
-    console.log({ data });
-    reset();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!email || !password) {
+      window.alert("Please fill in all fields and login or sign up.");
+      return;
+    }
+    axios.post('http://127.0.0.1:3070/customerlogin/', { email, password })
+
+      .then((response) => {
+        console.log("success", response);
+        document.cookie = `token=${response.data.token}; expires=${new Date(Date.now() + 36000000).toUTCString()}; path=/`;
+        window.location.href = '/wishlist';
+        setEmail('');
+        setPassword('');
+        window.alert("Success login");
+      })
+      .catch((error) => {
+        console.log("catch", error);
+        window.alert("Email or password is wrong.");
+      });
   };
 
 
@@ -44,16 +59,13 @@ const Login = () => {
           <div className="row roww">
             <div className="col-6 login-col">
               <div className="login-input__wrapper">
-                <form onSubmit={handleSubmit(onSubmitHandler)} action="" className='login-form'>
-                  <input {...register("email")} type="email" placeholder='Email Address' className='login-input login-form__element' />
-                  <p style={{ color: "red" }}>{errors.email?.message}</p>
+                <form onSubmit={handleSubmit} className='login-form'>
 
-                  <input {...register("password")} type="password" placeholder='Password' className='login-input login-form__element' />
-                  <p style={{ color: "red" }}>{errors.password?.message}</p>
-
+                  <input type="email" placeholder='Email Address' value={email} onChange={(e) => setEmail(e.target.value)} className='login-input login-form__element' />
+                  <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} className='login-input login-form__element' />
 
                   <div className='login-btn__wrapper login-form__element'>
-                    <button className='login-btn'>LOGIN</button>
+                    <button type='submit' className='login-btn'>LOGIN</button>
                     <Link to='forgotpassword' className='forgot-password__link'>Forgot your password?</Link>
                   </div>
                 </form>

@@ -10,14 +10,20 @@ const AdminReg = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
 
 
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        
+
+        if (!username || !email || !password || !confirmPassword) {
+            window.alert("Please fill all the fields");
+            return;
+        }
+
         if (password !== confirmPassword) {
             window.alert("Confirm password doesn't match password");
             return;
         }
-        
+
         axios.post('http://127.0.0.1:3070/register/', { username, email, password, confirmPassword })
             .then((response) => {
                 console.log("success", response)
@@ -39,7 +45,6 @@ const AdminReg = () => {
     };
 
 
-
     return (
         <div className='admin-login__wrapper'>
             <div style={{ width: "20%", textAlign: "center" }}>
@@ -53,8 +58,6 @@ const AdminReg = () => {
                 </form>
             </div>
         </div>
-
-
     )
 }
 export default AdminReg

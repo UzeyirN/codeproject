@@ -1,106 +1,68 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import '../../styles/LoginPages/CreateAcc.css'
-
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import createacc_schema from './../../Schema/CreateAcc';
 import { useEffect } from 'react';
+import axios from 'axios';
 
 const CreateAcc = () => {
 
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    confirm_password: "",
-    first_name: "",
-    last_name: "",
-    company_name: "",
-    phone_num: null,
-    address_line1: "",
-    address_line2: "",
-    city: "",
-    state: "",
-    zip_code: null,
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [company_name, setCompany_Name] = useState('');
+  const [phone_num, setPhone_Num] = useState(null);
+  const [address_line1, setAddress_Line1] = useState("");
+  const [address_line2, setAddress_Line2] = useState("");
+  const [sburb_city, setSburb_City] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
 
-  });
+  const addCustomer = (event) => {
+    event.preventDefault();
 
-  // const { email, password, confirm_password, first_name, last_name, company_name, phone_num, address_line1, address_line2, city, state, zip_code } = formData;
+    if (!email || !password || !confirmPassword || !firstname || !lastname || !phone_num || !address_line1 || !sburb_city || !zip) {
+      window.alert("Please fill all the fields");
+      return;
+    }
 
+    if (password !== confirmPassword) {
+      window.alert("Confirm password doesn't match password");
+      return;
+    }
 
-  // const addData = async e => {
-  //   e.preventDefault();
-  //   if (password !== confirm_password) {
-  //     console.log("Passwords do not match");
-  //   } else {
-  //     const newUser = {
-  //       email,
-  //       password,
-  //       confirm_password,
-  //       first_name,
-  //       last_name,
-  //       company_name,
-  //       phone_num,
-  //       address_line1,
-  //       address_line2,
-  //       city,
-  //       state,
-  //       zip_code
-  //     };
-
-  //     try {
-  //       const config = {
-  //         headers: {
-  //           "Content-Type": "application/json"
-  //         }
-  //       };
-
-  //       const body = JSON.stringify(newUser);
-
-  //       const res = await axios.post("http://localhost:3050/users", body, config);
-  //       console.log(res.data);
-  //     } catch (err) {
-  //       console.error(err.response.data);
-  //     }
-  //     setFormData({
-  //       email: "",
-  //       password: "",
-  //       confirm_password: "",
-  //       first_name: "",
-  //       last_name: "",
-  //       company_name: "",
-  //       phone_num: "",
-  //       address_line1: "",
-  //       address_line2: "",
-  //       city: "",
-  //       state: "",
-  //       zip_code: "",
-  //     })
-  //   }
-  // };
-
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => {
-      return {
-        ...prevState,
-        [name]: value
-      }
+    axios.post('http://127.0.0.1:3070/customerregister/', {
+      email, password, confirmPassword, firstname, lastname, company_name, phone_num, address_line1, address_line2, sburb_city, state, zip
     })
-  }
+      .then((response) => {
+        console.log("success", response)
+        document.cookie = `token=${response.data.token}; expires=${new Date(Date.now() + 36000000).toUTCString()}; path=/`;
+        window.location.href = '/wishlist';
 
 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm({
-    resolver: yupResolver(createacc_schema),
-  });
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+        setFirstName('');
+        setLastname('');
+        setCompany_Name('');
+        setPhone_Num('');
+        setAddress_Line1('');
+        setAddress_Line1('');
+        setSburb_City('');
+        setState('');
+        setZip('');
 
+      })
+      .catch((error) => {
+        console.log("catch", error)
 
-  const onSubmitHandler = (data) => {
-    console.log({ data });
-    // addData();
-    reset();
+      });
+    window.alert("success register");
+
   };
+
 
   useEffect(() => {
     window.scrollTo({
@@ -125,22 +87,17 @@ const CreateAcc = () => {
         <div className="createacc-wrapper">
 
           <div className="createacc-inputs__wrapper">
-            <form onSubmit={handleSubmit(onSubmitHandler)} className='createacc-form'>
+            <form onSubmit={addCustomer} className='createacc-form'>
 
               {/* first input wrapper */}
               <div className='input-wrapper'>
 
                 <div style={{ width: "100%" }}>
-                  <input {...register("email")} type="email" name='email' required value={formData.email} onChange={handleChange} placeholder='Email Address' className='login-input login-form__element' />
-                  <p style={{ color: "red" }}>{errors.email?.message}</p>
+                  <input type='email' name='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email Address' className='login-input login-form__element' />
                 </div>
 
                 <div style={{ width: "100%" }}>
-                  {/* <input {...register("phone_num")} type="text" placeholder='Phone Number' className=' createacc-input' />
-                  <p className='createacc-error__message'>{errors.phone_num?.message}</p> */}
-
-                  <input {...register("password")} type="password" name='password' required value={formData.password} onChange={handleChange} placeholder='Password' className='login-input login-form__element' />
-                  <p style={{ color: "red" }}>{errors.password?.message}</p>
+                  <input type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Password' className='login-input login-form__element' />
                 </div>
 
               </div>
@@ -150,41 +107,41 @@ const CreateAcc = () => {
               <div className='input-wrapper'>
 
                 <div style={{ width: "100%" }}>
-                  <input {...register("confirm_password")} type="password" required name='confirm_password' value={formData.confirm_password} onChange={handleChange} placeholder='Confirm Password' className='login-input login-form__element' />
-                  <p style={{ color: "red" }}>{errors.confirm_password?.message}</p>
+                  <input type="password" name='confirm_password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder='Confirm Password' className='login-input login-form__element' />
                 </div>
 
                 <div style={{ width: "100%" }}>
-                  <input {...register("first_name")} type="text" required name='first_name' value={formData.first_name} onChange={handleChange} placeholder='First Name' className=' createacc-input' />
-                  <p className='createacc-error__message'>{errors.first_name?.message}</p>
+                  <input type="text" name='first_name' value={firstname} onChange={(e) => setFirstName(e.target.value)} placeholder='First Name' className=' createacc-input' />
                 </div>
+
               </div>
 
               {/* third input wrapper */}
 
               <div className='input-wrapper'>
+
                 <div style={{ width: "100%" }}>
-                  <input {...register("last_name")} type="text" required name='last_name' value={formData.last_name} onChange={handleChange} placeholder='Last Name' className=' createacc-input' />
-                  <p className='createacc-error__message'>{errors.last_name?.message}</p>
+                  <input type="text" name='last_name' value={lastname} onChange={(e) => setLastname(e.target.value)} placeholder='Last Name' className=' createacc-input' />
                 </div>
 
                 <div style={{ width: "100%" }}>
-                  <input type="text" placeholder='Company Name' name='company_name' value={formData.company_name} onChange={handleChange} className=' createacc-input' />
+                  <input type="text" placeholder='Company Name' name='company_name' value={company_name} onChange={(e) => setCompany_Name(e.target.value)} className=' createacc-input' />
                 </div>
+
               </div>
 
               {/* fourth input wrapper */}
 
               <div className='input-wrapper'>
+
                 <div style={{ width: "100%" }}>
-                  <input {...register("phone_num")} type="number" required name='phone_num' value={formData.phone_num} onChange={handleChange} placeholder='Phone Number' className=' createacc-input' />
-                  <p className='createacc-error__message'>{errors.phone_num?.message}</p>
+                  <input type="number" name='phone_num' value={phone_num} onChange={(e) => setPhone_Num(e.target.value)} placeholder='Phone Number' className=' createacc-input' />
                 </div>
 
                 <div style={{ width: "100%" }}>
-                  <input {...register("address_line1")} type="text" required name='address_line1' value={formData.address_line1} onChange={handleChange} placeholder='Address Line 1' className=' createacc-input' />
-                  <p className='createacc-error__message'>{errors.address_line1?.message}</p>
+                  <input type="text" name='address_line1' value={address_line1} onChange={(e) => setAddress_Line1(e.target.value)} placeholder='Address Line 1' className=' createacc-input' />
                 </div>
+
               </div>
 
               {/* fifth input wrapper */}
@@ -192,37 +149,30 @@ const CreateAcc = () => {
               <div className='input-wrapper'>
 
                 <div style={{ width: "100%" }}>
-                  <input type="text" placeholder='Address Line 2' name='address_line2' value={formData.address_line2} onChange={handleChange} className=' createacc-input' />
+                  <input type="text" placeholder='Address Line 2' name='address_line2' value={address_line2} onChange={(e) => setAddress_Line2(e.target.value)} className=' createacc-input' />
                 </div>
 
                 <div style={{ width: "100%" }}>
-                  <input {...register("city")} type="text" name='city' value={formData.city} onChange={handleChange} placeholder='Suburb/City' className=' createacc-input' />
-                  <p className='createacc-error__message'>{errors.city?.message}</p>
+                  <input type="text" name='city' value={sburb_city} onChange={(e) => setSburb_City(e.target.value)} placeholder='Suburb/City' className=' createacc-input' />
                 </div>
+
               </div>
 
               {/* sixth input wrapper */}
 
               <div className='input-wrapper'>
+
                 <div style={{ width: "100%" }}>
-                  <input type="text" placeholder='State/Province' name='state' value={formData.state} onChange={handleChange} className=' createacc-input' />
+                  <input type="text" placeholder='State/Province' name='state' value={state} onChange={(e) => setState(e.target.value)} className=' createacc-input' />
                 </div>
+
                 <div style={{ width: "100%" }}>
-                  <input {...register("zip_code")} type="number" required placeholder='Zip/Postcode' name='zip_code' value={formData.zip_code} onChange={handleChange} className=' createacc-input zip-input' />
-                  <p className='createacc-error__message'>{errors.zip?.message}</p>
+                  <input type="text" placeholder='Zip/Postcode' name='zip_code' value={zip} onChange={(e) => setZip(e.target.value)} className=' createacc-input zip-input' />
                 </div>
+
               </div>
 
-              {/* seventh input wrapper */}
-
-              {/* <div className='input-wrapper'>
-                <div style={{ width: "100%" }}>
-                  <input {...register("zip_code")} type="number" required placeholder='Zip/Postcode' name='zip_code' value={formData.zip_code} onChange={handleChange} className=' createacc-input zip-input' />
-                  <p className='createacc-error__message'>{errors.zip?.message}</p>
-                </div>
-              </div> */}
-
-              <button className='createacc-btn lato-font'>SUBMIT FORM</button>
+              <button type='submit' className='createacc-btn lato-font'>SUBMIT FORM</button>
             </form>
           </div>
         </div>

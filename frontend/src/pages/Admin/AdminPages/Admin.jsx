@@ -1,35 +1,7 @@
-// import React from 'react'
-// import { useEffect } from 'react';
-
-
-
-// const Admin = () => {
-
-
-//     useEffect(() => {
-//         window.scrollTo({
-//             top: 0,
-//             left: 0,
-//             behavior: "smooth"
-//         });
-//     }, [])
-//     return (
-//         <div style={{ height: "100vh", display: "flex", justifyContent: "center", alignItems: 'center' }}>
-//             <h1>WELCOME TO ADMIN PANEL</h1>
-
-//         </div>
-//     )
-// }
-
-// export default Admin
-
-
-
 import React from 'react'
 import { useEffect } from 'react';
 import axios from 'axios';
 
-// get the token from the cookie
 const getAuthToken = () => {
     const name = 'token=';
     const cookieArr = document.cookie.split(';');
@@ -44,10 +16,8 @@ const getAuthToken = () => {
 
 
 const tokenRequired = () => {
-    // get the token from the cookie
     const token = getAuthToken();
 
-    // use the token in an axios request
     axios.post('http://127.0.0.1:3070/tokenRequired/', { token })
         .then((response) => {
             console.log(response.data);
