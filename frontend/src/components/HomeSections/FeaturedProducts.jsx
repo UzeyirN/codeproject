@@ -130,7 +130,11 @@ const FeaturedProducts = () => {
                                                             ADD TO CART
                                                         </button>
                                                     ) : (
-                                                        <button type="button" className="btn lato-font add-button" disabled>ADD TO CART</button>
+                                                        <div>
+                                                            <button style={{borderRadius:"0"}} type="button" className="btn lato-font add-button" id='disable-button' disabled>ADD TO CART</button>
+                                                            <p id='hover-text' style={{display:"none"}}>Hello!</p>
+                                                        </div>
+
                                                     )}
 
                                                 </div>

@@ -314,7 +314,7 @@ const Navbar = () => {
                                                                             ADD TO CART
                                                                         </button>
                                                                     ) : (
-                                                                        <button type="button" className="btn lato-font search__add-button" disabled>ADD TO CART</button>
+                                                                        <button style={{borderRadius:"0"}} type="button" className="btn lato-font search__add-button disable-button" disabled>ADD TO CART</button>
                                                                     )}
                                                                 </div>
                                                             </div>

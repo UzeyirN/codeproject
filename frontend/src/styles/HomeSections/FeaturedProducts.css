@@ -123,6 +123,9 @@ img {
     color: #b0976d;
 }
 
+#disable-button:hover + #hover-text {
+    display: block;
+  }
 
 @media screen and (max-width: 1200px) {
 

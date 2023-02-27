@@ -36,7 +36,6 @@
 .show-lightbox {
     background-color: #121212;
     color: #fff;
-    /* height: 55vh; */
     width: 100%;
     transition: all 0.5s;
     position: absolute;
@@ -247,6 +246,7 @@
     position: relative;
     right: 6%;
 }
+
 
 @media screen and (min-width: 991px) {
 
