@@ -26,6 +26,12 @@ const Navbar = () => {
     const URL = 'http://localhost:3070/featured';
     const [isMobile, setIsMobile] = useState(false);
 
+     // searching
+     const [products, setProducts] = useState(null)
+     const [value, setValue] = useState("")
+
+
+
     useLayoutEffect(() => {
         function updateIsMobile() {
             setIsMobile(window.innerWidth <= 992);
@@ -37,10 +43,6 @@ const Navbar = () => {
         return () => window.removeEventListener('resize', updateIsMobile);
     }, []);
 
-
-    // searching
-    const [products, setProducts] = useState(null)
-    const [value, setValue] = useState("")
 
     const getData = async () => {
         await axios.get(URL).then((resp) => setProducts(resp.data));
@@ -263,7 +265,8 @@ const Navbar = () => {
                                         }}
                                         style={{ "--swiper-navigation-color": "b0976d", "--swiper-pagination-color": "#b0976d" }}
 
-                                    >{
+                                    >
+                                        {
                                             loading ? <Loading /> :
                                                 products?.filter(data => {
 
@@ -289,6 +292,72 @@ const Navbar = () => {
                                                         </SwiperSlide>
                                                     ))
                                         }
+
+                                        {/* {loading ? (
+                                            <Loading />
+                                        ) : (
+                                            products
+                                                .filter((data) => {
+                                                    return value.trim().toLowerCase() === ""
+                                                        ? data
+                                                        : data.appelation
+                                                            .toLowerCase()
+                                                            .includes(value.toLowerCase());
+                                                })
+                                                .map(({ _id, image, brand, appelation, price }) => (
+                                                    <SwiperSlide>
+                                                        <div className="search-card__wrapper">
+                                                            <div hideSearchbox className="search-card__f">
+                                                                <div className="search-card__body">
+                                                                    <img
+                                                                        style={{ height: "100%" }}
+                                                                        src={image}
+                                                                        alt=""
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                            <div className="searchCard-content__f">
+                                                                <p
+                                                                    className="lato-font"
+                                                                    style={{
+                                                                        color: "RGB(176, 151, 109)",
+                                                                        fontSize: "12px",
+                                                                    }}
+                                                                >
+                                                                    {brand}
+                                                                </p>
+                                                                <Link
+                                                                    className="playfair-font card-link"
+                                                                    style={{
+                                                                        marginBottom: "5px",
+                                                                        fontSize: "14px",
+                                                                    }}
+                                                                >
+                                                                    {appelation}
+                                                                </Link>
+                                                                <div
+                                                                    style={{
+                                                                        color: "RGB(176, 151, 109)",
+                                                                        margin: "10px 0",
+                                                                        fontSize: "16px",
+                                                                    }}
+                                                                    className="notoserif-font"
+                                                                >
+                                                                    ${price}
+                                                                </div>
+                                                                {isLoggedIn && (
+                                                                    <button
+                                                                        onClick={() => addToWishList(_id)}
+                                                                        className="lato-font search__add-button"
+                                                                    >
+                                                                        ADD TO CART
+                                                                    </button>
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                    </SwiperSlide>
+                                                ))
+                                        )} */}
                                     </Swiper>
                                 </div>
                             </div>

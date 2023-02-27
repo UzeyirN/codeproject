@@ -14,22 +14,5 @@ router.delete("/:id", wishlistController.wishlist_delete)
 
 router.delete('/', wishlistController.wishlist_deleteAll);
 
-// router.delete('/', );
-
-
-
-
-// router.delete("/wishlist/:id", async (req, res) => {
-//     const { id } = req.params;
-//     await Wishlist.findByIdAndDelete(id);
-//     res.json({
-//         message: "success",
-//     });
-// });
-
-
-
-
-
 
 module.exports = router

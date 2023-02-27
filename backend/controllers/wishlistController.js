@@ -52,8 +52,11 @@ exports.wishlist_post = async (req, res) => {
         productId: id,
         image: product.image,
         brand: product.brand,
+        alcohol: product.alcohol,
         appelation: product.appelation,
-        price: product.price
+        kind: product.kind,
+        price: product.price,
+        size: product.size
     });
     res.json({
         message: "success",

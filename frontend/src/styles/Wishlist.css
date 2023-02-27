@@ -20,16 +20,9 @@
     border: 2px solid #f2f2f2;
 }
 
-/* .cart-th {
-    font-weight: 600;
-    padding: 20px 0;
-    border-bottom: 2px solid #f2f2f2;
-
+.wish-table__title{
+    font-weight: 900;
 }
-
-.cart-td {
-    border-bottom: 2px solid #f2f2f2;
-} */
 
 .wish-brand__p {
     color: RGB(165, 165, 165);
@@ -88,12 +81,14 @@
 }
 
 .fa-circle-xmark {
-    font-size: 1.2em;
+    font-size: 2em;
     cursor: pointer;
+    color: rgb(232, 19, 19);
+
 }
 
 .fa-circle-xmark:hover {
-    color: rgb(232, 19, 19);
+    color: black;
     transition: all 0.2s;
 }
 
@@ -147,6 +142,31 @@
     text-align: center;
 }
 
+.product-title {
+    display: none;
+    font-size: 25px;
+    font-weight: 900;
+    margin: 10px 0;
+}
+
+.detail-p{
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 40px;
+
+}
+
+.detail-link{
+    text-decoration: none;
+    color: #000;
+}
+
+.detail-link:hover{
+    color: RGB(176, 151, 109);
+    transition: all 0.2s;
+
+}
+
 
 @media screen and (max-width: 1400px) {
     .wish-top {
@@ -154,21 +174,18 @@
     }
 }
 
-
 @media screen and (max-width: 1100px) {
     .wish-top {
-        padding-top: 8%;
-        height: 25vh;
-    }
-}
-
-@media screen and (max-width: 800px) {
-    .wish-top {
-        padding-top: 9%;
+        padding-top: 10%;
     }
 }
 
 @media(max-width:800px) {
+
+    .wish-top {
+        padding-top: 10%;
+        height: 25vh;
+    }
 
     .table thead {
         display: none;
@@ -192,16 +209,9 @@
         margin-bottom: 12%;
     }
 
-
-    /* .table td::before{
-        content: attr(data-label);
-        position: absolute;
-        left: 0;
-        width: 50%;
-        padding-left: 15px;
-        font-size: 15px;
-        font-weight: 500;
-    } */
+    .product-title {
+        display: block;
+    }
 
     .image-wrapper {
         margin: 0 auto;
@@ -214,11 +224,10 @@
 @media screen and (max-width: 567px) {
 
     .wish-top {
-        padding-top: 13%;
+        padding-top: 17%;
     }
 
 }
-
 
 @media screen and (max-width: 349px) {
 

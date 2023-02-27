@@ -28,6 +28,7 @@ import Admin from '../pages/Admin/AdminPages/Admin';
 import ShopWinesRoot from '../pages/ShopWines/ShopWinesRoot';
 import AdminLogin from './../pages/Admin/AdminLogin';
 import AdminReg from './../pages/Admin/AdminReg';
+import WishlistDetail from '../pages/Wishlist/WishlistDetail';
 
 
 
@@ -118,6 +119,10 @@ const ROUTES = [
             {
                 path: "wishlist",
                 element: <Wishlist />
+            },
+            {
+                path: "wishlist/:id",
+                element: <WishlistDetail />
             },
             {
                 path: "customerlogin/",

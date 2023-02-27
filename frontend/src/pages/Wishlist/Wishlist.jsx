@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const getAuthToken = () => {
     const name = 'token=';
@@ -96,8 +97,6 @@ const Wishlist = () => {
         }
     };
 
-
-
     const handleClear = async () => {
         const confirmed = window.confirm("Are you sure you want to delete all items?");
 
@@ -148,16 +147,15 @@ const Wishlist = () => {
             <div className="container">
 
                 <div style={{ overflowX: "auto" }}>
-                    {/* <table className="table wish-table__wrapper"> */}
                     <table className="table lato-font">
                         <thead style={{ border: "2px solid #f2f2f2" }}>
-                            {/* <tr> */}
                             <th className="cart-th" scope="col">ITEM</th>
                             <th className="cart-th" scope="col">BRAND</th>
                             <th className="cart-th" scope="col">PRICE</th>
                             <th className="cart-th" scope="col">QUANTITY</th>
+                            <th className="cart-th" scope="col">DETAIL</th>
                             <th className="cart-th" scope="col">TOTAL</th>
-                            {/* </tr> */}
+                            <th className="cart-th" scope="col">DELETE</th>
                         </thead>
                         <tbody>
                             {loading ? (
@@ -206,6 +204,9 @@ const Wishlist = () => {
                                                 </button>
                                             </div>
                                         </td>
+                                        <td>
+                                            <p className="lato-font wish-price__p"> <Link className="detail-link" to={`${products._id}`}>Detail</Link></p>
+                                        </td>
 
                                         <td data-label="TOTAL" className="cart-td">
                                             <div className="wish-price__total">
@@ -213,12 +214,16 @@ const Wishlist = () => {
                                                     ${parseFloat(products.price) * (quantities[products._id] || 1)}
                                                 </span>
 
-                                                <i
-                                                    onClick={() => handleDelete(products._id)}
-                                                    class="fa-solid fa-circle-xmark"
-                                                ></i>
+
                                             </div>
                                         </td>
+                                        <td>
+                                            <i
+                                                onClick={() => handleDelete(products._id)}
+                                                className="fa-solid fa-circle-xmark wish-price__p"
+                                            ></i>
+                                        </td>
+
                                     </tr>
                                 ))
                             )}
