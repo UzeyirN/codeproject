@@ -18,27 +18,7 @@ const Login = () => {
     }
   }, []);
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   if (!email || !password) {
-  //     window.alert("Please fill in all fields and login or sign up.");
-  //     return;
-  //   }
-  //   axios.post('http://127.0.0.1:3070/customerlogin/', { email, password })
 
-  //     .then((response) => {
-  //       console.log("success", response);
-  //       document.cookie = `token=${response.data.token}; expires=${new Date(Date.now() + 36000000).toUTCString()}; path=/`;
-  //       window.location.href = '/wishlist';
-  //       setEmail('');
-  //       setPassword('');
-  //       window.alert("Success login");
-  //     })
-  //     .catch((error) => {
-  //       console.log("catch", error);
-  //       window.alert("Email or password is wrong.");
-  //     });
-  // };
 
 
   const handleSubmit = (event) => {
@@ -47,19 +27,6 @@ const Login = () => {
       window.alert("Please fill in all fields and login or sign up.");
       return;
     }
-    // axios.post('http://127.0.0.1:3070/customerlogin/', { email, password })
-    //   .then((response) => {
-    //     console.log("success", response);
-    //     document.cookie = `token=${response.data.token}; expires=${new Date(Date.now() + 36000000).toUTCString()}; path=/`;
-    //     setIsLoggedIn(true);
-    //     setEmail('');
-    //     setPassword('');
-    //     window.alert("Success login");
-    //   })
-    //   .catch((error) => {
-    //     console.log("catch", error);
-    //     window.alert("Email or password is wrong.");
-    //   });
 
     axios.post('http://127.0.0.1:3070/customerlogin/', { email, password })
       .then((response) => {
@@ -79,16 +46,10 @@ const Login = () => {
 
   };
 
-  // const handleLogout = () => {
-  //   document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  //   setIsLoggedIn(false);
-  // };
-
   const handleLogout = () => {
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     setIsLoggedIn(false);
     setEmail('');
-    // setEmail('');
   };
 
   const getCookie = (name) => {
@@ -124,29 +85,10 @@ const Login = () => {
         <div className="container">
           <div className="row roww">
             <div className="col-6 login-col">
-              {/* {isLoggedIn ? (
-                <div>
-                  <p>You are logged in!</p>
-                  <button onClick={handleLogout}>Logout</button>
-                </div>
-              ) : (
-                <div className="login-input__wrapper">
-                  <form onSubmit={handleSubmit} className='login-form'>
-
-                    <input type="email" placeholder='Email Address' value={email} onChange={(e) => setEmail(e.target.value)} className='login-input login-form__element' />
-                    <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} className='login-input login-form__element' />
-
-                    <div className='login-btn__wrapper login-form__element'>
-                      <button type='submit' className='login-btn'>LOGIN</button>
-                      <Link to='forgotpassword' className='forgot-password__link'>Forgot your password?</Link>
-                    </div>
-                  </form>
-                </div>
-              )} */}
               {isLoggedIn ? (
-                <div>
-                  <p>You are logged in as  ({email})!</p>
-                  <button onClick={handleLogout}>Logout</button>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", height: "100%", justifyContent: "center" }}>
+                  <p style={{color:"black"}} className='lato-font newcostumer-p'>You are logged in !</p>
+                  <button className='login-btn' onClick={handleLogout}>LOGOUT</button>
                 </div>
               ) : (
                 <div className="login-input__wrapper">

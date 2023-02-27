@@ -15,17 +15,16 @@
 }
 
 .delete-btn {
-    background-color: rgb(215, 44, 44);
+    background-color: rgb(161, 21, 21);
 }
 
 .delete-btn:hover {
-    background-color: rgb(148, 1, 1);
+    background-color: rgb(195, 48, 48);
     transition: all 0.3s;
-
 }
 
 .update-btn {
-    background-color: rgb(232, 189, 32);
+    background-color: rgb(160, 128, 14);
 }
 
 .update-btn:hover {

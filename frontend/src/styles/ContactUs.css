@@ -87,6 +87,12 @@
     }
 }
 
+@media screen and (max-width: 992px) {
+    .contact-top {
+        height: 20vh;
+    }
+}
+
 @media screen and (max-width: 800px) {
     .contact-wrapper {
         width: 90%;

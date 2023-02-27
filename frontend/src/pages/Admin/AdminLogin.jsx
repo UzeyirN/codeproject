@@ -24,7 +24,6 @@ const AdminLogin = () => {
         }
     };
 
-
     const handleSubmit = (event) => {
         event.preventDefault();
         if (!email || !password) {
@@ -53,7 +52,6 @@ const AdminLogin = () => {
         setEmail('');
     };
 
-    console.log(email);
 
     return (
         <div className='admin-login__wrapper'>
@@ -62,7 +60,7 @@ const AdminLogin = () => {
                 {isLoggedIn ? (
                     <div>
                         <p className='lato-font' style={{ color: "white" }}>
-                            You are logged in as {email}!
+                        You're already logged in !
                         </p>
                         <button className='login-button' onClick={handleLogout}>Logout</button>
                     </div>
@@ -77,9 +75,7 @@ const AdminLogin = () => {
                         </div>
                     </form>
                 )}
-
             </div>
-
         </div>
     );
 };

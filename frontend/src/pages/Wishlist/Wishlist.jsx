@@ -18,7 +18,6 @@ const getAuthToken = () => {
     return null;
 };
 
-
 const tokenRequired = () => {
     const token = getAuthToken();
 
@@ -29,20 +28,16 @@ const tokenRequired = () => {
         .catch((error) => {
             console.log(error);
             window.location.href = '/customerlogin';
-
         });
 }
 
 const Wishlist = () => {
 
-    tokenRequired()
-
-
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true)
     const [quantities, setQuantities] = useState({});
 
-
+    tokenRequired()
 
     const increaseQuantity = (id) => {
         const updatedQuantities = { ...quantities, [id]: (quantities[id] || 0) + 1 };
@@ -101,6 +96,8 @@ const Wishlist = () => {
         }
     };
 
+
+
     const handleClear = async () => {
         const confirmed = window.confirm("Are you sure you want to delete all items?");
 
@@ -125,8 +122,6 @@ const Wishlist = () => {
 
     const price = product?.reduce((sum, products) => sum + parseFloat(products.price) * (quantities[products._id] || 1), 0)
 
-
-
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -134,7 +129,6 @@ const Wishlist = () => {
             behavior: "smooth"
         });
     }, [])
-
 
     return (
         <div className="wishlist">
@@ -230,7 +224,6 @@ const Wishlist = () => {
                         </tbody>
                     </table>
                 </div>
-
 
                 <div className="subtotal-wrapper">
                     <div className="subtotal-inner">
