@@ -101,8 +101,6 @@ const Wishlist = () => {
         }
     };
 
-
-
     const handleClear = async () => {
         const confirmed = window.confirm("Are you sure you want to delete all items?");
 
@@ -120,7 +118,6 @@ const Wishlist = () => {
             }
         }
     };
-
 
     useEffect(() => {
         fetchData();

@@ -178,7 +178,6 @@ const Navbar = () => {
                                 </Link>
                                 <Link to='wishlist' className="nav-link" aria-expanded="false">
                                     <i className="fa-solid fa-cart-shopping"></i>
-
                                 </Link>
 
                                 <div className="nav-link nav-burger" id="mobil" onClick={() => setHideLightbox(s => !s)}>

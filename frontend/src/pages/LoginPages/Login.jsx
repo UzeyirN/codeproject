@@ -9,6 +9,37 @@ import axios from 'axios';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = getCookie('token');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   if (!email || !password) {
+  //     window.alert("Please fill in all fields and login or sign up.");
+  //     return;
+  //   }
+  //   axios.post('http://127.0.0.1:3070/customerlogin/', { email, password })
+
+  //     .then((response) => {
+  //       console.log("success", response);
+  //       document.cookie = `token=${response.data.token}; expires=${new Date(Date.now() + 36000000).toUTCString()}; path=/`;
+  //       window.location.href = '/wishlist';
+  //       setEmail('');
+  //       setPassword('');
+  //       window.alert("Success login");
+  //     })
+  //     .catch((error) => {
+  //       console.log("catch", error);
+  //       window.alert("Email or password is wrong.");
+  //     });
+  // };
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,12 +47,27 @@ const Login = () => {
       window.alert("Please fill in all fields and login or sign up.");
       return;
     }
-    axios.post('http://127.0.0.1:3070/customerlogin/', { email, password })
+    // axios.post('http://127.0.0.1:3070/customerlogin/', { email, password })
+    //   .then((response) => {
+    //     console.log("success", response);
+    //     document.cookie = `token=${response.data.token}; expires=${new Date(Date.now() + 36000000).toUTCString()}; path=/`;
+    //     setIsLoggedIn(true);
+    //     setEmail('');
+    //     setPassword('');
+    //     window.alert("Success login");
+    //   })
+    //   .catch((error) => {
+    //     console.log("catch", error);
+    //     window.alert("Email or password is wrong.");
+    //   });
 
+    axios.post('http://127.0.0.1:3070/customerlogin/', { email, password })
       .then((response) => {
         console.log("success", response);
+        localStorage.setItem('userName', response.data.firstname);
+        localStorage.setItem('userEmail', response.data.email);
         document.cookie = `token=${response.data.token}; expires=${new Date(Date.now() + 36000000).toUTCString()}; path=/`;
-        window.location.href = '/wishlist';
+        setIsLoggedIn(true);
         setEmail('');
         setPassword('');
         window.alert("Success login");
@@ -30,8 +76,28 @@ const Login = () => {
         console.log("catch", error);
         window.alert("Email or password is wrong.");
       });
+
   };
 
+  // const handleLogout = () => {
+  //   document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  //   setIsLoggedIn(false);
+  // };
+
+  const handleLogout = () => {
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    setIsLoggedIn(false);
+    setEmail('');
+    // setEmail('');
+  };
+
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+      return parts.pop().split(';').shift();
+    }
+  };
 
   useEffect(() => {
     window.scrollTo({
@@ -58,18 +124,43 @@ const Login = () => {
         <div className="container">
           <div className="row roww">
             <div className="col-6 login-col">
-              <div className="login-input__wrapper">
-                <form onSubmit={handleSubmit} className='login-form'>
+              {/* {isLoggedIn ? (
+                <div>
+                  <p>You are logged in!</p>
+                  <button onClick={handleLogout}>Logout</button>
+                </div>
+              ) : (
+                <div className="login-input__wrapper">
+                  <form onSubmit={handleSubmit} className='login-form'>
 
-                  <input type="email" placeholder='Email Address' value={email} onChange={(e) => setEmail(e.target.value)} className='login-input login-form__element' />
-                  <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} className='login-input login-form__element' />
+                    <input type="email" placeholder='Email Address' value={email} onChange={(e) => setEmail(e.target.value)} className='login-input login-form__element' />
+                    <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} className='login-input login-form__element' />
 
-                  <div className='login-btn__wrapper login-form__element'>
-                    <button type='submit' className='login-btn'>LOGIN</button>
-                    <Link to='forgotpassword' className='forgot-password__link'>Forgot your password?</Link>
-                  </div>
-                </form>
-              </div>
+                    <div className='login-btn__wrapper login-form__element'>
+                      <button type='submit' className='login-btn'>LOGIN</button>
+                      <Link to='forgotpassword' className='forgot-password__link'>Forgot your password?</Link>
+                    </div>
+                  </form>
+                </div>
+              )} */}
+              {isLoggedIn ? (
+                <div>
+                  <p>You are logged in as  ({email})!</p>
+                  <button onClick={handleLogout}>Logout</button>
+                </div>
+              ) : (
+                <div className="login-input__wrapper">
+                  <form onSubmit={handleSubmit} className='login-form'>
+                    <input type="email" placeholder='Email Address' value={email} onChange={(e) => setEmail(e.target.value)} className='login-input login-form__element' />
+                    <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} className='login-input login-form__element' />
+                    <div className='login-btn__wrapper login-form__element'>
+                      <button type='submit' className='login-btn'>LOGIN</button>
+                      <Link to='forgotpassword' className='forgot-password__link'>Forgot your password?</Link>
+                    </div>
+                  </form>
+                </div>
+              )}
+
             </div>
 
 

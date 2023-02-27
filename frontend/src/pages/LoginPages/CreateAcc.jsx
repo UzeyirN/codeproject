@@ -58,8 +58,12 @@ const CreateAcc = () => {
       .catch((error) => {
         console.log("catch", error)
 
+        if (error.response && error.response.data.message === "Email already registered") {
+          window.alert("This email is already registered. Please use a different email.");
+        }
+
       });
-    window.alert("success register");
+    // window.alert("success register");
 
   };
 
