@@ -147,16 +147,17 @@ const Wishlist = () => {
             </div>
             <div className="container">
 
-                <div className="table-responsive">
-                    <table className="table wish-table__wrapper">
+                <div style={{ overflowX: "auto" }}>
+                    {/* <table className="table wish-table__wrapper"> */}
+                    <table className="table lato-font">
                         <thead style={{ border: "2px solid #f2f2f2" }}>
-                            <tr>
-                                <th className="cart-th" scope="col">ITEM</th>
-                                <th className="cart-th" scope="col">BRAND</th>
-                                <th className="cart-th" scope="col">PRICE</th>
-                                <th className="cart-th" scope="col">QUANTITY</th>
-                                <th className="cart-th" scope="col">TOTAL</th>
-                            </tr>
+                            {/* <tr> */}
+                            <th className="cart-th" scope="col">ITEM</th>
+                            <th className="cart-th" scope="col">BRAND</th>
+                            <th className="cart-th" scope="col">PRICE</th>
+                            <th className="cart-th" scope="col">QUANTITY</th>
+                            <th className="cart-th" scope="col">TOTAL</th>
+                            {/* </tr> */}
                         </thead>
                         <tbody>
                             {loading ? (
