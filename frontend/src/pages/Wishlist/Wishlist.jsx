@@ -90,7 +90,9 @@ const Wishlist = () => {
                 localStorage.setItem("wishlistItems", JSON.stringify(updatedItems));
 
                 fetchData();
-                toast.success("Successfully deleted!");
+                toast.success('Successfully deleted!', {
+                    autoClose: 1000
+                });
             } catch (error) {
                 console.error(error);
             }
@@ -107,7 +109,9 @@ const Wishlist = () => {
                 });
 
                 localStorage.removeItem("wishlistItems");
-                toast.success("All Wishlist items have been deleted!");
+                toast.success('All Wishlist items have been deleted!!', {
+                    autoClose: 1000
+                });
                 fetchData();
             } catch (error) {
                 console.error(error);
@@ -233,8 +237,8 @@ const Wishlist = () => {
 
                 <div className="subtotal-wrapper">
                     <div className="subtotal-inner">
-                        <span className="subtotal-p lato-font">Subtotal</span>
-                        <span className="lato-font wish-total__p">$ {price}</span>
+                        <div className="subtotal-p lato-font">Subtotal</div>
+                        <div className="lato-font wish-total__p">$ {price}</div>
                     </div>
                     <div>
                         <button onClick={handleClear} style={{ marginRight: "10px" }} className="payment-btn clear-btn lato-font">

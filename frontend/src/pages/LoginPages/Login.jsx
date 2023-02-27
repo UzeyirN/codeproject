@@ -11,14 +11,14 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  
+
   useEffect(() => {
     const token = getCookie('token');
     if (token) {
       setIsLoggedIn(true);
     }
   }, []);
-
-
 
 
   const handleSubmit = (event) => {

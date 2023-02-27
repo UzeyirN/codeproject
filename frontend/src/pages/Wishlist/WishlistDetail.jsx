@@ -18,6 +18,13 @@ const WishlistDetail = () => {
         getData();
     });
 
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        });
+    }, [])
 
     return (
 
@@ -64,7 +71,7 @@ const WishlistDetail = () => {
                                     <span className='product-title lato-font'>SIZE</span><p className='detail-p playfair-font'> {products.size} ml</p>
                                 </td>
                                 <td>
-                                    <span className='product-title lato-font'>PRICE</span><p className='detail-p playfair-font'> {products.price} $</p>
+                                    <span className='product-title lato-font'>PRICE</span><p className='detail-p playfair-font'>$ {products.price}</p>
                                 </td>
                                 <td>
                                     <span className='product-title lato-font'>KIND</span><p className='detail-p playfair-font'> {products.kind}</p>

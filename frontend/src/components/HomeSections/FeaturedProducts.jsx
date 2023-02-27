@@ -20,6 +20,8 @@ const FeaturedProducts = () => {
     const [isMobile, setIsMobile] = useState(false);
     const URL = 'http://localhost:3070/featured';
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
     useLayoutEffect(() => {
         function updateIsMobile() {
@@ -39,19 +41,42 @@ const FeaturedProducts = () => {
     }
 
     const addToWishList = async (id) => {
-        await fetch("http://localhost:3070/wishlist", {
-            method: "Post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ id }),
-        });
-        toast.success('Added to cart!');
+        if (isLoggedIn) {
+            await fetch('http://localhost:3070/wishlist', {
+                method: 'Post',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id }),
+            });
+            toast.success('Added to cart!', {
+                autoClose: 1000,
+            });
+        } else {
+            toast.error('Please log in to add to cart!', {
+                autoClose: 1000,
+            });
+        }
+    };
+
+    const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) {
+            return parts.pop().split(';').shift();
+        }
     };
 
     useEffect(() => {
-        getData()
-    }, [])
+        getData();
+
+        const token = getCookie('token');
+        if (token) {
+            setIsLoggedIn(true);
+        }
+    }, []);
+
+
 
     return (
         <>
@@ -88,7 +113,7 @@ const FeaturedProducts = () => {
                             style={{ "--swiper-navigation-color": "b0976d", "--swiper-pagination-color": "#b0976d" }}
                         >{
                                 loading ? <Loading /> :
-                                    featured?.map(({ _id, image, brand, appelation, price,kind,alcohol }) => (
+                                    featured?.map(({ _id, image, brand, appelation, price, kind, alcohol }) => (
                                         <SwiperSlide>
                                             <div className="card-wrapper" key={_id}>
                                                 <div className="card-f">
@@ -98,11 +123,16 @@ const FeaturedProducts = () => {
                                                 </div>
                                                 <div className="card-content__f">
                                                     <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{brand}</p>
-                                                    <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{alcohol}</p>
-                                                    <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>{kind}</p>
                                                     <Link to='allshopwines' className='playfair-font card-link' style={{ marginBottom: "20px", fontSize: "20px" }} >{appelation}</Link>
                                                     <div style={{ color: "RGB(176, 151, 109)", margin: "30px 0", fontSize: "21px" }} className='notoserif-font'>${price}.00</div>
-                                                    <button onClick={() => addToWishList(_id)} className='lato-font add-button'>ADD TO CART</button>
+                                                    {isLoggedIn ? (
+                                                        <button onClick={() => addToWishList(_id)} className='lato-font add-button'>
+                                                            ADD TO CART
+                                                        </button>
+                                                    ) : (
+                                                        <button type="button" className="btn lato-font add-button" disabled>ADD TO CART</button>
+                                                    )}
+
                                                 </div>
                                             </div>
                                         </SwiperSlide>

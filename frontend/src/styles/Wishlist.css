@@ -84,7 +84,6 @@
     font-size: 2em;
     cursor: pointer;
     color: rgb(232, 19, 19);
-
 }
 
 .fa-circle-xmark:hover {
@@ -164,7 +163,6 @@
 .detail-link:hover{
     color: RGB(176, 151, 109);
     transition: all 0.2s;
-
 }
 
 
@@ -217,6 +215,13 @@
         margin: 0 auto;
         height: 30%;
         width: 30%;
+    }
+
+    .subtotal-inner{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
 }

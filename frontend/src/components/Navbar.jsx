@@ -26,9 +26,11 @@ const Navbar = () => {
     const URL = 'http://localhost:3070/featured';
     const [isMobile, setIsMobile] = useState(false);
 
-     // searching
-     const [products, setProducts] = useState(null)
-     const [value, setValue] = useState("")
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    // searching
+    const [products, setProducts] = useState(null)
+    const [value, setValue] = useState("")
 
 
 
@@ -62,10 +64,6 @@ const Navbar = () => {
             sety(true);
         }
     };
-
-    useEffect(() => {
-        getData()
-    }, [])
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
@@ -107,16 +105,40 @@ const Navbar = () => {
     };
 
     const addToWishList = async (id) => {
-        await fetch("http://localhost:3070/wishlist", {
-            method: "Post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ id }),
-        });
-        toast.success('Added to cart!');
-
+        if (isLoggedIn) {
+            await fetch('http://localhost:3070/wishlist', {
+                method: 'Post',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id }),
+            });
+            toast.success('Added to cart!', {
+                autoClose: 1000,
+            });
+        } else {
+            toast.error('Please log in to add to cart!', {
+                autoClose: 1000,
+            });
+        }
     };
+
+    const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) {
+            return parts.pop().split(';').shift();
+        }
+    };
+
+    useEffect(() => {
+        getData();
+
+        const token = getCookie('token');
+        if (token) {
+            setIsLoggedIn(true);
+        }
+    }, []);
 
     return (
         <>
@@ -286,7 +308,14 @@ const Navbar = () => {
                                                                     <p className='lato-font' style={{ color: "RGB(176, 151, 109)", fontSize: "12px" }}>{brand}</p>
                                                                     <Link className='playfair-font card-link' style={{ marginBottom: "5px", fontSize: "14px" }} >{appelation}</Link>
                                                                     <div style={{ color: "RGB(176, 151, 109)", margin: "10px 0", fontSize: "16px" }} className='notoserif-font'>${price}</div>
-                                                                    <button onClick={() => addToWishList(_id)} className='lato-font search__add-button'>ADD TO CART</button>
+                                                                    {/* <button onClick={() => addToWishList(_id)} className='lato-font search__add-button'>ADD TO CART</button> */}
+                                                                    {isLoggedIn ? (
+                                                                        <button onClick={() => addToWishList(_id)} className='lato-font search__add-button'>
+                                                                            ADD TO CART
+                                                                        </button>
+                                                                    ) : (
+                                                                        <button type="button" className="btn lato-font search__add-button" disabled>ADD TO CART</button>
+                                                                    )}
                                                                 </div>
                                                             </div>
                                                         </SwiperSlide>

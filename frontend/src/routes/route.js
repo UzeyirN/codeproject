@@ -32,6 +32,7 @@ import WishlistDetail from '../pages/Wishlist/WishlistDetail';
 
 
 
+
 const ROUTES = [
     {
         path: "",
@@ -150,7 +151,8 @@ const ROUTES = [
             {
                 path: "sitemap",
                 element: <SiteMap />
-            },
+            }
+           
         ]
     },
     {
@@ -179,6 +181,7 @@ const ROUTES = [
             }
         ]
     },
+   
 ]
 
 
