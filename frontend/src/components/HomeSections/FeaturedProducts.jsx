@@ -114,8 +114,8 @@ const FeaturedProducts = () => {
                         >{
                                 loading ? <Loading /> :
                                     featured?.map(({ _id, image, brand, appelation, price, kind, alcohol }) => (
-                                        <SwiperSlide>
-                                            <div className="card-wrapper" key={_id}>
+                                        <SwiperSlide key={_id}>
+                                            <div className="card-wrapper" >
                                                 <div className="card-f">
                                                     <div className="card-body">
                                                         <img style={{ height: "100%" }} src={image} alt="" />

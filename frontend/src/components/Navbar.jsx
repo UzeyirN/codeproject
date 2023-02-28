@@ -19,7 +19,7 @@ const Navbar = () => {
     const ref = useRef();
     const [isNavbarSmall, setIsNavbarSmall] = useState(true);
     const [hideLightbox, setHideLightbox] = useState(true);
-    const [hideSearchbox, setHideSearchbox] = useState(true);
+    const [hidesearchbox, setHideSearchbox] = useState(true);
     const [x, setx] = useState(true);
     const [y, sety] = useState(true);
     const [loading, setLoading] = useState(true);
@@ -267,7 +267,7 @@ const Navbar = () => {
                             </div>
                         </div>
                     </div>
-                    <div ref={ref} className={`${hideSearchbox ? "hide-searchbox" : `${y ? "show-searchboxfull" : "show-searchbox"}`}`}  >
+                    <div ref={ref} className={`${hidesearchbox ? "hide-searchbox" : `${y ? "show-searchboxfull" : "show-searchbox"}`}`}  >
                         <div className="search-menu" aria-labelledby="navbarDropdown" >
                             <input className='nav-search__input' onChange={searchData} type="text" placeholder='SEARCH THE STORY' />
                             <div className="container pt-5 text-center fs-5"> {y ? "" : "No search results were found"}</div>
@@ -301,10 +301,10 @@ const Navbar = () => {
                                                     return value.trim().toLowerCase() === "" ? data : data.appelation.toLowerCase().includes(value.toLowerCase())
                                                 })
                                                     .map(({ _id, image, brand, appelation, price }) => (
-                                                        <SwiperSlide >
+                                                        <SwiperSlide key={_id}>
 
-                                                            <div className="search-card__wrapper">
-                                                                <div hideSearchbox className="search-card__f">
+                                                            <div className="search-card__wrapper" >
+                                                                <div hidesearchbox="true" className="search-card__f" >
                                                                     <div className="search-card__body">
                                                                         <img style={{ height: "100%" }} src={image} alt="" />
                                                                     </div>
