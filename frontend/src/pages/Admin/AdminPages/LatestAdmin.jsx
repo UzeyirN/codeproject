@@ -180,7 +180,7 @@ const LatestAdmin = () => {
                     <tbody>
                       <tr>
                         <td>
-                          <div className='image-wrapper' key={item._id}>
+                          <div className='admin-image__wrapper' key={item._id}>
                             <img style={{ width: "100%", height: "100%" }} src={item.image} alt="" />
                           </div>
                         </td>
