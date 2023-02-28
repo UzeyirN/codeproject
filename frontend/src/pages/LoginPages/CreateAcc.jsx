@@ -63,11 +63,9 @@ const CreateAcc = () => {
         }
 
       });
-    // window.alert("success register");
-
   };
 
-
+    
   useEffect(() => {
     window.scrollTo({
       top: 0,
