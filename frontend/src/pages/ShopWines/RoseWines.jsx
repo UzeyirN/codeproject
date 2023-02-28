@@ -405,7 +405,7 @@ const RoseWines = () => {
                                                             ADD TO CART
                                                         </button>
                                                     ) : (
-                                                        <button style={{ borderRadius: "0" }} type="button" className="btn lato-font add-button shop-btn disable-button" disabled>ADD TO CART</button>
+                                                        <button style={{ borderRadius: "0" }} type="button" className="btn lato-font add-button shop-btn disable-button" disabled>YOU CAN DO SHOPPING AFTER LOGIN</button>
                                                     )}
                                                 </div>
                                             </div>
