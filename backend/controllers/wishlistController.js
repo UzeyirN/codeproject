@@ -63,7 +63,6 @@ exports.wishlist_post = async (req, res) => {
     });
 }
 
-
 exports.wishlist_deleteAll = (req, res) => {
     Wishlist.deleteMany((err) => {
         if (!err) {

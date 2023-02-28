@@ -1,5 +1,3 @@
-// const BeConnected=require("../models/beConnectedModel")
-
 const ContactUs=require("../models/contactUsModel")
 
 exports.contactUS_getAll = (req, res) => {

@@ -27,78 +27,6 @@ const customer_register = async (req, res) => {
 };
 
 
-//!main
-// const customer_login = async (req, res) => {
-//     try {
-//         const { email, password } = req.body;
-//         const existingCustomer = await Customer.findOne({ email });
-
-//         if (!existingCustomer) {
-//             return res.redirect('/customerlogin/createaccount');
-//         }
-
-//         const isPasswordCorrect = await bcrypt.compare(password, existingCustomer.password);
-
-//         if (!isPasswordCorrect) {
-//             return res.status(400).json({ message: 'Invalid credentials' });
-//         }
-
-//         existingCustomer.isLoggedIn = true;
-//         await existingCustomer.save();
-//         const token = jwt.sign({ email: existingCustomer.email, id: existingCustomer._id }, 'mysecret', { expiresIn: '1h' });
-//         return res.status(200).json({ result: existingCustomer, token });
-
-//     } catch (error) {
-//         return res.status(500).json({ message: 'Something went wrong' });
-//     }
-// };
-
-
-// const customer_logout = async (req, res) => {
-//     try {
-//         const customer = await Customer.findById(req.customer._id);
-//         if (!customer) {
-//             return res.status(404).json({ message: 'Customer not found' });
-//         }
-//         customer.isLoggedIn = false;
-//         await customer.save();
-//         res.clearCookie('token');
-//         res.redirect('/customerlogin');
-//     } catch (error) {
-//         res.status(500).json({ message: 'Something went wrong' });
-//     }
-// };
-
-
-
-
-
-//!
-// const customer_login = async (req, res) => {
-//     try {
-//         const { email, password } = req.body;
-//         const existingCustomer = await Customer.findOne({ email });
-
-//         if (!existingCustomer) {
-//             return res.redirect('/customerlogin/createaccount');
-//         }
-
-//         const isPasswordCorrect = await bcrypt.compare(password, existingCustomer.password);
-
-//         if (!isPasswordCorrect) {
-//             return res.status(400).json({ message: 'Invalid credentials' });
-//         }
-
-//         existingCustomer.isLoggedIn = true;
-//         await existingCustomer.save();
-//         const token = jwt.sign({ email: existingCustomer.email, id: existingCustomer._id }, 'mysecret', { expiresIn: '1h' });
-//         return res.status(200).json({ email: existingCustomer.email, token });
-
-//     } catch (error) {
-//         return res.status(500).json({ message: 'Something went wrong' });
-//     }
-// };
-
 const customer_login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -118,7 +46,6 @@ const customer_login = async (req, res) => {
         await existingCustomer.save();
         const token = jwt.sign({ email: existingCustomer.email, id: existingCustomer._id }, 'mysecret', { expiresIn: '1h' });
 
-        // Return the customer's name and email along with the token
         return res.status(200).json({ name: existingCustomer.name, email: existingCustomer.email, token });
 
     } catch (error) {
@@ -140,7 +67,6 @@ const customer_logout = async (req, res) => {
         res.status(500).json({ message: 'Something went wrong' });
     }
 };
-
 
 
 const customer_tokenRequired = (req, res, next) => {

@@ -5,7 +5,6 @@ const beConnectedSchema = new Schema(
     {
         email: {
             type: String,
-            // required: [true, "Please enter email!"]
         }
     },
     { timestamps: true },

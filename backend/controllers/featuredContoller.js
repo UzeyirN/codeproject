@@ -40,7 +40,6 @@ exports.featured_post = async (req, res) => {
     }
 }
 
-
 exports.featured_delete = (req, res) => {
     const { id } = req.params;
     Featured.findByIdAndDelete(id, (err) => {
@@ -53,7 +52,6 @@ exports.featured_delete = (req, res) => {
         }
     })
 }
-
 
 exports.featured_update = async (req, res) => {
     try {

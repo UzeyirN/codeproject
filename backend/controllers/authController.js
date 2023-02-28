@@ -54,21 +54,6 @@ const login = async (req, res) => {
     }
 };
 
-// const logout = async (req, res) => {
-//     try {
-//         const user = await User.findById(req.user._id);
-//         if (!user) {
-//             return res.status(404).json({ message: 'User not found' });
-//         }
-//         user.isLoggedIn = false;
-//         await user.save();
-//         res.clearCookie('token');
-//         res.redirect('/login');
-//     } catch (error) {
-//         res.status(500).json({ message: 'Something went wrong' });
-//     }
-// };
-
 
 const tokenRequired = (req, res, next) => {
     const { token } = req.body;

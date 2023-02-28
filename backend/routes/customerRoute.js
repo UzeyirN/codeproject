@@ -9,6 +9,5 @@ router.post('/customertoken', customer_tokenRequired);
 router.post('/forgot-password', forgotPassword);
 router.get('/logged-in-users', getLoggedInUsers);
 
-
 module.exports = router;
 

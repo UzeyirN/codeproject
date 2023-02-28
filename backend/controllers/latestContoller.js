@@ -53,7 +53,6 @@ exports.latest_delete = (req, res) => {
     })
 }
 
-
 exports.latest_update = async (req, res) => {
     try {
         const example = await Latest.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -69,19 +68,6 @@ exports.latest_update = async (req, res) => {
 }
 
 
-
-// exports.latest_update = (req, res) => {
-//     const { id } = req.params;
-
-//     Latest.findByIdAndUpdate(id, req.body, (err, doc) => {
-//         if (!err) {
-//             res.status(201);
-//         } else {
-//             res.status(500).json(err);
-//         }
-//     });
-//     res.send({ message: "SUCCESSFULLY Updated" });
-// }
 
 
 

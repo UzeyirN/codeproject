@@ -6,19 +6,14 @@ const bodyParser = require('body-parser')
 const cors = require("cors")
 
 
-
-
 //!import routes
 const featuredRoute = require("./routes/featuredRoute")
 const latestRoute = require('./routes/latestRoute')
 const beConnectedRoute = require('./routes/beConnectedRoute')
 const contactUsRoute = require("./routes/contactUsRoute")
 const wishlistRoute = require("./routes/wishlistRoute")
-
 const authRoutes = require('./routes/authRoute');
 const customerRoutes = require('./routes/customerRoute')
-
-
 
 
 dotenv.config();
@@ -32,11 +27,8 @@ app.use('/latest', latestRoute)
 app.use('/beconnected', beConnectedRoute)
 app.use('/contactus', contactUsRoute)
 app.use('/wishlist', wishlistRoute)
-
 app.use('/', authRoutes)
 app.use('/', customerRoutes)
-
-
 
 
 const PORT = process.env.PORT
