@@ -455,12 +455,16 @@ import { useEffect } from 'react';
 import Loading from './../../components/Loading';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const AllShopWines = () => {
 
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
 
     //!selected
     const [selectedBrands, setSelectedBrands] = useState([]);
@@ -487,14 +491,6 @@ const AllShopWines = () => {
     const [kindPlus, setKindPlus] = useState(true);
     const [priceText, setPriceText] = useState('+');
 
-
-    useEffect(() => {
-        fetch('http://localhost:3070/featured')
-            .then((response) => response.json())
-            .then((data) => setData(data))
-            .catch((error) => console.log(error));
-        setLoading(false);
-    }, []);
 
     useEffect(() => {
         let filtered = [...data];
@@ -530,7 +526,7 @@ const AllShopWines = () => {
         setFilteredData(filtered);
     }, [data, selectedBrands, selectedAlcohol, selectedAppelation, selectedSize, selectedKinds, minPrice, maxPrice]);
 
-
+    
     //!filter
     const handleBrandChange = (event) => {
         const brand = event.target.value;
@@ -540,6 +536,8 @@ const AllShopWines = () => {
             setSelectedBrands([...selectedBrands, brand]);
         }
     };
+
+
 
     const handleAlcoholChange = (event) => {
         const alcohol = event.target.value;
@@ -635,18 +633,50 @@ const AllShopWines = () => {
         setPriceText(priceText === '+' ? '-' : '+');
     }
 
-    //!add to cart
+    //!add to cart and get data
+
+    const getData = async () => {
+        await axios.get('http://localhost:3070/featured').then((resp) => setData(resp.data));
+        setLoading(false);
+    }
 
     const addToWishList = async (id) => {
-        await fetch("http://localhost:3070/wishlist", {
-            method: "Post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ id }),
-        });
-        toast.success('Added to cart!');
+        if (isLoggedIn) {
+            await fetch('http://localhost:3070/wishlist', {
+                method: 'Post',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id }),
+            });
+            toast.success('Added to cart!', {
+                autoClose: 1000,
+            });
+        } else {
+            toast.error('Please log in to add to cart!', {
+                autoClose: 1000,
+            });
+        }
     };
+
+    const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) {
+            return parts.pop().split(';').shift();
+        }
+    };
+
+    useEffect(() => {
+        getData();
+
+        const token = getCookie('token');
+        if (token) {
+            setIsLoggedIn(true);
+        }
+    }, []);
+
+
 
     const brands = [...new Set(data.map((item) => item.brand))]; // get unique brands
     const alcohol = [...new Set(data.map((item) => item.alcohol))]; // get unique alcohol
@@ -681,7 +711,6 @@ const AllShopWines = () => {
                     <div className="row justify-content-between all-content__wrapper">
                         <div className="col-12 col-lg-4">
                             <div className="all-filter__wrapper g-0">
-
                                 <div className='filter-box'>
                                     <div className='shop-wines'>
                                         <h5 className='playfair-font'>Shop Wines</h5>
@@ -872,9 +901,13 @@ const AllShopWines = () => {
                                                         >
                                                             ${price}.00
                                                         </div>
-                                                        <button onClick={() => addToWishList(_id)} className="lato-font add-button shop-btn">
-                                                            ADD TO CART
-                                                        </button>
+                                                        {isLoggedIn ? (
+                                                            <button onClick={() => addToWishList(_id)} className="lato-font add-button shop-btn">
+                                                                ADD TO CART
+                                                            </button>
+                                                        ) : (
+                                                            <button style={{ borderRadius: "0" }} type="button" className="btn lato-font add-button shop-btn disable-button" disabled>YOU CAN DO SHOPPING AFTER LOGIN</button>
+                                                        )}
                                                     </div>
                                                 </div>
                                             ))

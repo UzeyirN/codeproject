@@ -5,12 +5,15 @@ import Loading from "../../components/Loading";
 import '../../styles/ShopWines/RedWines.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import axios from "axios";
 
 const RedWines = () => {
 
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
     //!selected
     const [selectedBrands, setSelectedBrands] = useState([]);
@@ -169,18 +172,56 @@ const RedWines = () => {
         setPriceText(priceText === '+' ? '-' : '+');
     }
 
-    //!add to wishlist
-    const addToWishList = async (id) => {
-        await fetch("http://localhost:3070/wishlist", {
-            method: "Post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ id }),
-        });
-        toast.success('Added to cart!');
+    //!add to cart and get data
 
+    const getData = async () => {
+        fetch('http://localhost:3070/featured')
+            .then(response => response.json())
+            .then(data => {
+                const whiteWines = data.filter(item => item.kind === "Red");
+                setData(whiteWines);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    const addToWishList = async (id) => {
+        if (isLoggedIn) {
+            await fetch('http://localhost:3070/wishlist', {
+                method: 'Post',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id }),
+            });
+            toast.success('Added to cart!', {
+                autoClose: 1000,
+            });
+        } else {
+            toast.error('Please log in to add to cart!', {
+                autoClose: 1000,
+            });
+        }
     };
+
+    const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) {
+            return parts.pop().split(';').shift();
+        }
+    };
+
+    useEffect(() => {
+        getData();
+
+        const token = getCookie('token');
+        if (token) {
+            setIsLoggedIn(true);
+        }
+    }, []);
 
 
     const brands = [...new Set(data.map((item) => item.brand))]; // get unique brands
@@ -369,9 +410,14 @@ const RedWines = () => {
                                                         >
                                                             ${price}.00
                                                         </div>
-                                                        <button onClick={() => addToWishList(_id)} className="lato-font add-button shop-btn">
-                                                            ADD TO CART
-                                                        </button>
+
+                                                        {isLoggedIn ? (
+                                                            <button onClick={() => addToWishList(_id)} className="lato-font add-button shop-btn">
+                                                                ADD TO CART
+                                                            </button>
+                                                        ) : (
+                                                            <button style={{ borderRadius: "0" }} type="button" className="btn lato-font add-button shop-btn disable-button" disabled>ADD TO CART</button>
+                                                        )}
                                                     </div>
                                                 </div>
                                             ))

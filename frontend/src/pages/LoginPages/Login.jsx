@@ -11,7 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  
+
 
   useEffect(() => {
     const token = getCookie('token');
@@ -47,9 +47,14 @@ const Login = () => {
   };
 
   const handleLogout = () => {
-    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    setIsLoggedIn(false);
-    setEmail('');
+    const confirmed = window.confirm("Are you sure you want to exit from account?");
+
+    if (confirmed) {
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      setIsLoggedIn(false);
+      setEmail('');
+    }
+
   };
 
   const getCookie = (name) => {
@@ -87,7 +92,7 @@ const Login = () => {
             <div className="col-6 login-col">
               {isLoggedIn ? (
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", height: "100%", justifyContent: "center" }}>
-                  <p style={{color:"black"}} className='lato-font newcostumer-p'>You are logged in !</p>
+                  <p style={{ color: "black" }} className='lato-font newcostumer-p'>You are logged in !</p>
                   <button className='login-btn' onClick={handleLogout}>LOGOUT</button>
                 </div>
               ) : (

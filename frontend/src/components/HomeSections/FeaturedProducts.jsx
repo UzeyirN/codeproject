@@ -131,18 +131,22 @@ const FeaturedProducts = () => {
                                                         </button>
                                                     ) : (
                                                         <div>
-                                                            <button style={{borderRadius:"0"}} type="button" className="btn lato-font add-button" id='disable-button' disabled>ADD TO CART</button>
-                                                            <p id='hover-text' style={{display:"none"}}>Hello!</p>
+                                                            <button style={{ borderRadius: "0" }} type="button" className="btn lato-font add-button" id='disable-button' disabled>ADD TO CART</button>
+                                                            <p id='hover-text' style={{ display: "none" }}>Hello!</p>
                                                         </div>
 
                                                     )}
-
                                                 </div>
                                             </div>
                                         </SwiperSlide>
                                     ))
                             }
                         </Swiper>
+                        {!isLoggedIn ? (
+                            <div style={{ textAlign: "center" }}><p className='lato-font' style={{ margin: "0 auto", color: "gray" }}>You can do shopping after login </p></div>
+                        ) : (
+                            <div style={{ textAlign: "center", display: "none" }}><p style={{ margin: "0 auto" }}>Salam</p></div>
+                        )}
                     </div>
                 </div>
             </div>
