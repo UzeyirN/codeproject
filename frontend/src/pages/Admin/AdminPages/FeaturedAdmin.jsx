@@ -61,7 +61,6 @@ const FeaturedAdmin = () => {
   const getData = async () => {
     await axios.get(URL).then((resp) => setFeatured(resp.data));
     setLoading(false);
-
   }
 
   //!add data
@@ -84,6 +83,7 @@ const FeaturedAdmin = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(products_schema),
   });
+
   const onSubmit = (data) => {
     console.log({ data });
     addData()
@@ -105,7 +105,6 @@ const FeaturedAdmin = () => {
       }
     }
   };
-
 
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value })
@@ -146,7 +145,6 @@ const FeaturedAdmin = () => {
     getData()
   }, [])
 
-
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -164,7 +162,7 @@ const FeaturedAdmin = () => {
             <p className='search-p lato-font'>SEARCH PRODUCTS</p>
             <input onChange={searchData} className='search-input' type="text" />
           </div>
-          <table className="table">
+          <table className="admin table">
             <thead>
               <tr>
                 <th scope="col">Image</th>
@@ -187,7 +185,7 @@ const FeaturedAdmin = () => {
                     <tbody>
                       <tr>
                         <td>
-                          <div className='image-wrapper' key={item._id}>
+                          <div className='admin-image__wrapper' key={item._id}>
                             <img style={{ width: "100%", height: "100%" }} src={item.image} alt="" />
                           </div>
                         </td>

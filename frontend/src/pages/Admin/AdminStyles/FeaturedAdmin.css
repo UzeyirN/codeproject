@@ -2,9 +2,9 @@
     margin: 100px auto;
 }
 
-.image-wrapper {
-    width: 50%;
-    height: 120px;
+.admin-image__wrapper {
+    width: 80%;
+    height: 100px;
 }
 
 .admin-btn {
