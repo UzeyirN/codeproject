@@ -29,6 +29,7 @@ import ShopWinesRoot from '../pages/ShopWines/ShopWinesRoot';
 import AdminLogin from './../pages/Admin/AdminLogin';
 import AdminReg from './../pages/Admin/AdminReg';
 import WishlistDetail from '../pages/Wishlist/WishlistDetail';
+import NotFound from '../pages/NotFound';
 
 
 
@@ -151,8 +152,12 @@ const ROUTES = [
             {
                 path: "sitemap",
                 element: <SiteMap />
+            },
+            {
+                path: "*",
+                element: <NotFound />
             }
-           
+
         ]
     },
     {
@@ -181,7 +186,7 @@ const ROUTES = [
             }
         ]
     },
-   
+
 ]
 
 
