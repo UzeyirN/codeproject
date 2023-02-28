@@ -36,7 +36,7 @@ const LatestCollecions = () => {
                                         <div className="card-wrapper ">
                                             <div className="card">
                                                 <div className="card-body">
-                                                    <img style={{ width: "100%", height: "100%" }} src={image} alt="" />
+                                                    <img style={{ width: "100%", height: "100%" }} src={image} alt="wines" />
                                                 </div>
                                             </div>
                                             <div className="card-content">

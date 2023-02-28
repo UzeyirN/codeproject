@@ -380,7 +380,7 @@ const RoseWines = () => {
                                             <div className="cards col-6" key={_id}>
                                                 <div className="card-rose">
                                                     <div className="roseCard-body">
-                                                        <img style={{ height: "100%" }} src={image} alt="" />
+                                                        <img style={{ height: "100%" }} src={image} alt="rose wines" />
                                                     </div>
                                                 </div>
                                                 <div className="card-content__rose">

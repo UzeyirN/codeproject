@@ -32,7 +32,7 @@ const Harvest = () => {
                         <Link className='blog-pages__link playfair-font' to='' >When is a vineyard ready for harvest?</Link>
                         <p className='lato-font' style={{ color: "RGB(176, 151, 109)" }}>15th Feb 2014</p>
                         <Link to='winery'>
-                            <img className='blog-pages__img' style={{ width: "100%", height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/9999x9999/uploaded_images/blog-post-1.jpg?t=1489066679" alt="" />
+                            <img className='blog-pages__img' style={{ width: "100%", height: "100%" }} src="https://cdn11.bigcommerce.com/s-qbep6rt4nh/images/stencil/9999x9999/uploaded_images/blog-post-1.jpg?t=1489066679" alt="harvest" />
                         </Link>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rhoncus posuere mattis. Suspendisse venenatis massa in mattis condimentum. Vivamus porta, tellus vel ultricies facilisis,
                             dolor arcu gravida leo, at commodo tellus tellus nec sapien. Suspendisse potenti.</p>

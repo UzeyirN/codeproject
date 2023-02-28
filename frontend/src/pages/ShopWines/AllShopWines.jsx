@@ -881,7 +881,7 @@ const AllShopWines = () => {
                                                 <div className="cards col-6" key={_id}>
                                                     <div className="card-all">
                                                         <div className="allCard-body">
-                                                            <img style={{ height: "100%" }} src={image} alt="" />
+                                                            <img style={{ height: "100%" }} src={image} alt="wines" />
                                                         </div>
                                                     </div>
                                                     <div className="card-content__all">

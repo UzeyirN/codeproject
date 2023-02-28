@@ -31,7 +31,7 @@ const TheEstate = () => {
                     <div className="estate-article">
                         <p className="lato-font estate-p">In tempor, mauris nec viverra molestie,
                             lorem diam dignissim ex, quis lobortis dui turpis ut enim. Aenean dui nulla, placerat in massa eget, lacinia accumsan nunc. Curabitur et mauris dolor.</p>
-                        <img className='estate-img' style={{ width: "100%", height: "100%" }} src="https://villenoir7.mybigcommerce.com/product_images/uploaded_images/estate-gallery-1.jpg" alt="" />
+                        <img className='estate-img' style={{ width: "100%", height: "100%" }} src="https://villenoir7.mybigcommerce.com/product_images/uploaded_images/estate-gallery-1.jpg" alt="vineyard" />
                     </div>
 
                     <div className="estate-article">
@@ -41,7 +41,7 @@ const TheEstate = () => {
 
                         <p className="lato-font estate-p">Nunc gravida malesuada luctus. Fusce viverra nisl quis nulla dapibus, ac elementum lectus scelerisque. Proin fringilla dolor non sapien pellentesque accumsan.
                             Quisque volutpat lobortis odio quis feugiat. ACREAGE</p>
-                        <img className='estate-img' style={{ width: "100%", height: "100%" }} src="https://villenoir7.mybigcommerce.com/product_images/uploaded_images/estate-gallery-2.jpg" alt="" />
+                        <img className='estate-img' style={{ width: "100%", height: "100%" }} src="https://villenoir7.mybigcommerce.com/product_images/uploaded_images/estate-gallery-2.jpg" alt="location" />
 
                     </div>
 

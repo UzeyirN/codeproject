@@ -376,7 +376,7 @@ const WhiteWines = () => {
                                                 <div className="cards col-6" key={_id}>
                                                     <div className="card-white">
                                                         <div className="whiteCard-body">
-                                                            <img style={{ height: "100%" }} src={image} alt="" />
+                                                            <img style={{ height: "100%" }} src={image} alt="white wines" />
                                                         </div>
                                                     </div>
                                                     <div className="card-content__white">

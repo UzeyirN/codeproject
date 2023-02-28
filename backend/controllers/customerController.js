@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 
+
 const customer_register = async (req, res) => {
     try {
         const { email, password, confirmPassword, firstname, lastname, company_name, phone_num, address_line1, address_line2, sburb_city, state, zip } = req.body;

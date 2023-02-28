@@ -24,7 +24,7 @@ const MessageSec = () => {
                                     Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
                                     Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. .
                                 </p>
-                                <img src="https://villenoir7.mybigcommerce.com/product_images/uploaded_images/signature-black.png" alt="" />
+                                <img src="https://villenoir7.mybigcommerce.com/product_images/uploaded_images/signature-black.png" alt="wine" />
                             </div>
 
                         </div>

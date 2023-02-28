@@ -118,7 +118,7 @@ const FeaturedProducts = () => {
                                             <div className="card-wrapper" >
                                                 <div className="card-f">
                                                     <div className="card-body">
-                                                        <img style={{ height: "100%" }} src={image} alt="" />
+                                                        <img style={{ height: "100%" }} src={image} alt="wines" />
                                                     </div>
                                                 </div>
                                                 <div className="card-content__f">

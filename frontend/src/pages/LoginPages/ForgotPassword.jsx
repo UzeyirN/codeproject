@@ -1,32 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { useEffect } from 'react';
+import axios from 'axios';
 
 const ForgotPassword = () => {
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth"
-    });
-  }, [])
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('/api/forgot-password', { email });
+      setMessage(response.data.message);
+    } catch (error) {
+      setMessage(error.response.data.message);
+    }
+  };
+
   return (
     <>
       <Helmet>
         <title>Forgot Password</title>
       </Helmet>
-      <div style={{ margin: "150px auto", width: "30%" }}>
-        <form>
-
-          <input type="text" placeholder='forgot password ?' />
+      <div style={{ margin: '150px auto', width: '30%' }}>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
           <button>Send email</button>
         </form>
-
+        {message && <p>{message}</p>}
       </div>
-
     </>
-  )
-}
+  );
+};
 
-export default ForgotPassword
+export default ForgotPassword;
