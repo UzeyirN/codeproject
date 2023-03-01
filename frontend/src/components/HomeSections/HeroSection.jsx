@@ -7,8 +7,6 @@ import "swiper/css/pagination";
 import { Link } from 'react-router-dom';
 
 
-
-
 const HeroSection = () => {
 
 
