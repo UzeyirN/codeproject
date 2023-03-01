@@ -194,6 +194,8 @@ const LatestAdmin = () => {
                   ))
             }
           </table>
+          
+
 
           <div className="latest-add__wrapper">
             <h2 className='add-products__h2'>Add and Update Products</h2>
