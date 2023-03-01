@@ -154,13 +154,13 @@ const Wishlist = () => {
                     <table className="table lato-font">
                         <thead style={{ border: "2px solid #f2f2f2" }}>
                             <tr>
-                                <td className="cart-th" scope="col">ITEM</td>
-                                <td className="cart-th" scope="col">BRAND</td>
-                                <td className="cart-th" scope="col">PRICE</td>
-                                <td className="cart-th" scope="col">QUANTITY</td>
-                                <td className="cart-th" scope="col">DETAIL</td>
-                                <td className="cart-th" scope="col">TOTAL</td>
-                                <td className="cart-th" scope="col">DELETE</td>
+                                <th className="cart-th" scope="col">ITEM</th>
+                                <th className="cart-th" scope="col">BRAND</th>
+                                <th className="cart-th" scope="col">PRICE</th>
+                                <th className="cart-th" scope="col">QUANTITY</th>
+                                <th className="cart-th" scope="col">DETAIL</th>
+                                <th className="cart-th" scope="col">TOTAL</th>
+                                <th className="cart-th" scope="col">DELETE</th>
                             </tr>
                         </thead>
                         <tbody>
