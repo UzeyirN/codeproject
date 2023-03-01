@@ -156,8 +156,8 @@ const LatestAdmin = () => {
             <p className='search-p lato-font'>SEARCH PRODUCTS</p>
             <input onChange={searchData} className='search-input' type="text" />
           </div>
-          <table className="table">
-            <thead>
+          <div className="table">
+            {/* <thead>
               <tr>
                 <th scope="col">Image</th>
                 <th scope="col">Brand</th>
@@ -169,31 +169,31 @@ const LatestAdmin = () => {
                 <th scope="col">DELETE</th>
                 <th scope="col">UPDATE</th>
               </tr>
-            </thead>
+            </thead> */}
             {
               loading ? <Loading /> :
                 latest?.filter(data => {
                   return value.trim().toLowerCase() === "" ? data : data.appelation.toLowerCase().includes(value.toLowerCase())
                 })
                   .map((item) => (
-                    <tbody  key={item._id}>
-                      <tr>
-                        <td className='admin-image__wrapper'>
+                    <div  key={item._id}>
+                      <div>
+                        <div className='admin-image__wrapper'>
                           <img style={{ width: "100%", height: "100%" }} src={item.image} alt="" />
-                        </td>
-                        <td className='latest-td'>{item.brand}</td>
-                        <td className='latest-td'>{item.alcohol}</td>
-                        <td className='latest-td'>{item.appelation}</td>
-                        <td className='latest-td'>{item.size}</td>
-                        <td className='latest-td'>${item.price}</td>
-                        <td className='latest-td'>{item.kind}</td>
-                        <td className='latest-td'><button onClick={() => handleDelete(item._id)} className='admin-btn delete-btn'>DELETE</button></td>
-                        <td className='latest-td'><button onClick={() => handleEditClick(item)} className='admin-btn update-btn'>SELECT</button></td>
-                      </tr>
-                    </tbody>
+                        </div>
+                        <div className='latest-td'>{item.brand}</div>
+                        <div className='latest-td'>{item.alcohol}</div>
+                        <div className='latest-td'>{item.appelation}</div>
+                        <div className='latest-td'>{item.size}</div>
+                        <div className='latest-td'>${item.price}</div>
+                        <div className='latest-td'>{item.kind}</div>
+                        <div className='latest-td'><button onClick={() => handleDelete(item._id)} className='admin-btn delete-btn'>DELETE</button></div>
+                        <div className='latest-td'><button onClick={() => handleEditClick(item)} className='admin-btn update-btn'>SELECT</button></div>
+                      </div>
+                    </div>
                   ))
             }
-          </table>
+          </div>
           
 
 

@@ -151,44 +151,44 @@ const Wishlist = () => {
 
             <div className="container">
                 <div style={{ overflowX: "auto" }}>
-                    <table className="table lato-font">
-                        <thead style={{ border: "2px solid #f2f2f2" }}>
-                            <tr>
-                                <th className="cart-th" scope="col">ITEM</th>
-                                <th className="cart-th" scope="col">BRAND</th>
-                                <th className="cart-th" scope="col">PRICE</th>
-                                <th className="cart-th" scope="col">QUANTITY</th>
-                                <th className="cart-th" scope="col">DETAIL</th>
-                                <th className="cart-th" scope="col">TOTAL</th>
-                                <th className="cart-th" scope="col">DELETE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div className="table lato-font">
+                        {/* <div style={{ border: "2px solid #f2f2f2" }}>
+                            <div>
+                                <div className="cart-th" >ITEM</div>
+                                <div className="cart-th" >BRAND</div>
+                                <div className="cart-th" >PRICE</div>
+                                <div className="cart-th" >QUANTITY</div>
+                                <div className="cart-th" >DETAIL</div>
+                                <div className="cart-th" >TOTAL</div>
+                                <div className="cart-th" >DELETE</div>
+                            </div>
+                        </div> */}
+                        <div>
                             {loading ? (
                                 <Loading />
                             ) : (
                                 product?.map((products) => (
-                                    <tr key={products._id}>
-                                        <td className="image-wrapper" data-label="ITEM" >
+                                    <div key={products._id}>
+                                        <div className="image-wrapper" data-label="ITEM" >
                                             <img
                                                 style={{ width: "100%", height: "100%" }}
                                                 src={products.image}
                                                 alt="wine"
                                             />
-                                        </td>
-                                        <td data-label="BRAND" className="cart-td">
+                                        </div>
+                                        <div data-label="BRAND" className="cart-td">
                                             <p className="lato-font wish-brand__p">{products.brand}</p>
                                             <p className="playfair-font wish-appelation__p">
                                                 {" "}
                                                 {products.appelation}
                                             </p>
-                                        </td>
+                                        </div>
 
-                                        <td data-label="PRICE" className="cart-td ">
+                                        <div data-label="PRICE" className="cart-td ">
                                             <p className="lato-font wish-price__p"> ${products.price}</p>
-                                        </td>
+                                        </div>
 
-                                        <td data-label="QUANTITY" className="cart-td">
+                                        <div data-label="QUANTITY" className="cart-td">
                                             <span className="quantity-btn__wrapper">
                                                 <button
                                                     onClick={() => increaseQuantity(products._id)}
@@ -206,30 +206,30 @@ const Wishlist = () => {
                                                     -
                                                 </button>
                                             </span>
-                                        </td>
-                                        <td>
+                                        </div>
+                                        <div>
                                             <p className="lato-font wish-price__p"> <Link className="detail-link" to={`${products._id}`}>Detail</Link></p>
-                                        </td>
+                                        </div>
 
-                                        <td data-label="TOTAL" className="cart-td">
+                                        <div data-label="TOTAL" className="cart-td">
                                             <span className="wish-price__total">
                                                 <span className="lato-font wish-total__p">
                                                     ${parseFloat(products.price) * (quantities[products._id] || 1)}
                                                 </span>
                                             </span>
-                                        </td>
-                                        <td>
+                                        </div>
+                                        <div>
                                             <i
                                                 onClick={() => handleDelete(products._id)}
                                                 className="fa-solid fa-circle-xmark wish-price__p"
                                             ></i>
-                                        </td>
+                                        </div>
 
-                                    </tr>
+                                    </div>
                                 ))
                             )}
-                        </tbody>
-                    </table>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="subtotal-wrapper">
@@ -247,6 +247,8 @@ const Wishlist = () => {
                     </div>
                 </div>
             </div>
+
+            
         </div >
     );
 };
