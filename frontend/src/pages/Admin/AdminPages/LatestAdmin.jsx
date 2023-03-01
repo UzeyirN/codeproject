@@ -51,7 +51,7 @@ const LatestAdmin = () => {
     alcohol: "",
     appelation: "",
     size: "",
-    price: null,
+    price: "",
     kind: ""
   })
   const [id, setId] = useState();
@@ -176,8 +176,8 @@ const LatestAdmin = () => {
                   return value.trim().toLowerCase() === "" ? data : data.appelation.toLowerCase().includes(value.toLowerCase())
                 })
                   .map((item) => (
-                    <tbody>
-                      <tr key={item._id}>
+                    <tbody  key={item._id}>
+                      <tr>
                         <td className='admin-image__wrapper'>
                           <img style={{ width: "100%", height: "100%" }} src={item.image} alt="" />
                         </td>

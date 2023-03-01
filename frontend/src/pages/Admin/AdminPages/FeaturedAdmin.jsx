@@ -49,7 +49,7 @@ const FeaturedAdmin = () => {
     alcohol: "",
     appelation: "",
     size: "",
-    price: null,
+    price: "",
     kind: ""
   })
   const [id, setId] = useState();
