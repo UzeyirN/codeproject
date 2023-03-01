@@ -19,7 +19,6 @@ const getAuthToken = () => {
   return null;
 };
 
-
 const tokenRequired = () => {
 
   const token = getAuthToken();
@@ -34,7 +33,6 @@ const tokenRequired = () => {
 
     });
 }
-
 
 const FeaturedAdmin = () => {
 
@@ -182,12 +180,10 @@ const FeaturedAdmin = () => {
                   return value.trim().toLowerCase() === "" ? data : data.appelation.toLowerCase().includes(value.toLowerCase())
                 })
                   .map((item) => (
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div className='admin-image__wrapper' key={item._id}>
-                            <img style={{ width: "100%", height: "100%" }} src={item.image} alt="" />
-                          </div>
+                    <tbody key={item._id} >
+                      <tr >
+                        <td className='admin-image__wrapper'>
+                          <img style={{ width: "100%", height: "100%" }} src={item.image} alt="" />
                         </td>
                         <td className='featured-td'>{item.brand}</td>
                         <td className='featured-td'>{item.alcohol}</td>

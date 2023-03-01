@@ -20,7 +20,6 @@ const getAuthToken = () => {
   return null;
 };
 
-
 const tokenRequired = () => {
   // get the token from the cookie
   const token = getAuthToken();
@@ -36,7 +35,6 @@ const tokenRequired = () => {
 
     });
 }
-
 
 
 const LatestAdmin = () => {
@@ -78,13 +76,13 @@ const LatestAdmin = () => {
       price: "",
       kind: ""
     })
-
   }
 
   //!form validation
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(products_schema),
   });
+
   const onSubmit = (data) => {
     console.log({ data });
     addData()
@@ -93,6 +91,7 @@ const LatestAdmin = () => {
   const searchData = (e) => {
     setValue(e.target.value)
   }
+
   const handleDelete = async (id) => {
     await axios.delete(`http://localhost:3070/latest/${id}`)
     getData();
@@ -178,11 +177,9 @@ const LatestAdmin = () => {
                 })
                   .map((item) => (
                     <tbody>
-                      <tr>
-                        <td>
-                          <div className='admin-image__wrapper' key={item._id}>
-                            <img style={{ width: "100%", height: "100%" }} src={item.image} alt="" />
-                          </div>
+                      <tr key={item._id}>
+                        <td className='admin-image__wrapper'>
+                          <img style={{ width: "100%", height: "100%" }} src={item.image} alt="" />
                         </td>
                         <td className='latest-td'>{item.brand}</td>
                         <td className='latest-td'>{item.alcohol}</td>
@@ -196,7 +193,6 @@ const LatestAdmin = () => {
                     </tbody>
                   ))
             }
-
           </table>
 
           <div className="latest-add__wrapper">

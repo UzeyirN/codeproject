@@ -148,35 +148,34 @@ const Wishlist = () => {
                         / Your Cart</p>
                 </span>
             </div>
-            <div className="container">
 
+            <div className="container">
                 <div style={{ overflowX: "auto" }}>
                     <table className="table lato-font">
                         <thead style={{ border: "2px solid #f2f2f2" }}>
-                            <th className="cart-th" scope="col">ITEM</th>
-                            <th className="cart-th" scope="col">BRAND</th>
-                            <th className="cart-th" scope="col">PRICE</th>
-                            <th className="cart-th" scope="col">QUANTITY</th>
-                            <th className="cart-th" scope="col">DETAIL</th>
-                            <th className="cart-th" scope="col">TOTAL</th>
-                            <th className="cart-th" scope="col">DELETE</th>
+                            <tr>
+                                <th className="cart-th" scope="col">ITEM</th>
+                                <th className="cart-th" scope="col">BRAND</th>
+                                <th className="cart-th" scope="col">PRICE</th>
+                                <th className="cart-th" scope="col">QUANTITY</th>
+                                <th className="cart-th" scope="col">DETAIL</th>
+                                <th className="cart-th" scope="col">TOTAL</th>
+                                <th className="cart-th" scope="col">DELETE</th>
+                            </tr>
                         </thead>
                         <tbody>
                             {loading ? (
                                 <Loading />
                             ) : (
                                 product?.map((products) => (
-                                    <tr>
-                                        <td data-label="ITEM">
-                                            <div className="image-wrapper" key={products._id}>
-                                                <img
-                                                    style={{ width: "100%", height: "100%" }}
-                                                    src={products.image}
-                                                    alt="wine"
-                                                />
-                                            </div>
+                                    <tr key={products._id}>
+                                        <td className="image-wrapper" data-label="ITEM" >
+                                            <img
+                                                style={{ width: "100%", height: "100%" }}
+                                                src={products.image}
+                                                alt="wine"
+                                            />
                                         </td>
-
                                         <td data-label="BRAND" className="cart-td">
                                             <p className="lato-font wish-brand__p">{products.brand}</p>
                                             <p className="playfair-font wish-appelation__p">
@@ -190,36 +189,34 @@ const Wishlist = () => {
                                         </td>
 
                                         <td data-label="QUANTITY" className="cart-td">
-                                            <div className="quantity-btn__wrapper">
+                                            <span className="quantity-btn__wrapper">
                                                 <button
                                                     onClick={() => increaseQuantity(products._id)}
                                                     className="quantity-btn"
                                                 >
                                                     +
                                                 </button>
-                                                <div className="quantity-num">
+                                                <span className="quantity-num">
                                                     {quantities[products._id] || 1}
-                                                </div>
+                                                </span>
                                                 <button
                                                     onClick={() => decreaseQuantity(products._id)}
                                                     className="quantity-btn"
                                                 >
                                                     -
                                                 </button>
-                                            </div>
+                                            </span>
                                         </td>
                                         <td>
                                             <p className="lato-font wish-price__p"> <Link className="detail-link" to={`${products._id}`}>Detail</Link></p>
                                         </td>
 
                                         <td data-label="TOTAL" className="cart-td">
-                                            <div className="wish-price__total">
+                                            <span className="wish-price__total">
                                                 <span className="lato-font wish-total__p">
                                                     ${parseFloat(products.price) * (quantities[products._id] || 1)}
                                                 </span>
-
-
-                                            </div>
+                                            </span>
                                         </td>
                                         <td>
                                             <i

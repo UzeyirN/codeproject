@@ -268,8 +268,8 @@ const RoseWines = () => {
                                             hiddenBrand ? null : (
                                                 <ul>
                                                     {brands.map((brand, index) => (
-                                                        <li className='lato-font'>
-                                                            <label key={index}>
+                                                        <li key={index} className='lato-font'>
+                                                            <label >
                                                                 <input
                                                                     type="checkbox"
                                                                     value={brand}
@@ -292,8 +292,8 @@ const RoseWines = () => {
                                         {hiddenAlcohol ? null : (
                                             <ul>
                                                 {alcohol.map((alcohol, index) => (
-                                                    <li className='lato-font'>
-                                                        <label key={index}>
+                                                    <li key={index} className='lato-font'>
+                                                        <label >
                                                             <input
                                                                 type="checkbox"
                                                                 value={alcohol}
@@ -316,8 +316,8 @@ const RoseWines = () => {
                                         {hiddenAppelation ? null : (
                                             <ul>
                                                 {appelation.map((appelation, index) => (
-                                                    <li className='lato-font'>
-                                                        <label key={index}>
+                                                    <li key={index} className='lato-font'>
+                                                        <label >
                                                             <input
                                                                 type="checkbox"
                                                                 value={appelation}
@@ -339,8 +339,8 @@ const RoseWines = () => {
                                         {hiddenSize ? null : (
                                             <ul>
                                                 {size.map((size, index) => (
-                                                    <li className='lato-font'>
-                                                        <label key={index}>
+                                                    <li key={index} className='lato-font'>
+                                                        <label >
                                                             <input
                                                                 type="checkbox"
                                                                 value={size}

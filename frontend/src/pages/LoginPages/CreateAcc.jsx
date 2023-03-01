@@ -12,7 +12,7 @@ const CreateAcc = () => {
   const [firstname, setFirstName] = useState('');
   const [lastname, setLastname] = useState('');
   const [company_name, setCompany_Name] = useState('');
-  const [phone_num, setPhone_Num] = useState(null);
+  const [phone_num, setPhone_Num] = useState("");
   const [address_line1, setAddress_Line1] = useState("");
   const [address_line2, setAddress_Line2] = useState("");
   const [sburb_city, setSburb_City] = useState("");
@@ -65,7 +65,7 @@ const CreateAcc = () => {
       });
   };
 
-    
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -137,7 +137,8 @@ const CreateAcc = () => {
               <div className='input-wrapper'>
 
                 <div style={{ width: "100%" }}>
-                  <input type="number" name='phone_num' value={phone_num} onChange={(e) => setPhone_Num(e.target.value)} placeholder='Phone Number' className=' createacc-input' />
+                  <input type="number" name='phone_num' onChange={(e) => setPhone_Num(e.target.value)} placeholder='Phone Number' className=' createacc-input' />
+                  {/* <input type="number" name='phone_num' value={phone_num} onChange={(e) => setPhone_Num(e.target.value)} placeholder='Phone Number' className=' createacc-input' /> */}
                 </div>
 
                 <div style={{ width: "100%" }}>

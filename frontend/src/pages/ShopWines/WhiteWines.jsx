@@ -261,8 +261,8 @@ const WhiteWines = () => {
                                                 hiddenBrand ? null : (
                                                     <ul>
                                                         {brands.map((brand, index) => (
-                                                            <li className='lato-font'>
-                                                                <label key={index}>
+                                                            <li key={index} className='lato-font'>
+                                                                <label >
                                                                     <input
                                                                         type="checkbox"
                                                                         value={brand}
@@ -285,8 +285,8 @@ const WhiteWines = () => {
                                             {hiddenAlcohol ? null : (
                                                 <ul>
                                                     {alcohol.map((alcohol, index) => (
-                                                        <li className='lato-font'>
-                                                            <label key={index}>
+                                                        <li key={index} className='lato-font'>
+                                                            <label >
                                                                 <input
                                                                     type="checkbox"
                                                                     value={alcohol}
@@ -310,8 +310,8 @@ const WhiteWines = () => {
                                             {hiddenAppelation ? null : (
                                                 <ul>
                                                     {appelation.map((appelation, index) => (
-                                                        <li className='lato-font'>
-                                                            <label key={index}>
+                                                        <li key={index} className='lato-font'>
+                                                            <label >
                                                                 <input
                                                                     type="checkbox"
                                                                     value={appelation}
@@ -333,8 +333,8 @@ const WhiteWines = () => {
                                             {hiddenSize ? null : (
                                                 <ul>
                                                     {size.map((size, index) => (
-                                                        <li className='lato-font'>
-                                                            <label key={index}>
+                                                        <li key={index} className='lato-font'>
+                                                            <label >
                                                                 <input
                                                                     type="checkbox"
                                                                     value={size}

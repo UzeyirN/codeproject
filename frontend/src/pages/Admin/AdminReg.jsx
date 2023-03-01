@@ -10,41 +10,6 @@ const AdminReg = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
 
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-
-    //     if (!username || !email || !password || !confirmPassword) {
-    //         window.alert("Please fill all the fields");
-    //         return;
-    //     }
-
-    //     if (password !== confirmPassword) {
-    //         window.alert("Confirm password doesn't match password");
-    //         return;
-    //     }
-
-    //     axios.post('http://127.0.0.1:3070/register/', { username, email, password, confirmPassword })
-    //         .then((response) => {
-    //             console.log("success", response)
-    //             document.cookie = `token=${response.data.token}; expires=${new Date(Date.now() + 36000000).toUTCString()}; path=/`;
-    //             window.location.href = '/admin';
-
-    //             setUsername('');
-    //             setEmail('');
-    //             setPassword('');
-    //             setConfirmPassword('');
-
-    //         })
-    //         .catch((error) => {
-    //             console.log("catch", error)
-
-    //         });
-    //     window.alert("success register");
-
-    // };
-
-
-
     //!exist account
    
     const handleSubmit = (event) => {
@@ -79,7 +44,6 @@ const AdminReg = () => {
                 }
               });
     };
-
 
 
     return (

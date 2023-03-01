@@ -17,7 +17,6 @@ import Harvest from './../pages/BlogPages/Harvest';
 import LoginRoot from './../pages/LoginPages/LoginRoot';
 import Login from '../pages/LoginPages/Login';
 import CreateAcc from './../pages/LoginPages/CreateAcc';
-import ForgotPassword from './../pages/LoginPages/ForgotPassword';
 import Add from '../pages/Add';
 import SiteMap from './../pages/SiteMap';
 import AdminRoot from '../pages/Admin/AdminRoot';
@@ -137,10 +136,6 @@ const ROUTES = [
                     {
                         path: "createaccount",
                         element: <CreateAcc />
-                    },
-                    {
-                        path: "forgotpassword",
-                        element: <ForgotPassword />
                     }
                 ]
 

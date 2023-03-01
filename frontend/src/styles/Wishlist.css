@@ -42,7 +42,6 @@
 .quantity-btn__wrapper {
     display: flex;
     margin-top: 35px;
-
 }
 
 .quantity-btn {
@@ -152,7 +151,6 @@
     font-size: 20px;
     font-weight: 500;
     margin-top: 40px;
-
 }
 
 .detail-link{
@@ -163,6 +161,10 @@
 .detail-link:hover{
     color: RGB(176, 151, 109);
     transition: all 0.2s;
+}
+
+.image-wrapper{
+    width: 10%;
 }
 
 
