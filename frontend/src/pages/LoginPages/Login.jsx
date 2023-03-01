@@ -102,7 +102,6 @@ const Login = () => {
                     <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} className='login-input login-form__element' />
                     <div className='login-btn__wrapper login-form__element'>
                       <button type='submit' className='login-btn'>LOGIN</button>
-                      <Link to='forgotpassword' className='forgot-password__link'>Forgot your password?</Link>
                     </div>
                   </form>
                 </div>

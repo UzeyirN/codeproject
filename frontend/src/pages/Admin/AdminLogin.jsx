@@ -69,10 +69,7 @@ const AdminLogin = () => {
                         <input className='login-inp' type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         <input className='login-inp' type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                         <button className='login-button' type="submit">Log in</button>
-                        <div className='d-flex justify-content-between'>
-                            <Link className='login-links' to="/admin/forgot-password">Forgot password?</Link>
-                            <Link className='login-links' to="/admin/adminreg">Register</Link>
-                        </div>
+                        <Link className='login-links' to="/admin/adminreg">Register</Link>
                     </form>
                 )}
             </div>
