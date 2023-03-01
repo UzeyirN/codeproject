@@ -43,20 +43,24 @@ const WishlistDetail = () => {
                 <div className="container">
                     <table className="table lato-font">
                         <thead style={{ border: "2px solid #f2f2f2" }}>
-                            <th className="cart-th" scope="col"><p className='wish-table__title lato-font'>ITEM</p></th>
-                            <th className="cart-th" scope="col"><p className='wish-table__title lato-font'>BRAND</p></th>
-                            <th className="cart-th" scope="col"><p className='wish-table__title lato-font'>ALCOHOL</p></th>
-                            <th className="cart-th" scope="col"><p className='wish-table__title lato-font'>APPELATION</p></th>
-                            <th className="cart-th" scope="col"><p className='wish-table__title lato-font'>SIZE</p></th>
-                            <th className="cart-th" scope="col"><p className='wish-table__title lato-font'>PRICE</p></th>
-                            <th className="cart-th" scope="col"><p className='wish-table__title lato-font'>KIND</p></th>
+                            <tr>
+                                <th className="cart-th" scope="col"><p className='wish-table__title lato-font'>ITEM</p></th>
+                                <th className="cart-th" scope="col"><p className='wish-table__title lato-font'>BRAND</p></th>
+                                <th className="cart-th" scope="col"><p className='wish-table__title lato-font'>ALCOHOL</p></th>
+                                <th className="cart-th" scope="col"><p className='wish-table__title lato-font'>APPELATION</p></th>
+                                <th className="cart-th" scope="col"><p className='wish-table__title lato-font'>SIZE</p></th>
+                                <th className="cart-th" scope="col"><p className='wish-table__title lato-font'>PRICE</p></th>
+                                <th className="cart-th" scope="col"><p className='wish-table__title lato-font'>KIND</p></th>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td data-label="ITEM" >
-                                    <div className="image-wrapper" >
-                                        <img style={{ width: "100%", height: "100%" }} src={products.image} alt="" />
-                                    </div>
+                                <td className="image-wrapper" data-label="ITEM" >
+                                    <img
+                                        style={{ width: "100%", height: "100%" }}
+                                        src={products.image}
+                                        alt="wine"
+                                    />
                                 </td>
                                 <td>
                                     <span className='product-title lato-font'>BRAND</span><p className='detail-p playfair-font'> {products.brand}</p>

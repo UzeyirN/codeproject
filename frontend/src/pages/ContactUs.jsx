@@ -43,7 +43,9 @@ const ContactUs = () => {
       comments: "",
 
     });
-    toast.success('Success !');
+    toast.success('Success !', {
+      autoClose: 1000
+    });
   };
 
   const handleChange = (e) => {

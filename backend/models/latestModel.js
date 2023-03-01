@@ -1,6 +1,5 @@
 const mongoose = require("mongoose")
 
-// const { Schema } = mongoose;
 const latestSchema = new mongoose.Schema(
     {
         image: {
