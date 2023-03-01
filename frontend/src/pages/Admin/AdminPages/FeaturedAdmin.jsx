@@ -160,8 +160,8 @@ const FeaturedAdmin = () => {
             <p className='search-p lato-font'>SEARCH PRODUCTS</p>
             <input onChange={searchData} className='search-input' type="text" />
           </div>
-          <div className="admin table">
-            {/* <thead>
+          <table className="admin table">
+            <thead>
               <tr>
                 <th scope="col">Image</th>
                 <th scope="col">Brand</th>
@@ -173,32 +173,32 @@ const FeaturedAdmin = () => {
                 <th scope="col">DELETE</th>
                 <th scope="col">UPDATE</th>
               </tr>
-            </thead> */}
+            </thead>
             {
               loading ? <Loading /> :
                 featured?.filter(data => {
                   return value.trim().toLowerCase() === "" ? data : data.appelation.toLowerCase().includes(value.toLowerCase())
                 })
                   .map((item) => (
-                    <div key={item._id} >
-                      <div >
-                        <div className='admin-image__wrapper'>
+                    <tbody key={item._id} >
+                      <tr >
+                        <td className='admin-image__wrapper'>
                           <img style={{ width: "100%", height: "100%" }} src={item.image} alt="" />
-                        </div>
-                        <div className='featured-td'>{item.brand}</div>
-                        <div className='featured-td'>{item.alcohol}</div>
-                        <div className='featured-td'>{item.appelation}</div>
-                        <div className='featured-td'>{item.size}</div>
-                        <div className='featured-td'>${item.price}</div>
-                        <div className='featured-td'>{item.kind}</div>
-                        <div className='featured-td'><button onClick={() => handleDelete(item._id)} className='admin-btn delete-btn'>DELETE</button></div>
-                        <div className='featured-td'><button onClick={() => handleEditClick(item)} className='admin-btn update-btn'>SELECT</button></div>
-                      </div>
-                    </div>
+                        </td>
+                        <td className='featured-td'>{item.brand}</td>
+                        <td className='featured-td'>{item.alcohol}</td>
+                        <td className='featured-td'>{item.appelation}</td>
+                        <td className='featured-td'>{item.size}</td>
+                        <td className='featured-td'>${item.price}</td>
+                        <td className='featured-td'>{item.kind}</td>
+                        <td className='featured-td'><button onClick={() => handleDelete(item._id)} className='admin-btn delete-btn'>DELETE</button></td>
+                        <td className='featured-td'><button onClick={() => handleEditClick(item)} className='admin-btn update-btn'>SELECT</button></td>
+                      </tr>
+                    </tbody>
                   ))
             }
 
-          </div>
+          </table>
 
           <div className="featured-add__wrapper">
             <h2 className='add-products__h2'>Add and Update Products</h2>
