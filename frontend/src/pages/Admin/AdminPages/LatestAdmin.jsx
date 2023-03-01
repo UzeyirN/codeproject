@@ -9,7 +9,7 @@ import products_schema from '../../../Schema/ProductsVal';
 
 // get the token from the cookie
 const getAuthToken = () => {
-  const name = 'token=';
+  const name = 'auth-token=';
   const cookieArr = document.cookie.split(';');
   for (let i = 0; i < cookieArr.length; i++) {
     let cookie = cookieArr[i].trim();

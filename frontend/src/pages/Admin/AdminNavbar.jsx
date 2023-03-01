@@ -16,7 +16,7 @@ const AdminNavbar = () => {
 
     useEffect(() => {
 
-        const token = getCookie('token');
+        const token = getCookie('auth-token');
         if (token) {
             setIsLoggedIn(true);
         }

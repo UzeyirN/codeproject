@@ -10,12 +10,6 @@ const AdminReg = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
 
 
-
-
-
-
-
-
     // const handleSubmit = (event) => {
     //     event.preventDefault();
 
@@ -50,7 +44,9 @@ const AdminReg = () => {
     // };
 
 
+
     //!exist account
+   
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -67,7 +63,7 @@ const AdminReg = () => {
         axios.post('http://127.0.0.1:3070/register/', { username, email, password, confirmPassword })
             .then((response) => {
                 console.log("success", response)
-                document.cookie = `token=${response.data.token}; expires=${new Date(Date.now() + 36000000).toUTCString()}; path=/`;
+                document.cookie = `auth-token=${response.data.token}; expires=${new Date(Date.now() + 36000000).toUTCString()}; path=/`;
                 window.location.href = '/admin';
 
                 setUsername('');

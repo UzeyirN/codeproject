@@ -10,7 +10,7 @@ const AdminLogin = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        const token = getCookie('token');
+        const token = getCookie('auth-token');
         if (token) {
             setIsLoggedIn(true);
         }
@@ -33,7 +33,7 @@ const AdminLogin = () => {
         axios.post('http://127.0.0.1:3070/login/', { email, password })
             .then((response) => {
                 console.log("success", response);
-                document.cookie = `token=${response.data.token}; expires=${new Date(Date.now() + 36000000).toUTCString()}; path=/`;
+                document.cookie = `auth-token=${response.data.token}; expires=${new Date(Date.now() + 36000000).toUTCString()}; path=/`;
                 window.location.href = '/admin';
                 setIsLoggedIn(true);
                 setEmail('');
@@ -47,7 +47,7 @@ const AdminLogin = () => {
     };
 
     const handleLogout = () => {
-        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "auth-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         setIsLoggedIn(false);
         setEmail('');
     };

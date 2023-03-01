@@ -18,9 +18,12 @@ const register = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 12);
         const user = await User.create({ username, email, password: hashedPassword });
-        const token = jwt.sign({ email: user.email, id: user._id }, 'mysecret', { expiresIn: '1h' });
 
+        // const token = jwt.sign({ email: user.email, id: user._id }, 'mysecret', { expiresIn: '1h' });
+        // res.status(201).json({ result: user, token });
+        const token = jwt.sign({ email: user.email, id: user._id }, 'admin123', { expiresIn: '1h' });
         res.status(201).json({ result: user, token });
+
     } catch (error) {
         res.status(500).json({ message: 'Something went wrong' });
     }
@@ -46,7 +49,11 @@ const login = async (req, res) => {
 
         existingUser.isLoggedIn = true;
         await existingUser.save();
-        const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, 'mysecret', { expiresIn: '1h' });
+
+        // const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, 'mysecret', { expiresIn: '1h' });
+        // return res.status(200).json({ result: existingUser, token });
+
+        const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, 'admin123', { expiresIn: '1h' });
         return res.status(200).json({ result: existingUser, token });
 
     } catch (error) {
@@ -55,27 +62,40 @@ const login = async (req, res) => {
 };
 
 
+// const tokenRequired = (req, res, next) => {
+//     const { token } = req.body;
+
+//     console.log("token", token)
+//     if (!token) {
+//         return res.status(401).json({ message: 'Authentication failed' });
+//     }
+//     try {
+//         console.log("try")
+//         const decodedData = jwt.verify(token, 'mysecret');
+//         console.log("after dekot")
+//         req.user = decodedData;
+//         console.log("after req user")
+
+//         return res.status(200).json({ result: decodedData, token });
+
+//     } catch (error) {
+//         return res.status(401).json({ message: 'Authentication failed' });
+//     }
+// };
+
 const tokenRequired = (req, res, next) => {
     const { token } = req.body;
-
-    console.log("token", token)
     if (!token) {
         return res.status(401).json({ message: 'Authentication failed' });
     }
     try {
-        console.log("try")
-        const decodedData = jwt.verify(token, 'mysecret');
-        console.log("after dekot")
+        const decodedData = jwt.verify(token, 'admin123');
         req.user = decodedData;
-        console.log("after req user")
-
         return res.status(200).json({ result: decodedData, token });
-
     } catch (error) {
         return res.status(401).json({ message: 'Authentication failed' });
     }
 };
-
 
 const forgotPassword = async (req, res) => {
     try {
