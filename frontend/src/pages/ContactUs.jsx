@@ -108,7 +108,7 @@ const ContactUs = () => {
               <div className='input-wrapper'>
 
                 <div style={{ width: "100%" }}>
-                  <input {...register("email")} value={state.email} name='email' type="text" placeholder='Email Adress' className='contact-input' onChange={handleChange} />
+                  <input {...register("email")} value={state.email} name='email' type="email" placeholder='Email Adress' className='contact-input' onChange={handleChange} />
                   <p className='contact-error__message'>{errors.email?.message}</p>
                 </div>
 

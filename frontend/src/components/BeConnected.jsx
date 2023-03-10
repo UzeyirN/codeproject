@@ -28,8 +28,9 @@ const BeConnected = () => {
         setState({
             email: "",
         });
-        toast.success('Successfully subscribe !');
-
+        toast.success('Successfully subscribe !', {
+            autoClose: 1000
+        });
     };
 
     const handleChange = (e) => {

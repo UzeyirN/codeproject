@@ -13,7 +13,6 @@ const LatestCollecions = () => {
     const getData = async () => {
         await axios.get(URL).then((resp) => setLatestProducts(resp.data));
         setLoading(false);
-
     }
 
     useEffect(() => {
@@ -32,7 +31,7 @@ const LatestCollecions = () => {
                         {
                             loading ? <Loading /> :
                                 latestProducts?.map(({ _id, image, brand, appelation, price }) => (
-                                    <div className="col-12 col-lg-4  mb-5"  key={_id}>
+                                    <div className="col-12 col-lg-4  mb-5" key={_id}>
                                         <div className="card-wrapper ">
                                             <div className="card">
                                                 <div className="card-body">

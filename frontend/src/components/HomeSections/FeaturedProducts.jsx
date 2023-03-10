@@ -22,6 +22,10 @@ const FeaturedProducts = () => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    const getData = async () => {
+        await axios.get(URL).then((resp) => setFeatured(resp.data));
+        setLoading(false);
+    }
 
     useLayoutEffect(() => {
         function updateIsMobile() {
@@ -33,12 +37,6 @@ const FeaturedProducts = () => {
 
         return () => window.removeEventListener('resize', updateIsMobile);
     }, []);
-
-    const getData = async () => {
-        await axios.get(URL).then((resp) => setFeatured(resp.data));
-        setLoading(false);
-
-    }
 
     const addToWishList = async (id) => {
         if (isLoggedIn) {

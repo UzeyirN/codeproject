@@ -92,12 +92,19 @@ const LatestAdmin = () => {
     setValue(e.target.value)
   }
 
-  const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:3070/latest/${id}`)
-    getData();
-    window.alert("Are you sure you want to delete this item?");
 
-  }
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm("Are you sure you want to delete this item?");
+
+    if (confirmed) {
+      try {
+        await axios.delete(`http://localhost:3070/latest/${id}`);
+        getData();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
 
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value })
