@@ -80,8 +80,6 @@ const WishlistDetail = () => {
                                 <td>
                                     <span className='product-title lato-font'>KIND</span><p className='detail-p playfair-font'> {products.kind}</p>
                                 </td>
-
-
                             </tr>
                         </tbody>
                     </table>
